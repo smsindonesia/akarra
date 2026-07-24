@@ -1,0 +1,87 @@
+import Button from '../atoms/Button'
+import Display from '../atoms/Display'
+import Eyebrow from '../atoms/Eyebrow'
+import Figure from '../atoms/Figure'
+import MandalaMark from '../atoms/MandalaMark'
+import Paragraph from '../atoms/Paragraph'
+
+/**
+ * Hero yang dipakai kelima halaman.
+ *
+ * `variant="landing"` untuk beranda (rata kiri, tinggi penuh);
+ * `variant="page"` untuk halaman dalam (rata tengah, lebih ringkas).
+ */
+export default function PageHero({
+  eyebrow,
+  title,
+  emphasis,
+  subtitle,
+  ctaLabel,
+  ctaTo,
+  image,
+  variant = 'page',
+}) {
+  const isLanding = variant === 'landing'
+
+  return (
+    <section
+      className={`relative overflow-hidden ${
+        isLanding ? 'flex min-h-[92vh] items-center pt-24' : 'pt-40 pb-20 md:pt-48 md:pb-28'
+      }`}
+    >
+      {/* Motif mandala di latar, sangat samar. Salah satu dari empat tempat
+          motif ini boleh muncul. */}
+      <MandalaMark
+        className="animate-drift pointer-events-none absolute -right-24 top-1/4 h-[34rem] w-[34rem] text-gold/[0.055] md:-right-16"
+        strokeWidth={0.5}
+      />
+
+      <div className={`shell relative ${isLanding ? '' : 'text-center'}`}>
+        <div className={isLanding ? 'max-w-3xl' : 'mx-auto max-w-3xl'}>
+          {eyebrow && (
+            <div className="animate-fade-up">
+              <Eyebrow>{eyebrow}</Eyebrow>
+            </div>
+          )}
+
+          <Display
+            as="h1"
+            size="xl"
+            emphasis={emphasis}
+            className={`animate-fade-up ${eyebrow ? 'mt-6' : ''}`}
+          >
+            {title}
+          </Display>
+
+          {/* Garis emas yang menyapu setelah judul muncul. Satu gerakan kecil
+              yang menandai selesainya pembukaan halaman. */}
+          <span
+            className={`animate-sweep mt-8 block h-px w-24 bg-gold ${isLanding ? '' : 'mx-auto'}`}
+            aria-hidden="true"
+          />
+
+          {subtitle && (
+            <Paragraph
+              className={`animate-fade-up measure mt-8 ${isLanding ? '' : 'mx-auto'}`}
+              style={{ animationDelay: '150ms' }}
+            >
+              {subtitle}
+            </Paragraph>
+          )}
+
+          {ctaLabel && (
+            <div className={`animate-fade-up mt-12 ${isLanding ? '' : 'flex justify-center'}`}>
+              <Button to={ctaTo ?? '/#kolaborasi'}>{ctaLabel}</Button>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {image && !isLanding && (
+        <div className="shell mt-16">
+          <Figure src={image} alt={title} ratio="aspect-[16/7]" />
+        </div>
+      )}
+    </section>
+  )
+}

@@ -1,0 +1,193 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+
+/* ---------------------------------------------------------------------------
+   Token desain AKARRA
+   Diturunkan dari kanvas Figma. #F5F5F5 terkonfirmasi; sisanya perkiraan yang
+   perlu dikunci ulang dari panel Design ketika file Figma dapat diakses.
+--------------------------------------------------------------------------- */
+@theme {
+  --color-canvas: #f5f5f5;
+  --color-ivory: #faf8f4;
+  --color-sand: #efe9de;
+  --color-ink: #1c1b18;
+  --color-ink-soft: #2a2825;
+  --color-gold: #b08d3f;
+  --color-gold-lite: #d9c48b;
+  --color-muted: #8a857c;
+
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Fokus keyboard harus selalu terlihat. Jangan pernah outline:none. */
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: var(--color-gold);
+    color: var(--color-ivory);
+  }
+}
+
+@layer components {
+  /* Lebar konten. Satu tempat, supaya tidak ada section yang melenceng. */
+  .shell {
+    width: 100%;
+    max-width: 1180px;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .shell {
+      padding-inline: 2.5rem;
+    }
+  }
+
+  /* Ritme vertikal. Di Figma jaraknya sangat lega — jangan dipadatkan. */
+  .section {
+    padding-block: 5rem;
+  }
+
+  @media (min-width: 768px) {
+    .section {
+      padding-block: 8rem;
+    }
+  }
+
+  /* Ukuran teks naratif. 68 karakter per baris agar nyaman dibaca. */
+  .measure {
+    max-width: 34rem;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Motion
+--------------------------------------------------------------------------- */
+
+/* Reveal saat masuk viewport. Dipasang oleh hook useReveal. */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s var(--ease-editorial),
+    transform 0.7s var(--ease-editorial);
+}
+
+.reveal[data-visible='true'] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Stagger antar-elemen dalam satu section. */
+.reveal[data-delay='1'] { transition-delay: 80ms; }
+.reveal[data-delay='2'] { transition-delay: 160ms; }
+.reveal[data-delay='3'] { transition-delay: 240ms; }
+.reveal[data-delay='4'] { transition-delay: 320ms; }
+
+/* Motif mandala menggambar dirinya sendiri di layar pembuka. */
+@keyframes draw-mark {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes sweep {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes drift {
+  from { transform: translateY(0) rotate(0deg); }
+  to { transform: translateY(-18px) rotate(6deg); }
+}
+
+.animate-draw-mark {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw-mark 1.4s var(--ease-editorial) forwards;
+}
+
+.animate-fade-up { animation: fade-up 0.8s var(--ease-editorial) both; }
+.animate-sweep { animation: sweep 0.9s var(--ease-editorial) 0.5s both; transform-origin: left; }
+.animate-drift { animation: drift 14s ease-in-out infinite alternate; }
+
+/* ---------------------------------------------------------------------------
+   Admin — Trix
+--------------------------------------------------------------------------- */
+.admin-trix trix-toolbar {
+  border: 1px solid color-mix(in srgb, var(--color-ink) 12%, transparent);
+  border-bottom: none;
+  background: var(--color-sand);
+  padding: 0.5rem;
+}
+
+.admin-trix trix-toolbar .trix-button-group {
+  border-color: color-mix(in srgb, var(--color-ink) 15%, transparent);
+}
+
+.admin-trix trix-toolbar .trix-button {
+  color: var(--color-ink);
+}
+
+.admin-trix trix-toolbar .trix-button.trix-active {
+  background: var(--color-gold);
+  color: var(--color-ivory);
+}
+
+.admin-trix trix-editor {
+  min-height: 320px;
+  border: 1px solid color-mix(in srgb, var(--color-ink) 12%, transparent);
+  background: var(--color-ivory);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.75;
+  padding: 1.25rem;
+}
+
+.admin-trix trix-editor:focus {
+  outline: none;
+  border-color: var(--color-gold);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .animate-draw-mark,
+  .animate-fade-up,
+  .animate-sweep,
+  .animate-drift {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}

@@ -1,0 +1,1507 @@
+<div className="w-[1280px] min-h-[800px] px-24 pt-56 pb-36 relative inline-flex justify-start items-center overflow-hidden">
+  <div className="size-14 left-0 top-0 absolute overflow-hidden">
+    <div className="size-14 left-0 top-0 absolute bg-orange-400/5" />
+  </div>
+  <div className="size-[512px] left-[1088px] top-[53.96px] absolute origin-top-left rotate-45 border border-amber-100/30" />
+  <div className="size-[512px] left-[1058.30px] top-[26.30px] absolute origin-top-left rotate-[30deg] border border-amber-100/20" />
+  <div className="w-[672px] h-96 max-w-[896px] relative">
+    <div className="w-[672px] pb-[0.59px] left-0 top-[-1px] absolute inline-flex flex-col justify-start items-start">
+      <div className="justify-center text-yellow-800 text-xs font-medium font-['Inter'] uppercase leading-4 tracking-[2.42px]">A LEGACY IN THE MAKING</div>
+    </div>
+    <div className="w-[672px] pb-[0.69px] left-0 top-[40.49px] absolute inline-flex flex-col justify-start items-start">
+      <div className="justify-center"><span class="text-stone-900 text-8xl font-light font-['EB_Garamond'] leading-[96.80px]">Ecosystem of<br/></span><span class="text-yellow-800 text-8xl font-light font-['EB_Garamond'] leading-[96.80px]">Excellence</span></div>
+    </div>
+    <div className="w-[672px] left-0 top-[266.59px] absolute inline-flex flex-col justify-start items-start">
+      <div className="justify-center text-stone-700 text-base font-light font-['Inter'] leading-7">A sophisticated convergence of Fashionpreneurial spirit, Creative Labs innovation, and<br/>Strategic Advertising excellence. AKARRA is built for the visionaries of tomorrow.</div>
+    </div>
+    <div className="w-[672px] left-0 top-[372.78px] absolute inline-flex justify-start items-start gap-6">
+      <div className="size- px-10 py-5 bg-yellow-800 flex justify-start items-center gap-3">
+        <div className="text-center justify-center text-white text-xs font-medium font-['Inter'] uppercase leading-3 tracking-wider">EXPLORE THE ECOSYSTEM</div>
+        <div className="size- inline-flex flex-col justify-start items-center">
+          <div className="size-3 bg-white" />
+        </div>
+      </div>
+      <div className="size- px-10 py-5 outline outline-1 outline-offset-[-1px] outline-stone-300 inline-flex flex-col justify-center items-center">
+        <div className="text-center justify-center text-stone-900 text-xs font-medium font-['Inter'] uppercase leading-3 tracking-wider">OUR PHILOSOPHY</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div className="w-[1280px] px-24 py-24 bg-orange-50 border-t border-amber-100/30 inline-flex flex-col justify-start items-start">
+  <div className="w-full max-w-[1152px] flex flex-col justify-start items-start gap-24">
+    <div className="self-stretch inline-flex justify-center items-center gap-20">
+      <div className="flex-1 pb-8 inline-flex flex-col justify-start items-start gap-8">
+        <div className="self-stretch pb-[0.58px] flex flex-col justify-start items-start">
+          <div className="self-stretch justify-center"><span class="text-stone-900 text-5xl font-light font-['EB_Garamond'] leading-[62.40px]">Membangun Warisan,<br/></span><span class="text-stone-900 text-5xl font-light font-['EB_Garamond'] leading-[62.40px]">Bukan Sekadar Bisnis</span></div>
+        </div>
+        <div className="self-stretch pl-8 py-2 border-l-2 border-yellow-800 flex flex-col justify-start items-start gap-4">
+          <div className="self-stretch flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-stone-900 text-base font-light font-['Inter'] leading-7">&quot;We believe that true prestige is found in the intersection of<br/>mathematical precision and artistic soul. Our journey is about<br/>creating impact that resonates across generations.&quot;</div>
+          </div>
+          <div className="self-stretch flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-yellow-800 text-xs font-medium font-['Inter'] uppercase leading-3 tracking-wider">— THE FOUNDERS OF AKARRA</div>
+          </div>
+        </div>
+      </div>
+      <div className="flex-1 relative inline-flex flex-col justify-start items-start">
+        <div className="self-stretch rounded-xs flex flex-col justify-center items-start">
+          <div className="self-stretch h-[622px] bg-white/0 rounded-xs shadow-2xl" />
+        </div>
+        <div className="size-48 p-4 left-[-40px] top-[470px] absolute bg-orange-50/50 outline outline-1 outline-offset-[-1px] outline-yellow-800/20 backdrop-blur-[2px] flex flex-col justify-center items-start">
+          <div className="self-stretch flex-1 outline outline-1 outline-offset-[-1px] outline-yellow-800/40 inline-flex justify-center items-center">
+            <div className="size- inline-flex flex-col justify-start items-start">
+              <div className="justify-center text-yellow-800 text-2xl font-medium font-['EB_Garamond'] leading-8">Est. 2024</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div className="self-stretch inline-flex justify-center items-start gap-6">
+      <div className="w-64 p-10 bg-orange-50 outline outline-1 outline-offset-[-1px] outline-amber-100 inline-flex flex-col justify-start items-start gap-4">
+        <div className="w-6 h-7 bg-yellow-800" />
+        <div className="self-stretch pt-2 flex flex-col justify-start items-start">
+          <div className="self-stretch justify-center text-stone-900 text-2xl font-medium font-['EB_Garamond'] leading-8">Excellence</div>
+        </div>
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="self-stretch justify-center text-stone-700 text-base font-normal font-['Inter'] leading-7">Uncompromising<br/>quality in every stitch,<br/>frame, and strategy we<br/>execute.</div>
+        </div>
+      </div>
+      <div className="w-64 p-10 bg-orange-50 outline outline-1 outline-offset-[-1px] outline-amber-100 inline-flex flex-col justify-start items-start gap-4">
+        <div className="w-6 h-7 bg-yellow-800" />
+        <div className="self-stretch pt-2 flex flex-col justify-start items-start">
+          <div className="self-stretch justify-center text-stone-900 text-2xl font-medium font-['EB_Garamond'] leading-8">Integrity</div>
+        </div>
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="self-stretch justify-center text-stone-700 text-base font-normal font-['Inter'] leading-7">Building trust through<br/>transparency and<br/>ethical leadership in all<br/>domains.</div>
+        </div>
+      </div>
+      <div className="w-64 p-10 bg-orange-50 outline outline-1 outline-offset-[-1px] outline-amber-100 inline-flex flex-col justify-start items-start gap-4">
+        <div className="w-5 h-7 bg-yellow-800" />
+        <div className="self-stretch pt-2 flex flex-col justify-start items-start">
+          <div className="self-stretch justify-center text-stone-900 text-2xl font-medium font-['EB_Garamond'] leading-8">Innovation</div>
+        </div>
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="self-stretch justify-center text-stone-700 text-base font-normal font-['Inter'] leading-7">Pushing boundaries<br/>through creative<br/>experimentation and<br/>modern technology.</div>
+        </div>
+      </div>
+      <div className="w-64 p-10 bg-orange-50 outline outline-1 outline-offset-[-1px] outline-amber-100 inline-flex flex-col justify-start items-start gap-4">
+        <div className="w-7 h-8 bg-yellow-800" />
+        <div className="self-stretch pt-2 flex flex-col justify-start items-start">
+          <div className="self-stretch justify-center text-stone-900 text-2xl font-medium font-['EB_Garamond'] leading-8">Elegance</div>
+        </div>
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="self-stretch justify-center text-stone-700 text-base font-normal font-['Inter'] leading-7">A commitment to<br/>refined aesthetics that<br/>speak without needing<br/>to shout.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div className="w-[1280px] px-24 py-24 bg-orange-50 inline-flex flex-col justify-start items-center gap-16">
+  <div className="self-stretch flex flex-col justify-start items-center">
+    <div className="text-center justify-center text-stone-900 text-5xl font-light font-['EB_Garamond'] leading-[62.40px]">Curated Solutions</div>
+  </div>
+  <div className="w-[1024px] max-w-[1024px] flex flex-col justify-start items-start gap-12">
+    <div className="self-stretch border-b border-amber-100/30 inline-flex justify-center items-start gap-12">
+      <div className="size- px-4 pb-6 border-b-2 border-yellow-800 inline-flex flex-col justify-center items-center">
+        <div className="text-center justify-center text-yellow-800 text-xs font-medium font-['Inter'] uppercase leading-3 tracking-wider">FASHION</div>
+      </div>
+      <div className="size- px-4 pb-6 border-b-2 border-black/0 inline-flex flex-col justify-center items-center">
+        <div className="text-center justify-center text-stone-700 text-xs font-medium font-['Inter'] uppercase leading-3 tracking-wider">CREATIVE</div>
+      </div>
+      <div className="size- px-4 pb-6 border-b-2 border-black/0 inline-flex flex-col justify-center items-center">
+        <div className="text-center justify-center text-stone-700 text-xs font-medium font-['Inter'] uppercase leading-3 tracking-wider">ADVERTISING</div>
+      </div>
+    </div>
+    <div className="self-stretch inline-flex justify-center items-start gap-10">
+      <div className="flex-1 p-1 bg-orange-50 outline outline-1 outline-offset-[-1px] outline-amber-100 inline-flex flex-col justify-start items-start gap-6">
+        <img className="self-stretch h-64" src="https://placehold.co/482x271" />
+        <div className="self-stretch p-6 flex flex-col justify-start items-start gap-2">
+          <div className="self-stretch flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-stone-900 text-2xl font-medium font-['EB_Garamond'] leading-8">Bespoke Collection</div>
+          </div>
+          <div className="self-stretch flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-stone-700 text-base font-normal font-['Inter'] leading-6">Made-to-measure excellence for the modern executive.</div>
+          </div>
+        </div>
+      </div>
+      <div className="flex-1 p-1 bg-orange-50 outline outline-1 outline-offset-[-1px] outline-amber-100 inline-flex flex-col justify-start items-start gap-6">
+        <img className="self-stretch h-64" src="https://placehold.co/482x271" />
+        <div className="self-stretch p-6 flex flex-col justify-start items-start gap-2">
+          <div className="self-stretch flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-stone-900 text-2xl font-medium font-['EB_Garamond'] leading-8">Signature Textiles</div>
+          </div>
+          <div className="self-stretch flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-stone-700 text-base font-normal font-['Inter'] leading-6">Ethically sourced, world-class fabric curation.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div className="w-[1280px] px-24 py-24 bg-orange-50 border-t border-amber-100 inline-flex flex-col justify-start items-start gap-20">
+  <div className="self-stretch inline-flex justify-between items-start">
+    <div className="w-80 h-48 max-w-80 relative">
+      <div className="w-80 pb-[0.59px] left-0 top-[-1px] absolute inline-flex flex-col justify-start items-start">
+        <div className="justify-center text-stone-900 text-3xl font-light font-['EB_Garamond'] leading-10">AKARRA</div>
+      </div>
+      <div className="w-80 left-0 top-[65.59px] absolute inline-flex flex-col justify-start items-start">
+        <div className="justify-center text-stone-700 text-base font-normal font-['Inter'] leading-6">An ecosystem dedicated to the pursuit of<br/>excellence across fashion, creativity, and<br/>strategic growth.</div>
+      </div>
+      <div className="w-80 left-0 top-[169.59px] absolute inline-flex justify-start items-start gap-6">
+        <div className="self-stretch pt-[1.63px] inline-flex flex-col justify-start items-start">
+          <div className="w-4 h-3.5 bg-stone-700" />
+        </div>
+        <div className="self-stretch pt-[1.63px] inline-flex flex-col justify-start items-start">
+          <div className="w-5 h-4 bg-stone-700" />
+        </div>
+        <div className="self-stretch pt-[1.63px] inline-flex flex-col justify-start items-start">
+          <div className="size-5 bg-stone-700" />
+        </div>
+      </div>
+    </div>
+    <div className="size- flex justify-start items-start gap-20">
+      <div className="size- inline-flex flex-col justify-start items-start gap-4">
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="justify-center text-yellow-800 text-xs font-medium font-['Inter'] uppercase leading-3 tracking-wider">COMPANY</div>
+        </div>
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-6">Privacy Policy</div>
+        </div>
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-6">Terms of Service</div>
+        </div>
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-6">Investment</div>
+        </div>
+      </div>
+      <div className="size- inline-flex flex-col justify-start items-start gap-4">
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="justify-center text-yellow-800 text-xs font-medium font-['Inter'] uppercase leading-3 tracking-wider">ECOSYSTEM</div>
+        </div>
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-6">Fashionpreneur</div>
+        </div>
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-6">Creative Labs</div>
+        </div>
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-6">Advertising</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div className="self-stretch pt-10 border-t border-amber-100/30 inline-flex justify-between items-center">
+    <div className="size- inline-flex flex-col justify-start items-start">
+      <div className="justify-center text-neutral-400 text-base font-normal font-['Inter'] leading-6">© 2024 AKARRA. All rights reserved.</div>
+    </div>
+    <div className="size- inline-flex flex-col justify-start items-start">
+      <div className="justify-center text-neutral-400 text-[10px] font-normal font-['Inter'] uppercase leading-4 tracking-[3px]">DESIGNED FOR THE VISIONARY</div>
+    </div>
+  </div>
+</div>
+<div className="w-[1280px] px-24 py-24 relative bg-orange-50 inline-flex flex-col justify-start items-start gap-20 overflow-hidden">
+  <div className="w-px h-[778px] left-[639.50px] top-0 absolute bg-amber-100/30" />
+  <div className="self-stretch flex flex-col justify-start items-start gap-4">
+    <div className="self-stretch pb-[0.59px] flex flex-col justify-start items-center">
+      <div className="text-center justify-center text-yellow-800 text-xs font-medium font-['Inter'] uppercase leading-4 tracking-[2.42px]">OUR THREE PILLARS</div>
+    </div>
+    <div className="self-stretch flex flex-col justify-start items-center">
+      <div className="text-center justify-center text-stone-900 text-5xl font-light font-['EB_Garamond'] leading-[62.40px]">The Services Ecosystem</div>
+    </div>
+  </div>
+  <div className="self-stretch outline outline-1 outline-offset-[-1px] outline-amber-100 inline-flex justify-center items-start">
+    <div className="w-96 p-12 border-r border-amber-100 inline-flex flex-col justify-start items-start gap-6">
+      <div className="self-stretch h-16 relative">
+        <div className="left-0 top-[-1px] absolute justify-center text-yellow-800/10 text-5xl font-light font-['EB_Garamond'] leading-[62.40px]">01</div>
+        <div className="w-6 h-5 left-[233.47px] top-[7.38px] absolute bg-yellow-800" />
+      </div>
+      <div className="self-stretch pt-6 flex flex-col justify-start items-start">
+        <div className="self-stretch justify-center text-stone-900 text-2xl font-medium font-['EB_Garamond'] leading-8">Fashionpreneur</div>
+      </div>
+      <div className="self-stretch flex flex-col justify-start items-start gap-4">
+        <div className="self-stretch inline-flex justify-start items-center gap-3">
+          <div className="size-1.5 bg-yellow-800/40 rounded-xl" />
+          <div className="justify-center text-stone-700 text-base font-normal font-['Inter'] leading-6">Brand Development</div>
+        </div>
+        <div className="self-stretch inline-flex justify-start items-center gap-3">
+          <div className="size-1.5 bg-yellow-800/40 rounded-xl" />
+          <div className="justify-center text-stone-700 text-base font-normal font-['Inter'] leading-6">Textile Sourcing</div>
+        </div>
+        <div className="self-stretch inline-flex justify-start items-center gap-3">
+          <div className="size-1.5 bg-yellow-800/40 rounded-xl" />
+          <div className="justify-center text-stone-700 text-base font-normal font-['Inter'] leading-6">Atelier Manufacturing</div>
+        </div>
+        <div className="self-stretch inline-flex justify-start items-center gap-3">
+          <div className="size-1.5 bg-yellow-800/40 rounded-xl" />
+          <div className="justify-center text-stone-700 text-base font-normal font-['Inter'] leading-6">Distribution Strategy</div>
+        </div>
+      </div>
+    </div>
+    <div className="w-96 p-12 border-r border-amber-100 inline-flex flex-col justify-start items-start gap-6">
+      <div className="self-stretch h-16 relative">
+        <div className="left-0 top-[-1px] absolute justify-center text-yellow-800/10 text-5xl font-light font-['EB_Garamond'] leading-[62.40px]">02</div>
+        <div className="w-4 h-6 left-[237.53px] top-[5.79px] absolute bg-yellow-800" />
+      </div>
+      <div className="self-stretch pt-6 flex flex-col justify-start items-start">
+        <div className="self-stretch justify-center text-stone-900 text-2xl font-medium font-['EB_Garamond'] leading-8">Creative Labs</div>
+      </div>
+      <div className="self-stretch flex flex-col justify-start items-start gap-4">
+        <div className="self-stretch inline-flex justify-start items-center gap-3">
+          <div className="size-1.5 bg-yellow-800/40 rounded-xl" />
+          <div className="justify-center text-stone-700 text-base font-normal font-['Inter'] leading-6">Visual Storytelling</div>
+        </div>
+        <div className="self-stretch inline-flex justify-start items-center gap-3">
+          <div className="size-1.5 bg-yellow-800/40 rounded-xl" />
+          <div className="justify-center text-stone-700 text-base font-normal font-['Inter'] leading-6">UI/UX Innovation</div>
+        </div>
+        <div className="self-stretch inline-flex justify-start items-center gap-3">
+          <div className="size-1.5 bg-yellow-800/40 rounded-xl" />
+          <div className="justify-center text-stone-700 text-base font-normal font-['Inter'] leading-6">Photography &amp; Cinema</div>
+        </div>
+        <div className="self-stretch inline-flex justify-start items-center gap-3">
+          <div className="size-1.5 bg-yellow-800/40 rounded-xl" />
+          <div className="justify-center text-stone-700 text-base font-normal font-['Inter'] leading-6">Experimental Design</div>
+        </div>
+      </div>
+    </div>
+    <div className="w-96 p-12 inline-flex flex-col justify-start items-start gap-6">
+      <div className="self-stretch h-16 relative">
+        <div className="left-0 top-[-1px] absolute justify-center text-yellow-800/10 text-5xl font-light font-['EB_Garamond'] leading-[62.40px]">03</div>
+        <div className="w-6 h-5 left-[234.78px] top-[8.60px] absolute bg-yellow-800" />
+      </div>
+      <div className="self-stretch pt-6 flex flex-col justify-start items-start">
+        <div className="self-stretch justify-center text-stone-900 text-2xl font-medium font-['EB_Garamond'] leading-8">Advertising</div>
+      </div>
+      <div className="self-stretch flex flex-col justify-start items-start gap-4">
+        <div className="self-stretch inline-flex justify-start items-center gap-3">
+          <div className="size-1.5 bg-yellow-800/40 rounded-xl" />
+          <div className="justify-center text-stone-700 text-base font-normal font-['Inter'] leading-6">Brand Positioning</div>
+        </div>
+        <div className="self-stretch inline-flex justify-start items-center gap-3">
+          <div className="size-1.5 bg-yellow-800/40 rounded-xl" />
+          <div className="justify-center text-stone-700 text-base font-normal font-['Inter'] leading-6">Market Penetration</div>
+        </div>
+        <div className="self-stretch inline-flex justify-start items-center gap-3">
+          <div className="size-1.5 bg-yellow-800/40 rounded-xl" />
+          <div className="justify-center text-stone-700 text-base font-normal font-['Inter'] leading-6">Digital Growth</div>
+        </div>
+        <div className="self-stretch inline-flex justify-start items-center gap-3">
+          <div className="size-1.5 bg-yellow-800/40 rounded-xl" />
+          <div className="justify-center text-stone-700 text-base font-normal font-['Inter'] leading-6">Strategic Media</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div className="w-[1280px] h-px left-0 top-[388.49px] absolute bg-amber-100/30" />
+</div>
+<div className="w-[1280px] px-24 py-24 bg-orange-50 inline-flex flex-col justify-start items-start overflow-hidden">
+  <div className="w-full max-w-[1152px] flex flex-col justify-start items-start gap-16">
+    <div className="self-stretch flex flex-col justify-start items-start gap-4">
+      <div className="self-stretch flex flex-col justify-start items-center">
+        <div className="text-center justify-center text-stone-900 text-5xl font-light font-['EB_Garamond'] leading-[62.40px]">Cerita di Balik AKARRA</div>
+      </div>
+      <div className="self-stretch flex flex-col justify-start items-center">
+        <div className="text-center justify-center text-stone-700 text-base font-light font-['Inter'] leading-7">Witness the genesis of an ecosystem built on purpose.</div>
+      </div>
+    </div>
+    <div className="self-stretch relative bg-white/0 rounded-xs shadow-2xl flex flex-col justify-start items-start overflow-hidden">
+      <img className="self-stretch h-[604.81px]" src="https://placehold.co/1075x605" />
+      <div className="w-[1075.22px] h-[604.80px] left-0 top-0 absolute opacity-80 bg-stone-900/40 inline-flex justify-center items-center">
+        <div className="size-24 pl-6 pr-4 rounded-xl outline outline-2 outline-offset-[-2px] outline-white/40 backdrop-blur-[2px] flex justify-center items-center">
+          <div className="size- inline-flex flex-col justify-start items-start">
+            <div className="w-5 h-6 bg-white" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div className="w-[1280px] px-24 py-24 bg-orange-50 border-t border-b border-amber-100/30 inline-flex flex-col justify-start items-start">
+  <div className="w-full max-w-[1152px] flex flex-col justify-start items-start gap-20">
+    <div className="self-stretch flex flex-col justify-start items-start gap-3.5">
+      <div className="self-stretch pb-[0.59px] flex flex-col justify-start items-center">
+        <div className="text-center justify-center text-yellow-800 text-xs font-medium font-['Inter'] uppercase leading-4 tracking-[2.42px]">THE VISIONARIES</div>
+      </div>
+      <div className="self-stretch flex flex-col justify-start items-center">
+        <div className="text-center justify-center text-stone-900 text-5xl font-light font-['EB_Garamond'] leading-[62.40px]">Meet the Founders</div>
+      </div>
+    </div>
+    <div className="self-stretch inline-flex justify-center items-start gap-20">
+      <div className="flex-1 inline-flex flex-col justify-start items-start gap-2">
+        <div className="self-stretch flex flex-col justify-start items-start overflow-hidden">
+          <img className="self-stretch h-[663.48px]" src="https://placehold.co/498x663" />
+        </div>
+        <div className="self-stretch pt-8 flex flex-col justify-start items-start">
+          <div className="self-stretch justify-center text-yellow-800 text-2xl font-medium font-['EB_Garamond'] leading-8">Febri Khoirul Imam</div>
+        </div>
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="self-stretch justify-center text-stone-700 text-xs font-medium font-['Inter'] uppercase leading-3 tracking-wider">MANAGING PARTNER &amp; STRATEGIST</div>
+        </div>
+      </div>
+      <div className="flex-1 inline-flex flex-col justify-start items-start gap-2">
+        <div className="self-stretch flex flex-col justify-start items-start overflow-hidden">
+          <img className="self-stretch h-[663.48px]" src="https://placehold.co/498x663" />
+        </div>
+        <div className="self-stretch pt-8 flex flex-col justify-start items-start">
+          <div className="self-stretch justify-center text-yellow-800 text-2xl font-medium font-['EB_Garamond'] leading-8">Nanda Fifia Putri</div>
+        </div>
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="self-stretch justify-center text-stone-700 text-xs font-medium font-['Inter'] uppercase leading-3 tracking-wider">CREATIVE DIRECTOR &amp; LEAD VISIONARY</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div className="w-[1280px] px-24 py-24 bg-orange-50 inline-flex flex-col justify-start items-center gap-24 overflow-hidden">
+  <div className="w-[896px] max-w-[896px] flex flex-col justify-start items-start gap-16">
+    <div className="self-stretch flex flex-col justify-start items-start gap-6">
+      <div className="self-stretch flex flex-col justify-start items-center">
+        <div className="text-center justify-center text-stone-900 text-5xl font-light font-['EB_Garamond'] leading-[62.40px]">Mari Berkolaborasi</div>
+      </div>
+      <div className="self-stretch flex flex-col justify-start items-center">
+        <div className="text-center justify-center text-stone-700 text-base font-light font-['Inter'] leading-7">Step into the ecosystem. Let&apos;s create your legacy together.</div>
+      </div>
+    </div>
+    <div className="self-stretch p-12 bg-orange-50 shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)] outline outline-1 outline-offset-[-1px] outline-amber-100 flex flex-col justify-start items-start gap-8">
+      <div className="self-stretch inline-flex justify-center items-start gap-8">
+        <div className="flex-1 pt-1.5 inline-flex flex-col justify-start items-start gap-3">
+          <div className="justify-center text-stone-700 text-xs font-medium font-['Inter'] uppercase leading-3 tracking-wider">FULL NAME</div>
+          <div className="self-stretch py-3.5 outline outline-1 outline-offset-[-1px] outline-amber-100 inline-flex justify-center items-start overflow-hidden">
+            <div className="flex-1 inline-flex flex-col justify-start items-start overflow-hidden">
+              <div className="self-stretch justify-center text-gray-500 text-base font-normal font-['Inter']">Your name here</div>
+            </div>
+          </div>
+        </div>
+        <div className="flex-1 pt-1.5 inline-flex flex-col justify-start items-start gap-3">
+          <div className="justify-center text-stone-700 text-xs font-medium font-['Inter'] uppercase leading-3 tracking-wider">EMAIL ADDRESS</div>
+          <div className="self-stretch py-3.5 outline outline-1 outline-offset-[-1px] outline-amber-100 inline-flex justify-center items-start overflow-hidden">
+            <div className="flex-1 inline-flex flex-col justify-start items-start overflow-hidden">
+              <div className="self-stretch justify-center text-gray-500 text-base font-normal font-['Inter']">hello@company.com</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="self-stretch pt-1.5 flex flex-col justify-start items-start gap-3">
+        <div className="justify-center text-stone-700 text-xs font-medium font-['Inter'] uppercase leading-3 tracking-wider">SERVICE OF INTEREST</div>
+        <div className="self-stretch py-3 relative outline outline-1 outline-offset-[-1px] outline-amber-100 inline-flex justify-center items-center">
+          <div className="w-[798px] h-12 pl-[765px] pr-2 py-3 left-0 top-0 absolute inline-flex flex-col justify-center items-start overflow-hidden">
+            <div className="size-6 relative overflow-hidden">
+              <div className="w-2.5 h-[4.80px] left-[7.20px] top-[9.60px] absolute outline outline-2 outline-offset-[-0.90px] outline-gray-500" />
+            </div>
+          </div>
+          <div className="flex-1 inline-flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-stone-900 text-base font-normal font-['Inter'] leading-6">Fashionpreneur Services</div>
+          </div>
+        </div>
+      </div>
+      <div className="self-stretch py-1.5 flex flex-col justify-start items-start gap-3">
+        <div className="justify-center text-stone-700 text-xs font-medium font-['Inter'] uppercase leading-3 tracking-wider">YOUR MESSAGE</div>
+        <div className="self-stretch pt-3 pb-20 outline outline-1 outline-offset-[-1px] outline-amber-100 inline-flex justify-center items-start overflow-hidden">
+          <div className="flex-1 inline-flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-gray-500 text-base font-normal font-['Inter'] leading-6">How can we help you build your legacy?</div>
+          </div>
+        </div>
+      </div>
+      <div className="size- px-12 py-5 bg-yellow-800 inline-flex justify-center items-center">
+        <div className="text-center justify-center text-white text-xs font-medium font-['Inter'] uppercase leading-3 tracking-wider">SEND INQUIRY</div>
+      </div>
+    </div>
+  </div>
+  <div className="self-stretch h-2.5 inline-flex justify-center items-center gap-7">
+    <div className="flex-1 h-px bg-amber-100" />
+    <div className="h-3.5 inline-flex flex-col justify-center items-center" />
+    <div className="flex-1 h-px bg-amber-100" />
+  </div>
+</div>
+<div className="self-stretch pt-16 inline-flex flex-col justify-start items-start">
+  <div className="self-stretch min-h-[921px] px-24 py-64 bg-orange-50 flex flex-col justify-center items-center overflow-hidden">
+    <div className="size- max-w-[896px] flex flex-col justify-start items-center gap-6">
+      <div className="self-stretch pb-[0.59px] flex flex-col justify-start items-center">
+        <div className="text-center justify-center text-yellow-800 text-xs font-medium font-['Inter'] uppercase leading-4 tracking-[4.40px]">THE ARCHITECTURE OF ASPIRATION</div>
+      </div>
+      <div className="self-stretch pb-[0.80px] flex flex-col justify-start items-center">
+        <div className="text-center justify-center text-stone-900 text-8xl font-light font-['EB_Garamond'] leading-[96.80px]">Ecosystem of Excellence</div>
+      </div>
+      <div className="w-[672px] max-w-[672px] pt-2 flex flex-col justify-start items-center">
+        <div className="text-center justify-center text-stone-700 text-base font-light font-['Inter'] leading-6">A multi-disciplinary sanctuary where precision meets poetry. AKARRA is not merely a<br/>brand; it is a unified sensory landscape where fashion, art, and strategy coalesce into a<br/>singular, prestigious standard.</div>
+      </div>
+      <div className="self-stretch pt-6 inline-flex justify-center items-start">
+        <div className="w-px h-24 bg-amber-100" />
+      </div>
+    </div>
+  </div>
+  <div className="self-stretch px-24 py-24 bg-orange-50 flex flex-col justify-start items-start">
+    <div className="self-stretch inline-flex justify-center items-start gap-6">
+      <div className="flex-1 p-12 bg-orange-50 outline outline-1 outline-offset-[-1px] outline-amber-100 inline-flex flex-col justify-between items-start">
+        <div className="self-stretch pb-8 flex flex-col justify-start items-start">
+          <div className="self-stretch pb-1 flex flex-col justify-start items-start">
+            <div className="self-stretch h-6 bg-yellow-800" />
+          </div>
+        </div>
+        <div className="self-stretch pb-4 flex flex-col justify-start items-start">
+          <div className="self-stretch flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-stone-900 text-2xl font-medium font-['EB_Garamond'] leading-8">Fashion &amp; Atelier</div>
+          </div>
+        </div>
+        <div className="self-stretch h-48 relative">
+          <div className="w-60 left-0 top-[-0.63px] absolute inline-flex flex-col justify-start items-start">
+            <div className="justify-center text-stone-700 text-base font-normal font-['Inter'] leading-7">Bespoke craftsmanship that<br/>transcends seasonal trends. Our<br/>atelier focuses on archival quality,<br/>utilizing rare textiles and ancestral<br/>techniques to redefine modern<br/>luxury.</div>
+          </div>
+        </div>
+        <div className="self-stretch h-16 min-h-10 pt-7 flex flex-col justify-end items-start">
+          <div className="self-stretch pt-6 pb-1 border-t border-amber-100/30 flex flex-col justify-start items-start">
+            <div className="justify-center text-yellow-800 text-xs font-medium font-['Inter'] uppercase leading-3 tracking-wider">EXPLORE ATELIER</div>
+          </div>
+        </div>
+      </div>
+      <div className="flex-1 p-12 bg-orange-50 outline outline-1 outline-offset-[-1px] outline-amber-100 inline-flex flex-col justify-between items-start">
+        <div className="self-stretch pb-8 flex flex-col justify-start items-start">
+          <div className="self-stretch pb-1 flex flex-col justify-start items-start">
+            <div className="self-stretch h-7 bg-yellow-800" />
+          </div>
+        </div>
+        <div className="self-stretch pb-4 flex flex-col justify-start items-start">
+          <div className="self-stretch flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-stone-900 text-2xl font-medium font-['EB_Garamond'] leading-8">Creative Direction</div>
+          </div>
+        </div>
+        <div className="self-stretch h-48 relative">
+          <div className="w-60 left-0 top-[-0.63px] absolute inline-flex flex-col justify-start items-start">
+            <div className="justify-center text-stone-700 text-base font-normal font-['Inter'] leading-7">The visual soul of our ecosystem.<br/>We curate environments and<br/>narratives that resonate with<br/>intellectual depth, ensuring every<br/>brand touchpoint is a masterpiece<br/>of intent.</div>
+          </div>
+        </div>
+        <div className="self-stretch h-16 min-h-10 pt-7 flex flex-col justify-end items-start">
+          <div className="self-stretch pt-6 pb-1 border-t border-amber-100/30 flex flex-col justify-start items-start">
+            <div className="justify-center text-yellow-800 text-xs font-medium font-['Inter'] uppercase leading-3 tracking-wider">VIEW PORTFOLIO</div>
+          </div>
+        </div>
+      </div>
+      <div className="flex-1 p-12 bg-orange-50 outline outline-1 outline-offset-[-1px] outline-amber-100 inline-flex flex-col justify-between items-start">
+        <div className="self-stretch pb-8 flex flex-col justify-start items-start">
+          <div className="self-stretch pb-1 flex flex-col justify-start items-start">
+            <div className="self-stretch h-5 bg-yellow-800" />
+          </div>
+        </div>
+        <div className="self-stretch pb-4 flex flex-col justify-start items-start">
+          <div className="self-stretch flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-stone-900 text-2xl font-medium font-['EB_Garamond'] leading-8">Strategic Advocacy</div>
+          </div>
+        </div>
+        <div className="self-stretch h-56 relative">
+          <div className="w-60 left-0 top-[-0.75px] absolute inline-flex flex-col justify-start items-start">
+            <div className="justify-center text-stone-700 text-base font-normal font-['Inter'] leading-7">High-stakes advertising for the<br/>discerning. We deploy precision-<br/>engineered campaigns that<br/>communicate prestige without<br/>volume, reaching the global elite<br/>through subtle, impactful<br/>resonance.</div>
+          </div>
+        </div>
+        <div className="self-stretch pt-6 pb-1 border-t border-amber-100/30 flex flex-col justify-start items-start">
+          <div className="justify-center text-yellow-800 text-xs font-medium font-['Inter'] uppercase leading-3 tracking-wider">STRATEGIC SERVICES</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div className="self-stretch px-24 py-24 bg-orange-50 flex flex-col justify-start items-start gap-20 overflow-hidden">
+    <div className="self-stretch h-2.5 inline-flex justify-center items-center gap-4">
+      <div className="flex-1 h-px bg-amber-100" />
+      <div className="h-3.5 inline-flex flex-col justify-center items-center">
+        <div className="w-3 h-2 origin-top-left rotate-45 bg-yellow-800" />
+      </div>
+      <div className="flex-1 h-px bg-amber-100" />
+    </div>
+    <div className="self-stretch inline-flex justify-start items-center gap-20">
+      <div className="flex-1 pt-[5px] inline-flex flex-col justify-start items-start gap-8">
+        <div className="justify-center text-yellow-800 text-xs font-medium font-['Inter'] uppercase leading-4 tracking-[3.30px]">ETHOS &amp; INTEGRITY</div>
+        <div className="self-stretch pb-[0.58px] flex flex-col justify-start items-start">
+          <div className="self-stretch justify-center text-stone-900 text-5xl font-light font-['EB_Garamond'] leading-[62.40px]">The AKARRA<br/>Standard</div>
+        </div>
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="self-stretch justify-center text-stone-700 text-base font-normal font-['Inter'] leading-7">Our commitment to excellence is non-negotiable. We operate at the<br/>intersection of artisanal heritage and progressive ethics, ensuring that<br/>every creation within our ecosystem supports the preservation of<br/>craft and the dignity of the human hand.</div>
+        </div>
+        <div className="self-stretch flex flex-col justify-start items-start gap-6">
+          <div className="self-stretch inline-flex justify-start items-start gap-4">
+            <div className="size- pt-1 inline-flex flex-col justify-start items-start">
+              <div className="size-5 bg-yellow-800" />
+            </div>
+            <div className="size- inline-flex flex-col justify-start items-start">
+              <div className="self-stretch flex flex-col justify-start items-start">
+                <div className="justify-center text-stone-900 text-base font-bold font-['EB_Garamond'] uppercase leading-7 tracking-wide">UNCOMPROMISING QUALITY</div>
+              </div>
+              <div className="self-stretch flex flex-col justify-start items-start">
+                <div className="justify-center text-stone-700 text-base font-normal font-['Inter'] leading-7">Only the finest materials sourced through transparent, high-<br/>integrity supply chains.</div>
+              </div>
+            </div>
+          </div>
+          <div className="self-stretch inline-flex justify-start items-start gap-4">
+            <div className="size- pt-1 inline-flex flex-col justify-start items-start">
+              <div className="size-5 bg-yellow-800" />
+            </div>
+            <div className="size- inline-flex flex-col justify-start items-start">
+              <div className="self-stretch flex flex-col justify-start items-start">
+                <div className="justify-center text-stone-900 text-base font-bold font-['EB_Garamond'] uppercase leading-7 tracking-wide">BESPOKE PRECISION</div>
+              </div>
+              <div className="self-stretch flex flex-col justify-start items-start">
+                <div className="justify-center text-stone-700 text-base font-normal font-['Inter'] leading-7">Tailored solutions designed for longevity, resisting the<br/>transience of modern consumption.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="flex-1 relative inline-flex flex-col justify-start items-start">
+        <div className="self-stretch bg-stone-200 shadow-2xl outline outline-1 outline-offset-[-1px] outline-amber-100 flex flex-col justify-center items-start overflow-hidden">
+          <img className="self-stretch h-[620px] relative" src="https://placehold.co/496x620" />
+        </div>
+        <div className="size- p-8 left-[-40px] top-[564px] absolute bg-yellow-800 outline outline-1 outline-offset-[-1px] outline-amber-200/20 flex flex-col justify-start items-start">
+          <div className="justify-center text-white text-2xl font-normal font-['EB_Garamond'] leading-8">&quot;Precision is the highest form of respect.&quot;</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div className="self-stretch px-24 py-24 bg-zinc-800 flex flex-col justify-start items-start overflow-hidden">
+    <div className="w-[768px] max-w-[768px] flex flex-col justify-start items-start gap-6">
+      <div className="self-stretch pb-[0.59px] flex flex-col justify-start items-start">
+        <div className="self-stretch justify-center text-orange-300 text-xs font-medium font-['Inter'] uppercase leading-4 tracking-[4.40px]">LOOKING FORWARD</div>
+      </div>
+      <div className="self-stretch flex flex-col justify-start items-start">
+        <div className="self-stretch justify-center text-stone-100 text-5xl font-light font-['EB_Garamond'] leading-[62.40px]">A Global Vision of Shared Success</div>
+      </div>
+      <div className="self-stretch pt-2 opacity-80 flex flex-col justify-start items-start">
+        <div className="self-stretch justify-center text-stone-100 text-base font-light font-['Inter'] leading-8">From our headquarters in Geneva to our outposts in Shanghai and New York, the AKARRA Ecosystem<br/>is expanding. We are building a global network of excellence that bridges traditional artisanal culture<br/>with the digital frontiers of tomorrow.</div>
+      </div>
+      <div className="self-stretch pt-6 inline-flex justify-center items-start gap-8">
+        <div className="flex-1 pb-[2.50px] inline-flex flex-col justify-start items-start gap-4">
+          <div className="self-stretch flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-orange-300 text-3xl font-normal font-['EB_Garamond'] leading-9">12</div>
+          </div>
+          <div className="opacity-60 justify-center text-stone-100 text-[9px] font-normal font-['Inter'] uppercase leading-3 tracking-wide">GLOBAL ATELIERS</div>
+        </div>
+        <div className="flex-1 pb-[2.50px] inline-flex flex-col justify-start items-start gap-4">
+          <div className="self-stretch flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-orange-300 text-3xl font-normal font-['EB_Garamond'] leading-9">450+</div>
+          </div>
+          <div className="opacity-60 justify-center text-stone-100 text-[9px] font-normal font-['Inter'] uppercase leading-3 tracking-wide">ARTISANS</div>
+        </div>
+        <div className="flex-1 pb-[2.50px] inline-flex flex-col justify-start items-start gap-4">
+          <div className="self-stretch flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-orange-300 text-3xl font-normal font-['EB_Garamond'] leading-9">24</div>
+          </div>
+          <div className="opacity-60 justify-center text-stone-100 text-[9px] font-normal font-['Inter'] uppercase leading-3 tracking-wide">STRATEGIC PARTNERS</div>
+        </div>
+        <div className="flex-1 pb-[2.50px] inline-flex flex-col justify-start items-start gap-4">
+          <div className="self-stretch flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-orange-300 text-3xl font-normal font-['EB_Garamond'] leading-9">100%</div>
+          </div>
+          <div className="opacity-60 justify-center text-stone-100 text-[9px] font-normal font-['Inter'] uppercase leading-3 tracking-wide">ETHICAL SOURCING</div>
+        </div>
+      </div>
+      <div className="self-stretch pt-10 flex flex-col justify-start items-start">
+        <div className="size- inline-flex justify-start items-center gap-4">
+          <div className="text-center justify-center text-orange-300 text-base font-normal font-['Inter'] uppercase leading-6 tracking-widest">JOIN THE VISION</div>
+          <div className="size- inline-flex flex-col justify-start items-center">
+            <div className="size-3.5 bg-orange-300" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div className="self-stretch py-24 bg-orange-50 border-t border-amber-100 inline-flex flex-col justify-start items-start gap-20">
+  <div className="self-stretch px-24 inline-flex justify-between items-start">
+    <div className="w-80 h-32 relative">
+      <div className="w-80 left-0 top-[-1px] absolute inline-flex flex-col justify-start items-start">
+        <div className="justify-center text-stone-900 text-5xl font-light font-['EB_Garamond'] leading-[62.40px]">AKARRA</div>
+      </div>
+      <div className="w-80 max-w-80 left-0 top-[78.39px] absolute inline-flex flex-col justify-start items-start">
+        <div className="justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-6">The intersection of archival prestige and<br/>modern ingenuity.</div>
+      </div>
+    </div>
+    <div className="size- flex justify-start items-start gap-16">
+      <div className="size- inline-flex flex-col justify-start items-start">
+        <div className="self-stretch pb-2 flex flex-col justify-start items-start">
+          <div className="self-stretch flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-stone-900 text-base font-normal font-['Inter'] uppercase leading-6 tracking-widest">ECOSYSTEM</div>
+          </div>
+        </div>
+        <div className="self-stretch pt-4 flex flex-col justify-start items-start">
+          <div className="self-stretch flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-6">Fashion</div>
+          </div>
+        </div>
+        <div className="self-stretch pt-4 flex flex-col justify-start items-start">
+          <div className="self-stretch flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-6">Creative</div>
+          </div>
+        </div>
+        <div className="self-stretch pt-4 flex flex-col justify-start items-start">
+          <div className="self-stretch flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-6">Strategy</div>
+          </div>
+        </div>
+      </div>
+      <div className="size- inline-flex flex-col justify-start items-start">
+        <div className="self-stretch pb-2 flex flex-col justify-start items-start">
+          <div className="self-stretch flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-stone-900 text-base font-normal font-['Inter'] uppercase leading-6 tracking-widest">BRAND</div>
+          </div>
+        </div>
+        <div className="self-stretch pt-4 flex flex-col justify-start items-start">
+          <div className="self-stretch flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-6">Founders</div>
+          </div>
+        </div>
+        <div className="self-stretch pt-4 flex flex-col justify-start items-start">
+          <div className="self-stretch flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-6">Legacy</div>
+          </div>
+        </div>
+        <div className="self-stretch pt-4 flex flex-col justify-start items-start">
+          <div className="self-stretch flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-6">Contact</div>
+          </div>
+        </div>
+      </div>
+      <div className="size- pb-10 inline-flex flex-col justify-start items-start">
+        <div className="self-stretch pb-2 flex flex-col justify-start items-start">
+          <div className="self-stretch flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-stone-900 text-base font-normal font-['Inter'] uppercase leading-6 tracking-widest">LEGAL</div>
+          </div>
+        </div>
+        <div className="self-stretch pt-4 flex flex-col justify-start items-start">
+          <div className="self-stretch flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-6">Privacy</div>
+          </div>
+        </div>
+        <div className="self-stretch pt-4 flex flex-col justify-start items-start">
+          <div className="self-stretch flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-6">Terms</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div className="self-stretch px-24 inline-flex justify-between items-center">
+    <div className="size- inline-flex flex-col justify-start items-start">
+      <div className="justify-center text-neutral-400 text-xs font-normal font-['Inter'] uppercase leading-4 tracking-wider">© 2024 AKARRA. ALL RIGHTS RESERVED.</div>
+    </div>
+    <div className="size- inline-flex flex-col justify-start items-start">
+      <div className="justify-center text-neutral-400 text-xs font-normal font-['Inter'] uppercase leading-4 tracking-wider">CRAFTED WITH PRECISION.</div>
+    </div>
+  </div>
+</div>
+<div className="self-stretch h-[4093.31px] relative">
+  <div className="w-[1280px] h-96 left-0 top-[72px] absolute">
+    <div className="w-44 h-10 left-[550.73px] top-[96px] absolute">
+      <div className="size- pb-[0.59px] left-0 top-[-1px] absolute inline-flex flex-col justify-start items-center">
+        <div className="text-center justify-center text-yellow-800 text-xs font-medium font-['Inter'] uppercase leading-4 tracking-[2.42px]">CURATED COLLECTIONS</div>
+      </div>
+    </div>
+    <div className="w-[856.34px] h-32 left-[211.83px] top-[137.59px] absolute">
+      <div className="size- max-w-[896px] pb-[0.80px] left-0 top-[-1px] absolute inline-flex flex-col justify-start items-center">
+        <div className="text-center justify-center"><span class="text-stone-900 text-8xl font-light font-['EB_Garamond'] leading-[96.80px]">The Artifacts of </span><span class="text-stone-900 text-8xl font-light font-['EB_Garamond'] leading-[96.80px]">Excellence</span></div>
+      </div>
+    </div>
+    <div className="size- max-w-[672px] px-4 left-[304px] top-[265.68px] absolute inline-flex flex-col justify-start items-center">
+      <div className="text-center justify-center text-neutral-500 text-base font-light font-['Inter'] leading-7">Explore AKARRA&apos;s product ecosystem—where high-performance logic meets artisanal<br/>craftsmanship. Our solutions are designed for those who demand uncompromising<br/>results.</div>
+    </div>
+  </div>
+  <div className="w-[1280px] px-24 py-24 left-0 top-[520.78px] absolute bg-orange-50 inline-flex flex-col justify-start items-start gap-16">
+    <div className="self-stretch inline-flex justify-between items-end">
+      <div className="size- max-w-[576px] pt-[5px] inline-flex flex-col justify-start items-start gap-4">
+        <div className="justify-center text-yellow-800 text-xs font-medium font-['Inter'] uppercase leading-4 tracking-[3.30px]">BESPOKE COLLECTIONS</div>
+        <div className="self-stretch pb-[0.58px] flex flex-col justify-start items-start">
+          <div className="justify-center text-stone-900 text-5xl font-light font-['EB_Garamond'] leading-[62.40px]">Textile Engineering &amp;<br/>Fashion</div>
+        </div>
+        <div className="self-stretch pt-2 flex flex-col justify-start items-start">
+          <div className="justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-6">Precision-tailored garments that redefine high-net-worth identity through<br/>rare fibers and architectural silhouettes.</div>
+        </div>
+      </div>
+      <div className="size- flex justify-start items-center gap-4">
+        <div className="size- inline-flex flex-col justify-start items-start">
+          <div className="justify-center text-stone-900 text-xs font-medium font-['Inter'] uppercase leading-3 tracking-widest">VIEW COLLECTION</div>
+        </div>
+        <div className="size- inline-flex flex-col justify-start items-start">
+          <div className="size-3.5 bg-yellow-800" />
+        </div>
+      </div>
+    </div>
+    <div className="self-stretch inline-flex justify-center items-start gap-12">
+      <div className="flex-1 pb-24 inline-flex flex-col justify-start items-start gap-6">
+        <div className="self-stretch bg-stone-200 flex flex-col justify-center items-start overflow-hidden">
+          <img className="self-stretch h-[642px] relative" src="https://placehold.co/514x642" />
+        </div>
+        <div className="self-stretch inline-flex justify-between items-start">
+          <div className="size- inline-flex flex-col justify-start items-start gap-1">
+            <div className="self-stretch flex flex-col justify-start items-start">
+              <div className="justify-center text-stone-900 text-2xl font-medium font-['EB_Garamond'] leading-8">The Meridian Suite</div>
+            </div>
+            <div className="self-stretch flex flex-col justify-start items-start">
+              <div className="justify-center text-neutral-500 text-sm font-normal font-['Inter'] leading-5">Limited Release 01</div>
+            </div>
+          </div>
+          <div className="justify-center text-yellow-800 text-xs font-medium font-['Inter'] leading-3 tracking-widest">RESERVE</div>
+        </div>
+      </div>
+      <div className="flex-1 pt-24 inline-flex flex-col justify-start items-start">
+        <div className="self-stretch flex flex-col justify-start items-start gap-6">
+          <div className="self-stretch bg-stone-200 flex flex-col justify-center items-start overflow-hidden">
+            <img className="self-stretch h-[642px] relative" src="https://placehold.co/514x642" />
+          </div>
+          <div className="self-stretch inline-flex justify-between items-start">
+            <div className="size- inline-flex flex-col justify-start items-start gap-1">
+              <div className="self-stretch flex flex-col justify-start items-start">
+                <div className="justify-center text-stone-900 text-2xl font-medium font-['EB_Garamond'] leading-8">Artisanal Accents</div>
+              </div>
+              <div className="self-stretch flex flex-col justify-start items-start">
+                <div className="justify-center text-neutral-500 text-sm font-normal font-['Inter'] leading-5">Fiber Innovation</div>
+              </div>
+            </div>
+            <div className="justify-center text-yellow-800 text-xs font-medium font-['Inter'] leading-3 tracking-widest">EXPLORE</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div className="w-[1280px] px-64 py-24 left-0 top-[3646.33px] absolute bg-orange-50 inline-flex flex-col justify-start items-start">
+    <div className="w-full max-w-[768px] flex flex-col justify-start items-start gap-10">
+      <div className="self-stretch flex flex-col justify-start items-center">
+        <div className="text-center justify-center text-stone-900 text-5xl font-light font-['EB_Garamond'] leading-[62.40px]">Ready to redefine your baseline?</div>
+      </div>
+      <div className="self-stretch flex flex-col justify-start items-center">
+        <div className="text-center justify-center text-neutral-500 text-base font-light font-['Inter'] leading-7">Our limited-client engagement model ensures each partnership receives the full weight of AKARRA&apos;s<br/>strategic and creative machinery.</div>
+      </div>
+      <div className="self-stretch pt-[0.60px] inline-flex justify-center items-start gap-6">
+        <div className="size- px-12 py-5 bg-yellow-800 inline-flex flex-col justify-center items-center">
+          <div className="text-center justify-center text-white text-xs font-medium font-['Inter'] uppercase leading-3 tracking-wider">REQUEST AUDIT</div>
+        </div>
+        <div className="size- px-12 py-5 outline outline-1 outline-offset-[-1px] outline-yellow-800 inline-flex flex-col justify-center items-center">
+          <div className="text-center justify-center text-yellow-800 text-xs font-medium font-['Inter'] uppercase leading-3 tracking-wider">JOIN THE WAITLIST</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div className="w-[1280px] h-px left-0 top-[1833.16px] absolute bg-amber-100/50">
+    <div className="size-2 bg-amber-200" />
+  </div>
+  <div className="w-[1280px] px-24 py-24 left-0 top-[1834.16px] absolute inline-flex flex-col justify-start items-start gap-20">
+    <div className="self-stretch pt-[5px] flex flex-col justify-start items-center gap-4">
+      <div className="text-center justify-center text-yellow-800 text-xs font-medium font-['Inter'] uppercase leading-4 tracking-[2.42px]">CREATIVE PORTFOLIOS</div>
+      <div className="self-stretch flex flex-col justify-start items-center">
+        <div className="text-center justify-center text-stone-900 text-5xl font-light font-['EB_Garamond'] leading-[62.40px]">AKARRA Labs</div>
+      </div>
+    </div>
+    <div className="self-stretch inline-flex flex-col justify-start items-start">
+      <div className="self-stretch inline-flex flex-col justify-start items-start gap-8">
+        <div className="w-80 px-10 pt-10 pb-16 bg-stone-200 outline outline-1 outline-offset-[-1px] outline-amber-100/30 flex flex-col justify-start items-start gap-4">
+          <div className="justify-center text-yellow-800 text-4xl font-light font-['Material_Symbols_Outlined'] leading-10">text_analysis</div>
+          <div className="w-64 pt-2 flex flex-col justify-start items-start">
+            <div className="justify-center text-stone-900 text-2xl font-normal font-['EB_Garamond'] leading-8">Material Bio-Synthesis</div>
+          </div>
+          <div className="w-64 flex flex-col justify-start items-start">
+            <div className="justify-center text-neutral-500 text-sm font-normal font-['Inter'] leading-5">Developing sustainable, lab-grown<br/>alternatives to rare earth materials for<br/>luxury interiors.</div>
+          </div>
+        </div>
+        <div className="self-stretch px-10 pt-10 pb-16 bg-stone-200 outline outline-1 outline-offset-[-1px] outline-amber-100/30 flex flex-col justify-start items-start gap-4">
+          <div className="size-6 bg-yellow-800" />
+          <div className="self-stretch pt-2 flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-stone-900 text-2xl font-normal font-['EB_Garamond'] leading-8">Cognitive Branding</div>
+          </div>
+          <div className="self-stretch flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-neutral-500 text-sm font-normal font-['Inter'] leading-5">A methodology for creating brand<br/>resonance through neuro-aesthetic<br/>principles and sensory mapping.</div>
+          </div>
+        </div>
+      </div>
+      <div className="self-stretch h-[600px] relative outline outline-1 outline-offset-[-1px] outline-amber-100/30 overflow-hidden">
+        <img className="w-[704.14px] h-[598px] left-[1px] top-[1px] absolute opacity-90" src="https://placehold.co/704x598" />
+        <div className="w-[704.14px] h-[598px] left-[1px] top-[1px] absolute bg-linear-270 from-stone-300/90 via-stone-300/0 to-stone-300/0" />
+        <div className="size- left-[41px] top-[387.50px] absolute inline-flex flex-col justify-start items-start gap-2">
+          <div className="self-stretch flex flex-col justify-start items-start">
+            <div className="justify-center text-yellow-800 text-[10px] font-normal font-['Inter'] uppercase leading-4">EXPERIMENTAL CASE 042</div>
+          </div>
+          <div className="self-stretch flex flex-col justify-start items-start">
+            <div className="justify-center text-stone-900 text-3xl font-normal font-['EB_Garamond'] leading-9">Spatial Intelligence</div>
+          </div>
+          <div className="w-full max-w-96 pt-2 pb-6 flex flex-col justify-start items-start">
+            <div className="justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-6">Revolutionizing human-interface interaction through<br/>biological feedback loops and predictive spatial modeling.</div>
+          </div>
+          <div className="size- pb-1 border-b border-yellow-800 inline-flex justify-center items-center">
+            <div className="text-center justify-center text-yellow-800 text-xs font-medium font-['Inter'] uppercase leading-3 tracking-widest">VIEW WHITEPAPER</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div className="w-[1280px] px-24 py-24 left-0 top-[2808.55px] absolute bg-zinc-800 inline-flex flex-col justify-start items-start overflow-hidden">
+    <div className="size-96 left-[992px] top-[-96px] absolute rounded-xl border border-amber-100/10" />
+    <div className="self-stretch inline-flex justify-center items-center gap-20">
+      <div className="flex-1 pt-[5px] inline-flex flex-col justify-start items-start gap-6">
+        <div className="justify-center text-orange-300 text-xs font-medium font-['Inter'] uppercase leading-4 tracking-[2.42px]">DIGITAL IMPACT</div>
+        <div className="self-stretch pb-[0.58px] flex flex-col justify-start items-start">
+          <div className="self-stretch justify-center text-stone-100 text-5xl font-light font-['EB_Garamond'] leading-[62.40px]">Strategic Dominance in<br/>Digital Realms</div>
+        </div>
+        <div className="self-stretch pt-4 pb-10 flex flex-col justify-start items-start gap-12">
+          <div className="self-stretch inline-flex justify-start items-start gap-6">
+            <div className="self-stretch inline-flex flex-col justify-start items-start">
+              <div className="justify-center text-orange-300 text-4xl font-normal font-['EB_Garamond'] leading-10">01</div>
+            </div>
+            <div className="self-stretch inline-flex flex-col justify-start items-start gap-2">
+              <div className="self-stretch flex flex-col justify-start items-start">
+                <div className="justify-center text-stone-100 text-xl font-normal font-['EB_Garamond'] leading-7">Omnichannel Mastery</div>
+              </div>
+              <div className="self-stretch flex flex-col justify-start items-start">
+                <div className="justify-center text-stone-200/70 text-sm font-normal font-['Inter'] leading-5">Seamlessly integrating brand narrative across 12+ touchpoints for<br/>a unified, elite user experience.</div>
+              </div>
+            </div>
+          </div>
+          <div className="self-stretch inline-flex justify-start items-start gap-6">
+            <div className="self-stretch inline-flex flex-col justify-start items-start">
+              <div className="justify-center text-orange-300 text-4xl font-normal font-['EB_Garamond'] leading-10">02</div>
+            </div>
+            <div className="self-stretch inline-flex flex-col justify-start items-start gap-2">
+              <div className="self-stretch flex flex-col justify-start items-start">
+                <div className="justify-center text-stone-100 text-xl font-normal font-['EB_Garamond'] leading-7">Data-Driven Narratives</div>
+              </div>
+              <div className="self-stretch flex flex-col justify-start items-start">
+                <div className="justify-center text-stone-200/70 text-sm font-normal font-['Inter'] leading-5">Leveraging proprietary algorithms to forecast cultural shifts and<br/>position brands ahead of the curve.</div>
+              </div>
+            </div>
+          </div>
+          <div className="self-stretch inline-flex justify-start items-start gap-6">
+            <div className="self-stretch inline-flex flex-col justify-start items-start">
+              <div className="justify-center text-orange-300 text-4xl font-normal font-['EB_Garamond'] leading-10">03</div>
+            </div>
+            <div className="self-stretch inline-flex flex-col justify-start items-start gap-2">
+              <div className="self-stretch flex flex-col justify-start items-start">
+                <div className="justify-center text-stone-100 text-xl font-normal font-['EB_Garamond'] leading-7">High-Conversion Visuals</div>
+              </div>
+              <div className="self-stretch flex flex-col justify-start items-start">
+                <div className="justify-center text-stone-200/70 text-sm font-normal font-['Inter'] leading-5">Cinematic production standards applied to programmatic<br/>advertising for maximum prestige and ROI.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="size- px-10 py-4 bg-yellow-800 inline-flex justify-center items-center">
+          <div className="text-center justify-center text-white text-xs font-medium font-['Inter'] uppercase leading-3 tracking-wider">SCALE YOUR IMPACT</div>
+        </div>
+      </div>
+      <div className="flex-1 relative inline-flex flex-col justify-start items-start">
+        <div className="self-stretch bg-white/0 rounded-lg shadow-2xl outline outline-1 outline-offset-[-1px] outline-white/10 flex flex-col justify-center items-start overflow-hidden">
+          <div className="self-stretch h-64 relative bg-blend-saturation bg-white" />
+        </div>
+        <div className="size- max-w-80 pl-8 pr-16 py-8 left-[-32px] top-[150.56px] absolute bg-orange-50 outline outline-1 outline-offset-[-1px] outline-amber-100 flex flex-col justify-start items-start gap-2">
+          <div className="w-80 h-40 left-0 top-0 absolute bg-white/0 shadow-[0px_8px_10px_-6px_rgba(0,0,0,0.10)] shadow-xl" />
+          <div className="justify-center text-yellow-800 text-5xl font-normal font-['EB_Garamond'] leading-[48px]">420%</div>
+          <div className="justify-center text-stone-900 text-xs font-normal font-['Inter'] uppercase leading-4 tracking-wider">AVERAGE GROWTH IN BRAND<br/>SENTIMENT FOR TIER 1 CLIENTS</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div className="self-stretch py-24 bg-orange-50 border-t border-amber-100 inline-flex flex-col justify-start items-start gap-20">
+  <div className="self-stretch px-24 inline-flex justify-between items-start">
+    <div className="w-80 h-36 max-w-80 relative">
+      <div className="w-80 left-0 top-[-1px] absolute inline-flex flex-col justify-start items-start">
+        <div className="justify-center text-stone-900 text-5xl font-light font-['EB_Garamond'] leading-[62.40px]">AKARRA</div>
+      </div>
+      <div className="w-80 left-0 top-[85.77px] absolute inline-flex flex-col justify-start items-start">
+        <div className="justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-7">Architecting the future of elite identity and<br/>digital performance since 2024.</div>
+      </div>
+    </div>
+    <div className="size- flex justify-start items-start gap-12">
+      <div className="size- inline-flex flex-col justify-start items-start gap-6">
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="justify-center text-stone-900 text-xs font-medium font-['Inter'] uppercase leading-3 tracking-widest">COMPANY</div>
+        </div>
+        <div className="self-stretch flex flex-col justify-start items-start gap-4">
+          <div className="self-stretch flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-7">Ecosystem</div>
+          </div>
+          <div className="self-stretch flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-7">Services</div>
+          </div>
+          <div className="self-stretch flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-7">Founders</div>
+          </div>
+        </div>
+      </div>
+      <div className="size- inline-flex flex-col justify-start items-start gap-6">
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="justify-center text-stone-900 text-xs font-medium font-['Inter'] uppercase leading-3 tracking-widest">OFFERINGS</div>
+        </div>
+        <div className="self-stretch flex flex-col justify-start items-start gap-4">
+          <div className="self-stretch flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-7">Bespoke</div>
+          </div>
+          <div className="self-stretch flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-7">Labs</div>
+          </div>
+          <div className="self-stretch flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-7">Advertising</div>
+          </div>
+        </div>
+      </div>
+      <div className="size- pb-11 inline-flex flex-col justify-start items-start gap-6">
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="justify-center text-stone-900 text-xs font-medium font-['Inter'] uppercase leading-3 tracking-widest">LEGAL</div>
+        </div>
+        <div className="self-stretch flex flex-col justify-start items-start gap-4">
+          <div className="self-stretch flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-7">Privacy</div>
+          </div>
+          <div className="self-stretch flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-7">Terms</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div className="self-stretch px-24 pt-8 border-t border-amber-100/30 inline-flex justify-between items-center">
+    <div className="size- inline-flex flex-col justify-start items-start">
+      <div className="justify-center text-neutral-400 text-sm font-normal font-['Inter'] leading-5">© 2024 AKARRA. All rights reserved.</div>
+    </div>
+    <div className="size- flex justify-start items-start">
+      <div className="self-stretch inline-flex flex-col justify-start items-start">
+        <div className="size-5 bg-neutral-400" />
+      </div>
+      <div className="self-stretch pl-6 inline-flex flex-col justify-center items-start">
+        <div className="flex-1 flex flex-col justify-start items-start">
+          <div className="w-4 h-5 bg-neutral-400" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div className="self-stretch h-[4069.03px] relative">
+  <div className="w-[1280px] h-[716px] px-24 left-0 top-[72px] absolute inline-flex justify-start items-center overflow-hidden">
+    <div className="w-[640px] h-[716px] left-[640px] top-0 absolute opacity-20 inline-flex flex-col justify-center items-start">
+      <img className="self-stretch flex-1" src="https://placehold.co/640x716" />
+    </div>
+    <div className="w-[785.58px] h-64 max-w-[896px] relative">
+      <div className="w-[785.58px] pb-[0.59px] left-0 top-[-1px] absolute inline-flex flex-col justify-start items-start">
+        <div className="justify-center text-yellow-800 text-xs font-medium font-['Inter'] uppercase leading-4 tracking-[2.42px]">OUR CAPABILITIES</div>
+      </div>
+      <div className="w-[785.58px] pb-[0.80px] left-0 top-[40.59px] absolute inline-flex flex-col justify-start items-start">
+        <div className="justify-center text-stone-900 text-8xl font-light font-['EB_Garamond'] leading-[96.80px]">Architecting Excellence.</div>
+      </div>
+      <div className="w-[672px] max-w-[672px] left-0 top-[169.68px] absolute inline-flex flex-col justify-start items-start">
+        <div className="justify-center text-neutral-500 text-base font-light font-['Inter'] leading-7">AKARRA operates at the intersection of heritage craftsmanship and digital precision. We<br/>provide a vertically integrated suite of services designed for those who demand absolute<br/>distinction in the global marketplace.</div>
+      </div>
+    </div>
+  </div>
+  <div className="w-[1280px] px-24 py-24 left-0 top-[1015px] absolute bg-orange-50 inline-flex flex-col justify-start items-start">
+    <div className="self-stretch inline-flex justify-center items-center gap-20">
+      <div className="flex-1 bg-white/0 shadow-2xl inline-flex flex-col justify-center items-start overflow-hidden">
+        <img className="self-stretch h-[622px] relative" src="https://placehold.co/498x622" />
+      </div>
+      <div className="flex-1 pt-[5px] inline-flex flex-col justify-start items-start gap-8">
+        <div className="justify-center text-yellow-800 text-xs font-medium font-['Inter'] uppercase leading-4 tracking-[2.42px]">01 / INFRASTRUCTURE</div>
+        <div className="self-stretch pt-[0.70px] flex flex-col justify-start items-start">
+          <div className="self-stretch justify-center text-stone-900 text-5xl font-light font-['EB_Garamond'] leading-[62.40px]">Fashionpreneur</div>
+        </div>
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="self-stretch justify-center text-neutral-500 text-base font-light font-['Inter'] leading-7">A comprehensive ecosystem for established designers and<br/>emerging labels to scale with integrity. We handle the complexities<br/>of the supply chain so you can focus on the soul of the brand.</div>
+        </div>
+        <div className="self-stretch pt-6 inline-flex justify-center items-start gap-8">
+          <div className="w-60 pb-7 inline-flex flex-col justify-start items-start gap-3">
+            <div className="self-stretch flex flex-col justify-start items-start">
+              <div className="self-stretch justify-center text-stone-900 text-2xl font-medium font-['EB_Garamond'] leading-8">The Atelier</div>
+            </div>
+            <div className="self-stretch flex flex-col justify-start items-start">
+              <div className="self-stretch justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-7">Bespoke sample making and<br/>technical pattern drafting for<br/>high-fashion silhouettes.</div>
+            </div>
+            <div className="self-stretch pt-[0.70px] flex flex-col justify-start items-start gap-2">
+              <div className="self-stretch flex flex-col justify-start items-start">
+                <div className="self-stretch justify-center text-yellow-800 text-xs font-normal font-['Inter'] uppercase leading-4 tracking-wider">• HAUTE COUTURE SAMPLING</div>
+              </div>
+              <div className="self-stretch flex flex-col justify-start items-start">
+                <div className="self-stretch justify-center text-yellow-800 text-xs font-normal font-['Inter'] uppercase leading-4 tracking-wider">• TECH PACK DEVELOPMENT</div>
+              </div>
+            </div>
+          </div>
+          <div className="w-60 inline-flex flex-col justify-start items-start gap-3">
+            <div className="self-stretch flex flex-col justify-start items-start">
+              <div className="self-stretch justify-center text-stone-900 text-2xl font-medium font-['EB_Garamond'] leading-8">Global Production</div>
+            </div>
+            <div className="self-stretch flex flex-col justify-start items-start">
+              <div className="self-stretch justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-7">Ethical, small-batch<br/>manufacturing and large-scale<br/>textile sourcing with a focus on<br/>sustainability.</div>
+            </div>
+            <div className="self-stretch flex flex-col justify-start items-start gap-2">
+              <div className="self-stretch flex flex-col justify-start items-start">
+                <div className="self-stretch justify-center text-yellow-800 text-xs font-normal font-['Inter'] uppercase leading-4 tracking-wider">• ETHICAL SOURCING</div>
+              </div>
+              <div className="self-stretch flex flex-col justify-start items-start">
+                <div className="self-stretch justify-center text-yellow-800 text-xs font-normal font-['Inter'] uppercase leading-4 tracking-wider">• QC MANAGEMENT</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="self-stretch pt-8 flex flex-col justify-start items-start">
+          <div className="size- px-10 py-4 bg-yellow-800 inline-flex justify-center items-center">
+            <div className="text-center justify-center text-white text-xs font-medium font-['Inter'] uppercase leading-3 tracking-widest">INQUIRE FOR BESPOKE SOLUTIONS</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div className="w-[1075.22px] left-[102.39px] top-[1925px] absolute inline-flex justify-center items-center gap-20">
+    <div className="flex-1 pt-[5px] inline-flex flex-col justify-start items-start gap-8">
+      <div className="justify-center text-yellow-800 text-xs font-medium font-['Inter'] uppercase leading-4 tracking-[2.42px]">02 / IDENTITY</div>
+      <div className="self-stretch pt-[0.70px] flex flex-col justify-start items-start">
+        <div className="self-stretch justify-center text-stone-900 text-5xl font-light font-['EB_Garamond'] leading-[62.40px]">Creative Labs</div>
+      </div>
+      <div className="self-stretch flex flex-col justify-start items-start">
+        <div className="self-stretch justify-center text-neutral-500 text-base font-light font-['Inter'] leading-7">The intellectual engine of AKARRA. We translate brand ethos into<br/>visual and experiential narratives that resonate with a discerning<br/>global audience.</div>
+      </div>
+      <div className="self-stretch pt-6 inline-flex justify-center items-start gap-8">
+        <div className="w-60 inline-flex flex-col justify-start items-start gap-3">
+          <div className="self-stretch flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-stone-900 text-2xl font-medium font-['EB_Garamond'] leading-8">Art Direction</div>
+          </div>
+          <div className="self-stretch flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-7">Curation of visual identity,<br/>campaign imagery, and high-<br/>fidelity brand guidelines.</div>
+          </div>
+          <div className="self-stretch pt-[0.70px] flex flex-col justify-start items-start gap-2">
+            <div className="self-stretch flex flex-col justify-start items-start">
+              <div className="self-stretch justify-center text-yellow-800 text-xs font-normal font-['Inter'] uppercase leading-4 tracking-wider">• VISUAL STRATEGY</div>
+            </div>
+            <div className="self-stretch flex flex-col justify-start items-start">
+              <div className="self-stretch justify-center text-yellow-800 text-xs font-normal font-['Inter'] uppercase leading-4 tracking-wider">• IDENTITY DESIGN</div>
+            </div>
+          </div>
+        </div>
+        <div className="w-60 inline-flex flex-col justify-start items-start gap-3">
+          <div className="self-stretch flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-stone-900 text-2xl font-medium font-['EB_Garamond'] leading-8">Immersive Events</div>
+          </div>
+          <div className="self-stretch flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-7">Bespoke product launches and<br/>runway shows designed to<br/>evoke emotional intelligence.</div>
+          </div>
+          <div className="self-stretch pt-[0.70px] flex flex-col justify-start items-start gap-2">
+            <div className="self-stretch flex flex-col justify-start items-start">
+              <div className="self-stretch justify-center text-yellow-800 text-xs font-normal font-['Inter'] uppercase leading-4 tracking-wider">• SPATIAL DESIGN</div>
+            </div>
+            <div className="self-stretch flex flex-col justify-start items-start">
+              <div className="self-stretch justify-center text-yellow-800 text-xs font-normal font-['Inter'] uppercase leading-4 tracking-wider">• GUEST CURATION</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="self-stretch pt-8 flex flex-col justify-start items-start">
+        <div className="size- px-10 py-4 bg-yellow-800 inline-flex justify-center items-center">
+          <div className="text-center justify-center text-white text-xs font-medium font-['Inter'] uppercase leading-3 tracking-widest">INQUIRE FOR BESPOKE SOLUTIONS</div>
+        </div>
+      </div>
+    </div>
+    <div className="flex-1 p-8 bg-stone-200 shadow-[0px_8px_10px_-6px_rgba(0,0,0,0.10)] shadow-xl outline outline-1 outline-offset-[-1px] outline-amber-100 inline-flex flex-col justify-center items-start overflow-hidden">
+      <img className="self-stretch h-96" src="https://placehold.co/432x432" />
+    </div>
+  </div>
+  <div className="w-[1280px] px-24 py-24 left-0 top-[2603.63px] absolute bg-zinc-800 inline-flex flex-col justify-start items-start gap-16">
+    <div className="w-full max-w-[1152px] flex flex-col justify-start items-center gap-3.5">
+      <div className="self-stretch pb-[0.59px] flex flex-col justify-start items-center">
+        <div className="text-center justify-center text-orange-300 text-xs font-medium font-['Inter'] uppercase leading-4 tracking-[2.42px]">03 / AMPLIFICATION</div>
+      </div>
+      <div className="self-stretch flex flex-col justify-start items-center">
+        <div className="text-center justify-center text-stone-100 text-5xl font-light font-['EB_Garamond'] leading-[62.40px]">Digital Strategy &amp; Growth</div>
+      </div>
+      <div className="w-[672px] max-w-[672px] pt-2 flex flex-col justify-start items-center">
+        <div className="text-center justify-center text-stone-300 text-base font-light font-['Inter'] leading-7">Data-driven precision meets creative intuition. We don&apos;t just find your audience; we<br/>cultivate a community of advocates.</div>
+      </div>
+    </div>
+    <div className="self-stretch pt-4 inline-flex justify-center items-start gap-8">
+      <div className="w-80 px-8 pt-8 pb-14 outline outline-1 outline-offset-[-1px] outline-stone-500/30 inline-flex flex-col justify-start items-start gap-4">
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="self-stretch h-6 bg-orange-300" />
+        </div>
+        <div className="self-stretch pt-2 flex flex-col justify-start items-start">
+          <div className="self-stretch justify-center text-stone-100 text-2xl font-medium font-['EB_Garamond'] leading-8">Digital Strategy</div>
+        </div>
+        <div className="self-stretch pb-2 flex flex-col justify-start items-start">
+          <div className="self-stretch justify-center text-stone-300 text-base font-normal font-['Inter'] leading-7">Comprehensive market analysis and<br/>growth mapping for the luxury sector.</div>
+        </div>
+        <div className="self-stretch pt-6 border-t border-stone-500/20 flex flex-col justify-start items-start gap-3">
+          <div className="self-stretch inline-flex justify-start items-center gap-2">
+            <div className="size- inline-flex flex-col justify-start items-start">
+              <div className="w-2 h-1.5 bg-orange-300/80" />
+            </div>
+            <div className="justify-center text-orange-300/80 text-sm font-normal font-['Inter'] leading-5">Market Intelligence</div>
+          </div>
+          <div className="self-stretch inline-flex justify-start items-center gap-2">
+            <div className="size- inline-flex flex-col justify-start items-start">
+              <div className="w-2 h-1.5 bg-orange-300/80" />
+            </div>
+            <div className="justify-center text-orange-300/80 text-sm font-normal font-['Inter'] leading-5">Funnel Optimization</div>
+          </div>
+        </div>
+      </div>
+      <div className="w-80 p-8 bg-stone-200/5 outline outline-1 outline-offset-[-1px] outline-stone-500/30 inline-flex flex-col justify-start items-start gap-4">
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="self-stretch h-5 bg-orange-300" />
+        </div>
+        <div className="self-stretch pt-2 flex flex-col justify-start items-start">
+          <div className="self-stretch justify-center text-stone-100 text-2xl font-medium font-['EB_Garamond'] leading-8">Content Production</div>
+        </div>
+        <div className="self-stretch pb-2 flex flex-col justify-start items-start">
+          <div className="self-stretch justify-center text-stone-300 text-base font-normal font-['Inter'] leading-7">High-end video, editorial<br/>photography, and interactive<br/>storytelling.</div>
+        </div>
+        <div className="self-stretch pt-6 border-t border-stone-500/20 flex flex-col justify-start items-start gap-3">
+          <div className="self-stretch inline-flex justify-start items-center gap-2">
+            <div className="size- inline-flex flex-col justify-start items-start">
+              <div className="w-2 h-1.5 bg-orange-300/80" />
+            </div>
+            <div className="justify-center text-orange-300/80 text-sm font-normal font-['Inter'] leading-5">4K Editorial Video</div>
+          </div>
+          <div className="self-stretch inline-flex justify-start items-center gap-2">
+            <div className="size- inline-flex flex-col justify-start items-start">
+              <div className="w-2 h-1.5 bg-orange-300/80" />
+            </div>
+            <div className="justify-center text-orange-300/80 text-sm font-normal font-['Inter'] leading-5">Social Narratives</div>
+          </div>
+        </div>
+      </div>
+      <div className="w-80 px-8 pt-8 pb-14 outline outline-1 outline-offset-[-1px] outline-stone-500/30 inline-flex flex-col justify-start items-start gap-4">
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="self-stretch h-3.5 bg-orange-300" />
+        </div>
+        <div className="self-stretch pt-2 flex flex-col justify-start items-start">
+          <div className="self-stretch justify-center text-stone-100 text-2xl font-medium font-['EB_Garamond'] leading-8">Brand Growth</div>
+        </div>
+        <div className="self-stretch pb-2 flex flex-col justify-start items-start">
+          <div className="self-stretch justify-center text-stone-300 text-base font-normal font-['Inter'] leading-7">Strategic partnerships, influencer<br/>seeding, and global expansion.</div>
+        </div>
+        <div className="self-stretch pt-6 border-t border-stone-500/20 flex flex-col justify-start items-start gap-3">
+          <div className="self-stretch inline-flex justify-start items-center gap-2">
+            <div className="size- inline-flex flex-col justify-start items-start">
+              <div className="w-2 h-1.5 bg-orange-300/80" />
+            </div>
+            <div className="justify-center text-orange-300/80 text-sm font-normal font-['Inter'] leading-5">Strategic PR</div>
+          </div>
+          <div className="self-stretch inline-flex justify-start items-center gap-2">
+            <div className="size- inline-flex flex-col justify-start items-start">
+              <div className="w-2 h-1.5 bg-orange-300/80" />
+            </div>
+            <div className="justify-center text-orange-300/80 text-sm font-normal font-['Inter'] leading-5">Cross-Border Scaling</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div className="self-stretch inline-flex justify-center items-start">
+      <div className="size- px-12 py-5 outline outline-1 outline-offset-[-1px] outline-orange-300 inline-flex flex-col justify-center items-center">
+        <div className="text-center justify-center text-orange-300 text-xs font-medium font-['Inter'] uppercase leading-3 tracking-widest">INQUIRE FOR BESPOKE SOLUTIONS</div>
+      </div>
+    </div>
+  </div>
+  <div className="w-[1280px] px-64 pt-20 pb-24 left-0 top-[3536.05px] absolute bg-orange-50 inline-flex flex-col justify-start items-start">
+    <div className="w-full max-w-[768px] flex flex-col justify-start items-center gap-7">
+      <div className="w-16 h-8 origin-top-left rotate-45 outline outline-1 outline-offset-[-1px] outline-yellow-800 inline-flex justify-center items-center">
+        <div className="w-4 h-3.5 bg-yellow-800" />
+      </div>
+      <div className="self-stretch flex flex-col justify-start items-center">
+        <div className="text-center justify-center text-stone-900 text-5xl font-light font-['EB_Garamond'] leading-[62.40px]">Ready to redefine your legacy?</div>
+      </div>
+      <div className="self-stretch pt-2.5 flex flex-col justify-start items-center">
+        <div className="text-center justify-center text-neutral-500 text-base font-light font-['Inter'] leading-7">Our team of specialists is ready to discuss your project requirements. AKARRA provides tailored<br/>consultations for brands seeking significant market impact.</div>
+      </div>
+      <div className="self-stretch pt-2.5 inline-flex justify-center items-center gap-6">
+        <div className="size- px-12 py-5 bg-yellow-800 inline-flex flex-col justify-center items-center">
+          <div className="text-center justify-center text-white text-xs font-medium font-['Inter'] uppercase leading-3 tracking-widest">SCHEDULE A CONSULTATION</div>
+        </div>
+        <div className="size- pb-1 border-b border-yellow-800/30 inline-flex flex-col justify-start items-center">
+          <div className="text-center justify-center text-yellow-800 text-xs font-medium font-['Inter'] uppercase leading-3 tracking-widest">CONCIERGE@AKARRA.COM</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div className="w-[1280px] px-24 py-12 left-0 top-[788px] absolute inline-flex justify-center items-center">
+    <div className="flex-1 relative flex justify-center items-center">
+      <div className="w-[1280px] h-px left-[-102.39px] top-[5px] absolute bg-amber-100" />
+      <div className="w-10 h-2.5 relative bg-orange-50" />
+    </div>
+  </div>
+  <div className="w-[1280px] px-24 py-12 left-0 top-[894px] absolute bg-orange-50/80 border-b border-amber-100/30 backdrop-blur-[2px] inline-flex flex-col justify-start items-start">
+    <div className="self-stretch inline-flex justify-center items-start gap-16">
+      <div className="self-stretch flex justify-start items-center gap-3">
+        <div className="size- inline-flex flex-col justify-start items-start">
+          <div className="w-5 h-4 bg-yellow-800" />
+        </div>
+        <div className="size- inline-flex flex-col justify-start items-start">
+          <div className="justify-center text-stone-900 text-xs font-medium font-['Inter'] uppercase leading-3 tracking-widest">FASHIONPRENEUR</div>
+        </div>
+      </div>
+      <div className="self-stretch flex justify-start items-center gap-3">
+        <div className="size- inline-flex flex-col justify-start items-start">
+          <div className="size-4 bg-yellow-800" />
+        </div>
+        <div className="size- inline-flex flex-col justify-start items-start">
+          <div className="justify-center text-stone-900 text-xs font-medium font-['Inter'] uppercase leading-3 tracking-widest">CREATIVE LABS</div>
+        </div>
+      </div>
+      <div className="self-stretch flex justify-start items-center gap-3">
+        <div className="size- inline-flex flex-col justify-start items-start">
+          <div className="w-5 h-3.5 bg-yellow-800" />
+        </div>
+        <div className="size- inline-flex flex-col justify-start items-start">
+          <div className="justify-center text-stone-900 text-xs font-medium font-['Inter'] uppercase leading-3 tracking-widest">ADVERTISING</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div className="self-stretch px-24 py-24 bg-orange-50 border-t border-amber-100 inline-flex justify-between items-start">
+  <div className="w-72 h-44 max-w-96 relative">
+    <div className="w-72 left-0 top-[-1px] absolute inline-flex flex-col justify-start items-start">
+      <div className="justify-center text-stone-900 text-5xl font-light font-['EB_Garamond'] leading-[62.40px]">AKARRA</div>
+    </div>
+    <div className="w-72 left-0 top-[85.64px] absolute inline-flex flex-col justify-start items-start">
+      <div className="justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-7">The global infrastructure for creative<br/>excellence and luxury brand<br/>architecture.</div>
+    </div>
+  </div>
+  <div className="size- flex justify-start items-start gap-12">
+    <div className="size- pb-7 inline-flex flex-col justify-start items-start gap-4">
+      <div className="self-stretch flex flex-col justify-start items-start">
+        <div className="justify-center text-yellow-800 text-xs font-medium font-['Inter'] uppercase leading-3 tracking-widest">MENU</div>
+      </div>
+      <div className="self-stretch flex flex-col justify-start items-start gap-3">
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="self-stretch justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-7">Ecosystem</div>
+        </div>
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="self-stretch justify-center text-yellow-800 text-base font-medium font-['Inter'] leading-7">Services</div>
+        </div>
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="self-stretch justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-7">Products</div>
+        </div>
+      </div>
+    </div>
+    <div className="size- inline-flex flex-col justify-start items-start gap-4">
+      <div className="self-stretch flex flex-col justify-start items-start">
+        <div className="justify-center text-yellow-800 text-xs font-medium font-['Inter'] uppercase leading-3 tracking-widest">FOUNDERS</div>
+      </div>
+      <div className="self-stretch flex flex-col justify-start items-start gap-3">
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="self-stretch justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-7">The<br/>Vision</div>
+        </div>
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="self-stretch justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-7">Press</div>
+        </div>
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="self-stretch justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-7">Founders</div>
+        </div>
+      </div>
+    </div>
+    <div className="size- pb-16 inline-flex flex-col justify-start items-start gap-4">
+      <div className="self-stretch flex flex-col justify-start items-start">
+        <div className="justify-center text-yellow-800 text-xs font-medium font-['Inter'] uppercase leading-3 tracking-widest">LEGAL</div>
+      </div>
+      <div className="self-stretch flex flex-col justify-start items-start gap-3">
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="self-stretch justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-7">Privacy</div>
+        </div>
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="self-stretch justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-7">Terms</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div className="flex-1 pt-12 inline-flex flex-col justify-start items-start">
+    <div className="self-stretch pt-12 border-t border-amber-100/30 inline-flex justify-between items-center">
+      <div className="size- inline-flex flex-col justify-start items-start">
+        <div className="justify-center text-neutral-400 text-base font-normal font-['Inter'] leading-7">© 2024 AKARRA. All rights reserved.</div>
+      </div>
+      <div className="size- flex justify-start items-start gap-6">
+        <div className="self-stretch inline-flex flex-col justify-start items-start">
+          <div className="size-4 bg-yellow-800" />
+        </div>
+        <div className="self-stretch inline-flex flex-col justify-start items-start">
+          <div className="size-4 bg-yellow-800" />
+        </div>
+        <div className="self-stretch inline-flex flex-col justify-start items-start">
+          <div className="size-4 bg-yellow-800" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div className="self-stretch pt-16 inline-flex flex-col justify-start items-start">
+  <div className="self-stretch px-24 py-24 relative bg-orange-50 flex flex-col justify-start items-start overflow-hidden">
+    <div className="w-[896px] max-w-[896px] flex flex-col justify-start items-start gap-3.5">
+      <div className="self-stretch pb-[0.59px] flex flex-col justify-start items-start">
+        <div className="self-stretch justify-center text-yellow-800 text-xs font-medium font-['Inter'] uppercase leading-4 tracking-[2.42px]">ARCHITECTS OF VALUE</div>
+      </div>
+      <div className="self-stretch pb-[0.69px] flex flex-col justify-start items-start">
+        <div className="self-stretch justify-center text-stone-900 text-8xl font-light font-['EB_Garamond'] leading-[96.80px]">The Stewardship of<br/>Legacy.</div>
+      </div>
+      <div className="w-[672px] max-w-[672px] pt-4 flex flex-col justify-start items-start">
+        <div className="justify-center text-stone-700 text-base font-light font-['Inter'] leading-7">AKARRA was founded on the principle that excellence is not an act, but a habit. Our<br/>leadership is dedicated to the meticulous cultivation of wealth, wisdom, and lasting<br/>heritage for the modern visionary.</div>
+      </div>
+    </div>
+    <div className="size- pb-1.5 left-[1198.33px] top-[333.91px] absolute opacity-10 flex flex-col justify-start items-start">
+      <div className="w-40 h-72 bg-yellow-800" />
+    </div>
+  </div>
+  <div className="self-stretch h-px relative bg-amber-100">
+    <div className="size-2 bg-orange-400" />
+  </div>
+  <div className="self-stretch px-24 py-24 bg-orange-50 flex flex-col justify-start items-start overflow-hidden">
+    <div className="self-stretch inline-flex flex-col justify-start items-start">
+      <div className="self-stretch relative inline-flex flex-col justify-start items-start">
+        <div className="w-96 h-[535.09px] left-[16px] top-[16px] absolute border border-amber-100" />
+        <div className="self-stretch bg-stone-200 shadow-2xl flex flex-col justify-center items-start overflow-hidden">
+          <div className="self-stretch h-[535.09px] relative bg-blend-saturation bg-white/30" />
+        </div>
+      </div>
+      <div className="w-[593.88px] inline-flex flex-col justify-start items-start gap-1.5">
+        <div className="self-stretch pb-[0.59px] flex flex-col justify-start items-start">
+          <div className="self-stretch justify-center text-yellow-800 text-xs font-medium font-['Inter'] uppercase leading-4 tracking-[2.42px]">DIREKTUR UTAMA</div>
+        </div>
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="self-stretch justify-center text-stone-900 text-5xl font-light font-['EB_Garamond'] leading-[62.40px]">Febri Khoirul Imam</div>
+        </div>
+        <div className="self-stretch pt-4 flex flex-col justify-start items-start gap-6">
+          <div className="self-stretch pb-[0.63px] flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-stone-700 text-base font-normal font-['Inter'] leading-6">With over two decades of experience in strategic investment and institutional<br/>management, Febri Khoirul Imam leads AKARRA with a focus on structural<br/>resilience and long-term capital preservation. His background in global financial<br/>markets provides the analytical backbone for AKARRA&apos;s most ambitious<br/>ecosystems.</div>
+          </div>
+          <div className="self-stretch pl-6 py-2 border-l-2 border-yellow-800 flex flex-col justify-start items-start">
+            <div className="self-stretch flex flex-col justify-start items-start">
+              <div className="self-stretch justify-center text-stone-900 text-2xl font-normal font-['EB_Garamond'] leading-8">&quot;Legacy is not what we leave for people, it is what we leave<br/>within them. At AKARRA, we build the frameworks<br/>where that impact can endure.&quot;</div>
+            </div>
+          </div>
+          <div className="self-stretch flex flex-col justify-start items-start gap-3">
+            <div className="self-stretch flex flex-col justify-start items-start">
+              <div className="self-stretch justify-center text-stone-900 text-xs font-medium font-['Inter'] uppercase leading-3 tracking-widest">BUILDING LEGACIES</div>
+            </div>
+            <div className="self-stretch flex flex-col justify-start items-start">
+              <div className="self-stretch justify-center text-stone-700 text-base font-normal font-['Inter'] leading-7">Febri believes that building a legacy requires more than just financial success; it<br/>requires a commitment to excellence in every detail. His philosophy centers on<br/>&apos;Integrated Stewardship&apos;—the belief that wealth and influence must be managed as<br/>a cohesive, purposeful whole.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div className="self-stretch px-72 py-24 bg-orange-50 flex flex-col justify-start items-start">
+    <div className="w-full max-w-[672px] flex flex-col justify-start items-center gap-6">
+      <div className="size- inline-flex justify-center items-start">
+        <div className="size-7 bg-yellow-800" />
+      </div>
+      <div className="self-stretch flex flex-col justify-start items-center">
+        <div className="text-center justify-center text-stone-900 text-3xl font-light font-['EB_Garamond'] leading-10">A foundation built on integrity, an future shaped by<br/>vision.</div>
+      </div>
+    </div>
+  </div>
+  <div className="self-stretch px-24 py-24 bg-orange-50 flex flex-col justify-start items-start overflow-hidden">
+    <div className="self-stretch inline-flex flex-col justify-start items-start">
+      <div className="self-stretch inline-flex flex-col justify-start items-start gap-1.5">
+        <div className="self-stretch pb-[0.59px] flex flex-col justify-start items-start">
+          <div className="self-stretch justify-center text-yellow-800 text-xs font-medium font-['Inter'] uppercase leading-4 tracking-[2.42px]">KOMISARIS</div>
+        </div>
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="self-stretch justify-center text-stone-900 text-5xl font-light font-['EB_Garamond'] leading-[62.40px]">Nanda Fifia Putri</div>
+        </div>
+        <div className="self-stretch pt-4 flex flex-col justify-start items-start gap-6">
+          <div className="self-stretch flex flex-col justify-start items-start">
+            <div className="self-stretch justify-center text-stone-700 text-base font-normal font-['Inter'] leading-6">Nanda Fifia Putri brings a refined perspective to AKARRA&apos;s board, specializing in<br/>brand heritage and philanthropic governance. Her career has been defined by the<br/>intersection of high-culture and high-finance, ensuring that AKARRA&apos;s products and<br/>services maintain their soul as they scale.</div>
+          </div>
+          <div className="self-stretch pl-6 py-2 border-l-2 border-yellow-800 flex flex-col justify-start items-start">
+            <div className="self-stretch flex flex-col justify-start items-start">
+              <div className="self-stretch justify-center text-stone-900 text-2xl font-normal font-['EB_Garamond'] leading-8">&quot;Visionary leadership is about seeing the invisible threads<br/>that connect today&apos;s decisions to tomorrow&apos;s heritage.&quot;</div>
+            </div>
+          </div>
+          <div className="self-stretch flex flex-col justify-start items-start gap-3">
+            <div className="self-stretch flex flex-col justify-start items-start">
+              <div className="self-stretch justify-center text-stone-900 text-xs font-medium font-['Inter'] uppercase leading-3 tracking-widest">BUILDING LEGACIES</div>
+            </div>
+            <div className="self-stretch flex flex-col justify-start items-start">
+              <div className="self-stretch justify-center text-stone-700 text-base font-normal font-['Inter'] leading-7">Nanda&apos;s philosophy is rooted in &apos;Cultural Capital.&apos; She advocates for the<br/>preservation of values alongside value, ensuring that the AKARRA brand serves as<br/>a hallmark of prestige and intellectual depth for generations to come.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="self-stretch relative inline-flex flex-col justify-start items-start">
+        <div className="w-96 h-[535.09px] left-[-16px] top-[16px] absolute border border-amber-100" />
+        <div className="self-stretch bg-stone-200 shadow-2xl flex flex-col justify-center items-start overflow-hidden">
+          <div className="self-stretch h-[535.09px] relative bg-blend-saturation bg-white/20" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div className="self-stretch px-64 py-24 bg-zinc-800 flex flex-col justify-start items-start">
+    <div className="w-full max-w-[768px] flex flex-col justify-start items-start gap-8">
+      <div className="self-stretch flex flex-col justify-start items-center">
+        <div className="text-center justify-center text-stone-100 text-5xl font-light font-['EB_Garamond'] leading-[62.40px]">Join the Inner Circle.</div>
+      </div>
+      <div className="self-stretch opacity-80 flex flex-col justify-start items-center">
+        <div className="text-center justify-center text-stone-100 text-base font-light font-['Inter'] leading-7">Experience the bespoke advisory and ecosystem services that define the AKARRA lifestyle.</div>
+      </div>
+      <div className="self-stretch pt-2 inline-flex justify-center items-start gap-4">
+        <div className="size- px-10 py-4 bg-yellow-800 inline-flex flex-col justify-center items-center">
+          <div className="text-center justify-center text-white text-xs font-medium font-['Inter'] uppercase leading-3 tracking-wider">REQUEST CONSULTATION</div>
+        </div>
+        <div className="size- px-10 py-4 outline outline-1 outline-offset-[-1px] outline-amber-100/30 inline-flex flex-col justify-center items-center">
+          <div className="text-center justify-center text-amber-100 text-xs font-medium font-['Inter'] uppercase leading-3 tracking-wider">VIEW ECOSYSTEM</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div className="self-stretch px-24 py-24 bg-orange-50 border-t border-amber-100 inline-flex flex-col justify-start items-start gap-16">
+  <div className="self-stretch inline-flex justify-between items-start">
+    <div className="w-80 h-36 relative">
+      <div className="w-80 left-0 top-[-1px] absolute inline-flex flex-col justify-start items-start">
+        <div className="justify-center text-stone-900 text-5xl font-light font-['EB_Garamond'] leading-[62.40px]">AKARRA</div>
+      </div>
+      <div className="w-80 max-w-80 left-0 top-[78.39px] absolute inline-flex flex-col justify-start items-start">
+        <div className="justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-6">Building enduring legacies through<br/>meticulous craftsmanship and visionary<br/>stewardship.</div>
+      </div>
+    </div>
+    <div className="size- flex justify-start items-start gap-12">
+      <div className="size- inline-flex flex-col justify-start items-start gap-4">
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="justify-center text-yellow-800 text-xs font-medium font-['Inter'] uppercase leading-3 tracking-widest">NAVIGATION</div>
+        </div>
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-6">Ecosystem</div>
+        </div>
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-6">Services</div>
+        </div>
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-6">Products</div>
+        </div>
+      </div>
+      <div className="size- inline-flex flex-col justify-start items-start gap-4">
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="justify-center text-yellow-800 text-xs font-medium font-['Inter'] uppercase leading-3 tracking-widest">COMPANY</div>
+        </div>
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="justify-center text-yellow-800 text-base font-medium font-['Inter'] leading-6">Founders</div>
+        </div>
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-6">Founders</div>
+        </div>
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-6">Privacy</div>
+        </div>
+      </div>
+      <div className="size- pb-20 inline-flex flex-col justify-start items-start gap-4">
+        <div className="self-stretch flex flex-col justify-start items-start">
+          <div className="justify-center text-yellow-800 text-xs font-medium font-['Inter'] uppercase leading-3 tracking-widest">CONNECT</div>
+        </div>
+        <div className="self-stretch inline-flex justify-start items-start gap-4">
+          <div className="self-stretch inline-flex flex-col justify-start items-start">
+            <div className="size-5 bg-neutral-500" />
+          </div>
+          <div className="self-stretch inline-flex flex-col justify-start items-start">
+            <div className="size-5 bg-neutral-500" />
+          </div>
+          <div className="self-stretch inline-flex flex-col justify-start items-start">
+            <div className="w-5 h-4 bg-neutral-500" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div className="self-stretch pt-8 border-t border-amber-100/30 inline-flex justify-between items-center">
+    <div className="size- inline-flex flex-col justify-start items-start">
+      <div className="justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-7">© 2024 AKARRA. All rights reserved.</div>
+    </div>
+    <div className="size- inline-flex flex-col justify-start items-start">
+      <div className="justify-center text-neutral-500 text-base font-normal font-['Inter'] leading-7">Bespoke excellence, universally recognized.</div>
+    </div>
+  </div>
+</div>
