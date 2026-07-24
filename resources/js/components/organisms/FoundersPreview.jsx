@@ -10,7 +10,7 @@ export default function FoundersPreview({ title, subtitle, people = [] }) {
   if (people.length === 0) return null
 
   return (
-    <section className="section bg-ivory">
+    <section className="section bg-canvas">
       <div className="shell">
         <SectionHead title={title} body={subtitle} align="center" className="max-w-2xl" />
 
@@ -19,11 +19,11 @@ export default function FoundersPreview({ title, subtitle, people = [] }) {
             <Link key={person.name} href="/founders" className="group block">
               <Figure src={person.portrait} alt={person.name} ratio="aspect-[3/4]" />
 
-              <h3 className="mt-5 font-display text-xl font-light transition-colors group-hover:text-gold">
+              <h3 className="mt-8 font-display text-2xl font-medium text-gold transition-opacity group-hover:opacity-80">
                 {person.name}
               </h3>
 
-              <span className="mt-1 block text-[11px] font-medium uppercase tracking-[0.18em] text-muted">
+              <span className="mt-1 block text-[11px] font-medium uppercase tracking-[0.18em] text-body">
                 {person.role}
               </span>
             </Link>

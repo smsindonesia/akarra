@@ -25,7 +25,7 @@ export default function MobileDrawer({ open, onClose, items, ctaLabel }) {
   if (!open) return null
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col bg-ink text-ivory md:hidden">
+    <div className="fixed inset-0 z-50 flex flex-col bg-dark text-ivory md:hidden">
       <div className="flex items-center justify-between px-6 py-6">
         <Logo tone="invert" />
         <button

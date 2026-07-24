@@ -1,15 +1,14 @@
 /**
  * Label kecil di atas judul. Uppercase dengan jarak huruf lebar — penanda
- * "editorial" paling hemat dan paling efektif.
- *
- * Warnanya default ke --muted, bukan emas: pada 11px, emas di atas latar
- * terang tidak lolos rasio kontras 4.5:1.
+ * "editorial" paling hemat dan paling efektif. Ini adalah tone default di
+ * seluruh referensi Figma (yellow-800 di atas orange-50 lolos kontras AA).
  */
-export default function Eyebrow({ children, className = '', tone = 'muted' }) {
+export default function Eyebrow({ children, className = '', tone = 'gold' }) {
   const tones = {
     muted: 'text-muted',
-    gold: 'text-gold-lite',
+    gold: 'text-gold',
     ink: 'text-ink/70',
+    invert: 'text-accent-invert',
   }
 
   return (

@@ -34,26 +34,32 @@ export const fallbackContent = {
   },
 
   home: {
-    hero_eyebrow: 'AKARRA',
+    hero_eyebrow: 'A Legacy in the Making',
     hero_title: 'Ecosystem of Excellence',
     hero_title_emphasis: 'Excellence',
     hero_subtitle:
-      'Ekosistem bisnis terintegrasi yang mempertemukan fashion, kreativitas, dan periklanan dalam satu atap — mendampingi perjalanan brand Anda dari ide hingga eksekusi.',
-    hero_cta_label: 'Mulai Kolaborasi',
+      'A sophisticated convergence of Fashionpreneurial spirit, Creative Labs innovation, and Strategic Advertising excellence. AKARRA is built for the visionaries of tomorrow.',
+    hero_cta_label: 'Explore the Ecosystem',
+    hero_secondary_cta_label: 'Our Philosophy',
     hero_image: '',
 
     narrative_title: 'Membangun Warisan, Bukan Sekadar Bisnis',
     narrative_body:
       'AKARRA bergerak di industri fashion, desain kreatif, event, dan periklanan digital. Melalui tiga pilar utama, kami tidak hanya menjual produk, tetapi membangun identitas dan dampak nyata bagi komunitas fashion dan kreatif Indonesia.',
     narrative_image: '',
+    narrative_quote:
+      'We believe that true prestige is found in the intersection of mathematical precision and artistic soul. Our journey is about creating impact that resonates across generations.',
+    narrative_quote_attribution: 'The Founders of AKARRA',
+    narrative_badge: 'Est. 2024',
 
-    stats: [
-      { value: '3', label: 'Pilar Bisnis' },
-      { value: '12+', label: 'Segmen Layanan' },
-      { value: 'Infinite', label: 'Creative Possibilities' },
-      { value: '100%', label: 'Komitmen pada Klien' },
+    values: [
+      { name: 'Excellence', body: 'Uncompromising quality in every stitch, frame, and strategy we execute.' },
+      { name: 'Integrity', body: 'Building trust through transparency and ethical leadership in all domains.' },
+      { name: 'Innovation', body: 'Pushing boundaries through creative experimentation and modern technology.' },
+      { name: 'Elegance', body: 'A commitment to refined aesthetics that speak without needing to shout.' },
     ],
 
+    services_eyebrow: 'Our Three Pillars',
     services_title: 'The Services Ecosystem',
     services_subtitle:
       'Tiga pilar yang saling menopang, dirancang untuk menemani brand di setiap tahap pertumbuhannya.',
@@ -61,12 +67,37 @@ export const fallbackContent = {
 
     solutions_title: 'Curated Solutions',
     solutions_subtitle: 'Rangkaian produk dan karya yang lahir dari ekosistem kami.',
+    solutions: [
+      {
+        title: 'Bespoke Collection',
+        body: 'Made-to-measure excellence for the modern executive.',
+        image: '',
+        category: 'Fashion',
+      },
+      {
+        title: 'Signature Textiles',
+        body: 'Ethically sourced, world-class fabric curation.',
+        image: '',
+        category: 'Fashion',
+      },
+      {
+        title: 'Visual Storytelling',
+        body: 'Narasi visual yang membangun kedekatan emosional dengan audiens.',
+        image: '',
+        category: 'Creative',
+      },
+      {
+        title: 'Brand Positioning',
+        body: 'Strategi penempatan brand yang tajam dan terukur di pasar digital.',
+        image: '',
+        category: 'Advertising',
+      },
+    ],
 
     story_title: 'Cerita di Balik AKARRA',
     story_body:
       'Kami percaya setiap brand memiliki cerita yang layak diceritakan dengan elegan. Bersama kami, Anda tidak hanya membangun bisnis — Anda membangun warisan.',
     story_image: '',
-    story_cta_label: 'Kenali ekosistem kami',
 
     founders_title: 'Meet the Founders',
     founders_subtitle: 'Dua orang di balik arah dan standar AKARRA.',
@@ -77,10 +108,11 @@ export const fallbackContent = {
   },
 
   ecosystem: {
+    hero_eyebrow: 'The Architecture of Aspiration',
     hero_title: 'Ecosystem of Excellence',
     hero_title_emphasis: 'Excellence',
     hero_subtitle:
-      'Mengenal lebih dekat siapa kami, apa yang kami perjuangkan, dan bagaimana kami bekerja.',
+      'A multi-disciplinary sanctuary where precision meets poetry. AKARRA is not merely a brand; it is a unified sensory landscape where fashion, art, and strategy coalesce into a singular, prestigious standard.',
 
     story_title: 'Cerita Kami',
     story_body:
@@ -118,32 +150,72 @@ export const fallbackContent = {
       'Menciptakan ekosistem kolaboratif untuk pelaku industri kreatif Indonesia.',
       'Mendorong pertumbuhan bisnis klien melalui solusi holistik dan terukur.',
     ],
+    stats: [
+      { value: '12', label: 'Global Ateliers' },
+      { value: '450+', label: 'Artisans' },
+      { value: '24', label: 'Strategic Partners' },
+      { value: '100%', label: 'Ethical Sourcing' },
+    ],
   },
 
   products: {
+    hero_eyebrow: 'Curated Collections',
     hero_title: 'The Artifacts of Excellence',
     hero_title_emphasis: 'Excellence',
-    hero_subtitle: 'Apa yang kami hasilkan — dari helai kain hingga kampanye digital.',
+    hero_subtitle:
+      "Explore AKARRA's product ecosystem — where high-performance logic meets artisanal craftsmanship. Our solutions are designed for those who demand uncompromising results.",
 
     textile_title: 'Textile Engineering & Fashion',
     textile_body:
-      'Produksi pakaian berkualitas dengan standar industri modern, melayani kebutuhan fashion dari skala lokal hingga nasional.',
-    textile_images: [],
+      'Precision-tailored garments that redefine high-net-worth identity through rare fibers and architectural silhouettes.',
+    items: [
+      { name: 'The Meridian Suite', label: 'Limited Release 01', image: '', tag: 'Reserve' },
+      { name: 'Artisanal Accents', label: 'Fiber Innovation', image: '', tag: 'Explore' },
+    ],
 
     labs_title: 'AKARRA Labs',
     labs_body:
       'Ruang eksperimen desain dan pengembangan produk, tempat ide diuji sebelum menjadi karya.',
-    labs_image: '',
+    labs: [
+      {
+        title: 'Material Bio-Synthesis',
+        body: 'Developing sustainable, lab-grown alternatives to rare earth materials for luxury interiors.',
+      },
+      {
+        title: 'Cognitive Branding',
+        body: 'A methodology for creating brand resonance through neuro-aesthetic principles and sensory mapping.',
+      },
+    ],
+    whitepaper: {
+      label: 'Experimental Case 042',
+      title: 'Spatial Intelligence',
+      body: 'Revolutionizing human-interface interaction through biological feedback loops and predictive spatial modeling.',
+      image: '',
+    },
 
-    digital_title: 'Strategic Dominance In Digital Realms',
+    digital_title: 'Strategic Dominance in Digital Realms',
     digital_body:
       'Perencanaan dan eksekusi kampanye digital yang terukur, dari penempatan media hingga pengelolaan performa.',
-    digital_image: '',
+    digital_items: [
+      {
+        title: 'Omnichannel Mastery',
+        body: 'Seamlessly integrating brand narrative across 12+ touchpoints for a unified, elite user experience.',
+      },
+      {
+        title: 'Data-Driven Narratives',
+        body: 'Leveraging proprietary algorithms to forecast cultural shifts and position brands ahead of the curve.',
+      },
+      {
+        title: 'High-Conversion Visuals',
+        body: 'Cinematic production standards applied to programmatic advertising for maximum prestige and ROI.',
+      },
+    ],
 
-    cta_title: 'Ready to redefine your business?',
+    cta_title: 'Ready to redefine your baseline?',
     cta_subtitle:
-      'Mari berdiskusi tentang bagaimana ekosistem AKARRA dapat mendukung pertumbuhan bisnis Anda.',
-    cta_label: 'Hubungi kami',
+      "Our limited-client engagement model ensures each partnership receives the full weight of AKARRA's strategic and creative machinery.",
+    cta_label: 'Request Audit',
+    cta_secondary_label: 'Join the Waitlist',
   },
 
   services: {
@@ -152,32 +224,79 @@ export const fallbackContent = {
     hero_subtitle: 'Apa yang kami kerjakan bersama Anda — dari ide pertama hingga brand yang dikenal.',
     hero_image: '',
 
+    hero_eyebrow: 'Our Capabilities',
+
     pillars: [
       {
-        name: 'Akarra Fashionpreneur',
-        label: 'Industri Pakaian & Perdagangan Fashion',
-        body: 'Produksi pakaian jadi berkualitas dengan standar industri modern, melayani kebutuhan fashion dari skala lokal hingga nasional.',
+        name: 'Fashionpreneur',
+        label: 'Infrastructure',
+        body: 'A comprehensive ecosystem for established designers and emerging labels to scale with integrity. We handle the complexities of the supply chain so you can focus on the soul of the brand.',
         items: ['Industri Pakaian Jadi', 'Perdagangan Besar Pakaian', 'Distribusi & Retail'],
+        bullets: ['Brand Development', 'Textile Sourcing', 'Atelier Manufacturing', 'Distribution Strategy'],
+        subcards: [
+          {
+            title: 'The Atelier',
+            body: 'Bespoke sample making and technical pattern drafting for high-fashion silhouettes.',
+            bullets: ['Haute Couture Sampling', 'Tech Pack Development'],
+          },
+          {
+            title: 'Global Production',
+            body: 'Ethical, small-batch manufacturing and large-scale textile sourcing with a focus on sustainability.',
+            bullets: ['Ethical Sourcing', 'QC Management'],
+          },
+        ],
         image: '',
       },
       {
-        name: 'Akarra Creative Labs',
-        label: 'Desain, Produksi & Event',
-        body: 'Layanan desain dan penyelenggaraan acara berkelas premium, dari konsep hingga pelaksanaan.',
+        name: 'Creative Labs',
+        label: 'Identity',
+        body: 'The intellectual engine of AKARRA. We translate brand ethos into visual and experiential narratives that resonate with a discerning global audience.',
         items: ['Desain Grafis & Branding', 'Produksi Konten', 'Event & Pertunjukan'],
+        bullets: ['Visual Storytelling', 'UI/UX Innovation', 'Photography & Cinema', 'Experimental Design'],
+        subcards: [
+          {
+            title: 'Art Direction',
+            body: 'Curation of visual identity, campaign imagery, and high-fidelity brand guidelines.',
+            bullets: ['Visual Strategy', 'Identity Design'],
+          },
+          {
+            title: 'Immersive Events',
+            body: 'Bespoke product launches and runway shows designed to evoke emotional intelligence.',
+            bullets: ['Spatial Design', 'Guest Curation'],
+          },
+        ],
         image: '',
       },
       {
-        name: 'Akarra Advertising',
+        name: 'Advertising',
         label: 'Periklanan & Strategi Digital',
         body: 'Strategi digital dan periklanan inovatif untuk memperkuat posisi brand di pasar.',
         items: ['Strategi Digital', 'Media Placement', 'Social Media Management'],
+        bullets: ['Brand Positioning', 'Market Penetration', 'Digital Growth', 'Strategic Media'],
         image: '',
       },
     ],
 
     growth_title: 'Digital Strategy & Growth',
-    growth_body: 'Pendampingan dari ide pertama hingga eksekusi, dengan hasil yang bisa diukur.',
+    growth_body:
+      "Data-driven precision meets creative intuition. We don't just find your audience; we cultivate a community of advocates.",
+    amplification_cards: [
+      {
+        title: 'Digital Strategy',
+        body: 'Comprehensive market analysis and growth mapping for the luxury sector.',
+        bullets: ['Market Intelligence', 'Funnel Optimization'],
+      },
+      {
+        title: 'Content Production',
+        body: 'High-end video, editorial photography, and interactive storytelling.',
+        bullets: ['4K Editorial Video', 'Social Narratives'],
+      },
+      {
+        title: 'Brand Growth',
+        body: 'Strategic partnerships, influencer seeding, and global expansion.',
+        bullets: ['Strategic PR', 'Cross-Border Scaling'],
+      },
+    ],
 
     why_title: 'Mengapa AKARRA',
     why_items: [
@@ -191,29 +310,46 @@ export const fallbackContent = {
     cta_title: 'Ready to redefine your legacy?',
     cta_subtitle: 'Konsultasi awal gratis, tanpa komitmen.',
     cta_label: 'Mulai kolaborasi',
+    cta_secondary_label: 'Concierge@akarra.com',
   },
 
   founders: {
+    hero_eyebrow: 'Architects of Value',
     hero_title: 'The Stewardship of Legacy.',
     hero_title_emphasis: 'Legacy',
-    hero_subtitle: 'Dua orang yang menjaga arah dan standar AKARRA.',
+    hero_subtitle:
+      'AKARRA was founded on the principle that excellence is not an act, but a habit. Our leadership is dedicated to the meticulous cultivation of wealth, wisdom, and lasting heritage for the modern visionary.',
 
     people: [
-      { name: 'Febri Khoirul Imam', role: 'Komisaris', body: '', portrait: '' },
+      {
+        name: 'Febri Khoirul Imam',
+        role: 'Direktur Utama',
+        body: 'With over two decades of experience in strategic investment and institutional management, Febri Khoirul Imam leads AKARRA with a focus on structural resilience and long-term capital preservation. His background in global financial markets provides the analytical backbone for AKARRA’s most ambitious ecosystems.',
+        portrait: '',
+        quote:
+          'Legacy is not what we leave for people, it is what we leave within them. At AKARRA, we build the frameworks where that impact can endure.',
+        legacy_body:
+          'Febri believes that building a legacy requires more than just financial success; it requires a commitment to excellence in every detail. His philosophy centers on ‘Integrated Stewardship’ — the belief that wealth and influence must be managed as a cohesive, purposeful whole.',
+      },
       {
         name: 'Nanda Fifia Putri',
-        role: 'Direktur Utama',
-        body: 'Visioner di balik ekosistem AKARRA, membawa pengalaman lintas industri fashion, kreatif, dan bisnis digital untuk membangun brand yang berdampak.',
+        role: 'Komisaris',
+        body: 'Nanda Fifia Putri brings a refined perspective to AKARRA’s board, specializing in brand heritage and philanthropic governance. Her career has been defined by the intersection of high-culture and high-finance, ensuring that AKARRA’s products and services maintain their soul as they scale.',
         portrait: '',
+        quote:
+          'Visionary leadership is about seeing the invisible threads that connect today’s decisions to tomorrow’s heritage.',
+        legacy_body:
+          'Nanda’s philosophy is rooted in ‘Cultural Capital.’ She advocates for the preservation of values alongside value, ensuring that the AKARRA brand serves as a hallmark of prestige and intellectual depth for generations to come.',
       },
     ],
 
-    quote: 'Anda tidak hanya membangun bisnis — Anda membangun warisan.',
+    quote: 'A foundation built on integrity, a future shaped by vision.',
 
-    cta_title: 'Join the Inner Circle',
+    cta_title: 'Join the Inner Circle.',
     cta_subtitle:
-      'AKARRA adalah mitra perjalanan bisnis Anda — dari ide pertama hingga brand yang dikenal dunia.',
-    cta_label: 'Mari berkenalan',
+      'Experience the bespoke advisory and ecosystem services that define the AKARRA lifestyle.',
+    cta_label: 'Request Consultation',
+    cta_secondary_label: 'View Ecosystem',
   },
 }
 

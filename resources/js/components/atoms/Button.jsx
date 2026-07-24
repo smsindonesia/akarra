@@ -9,8 +9,12 @@ import { Link } from '@inertiajs/react'
 const styles = {
   outline:
     'border border-gold/60 text-ink hover:bg-gold hover:text-ivory hover:border-gold',
+  outlineMuted:
+    'border border-border-muted text-ink hover:bg-ink hover:text-canvas hover:border-ink',
   outlineInvert:
-    'border border-gold/50 text-ivory hover:bg-gold hover:text-ink hover:border-gold',
+    'border border-ivory/30 text-ivory hover:bg-ivory hover:text-dark hover:border-ivory',
+  outlineAccentInvert:
+    'border border-accent-invert/60 text-accent-invert hover:bg-accent-invert hover:text-dark hover:border-accent-invert',
   solid: 'bg-gold text-ivory border border-gold hover:bg-transparent hover:text-gold',
   quiet:
     'border-b border-gold/40 text-ink hover:border-gold pb-1 px-0 py-0 min-h-0 hover:bg-transparent',

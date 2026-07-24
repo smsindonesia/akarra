@@ -1,8 +1,8 @@
 export default function Paragraph({ children, className = '', tone = 'default', ...props }) {
   const tones = {
-    default: 'text-ink/75',
+    default: 'text-body',
     muted: 'text-muted',
-    invert: 'text-ivory/70',
+    invert: 'text-ivory-soft',
   }
 
   return (

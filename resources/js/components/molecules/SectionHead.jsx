@@ -17,7 +17,7 @@ export default function SectionHead({
 
   return (
     <div ref={ref} className={`reveal flex flex-col ${alignment} ${className}`}>
-      {eyebrow && <Eyebrow tone={tone === 'invert' ? 'gold' : 'muted'}>{eyebrow}</Eyebrow>}
+      {eyebrow && <Eyebrow tone={tone === 'invert' ? 'invert' : 'gold'}>{eyebrow}</Eyebrow>}
 
       <Display
         size="md"

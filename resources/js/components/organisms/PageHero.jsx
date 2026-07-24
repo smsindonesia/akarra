@@ -18,8 +18,12 @@ export default function PageHero({
   subtitle,
   ctaLabel,
   ctaTo,
+  ctaVariant = 'solid',
+  secondaryCtaLabel,
+  secondaryCtaTo,
   image,
   variant = 'page',
+  divider = false,
 }) {
   const isLanding = variant === 'landing'
 
@@ -36,6 +40,19 @@ export default function PageHero({
         strokeWidth={0.5}
       />
 
+      {isLanding && (
+        <>
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute right-[-8rem] top-[-4rem] hidden h-[32rem] w-[32rem] origin-top-left rotate-45 border border-line/60 md:block"
+          />
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute right-[-10rem] top-[-8rem] hidden h-[32rem] w-[32rem] origin-top-left rotate-[30deg] border border-line/40 md:block"
+          />
+        </>
+      )}
+
       <div className={`shell relative ${isLanding ? '' : 'text-center'}`}>
         <div className={isLanding ? 'max-w-3xl' : 'mx-auto max-w-3xl'}>
           {eyebrow && (
@@ -46,7 +63,7 @@ export default function PageHero({
 
           <Display
             as="h1"
-            size="xl"
+            size="hero"
             emphasis={emphasis}
             className={`animate-fade-up ${eyebrow ? 'mt-6' : ''}`}
           >
@@ -70,9 +87,21 @@ export default function PageHero({
           )}
 
           {ctaLabel && (
-            <div className={`animate-fade-up mt-12 ${isLanding ? '' : 'flex justify-center'}`}>
-              <Button to={ctaTo ?? '/#kolaborasi'}>{ctaLabel}</Button>
+            <div className={`animate-fade-up mt-12 flex flex-wrap gap-6 ${isLanding ? '' : 'justify-center'}`}>
+              <Button to={ctaTo ?? '/#kolaborasi'} variant={ctaVariant}>
+                {ctaLabel}
+              </Button>
+
+              {secondaryCtaLabel && (
+                <Button to={secondaryCtaTo ?? '/#kolaborasi'} variant="outlineMuted">
+                  {secondaryCtaLabel}
+                </Button>
+              )}
             </div>
+          )}
+
+          {divider && !ctaLabel && (
+            <span className="mx-auto mt-10 block h-16 w-px bg-line" aria-hidden="true" />
           )}
         </div>
       </div>

@@ -6,27 +6,46 @@ import useReveal from '../../hooks/useReveal'
 /**
  * CTA penutup halaman dalam. Semuanya bermuara ke formulir yang sama di
  * beranda — pada desain Figma tidak ada halaman kontak terpisah.
+ *
+ * `tone="light"` dipakai ketika CTA berada di section terang (mis. Products'
+ * "Ready to redefine your baseline?"); default `dark` untuk section
+ * zinc-800 seperti "Join the Inner Circle".
  */
-export default function ClosingCta({ title, subtitle, label, to = '/#kolaborasi' }) {
+export default function ClosingCta({
+  title,
+  subtitle,
+  label,
+  to = '/#kolaborasi',
+  secondaryLabel,
+  secondaryTo,
+  tone = 'dark',
+}) {
   const ref = useReveal()
+  const isDark = tone === 'dark'
 
   return (
-    <section className="bg-ink text-ivory">
+    <section className={isDark ? 'bg-dark text-ivory' : 'bg-canvas text-ink'}>
       <div ref={ref} className="reveal shell section text-center">
-        <Display size="lg" className="mx-auto max-w-3xl text-ivory">
+        <Display size="lg" className={`mx-auto max-w-3xl ${isDark ? 'text-ivory' : 'text-ink'}`}>
           {title}
         </Display>
 
         {subtitle && (
-          <Paragraph tone="invert" className="measure mx-auto mt-6">
+          <Paragraph tone={isDark ? 'invert' : 'default'} className="measure mx-auto mt-6">
             {subtitle}
           </Paragraph>
         )}
 
-        <div className="mt-12 flex justify-center">
+        <div className="mt-12 flex flex-wrap justify-center gap-6">
           <Button to={to} variant="solid">
             {label}
           </Button>
+
+          {secondaryLabel && (
+            <Button to={secondaryTo ?? to} variant={isDark ? 'outlineInvert' : 'outlineMuted'}>
+              {secondaryLabel}
+            </Button>
+          )}
         </div>
       </div>
     </section>

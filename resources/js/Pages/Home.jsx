@@ -1,14 +1,13 @@
 import { Head } from '@inertiajs/react'
 
-import Divider from '../components/atoms/Divider'
 import CollaborationForm from '../components/organisms/CollaborationForm'
 import FoundersPreview from '../components/organisms/FoundersPreview'
 import NarrativeSplit from '../components/organisms/NarrativeSplit'
 import PageHero from '../components/organisms/PageHero'
 import ServicesEcosystem from '../components/organisms/ServicesEcosystem'
 import SolutionsGrid from '../components/organisms/SolutionsGrid'
-import StatsBar from '../components/organisms/StatsBar'
 import StoryFeature from '../components/organisms/StoryFeature'
+import ValuesGrid from '../components/organisms/ValuesGrid'
 import PublicLayout from '../Layouts/PublicLayout'
 import { useContent } from '../hooks/useContent'
 
@@ -25,6 +24,7 @@ export default function Home() {
 
   const solutions = list('home', 'solutions')
   const pillars = list('services', 'pillars')
+  const values = list('home', 'values')
 
   return (
     <>
@@ -40,26 +40,25 @@ export default function Home() {
         subtitle={get('home', 'hero_subtitle')}
         ctaLabel={get('home', 'hero_cta_label')}
         ctaTo="/#kolaborasi"
+        secondaryCtaLabel={get('home', 'hero_secondary_cta_label')}
+        secondaryCtaTo="/ecosystem"
       />
 
-      <StatsBar items={list('home', 'stats')} />
-
       <NarrativeSplit
-        eyebrow="Tentang Kami"
         title={get('home', 'narrative_title')}
         body={get('home', 'narrative_body')}
         image={get('home', 'narrative_image')}
+        quote={get('home', 'narrative_quote')}
+        quoteAttribution={get('home', 'narrative_quote_attribution')}
+        badge={get('home', 'narrative_badge')}
         reverse
       />
 
-      <Divider />
-
-      <ServicesEcosystem
-        title={get('home', 'services_title')}
-        subtitle={get('home', 'services_subtitle')}
-        pillars={pillars}
-        ctaLabel={get('home', 'services_cta_label')}
-      />
+      {values.length > 0 && (
+        <div className="shell pb-24 md:pb-32">
+          <ValuesGrid items={values} columns={4} />
+        </div>
+      )}
 
       {solutions.length > 0 && (
         <SolutionsGrid
@@ -69,12 +68,18 @@ export default function Home() {
         />
       )}
 
+      <ServicesEcosystem
+        eyebrow={get('home', 'services_eyebrow')}
+        title={get('home', 'services_title')}
+        subtitle={get('home', 'services_subtitle')}
+        pillars={pillars}
+        ctaLabel={get('home', 'services_cta_label')}
+      />
+
       <StoryFeature
         title={get('home', 'story_title')}
         body={get('home', 'story_body')}
         image={get('home', 'story_image')}
-        ctaLabel={get('home', 'story_cta_label')}
-        ctaTo="/ecosystem"
       />
 
       <FoundersPreview

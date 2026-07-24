@@ -5,8 +5,8 @@ import MandalaMark from './MandalaMark'
  * Satu dari empat tempat motif mandala boleh muncul.
  */
 export default function Divider({ tone = 'ink' }) {
-  const line = tone === 'invert' ? 'bg-ivory/15' : 'bg-ink/10'
-  const mark = tone === 'invert' ? 'text-gold/50' : 'text-gold/40'
+  const line = tone === 'invert' ? 'bg-ivory/15' : 'bg-line'
+  const mark = tone === 'invert' ? 'text-accent-invert/60' : 'text-gold/40'
 
   return (
     <div className="shell" aria-hidden="true">

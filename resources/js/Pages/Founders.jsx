@@ -15,8 +15,9 @@ function PullQuote({ children }) {
 
   return (
     <section className="section">
-      <blockquote ref={ref} className="reveal shell text-center">
-        <p className="mx-auto max-w-3xl font-display text-3xl font-light italic leading-[1.35] md:text-4xl">
+      <blockquote ref={ref} className="reveal shell flex flex-col items-center gap-6 text-center">
+        <span className="block h-7 w-7 bg-gold" aria-hidden="true" />
+        <p className="mx-auto max-w-3xl font-display text-3xl font-normal leading-[1.35] md:text-4xl">
           “{children}”
         </p>
       </blockquote>
@@ -36,6 +37,7 @@ export default function Founders() {
       </Head>
 
       <PageHero
+        eyebrow={get('founders', 'hero_eyebrow', 'Architects of Value')}
         title={get('founders', 'hero_title')}
         emphasis={get('founders', 'hero_title_emphasis')}
         subtitle={get('founders', 'hero_subtitle')}
@@ -44,7 +46,12 @@ export default function Founders() {
       {people[0] && (
         <section className="section pt-0">
           <div className="shell">
-            <FounderCard {...people[0]} />
+            <FounderCard
+              {...people[0]}
+              quote={people[0].quote}
+              legacyTitle={people[0].legacy_body ? 'Building Legacies' : null}
+              legacyBody={people[0].legacy_body}
+            />
           </div>
         </section>
       )}
@@ -54,7 +61,13 @@ export default function Founders() {
       {people[1] && (
         <section className="section pt-0">
           <div className="shell">
-            <FounderCard {...people[1]} reverse />
+            <FounderCard
+              {...people[1]}
+              reverse
+              quote={people[1].quote}
+              legacyTitle={people[1].legacy_body ? 'Building Legacies' : null}
+              legacyBody={people[1].legacy_body}
+            />
           </div>
         </section>
       )}
@@ -76,6 +89,8 @@ export default function Founders() {
         title={get('founders', 'cta_title')}
         subtitle={get('founders', 'cta_subtitle')}
         label={get('founders', 'cta_label')}
+        secondaryLabel={get('founders', 'cta_secondary_label')}
+        secondaryTo="/ecosystem"
       />
     </>
   )

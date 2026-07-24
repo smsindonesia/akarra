@@ -3,20 +3,29 @@
 
 /* ---------------------------------------------------------------------------
    Token desain AKARRA
-   Diturunkan dari kanvas Figma. #F5F5F5 terkonfirmasi; sisanya perkiraan yang
-   perlu dikunci ulang dari panel Design ketika file Figma dapat diakses.
+   Dikunci dari file Figma resmi (lihat `figmareference`). Nilai di bawah
+   adalah hex asli palet Tailwind yang dipakai desainer (orange-50, stone-900,
+   stone-700, neutral-500, yellow-800, amber-100, zinc-800, stone-100/300,
+   orange-300), diberi nama semantik supaya komponen tidak perlu tahu nama
+   warna Tailwind-nya.
 --------------------------------------------------------------------------- */
 @theme {
-  --color-canvas: #f5f5f5;
-  --color-ivory: #faf8f4;
-  --color-sand: #efe9de;
-  --color-ink: #1c1b18;
-  --color-ink-soft: #2a2825;
-  --color-gold: #b08d3f;
-  --color-gold-lite: #d9c48b;
-  --color-muted: #8a857c;
+  --color-canvas: #fff7ed; /* orange-50 — latar terang universal */
+  --color-sand: #e7e5e4; /* stone-200 — latar placeholder gambar/kartu */
+  --color-line: #fef3c7; /* amber-100 — garis tipis & outline kartu */
+  --color-border-muted: #d6d3d1; /* stone-300 — outline tombol sekunder di atas latar terang */
+  --color-ink: #1c1917; /* stone-900 — judul & teks utama */
+  --color-body: #44403c; /* stone-700 — teks paragraf */
+  --color-muted: #737373; /* neutral-500 — teks sekunder (footer, caption) */
+  --color-muted-soft: #a3a3a3; /* neutral-400 — teks tersier (copyright) */
+  --color-gold: #854d0e; /* yellow-800 — aksen di atas latar terang */
 
-  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --color-dark: #27272a; /* zinc-800 — latar section gelap */
+  --color-ivory: #f5f5f4; /* stone-100 — teks/elemen di atas latar gelap */
+  --color-ivory-soft: #d6d3d1; /* stone-300 — teks sekunder di atas latar gelap */
+  --color-accent-invert: #fdba74; /* orange-300 — aksen di atas latar gelap */
+
+  --font-display: 'EB Garamond', Georgia, serif;
   --font-body: 'Inter', system-ui, sans-serif;
 
   --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);

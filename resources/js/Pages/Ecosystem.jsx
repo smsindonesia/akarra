@@ -1,38 +1,35 @@
 import { Head } from '@inertiajs/react'
 
 import Divider from '../components/atoms/Divider'
-import NarrativeSplit from '../components/organisms/NarrativeSplit'
+import Eyebrow from '../components/atoms/Eyebrow'
+import Figure from '../components/atoms/Figure'
+import Paragraph from '../components/atoms/Paragraph'
+import ServiceCard from '../components/molecules/ServiceCard'
+import StatItem from '../components/molecules/StatItem'
 import PageHero from '../components/organisms/PageHero'
 import SectionHead from '../components/molecules/SectionHead'
 import StatementBlock from '../components/organisms/StatementBlock'
-import Paragraph from '../components/atoms/Paragraph'
+import ValuesGrid from '../components/organisms/ValuesGrid'
 import PublicLayout from '../Layouts/PublicLayout'
-import useReveal from '../hooks/useReveal'
 import { useContent } from '../hooks/useContent'
 
-function ValueGrid({ items }) {
-  const ref = useReveal()
-
-  if (items.length === 0) return null
-
-  return (
-    <div ref={ref} className="reveal mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-      {items.map((item) => (
-        <div key={item.name ?? item.title} className="border-t border-ink/10 pt-6">
-          <h3 className="font-display text-2xl font-light">{item.name ?? item.title}</h3>
-
-          {item.label && (
-            <span className="mt-1 block text-[11px] font-medium uppercase tracking-[0.18em] text-muted">
-              {item.label}
-            </span>
-          )}
-
-          <Paragraph className="mt-4">{item.body}</Paragraph>
-        </div>
-      ))}
-    </div>
-  )
-}
+const pillarCards = [
+  {
+    name: 'Fashion & Atelier',
+    body: 'Bespoke craftsmanship that transcends seasonal trends. Our atelier focuses on archival quality, utilizing rare textiles and ancestral techniques to redefine modern luxury.',
+    linkLabel: 'Explore Atelier',
+  },
+  {
+    name: 'Creative Direction',
+    body: 'The visual soul of our ecosystem. We curate environments and narratives that resonate with intellectual depth, ensuring every brand touchpoint is a masterpiece of intent.',
+    linkLabel: 'View Portfolio',
+  },
+  {
+    name: 'Strategic Advocacy',
+    body: 'High-stakes advertising for the discerning. We deploy precision-engineered campaigns that communicate prestige without volume, reaching the global elite through subtle, impactful resonance.',
+    linkLabel: 'Strategic Services',
+  },
+]
 
 export default function Ecosystem() {
   const { get, list } = useContent()
@@ -44,9 +41,11 @@ export default function Ecosystem() {
       </Head>
 
       <PageHero
+        eyebrow={get('ecosystem', 'hero_eyebrow', 'The Architecture of Aspiration')}
         title={get('ecosystem', 'hero_title')}
         emphasis={get('ecosystem', 'hero_title_emphasis')}
         subtitle={get('ecosystem', 'hero_subtitle')}
+        divider
       />
 
       <section className="section pt-0">
@@ -63,37 +62,90 @@ export default function Ecosystem() {
 
       <Divider />
 
-      <section className="section bg-ivory">
+      <section className="section">
         <div className="shell">
           <SectionHead
             eyebrow="Filosofi"
             title={get('ecosystem', 'philosophy_title')}
             body={get('ecosystem', 'philosophy_body')}
           />
-          <ValueGrid items={list('ecosystem', 'philosophy_items')} />
+          <div className="mt-12">
+            <ValuesGrid items={list('ecosystem', 'philosophy_items')} columns={4} />
+          </div>
         </div>
       </section>
 
-      <NarrativeSplit
-        eyebrow="Standar"
-        title={get('ecosystem', 'standard_title')}
-        body={get('ecosystem', 'standard_body')}
-        image={get('ecosystem', 'standard_image')}
-      />
+      <section className="section pt-0">
+        <div className="shell">
+          <div className="grid gap-6 md:grid-cols-3">
+            {pillarCards.map((card) => (
+              <ServiceCard key={card.name} name={card.name} body={card.body} linkLabel={card.linkLabel} to="/services" />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="shell grid gap-14 md:grid-cols-2 md:gap-20">
+          <div>
+            <Eyebrow>Ethos &amp; Integrity</Eyebrow>
+            <h2 className="mt-5 font-display text-4xl font-light leading-tight text-ink md:text-5xl">
+              The AKARRA Standard
+            </h2>
+            <Paragraph className="measure mt-6">{get('ecosystem', 'standard_body')}</Paragraph>
+
+            <div className="mt-10 space-y-6">
+              {list('ecosystem', 'values')
+                .slice(0, 2)
+                .map((value) => (
+                  <div key={value.name} className="flex gap-4">
+                    <span className="mt-1 block h-5 w-5 shrink-0 bg-gold" aria-hidden="true" />
+                    <div>
+                      <h3 className="font-display text-base font-bold uppercase tracking-wide text-ink">
+                        {value.name}
+                      </h3>
+                      <Paragraph className="mt-1">{value.body}</Paragraph>
+                    </div>
+                  </div>
+                ))}
+            </div>
+          </div>
+
+          <div className="relative">
+            <Figure src={get('ecosystem', 'standard_image')} alt="The AKARRA Standard" ratio="aspect-[4/5]" />
+
+            <div className="absolute -bottom-8 -left-8 hidden max-w-xs bg-gold p-8 md:block">
+              <p className="font-display text-2xl font-normal leading-snug text-ivory">
+                &ldquo;Precision is the highest form of respect.&rdquo;
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="section pt-0">
         <div className="shell">
-          <SectionHead eyebrow="Nilai" title="Lima nilai yang kami pegang" />
-          <ValueGrid items={list('ecosystem', 'values')} />
+          <SectionHead eyebrow="Nilai" title="Lima Nilai yang Kami Pegang" />
+          <div className="mt-12">
+            <ValuesGrid items={list('ecosystem', 'values')} columns={5} />
+          </div>
         </div>
       </section>
 
       <StatementBlock
-        eyebrow="Visi & Misi"
+        eyebrow="Looking Forward"
         title={get('ecosystem', 'vision_title')}
         body={get('ecosystem', 'vision_body')}
         items={list('ecosystem', 'mission')}
-      />
+      >
+        {list('ecosystem', 'stats').length > 0 && (
+          <div className="mt-12 grid grid-cols-2 gap-8 border-t border-ivory/10 pt-8 md:grid-cols-4">
+            {list('ecosystem', 'stats').map((stat) => (
+              <StatItem key={stat.label} value={stat.value} label={stat.label} tone="invert" align="left" />
+            ))}
+          </div>
+        )}
+      </StatementBlock>
     </>
   )
 }

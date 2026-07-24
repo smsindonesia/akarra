@@ -1,10 +1,10 @@
 /**
- * Judul display dengan penekanan italic pada satu kata.
+ * Judul display dengan penekanan warna pada satu kata/frasa.
  *
- * Di Figma, headline memiringkan tepat satu kata ("Ecosystem of *Excellence*").
- * Detail kecil ini yang membuat tipografinya terasa mahal, jadi dijadikan
- * komponen supaya konsisten di semua halaman dan bisa diatur dari CMS lewat
- * field `*_emphasis` — admin tidak perlu menyentuh HTML.
+ * Di Figma, headline memberi warna gold tepat pada satu kata
+ * ("Ecosystem of *Excellence*") — bukan italic. Dijadikan komponen supaya
+ * konsisten di semua halaman dan bisa diatur dari CMS lewat field
+ * `*_emphasis` — admin tidak perlu menyentuh HTML.
  */
 export default function Display({
   as: Tag = 'h2',
@@ -18,6 +18,7 @@ export default function Display({
     md: 'text-4xl md:text-5xl',
     lg: 'text-5xl md:text-6xl',
     xl: 'text-[2.75rem] leading-[1.08] md:text-7xl',
+    hero: 'text-6xl leading-[1.02] md:text-8xl md:leading-[1.01]',
   }
 
   const base = `font-display font-light tracking-[-0.01em] leading-[1.12] ${sizes[size]} ${className}`
@@ -34,7 +35,7 @@ export default function Display({
   return (
     <Tag className={base}>
       {before}
-      <em className="italic font-normal">{emphasis}</em>
+      <span className="text-gold">{emphasis}</span>
       {after}
     </Tag>
   )

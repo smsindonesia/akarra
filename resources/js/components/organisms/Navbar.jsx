@@ -26,7 +26,7 @@ export default function Navbar() {
     <>
       <header
         className={`fixed inset-x-0 top-0 z-40 transition-all duration-300 ${
-          scrolled ? 'border-b border-ink/10 bg-canvas/95 backdrop-blur-sm' : 'bg-transparent'
+          scrolled ? 'border-b border-line bg-canvas/95 backdrop-blur-sm' : 'bg-transparent'
         }`}
       >
         <div className="shell flex h-20 items-center justify-between">

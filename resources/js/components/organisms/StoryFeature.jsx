@@ -1,40 +1,39 @@
 import Button from '../atoms/Button'
-import Display from '../atoms/Display'
 import Figure from '../atoms/Figure'
-import Paragraph from '../atoms/Paragraph'
+import SectionHead from '../molecules/SectionHead'
 import useReveal from '../../hooks/useReveal'
 
 /**
- * Section bergambar lebar. Gambarnya melampaui lebar konten agar terasa
- * sinematik, sementara teksnya tetap di dalam kolom yang nyaman dibaca.
+ * Section video lebar dengan judul & subjudul rata tengah di atasnya, dan
+ * tombol putar bundar mengambang di tengah gambar — sesuai referensi Figma.
  */
 export default function StoryFeature({ title, body, image, ctaLabel, ctaTo }) {
   const ref = useReveal()
 
   return (
     <section className="section">
-      <div ref={ref} className="reveal">
-        <div className="shell">
-          <Figure src={image} alt={title} ratio="aspect-[16/9] md:aspect-[21/9]" />
-        </div>
+      <div ref={ref} className="reveal shell">
+        <SectionHead title={title} body={body} align="center" />
 
-        <div className="shell mt-14 grid gap-10 md:grid-cols-[1fr_1.2fr] md:gap-20">
-          <Display size="md" className="md:sticky md:top-32 md:self-start">
-            {title}
-          </Display>
+        <div className="relative mt-16 overflow-hidden">
+          <Figure src={image} alt={title} ratio="aspect-[16/9] md:aspect-[16/9.5]" />
 
-          <div>
-            <Paragraph className="measure text-[17px] leading-[1.9]">{body}</Paragraph>
-
-            {ctaLabel && (
-              <div className="mt-10">
-                <Button to={ctaTo ?? '/ecosystem'} variant="quiet">
-                  {ctaLabel}
-                </Button>
-              </div>
-            )}
+          <div className="absolute inset-0 flex items-center justify-center bg-ink/40">
+            <span className="grid size-20 place-items-center rounded-xl border-2 border-ivory/40 bg-ink/10 backdrop-blur-[2px]">
+              <svg viewBox="0 0 24 24" className="ml-1 h-6 w-6 fill-ivory">
+                <path d="M6 4l14 8-14 8V4z" />
+              </svg>
+            </span>
           </div>
         </div>
+
+        {ctaLabel && (
+          <div className="mt-10 flex justify-center">
+            <Button to={ctaTo ?? '/ecosystem'} variant="quiet">
+              {ctaLabel}
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   )
