@@ -3,6 +3,7 @@ import 'trix'
 import 'trix/dist/trix.css'
 
 import api from '../../lib/api'
+import { isValidUploadResponse, validateUploadFile } from '../../lib/upload'
 
 /**
  * Pembungkus React untuk Trix (web component asli, bukan komponen React).
@@ -36,6 +37,11 @@ export default function RichTextEditor({ id, value, onChange }) {
       const { attachment } = event
       if (!attachment.file) return
 
+      if (validateUploadFile(attachment.file)) {
+        attachment.remove()
+        return
+      }
+
       const formData = new FormData()
       formData.append('file', attachment.file)
       formData.append('folder', 'articles')
@@ -48,6 +54,14 @@ export default function RichTextEditor({ id, value, onChange }) {
             }
           },
         })
+
+        // Jangan percaya bentuk respons begitu saja — lihat komentar di
+        // lib/upload.js. Lampiran dengan url undefined lebih baik dibuang
+        // daripada menyisipkan referensi gambar yang patah ke isi artikel.
+        if (!isValidUploadResponse(data)) {
+          attachment.remove()
+          return
+        }
 
         attachment.setAttributes({ url: data.url, href: data.url })
       } catch {

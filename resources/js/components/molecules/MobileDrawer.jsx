@@ -1,11 +1,14 @@
 import { useEffect } from 'react'
 
 import Button from '../atoms/Button'
+import LanguageToggle from '../atoms/LanguageToggle'
 import Logo from '../atoms/Logo'
 import MandalaMark from '../atoms/MandalaMark'
 import NavLinks from './NavLinks'
+import { useLanguage } from '../../context/LanguageContext'
 
 export default function MobileDrawer({ open, onClose, items, ctaLabel }) {
+  const { t } = useLanguage()
   // Mengunci scroll halaman selama laci terbuka, dan menutup dengan Escape.
   useEffect(() => {
     if (!open) return
@@ -25,13 +28,13 @@ export default function MobileDrawer({ open, onClose, items, ctaLabel }) {
   if (!open) return null
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col bg-dark text-ivory md:hidden">
+    <div className="fixed inset-0 z-50 flex flex-col bg-dark text-ivory lg:hidden">
       <div className="flex items-center justify-between px-6 py-6">
         <Logo tone="invert" />
         <button
           type="button"
           onClick={onClose}
-          aria-label="Tutup menu"
+          aria-label={t('closeMenu')}
           className="grid h-11 w-11 place-items-center text-ivory/70 transition-colors hover:text-gold"
         >
           <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.2">
@@ -45,15 +48,15 @@ export default function MobileDrawer({ open, onClose, items, ctaLabel }) {
           <NavLinks items={items} tone="invert" onNavigate={onClose} />
         </div>
 
-        <Button to="/#kolaborasi" variant="outlineInvert" onClick={onClose} className="mt-4 self-start">
-          {ctaLabel}
-        </Button>
+        <div className="mt-4 flex flex-col items-start gap-6">
+          <LanguageToggle tone="invert" />
+          <Button to="/#kolaborasi" variant="outlineInvert" onClick={onClose} className="self-start">
+            {ctaLabel}
+          </Button>
+        </div>
       </nav>
 
-      <MandalaMark
-        className="pointer-events-none absolute -bottom-16 -right-16 h-64 w-64 text-gold/10"
-        strokeWidth={0.6}
-      />
+      <MandalaMark className="pointer-events-none absolute -bottom-16 -right-16 h-64 w-64 opacity-10" />
     </div>
   )
 }

@@ -2,16 +2,12 @@ import { Link } from '@inertiajs/react'
 
 import Logo from '../atoms/Logo'
 import SocialLinks from '../molecules/SocialLinks'
+import { useLanguage } from '../../context/LanguageContext'
 import { useContent } from '../../hooks/useContent'
 
-/**
- * Footer terang (bg-canvas), sesuai kelima frame footer di referensi Figma —
- * tidak satu pun memakai latar gelap. Kontak (alamat/telepon/jam) tidak
- * ditampilkan di sini agar sesuai referensi; tetap tersedia lewat email &
- * ikon sosial di baris bawah, dan lewat formulir kolaborasi.
- */
 export default function Footer() {
   const { get, list } = useContent()
+  const { t } = useLanguage()
 
   const email = get('global', 'email')
   const year = new Date().getFullYear()
@@ -22,24 +18,24 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="border-t border-line bg-canvas">
+    <footer className="border-t border-ivory/10 bg-dark">
       <div className="shell py-20 md:py-24">
         <div className="grid gap-14 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
-            <Logo />
-            <p className="measure mt-6 text-[15px] leading-[1.85] text-muted">
+            <Logo tone="invert" />
+            <p className="measure mt-6 text-[15px] leading-[1.85] text-ivory-soft">
               {get('global', 'description')}
             </p>
           </div>
 
-          <nav aria-label="Navigasi footer">
-            <h2 className="text-[11px] font-medium uppercase tracking-[0.22em] text-gold">
-              Jelajahi
+          <nav aria-label={t('footerNavigation')}>
+            <h2 className="text-[11px] font-medium uppercase tracking-[0.22em] text-accent-invert">
+              {t('explore')}
             </h2>
             <ul className="mt-6 space-y-3">
               {list('global', 'nav').map((item) => (
                 <li key={item.path}>
-                  <Link href={item.path} className="text-[15px] text-muted transition-colors hover:text-gold">
+                  <Link href={item.path} className="text-[15px] text-ivory-soft transition-colors hover:text-accent-invert">
                     {item.label}
                   </Link>
                 </li>
@@ -47,14 +43,14 @@ export default function Footer() {
             </ul>
           </nav>
 
-          <nav aria-label="Ekosistem">
-            <h2 className="text-[11px] font-medium uppercase tracking-[0.22em] text-gold">
-              Ekosistem
+          <nav aria-label={t('ecosystemAria')}>
+            <h2 className="text-[11px] font-medium uppercase tracking-[0.22em] text-accent-invert">
+              {t('ecosystemHeading')}
             </h2>
             <ul className="mt-6 space-y-3">
               {pillars.map((item) => (
                 <li key={item.label}>
-                  <Link href={item.path} className="text-[15px] text-muted transition-colors hover:text-gold">
+                  <Link href={item.path} className="text-[15px] text-ivory-soft transition-colors hover:text-accent-invert">
                     {item.label}
                   </Link>
                 </li>
@@ -63,14 +59,14 @@ export default function Footer() {
           </nav>
         </div>
 
-        <div className="mt-16 flex flex-col gap-4 border-t border-line pt-8 text-[11px] uppercase tracking-[0.18em] text-muted-soft md:flex-row md:items-center md:justify-between">
+        <div className="mt-16 flex flex-col gap-4 border-t border-ivory/10 pt-8 text-[11px] uppercase tracking-[0.18em] text-ivory-soft/70 md:flex-row md:items-center md:justify-between">
           <span>
             © {year} {get('global', 'site_name', 'AKARRA')}. {get('global', 'footer_note')}
           </span>
 
           <div className="flex items-center gap-6">
             {email && (
-              <a href={`mailto:${email}`} className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted transition-colors hover:text-gold">
+              <a href={`mailto:${email}`} className="text-[11px] font-medium uppercase tracking-[0.18em] text-ivory-soft transition-colors hover:text-accent-invert">
                 {email}
               </a>
             )}

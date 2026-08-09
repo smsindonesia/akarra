@@ -1,11 +1,13 @@
 import { Head } from '@inertiajs/react'
 
+import AutoSlideGallery from '../components/organisms/AutoSlideGallery'
 import Button from '../components/atoms/Button'
 import ClosingCta from '../components/organisms/ClosingCta'
 import Display from '../components/atoms/Display'
 import Divider from '../components/atoms/Divider'
 import Eyebrow from '../components/atoms/Eyebrow'
 import Figure from '../components/atoms/Figure'
+import Icon, { pickIcon } from '../components/atoms/Icon'
 import PageHero from '../components/organisms/PageHero'
 import Paragraph from '../components/atoms/Paragraph'
 import PublicLayout from '../Layouts/PublicLayout'
@@ -24,11 +26,15 @@ function Pillar({ pillar, index }) {
     <section className="section">
       <div
         ref={ref}
-        className={`reveal shell grid gap-12 md:grid-cols-2 md:items-center md:gap-20 ${
+        className={`reveal shell grid gap-12 md:grid-cols-2 md:items-start md:gap-20 ${
           reverse ? 'md:[&>*:first-child]:order-2' : ''
         }`}
       >
-        <Figure src={pillar.image} alt={pillar.name} ratio="aspect-[4/5]" />
+        {pillar.gallery?.length > 0 ? (
+          <AutoSlideGallery images={pillar.gallery} alt={pillar.name} ratio="aspect-[4/5]" />
+        ) : (
+          <Figure src={pillar.image} alt={pillar.name} ratio="aspect-[4/5]" />
+        )}
 
         <div>
           <Eyebrow>{String(index + 1).padStart(2, '0')} / {pillar.label}</Eyebrow>
@@ -106,15 +112,15 @@ function WhyList({ title, items }) {
 
 function AmplificationCard({ title, body, bullets = [], featured = false }) {
   return (
-    <div className={`border border-ivory/15 p-8 md:p-10 ${featured ? 'bg-ivory/5' : ''}`}>
-      <span className="block h-6 w-6 bg-accent-invert" aria-hidden="true" />
+    <div className={`flex flex-col items-center border border-ivory/15 p-8 text-center md:p-10 ${featured ? 'bg-ivory/5' : ''}`}>
+      <Icon name={pickIcon(title)} className="h-10 w-10 text-accent-invert md:h-12 md:w-12" />
       <h3 className="mt-6 font-display text-2xl font-medium text-ivory">{title}</h3>
-      <p className="mt-3 text-[15px] leading-[1.7] text-ivory-soft">{body}</p>
+      <p className="mt-3 w-full text-[15px] leading-[1.7] text-ivory-soft">{body}</p>
 
       {bullets.length > 0 && (
-        <ul className="mt-6 space-y-3 border-t border-ivory/10 pt-6">
+        <ul className="mt-6 w-full space-y-3 border-t border-ivory/10 pt-6">
           {bullets.map((bullet) => (
-            <li key={bullet} className="flex items-center gap-2 text-[14px] text-accent-invert/80">
+            <li key={bullet} className="flex items-center justify-center gap-2 text-[14px] text-accent-invert/80">
               <span className="h-1.5 w-2 bg-accent-invert/80" aria-hidden="true" />
               {bullet}
             </li>
@@ -133,7 +139,7 @@ export default function Services() {
 
   return (
     <>
-      <Head title={`Services — ${get('global', 'site_name', 'AKARRA')}`}>
+      <Head title={`Services | ${get('global', 'site_name', 'AKARRA')}`}>
         <meta name="description" content={get('services', 'hero_subtitle')} />
       </Head>
 

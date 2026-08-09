@@ -1,6 +1,7 @@
 import Eyebrow from '../atoms/Eyebrow'
 import Figure from '../atoms/Figure'
 import Paragraph from '../atoms/Paragraph'
+import { useLanguage } from '../../context/LanguageContext'
 import useReveal from '../../hooks/useReveal'
 
 export default function FounderCard({
@@ -14,6 +15,7 @@ export default function FounderCard({
   legacyBody,
 }) {
   const ref = useReveal()
+  const { t } = useLanguage()
 
   return (
     <div
@@ -32,7 +34,7 @@ export default function FounderCard({
           <Paragraph className="measure mt-6">{body}</Paragraph>
         ) : (
           <Paragraph tone="muted" className="measure mt-6 italic">
-            Deskripsi belum tersedia.
+            {t('descriptionNotAvailable')}
           </Paragraph>
         )}
 

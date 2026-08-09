@@ -106,7 +106,7 @@ export default function CategoriesIndex({ categories }) {
     <div>
       <Head title="Kategori" />
 
-      <div className="flex items-center justify-between">
+      <div className="flex flex-wrap items-center justify-between gap-4">
         <h1 className="font-display text-3xl font-light text-ink">Kategori</h1>
         <Button variant="solid" onClick={() => setCreating(true)}>
           Kategori Baru

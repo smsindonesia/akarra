@@ -6,6 +6,8 @@
 
         <title inertia>{{ config('app.name', 'AKARRA') }}</title>
         <meta name="description" content="Ekosistem bisnis terintegrasi di bidang fashion, desain kreatif, event, dan periklanan digital.">
+        <link rel="icon" type="image/png" href="/favicon.png">
+        <link rel="apple-touch-icon" href="/favicon.png">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">

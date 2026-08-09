@@ -3,13 +3,23 @@ import { usePage } from '@inertiajs/react'
 
 import Footer from '../components/organisms/Footer'
 import Navbar from '../components/organisms/Navbar'
+import { LanguageProvider, useLanguage } from '../context/LanguageContext'
 
 /**
  * Kerangka halaman publik: Top Navigation Bar -> Main -> Footer,
  * persis susunan layer tiap frame di Figma.
  */
 export default function PublicLayout({ children }) {
+  return (
+    <LanguageProvider>
+      <PublicLayoutBody>{children}</PublicLayoutBody>
+    </LanguageProvider>
+  )
+}
+
+function PublicLayoutBody({ children }) {
   const { url } = usePage()
+  const { t } = useLanguage()
   const [path, hash] = url.split('#')
 
   // Berpindah halaman harus mengembalikan posisi ke atas, kecuali saat menuju
@@ -32,7 +42,7 @@ export default function PublicLayout({ children }) {
         href="#konten"
         className="sr-only focus:not-sr-only focus:absolute focus:left-6 focus:top-6 focus:z-50 focus:bg-dark focus:px-5 focus:py-3 focus:text-[11px] focus:uppercase focus:tracking-[0.18em] focus:text-ivory"
       >
-        Lompat ke konten
+        {t('skipToContent')}
       </a>
 
       <Navbar />

@@ -83,7 +83,7 @@ export default function ArticlesIndex({ articles, categories, filters }) {
         <select
           value={filters.status ?? ''}
           onChange={(e) => updateFilter('status', e.target.value)}
-          className="border-0 border-b border-ink/20 bg-transparent px-0 py-2 text-[14px] text-ink focus:border-gold focus:outline-none"
+          className="border-0 border-b border-ink/20 bg-transparent pl-0 pr-6 py-2 text-[14px] text-ink focus:border-gold focus:outline-none"
         >
           <option value="">Semua status</option>
           <option value="published">Terbit</option>
@@ -93,7 +93,7 @@ export default function ArticlesIndex({ articles, categories, filters }) {
         <select
           value={filters.category ?? ''}
           onChange={(e) => updateFilter('category', e.target.value)}
-          className="border-0 border-b border-ink/20 bg-transparent px-0 py-2 text-[14px] text-ink focus:border-gold focus:outline-none"
+          className="border-0 border-b border-ink/20 bg-transparent pl-0 pr-6 py-2 text-[14px] text-ink focus:border-gold focus:outline-none"
         >
           <option value="">Semua kategori</option>
           {categories.map((cat) => (
@@ -122,13 +122,13 @@ export default function ArticlesIndex({ articles, categories, filters }) {
               {articles.data.map((article) => (
                 <tr key={article.id} className="text-[14px] text-ink">
                   <td className="max-w-xs truncate py-3 pr-4">{article.title}</td>
-                  <td className="py-3 pr-4 text-muted">{article.category?.name ?? '—'}</td>
+                  <td className="py-3 pr-4 text-muted">{article.category?.name ?? 'Tidak ada'}</td>
                   <td className="py-3 pr-4">
                     <Badge tone={article.status === 'published' ? 'gold' : 'muted'}>
                       {article.status === 'published' ? 'Terbit' : 'Draf'}
                     </Badge>
                   </td>
-                  <td className="py-3 pr-4 text-muted">{article.author?.name ?? '—'}</td>
+                  <td className="py-3 pr-4 text-muted">{article.author?.name ?? 'Tidak ada'}</td>
                   <td className="py-3 text-right">
                     <Link
                       href={`/admin/articles/${article.slug}/edit`}

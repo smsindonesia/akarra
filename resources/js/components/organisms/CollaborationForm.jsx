@@ -7,6 +7,7 @@ import MandalaMark from '../atoms/MandalaMark'
 import Paragraph from '../atoms/Paragraph'
 import SectionHead from '../molecules/SectionHead'
 import { interestOptions } from '../../content/fallback'
+import { useLanguage } from '../../context/LanguageContext'
 import { useContent } from '../../hooks/useContent'
 import useReveal from '../../hooks/useReveal'
 
@@ -19,6 +20,7 @@ import useReveal from '../../hooks/useReveal'
  */
 export default function CollaborationForm() {
   const { get } = useContent()
+  const { t } = useLanguage()
   const ref = useReveal()
 
   const { data, setData, post, processing, errors, wasSuccessful, reset } = useForm({
@@ -43,14 +45,14 @@ export default function CollaborationForm() {
       <section id="kolaborasi" className="section bg-canvas scroll-mt-24">
         <div className="shell">
           <div className="mx-auto max-w-xl text-center">
-            <MandalaMark className="mx-auto h-14 w-14 text-gold" strokeWidth={1.5} animated />
+            <MandalaMark className="mx-auto h-14 w-14" animated />
 
             <Display size="sm" className="mt-8">
-              Pesan Anda terkirim.
+              {t('formSuccessTitle')}
             </Display>
 
             <Paragraph className="mt-5">
-              Tim kami akan menghubungi Anda dalam 1×24 jam kerja.
+              {t('formSuccessBody')}
             </Paragraph>
 
             <button
@@ -58,7 +60,7 @@ export default function CollaborationForm() {
               onClick={() => reset()}
               className="mt-10 border-b border-gold/40 pb-1 text-[11px] font-medium uppercase tracking-[0.18em] transition-colors hover:border-gold hover:text-gold"
             >
-              Kirim pesan lain
+              {t('formSendAnother')}
             </button>
           </div>
         </div>
@@ -93,21 +95,21 @@ export default function CollaborationForm() {
           />
 
           <div className="grid gap-8 md:grid-cols-2">
-            <Field label="Nama lengkap" error={errors.name}>
+            <Field label={t('formFullName')} error={errors.name}>
               <input
                 type="text"
                 className={fieldClass}
-                placeholder="Nama lengkap Anda"
+                placeholder={t('formFullNamePlaceholder')}
                 value={data.name}
                 onChange={(e) => setData('name', e.target.value)}
               />
             </Field>
 
-            <Field label="Alamat email" error={errors.email}>
+            <Field label={t('formEmail')} error={errors.email}>
               <input
                 type="email"
                 className={fieldClass}
-                placeholder="nama@perusahaan.com"
+                placeholder={t('formEmailPlaceholder')}
                 value={data.email}
                 onChange={(e) => setData('email', e.target.value)}
               />
@@ -115,7 +117,7 @@ export default function CollaborationForm() {
           </div>
 
           <div className="grid gap-8 md:grid-cols-2">
-            <Field label="Telepon (opsional)" error={errors.phone}>
+            <Field label={t('formPhone')} error={errors.phone}>
               <input
                 type="tel"
                 className={fieldClass}
@@ -125,27 +127,27 @@ export default function CollaborationForm() {
               />
             </Field>
 
-            <Field label="Layanan yang diminati" error={errors.interest}>
+            <Field label={t('formInterest')} error={errors.interest}>
               <select
                 className={fieldClass}
                 value={data.interest}
                 onChange={(e) => setData('interest', e.target.value)}
               >
-                <option value="">Pilih satu</option>
+                <option value="">{t('formChooseOne')}</option>
                 {interestOptions.map((option) => (
                   <option key={option.value} value={option.value}>
-                    {option.label}
+                    {option.value === 'other' ? t('otherOption') : option.label}
                   </option>
                 ))}
               </select>
             </Field>
           </div>
 
-          <Field label="Pesan Anda" error={errors.message}>
+          <Field label={t('formMessage')} error={errors.message}>
             <textarea
               rows={5}
               className={`${fieldClass} resize-none`}
-              placeholder="Ceritakan apa yang sedang Anda bangun."
+              placeholder={t('formMessagePlaceholder')}
               value={data.message}
               onChange={(e) => setData('message', e.target.value)}
             />
@@ -153,7 +155,7 @@ export default function CollaborationForm() {
 
           {whatsapp && Object.keys(errors).length > 0 && (
             <div role="alert" className="border-l-2 border-gold bg-sand px-5 py-4">
-              <p className="text-[14px] text-ink/80">Periksa kembali isian di atas.</p>
+              <p className="text-[14px] text-ink/80">{t('formCheckFields')}</p>
 
               <a
                 href={`https://wa.me/${whatsapp}`}
@@ -161,14 +163,14 @@ export default function CollaborationForm() {
                 rel="noreferrer noopener"
                 className="mt-3 inline-block text-[11px] font-medium uppercase tracking-[0.18em] text-gold"
               >
-                Hubungi via WhatsApp
+                {t('formContactWhatsapp')}
               </a>
             </div>
           )}
 
           <div className="flex flex-wrap items-center justify-between gap-6 pt-2">
             <Button type="submit" variant="solid" disabled={processing} className="disabled:opacity-50">
-              {processing ? 'Mengirim…' : get('home', 'form_cta_label', 'Kirim pesan')}
+              {processing ? t('formSending') : get('home', 'form_cta_label', 'Kirim pesan')}
             </Button>
 
             {whatsapp && (
@@ -178,7 +180,7 @@ export default function CollaborationForm() {
                 rel="noreferrer noopener"
                 className="border-b border-gold/40 pb-1 text-[11px] font-medium uppercase tracking-[0.18em] transition-colors hover:border-gold hover:text-gold"
               >
-                Atau langsung lewat WhatsApp
+                {t('formOrWhatsapp')}
               </a>
             )}
           </div>

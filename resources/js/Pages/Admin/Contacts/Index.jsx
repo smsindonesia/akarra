@@ -38,7 +38,7 @@ function ContactDetailModal({ contact, onClose }) {
           </div>
           <div>
             <p className="text-[11px] uppercase tracking-[0.14em] text-muted">Telepon</p>
-            <p className="mt-1 text-ink">{contact.phone || '—'}</p>
+            <p className="mt-1 text-ink">{contact.phone || 'Tidak ada'}</p>
           </div>
           <div>
             <p className="text-[11px] uppercase tracking-[0.14em] text-muted">Minat</p>
@@ -48,7 +48,7 @@ function ContactDetailModal({ contact, onClose }) {
 
         <div>
           <p className="text-[11px] uppercase tracking-[0.14em] text-muted">Subjek</p>
-          <p className="mt-1 text-[14px] text-ink">{contact.subject || '—'}</p>
+          <p className="mt-1 text-[14px] text-ink">{contact.subject || 'Tidak ada'}</p>
         </div>
 
         <div>
@@ -123,7 +123,7 @@ export default function ContactsIndex({ contacts, filters, unreadTotal }) {
         <select
           value={filters.interest ?? ''}
           onChange={(e) => updateFilter('interest', e.target.value)}
-          className="border-0 border-b border-ink/20 bg-transparent px-0 py-2 text-[14px] text-ink focus:border-gold focus:outline-none"
+          className="border-0 border-b border-ink/20 bg-transparent pl-0 pr-6 py-2 text-[14px] text-ink focus:border-gold focus:outline-none"
         >
           <option value="">Semua minat</option>
           {interestOptions.map((option) => (
@@ -136,7 +136,7 @@ export default function ContactsIndex({ contacts, filters, unreadTotal }) {
         <select
           value={filters.is_read ?? ''}
           onChange={(e) => updateFilter('is_read', e.target.value)}
-          className="border-0 border-b border-ink/20 bg-transparent px-0 py-2 text-[14px] text-ink focus:border-gold focus:outline-none"
+          className="border-0 border-b border-ink/20 bg-transparent pl-0 pr-6 py-2 text-[14px] text-ink focus:border-gold focus:outline-none"
         >
           <option value="">Semua status</option>
           <option value="0">Belum dibaca</option>
@@ -160,7 +160,7 @@ export default function ContactsIndex({ contacts, filters, unreadTotal }) {
                     <p className="flex items-center gap-2 text-[14px] text-ink">
                       {!contact.is_read && <span className="h-2 w-2 rounded-full bg-gold" aria-hidden="true" />}
                       <span className={contact.is_read ? 'font-normal' : 'font-medium'}>{contact.name}</span>
-                      <span className="text-muted">— {contact.interest_label}</span>
+                      <span className="text-muted">({contact.interest_label})</span>
                     </p>
                     <p className="mt-1 truncate text-[13px] text-muted">{contact.subject || contact.message}</p>
                   </div>

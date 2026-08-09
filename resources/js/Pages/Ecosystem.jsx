@@ -3,6 +3,8 @@ import { Head } from '@inertiajs/react'
 import Divider from '../components/atoms/Divider'
 import Eyebrow from '../components/atoms/Eyebrow'
 import Figure from '../components/atoms/Figure'
+import Icon, { pickIcon } from '../components/atoms/Icon'
+import filosofiLogo from '../../images/filosofi-logo.svg'
 import Paragraph from '../components/atoms/Paragraph'
 import ServiceCard from '../components/molecules/ServiceCard'
 import StatItem from '../components/molecules/StatItem'
@@ -36,7 +38,7 @@ export default function Ecosystem() {
 
   return (
     <>
-      <Head title={`Ecosystem — ${get('global', 'site_name', 'AKARRA')}`}>
+      <Head title={`Ecosystem | ${get('global', 'site_name', 'AKARRA')}`}>
         <meta name="description" content={get('ecosystem', 'hero_subtitle')} />
       </Head>
 
@@ -68,9 +70,15 @@ export default function Ecosystem() {
             eyebrow="Filosofi"
             title={get('ecosystem', 'philosophy_title')}
             body={get('ecosystem', 'philosophy_body')}
+            align="center"
+            className="mx-auto max-w-3xl"
           />
           <div className="mt-12">
-            <ValuesGrid items={list('ecosystem', 'philosophy_items')} columns={4} />
+            <img
+              src={filosofiLogo}
+              alt={get('ecosystem', 'philosophy_title')}
+              className="mx-auto w-full max-w-3xl"
+            />
           </div>
         </div>
       </section>
@@ -99,7 +107,7 @@ export default function Ecosystem() {
                 .slice(0, 2)
                 .map((value) => (
                   <div key={value.name} className="flex gap-4">
-                    <span className="mt-1 block h-5 w-5 shrink-0 bg-gold" aria-hidden="true" />
+                    <Icon name={pickIcon(value.name)} className="mt-1 h-5 w-5 shrink-0 text-gold" />
                     <div>
                       <h3 className="font-display text-base font-bold uppercase tracking-wide text-ink">
                         {value.name}

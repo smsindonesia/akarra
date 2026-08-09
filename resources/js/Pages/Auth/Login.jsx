@@ -22,7 +22,7 @@ export default function Login({ status }) {
 
       <div className="w-full max-w-sm">
         <div className="mb-10 flex flex-col items-center text-center">
-          <MandalaMark className="h-12 w-12 text-gold" strokeWidth={1.2} animated />
+          <MandalaMark className="h-12 w-12" animated />
           <h1 className="mt-6 font-display text-2xl font-light text-ink">Panel Admin AKARRA</h1>
           <p className="mt-2 text-[13px] text-muted">Masuk untuk mengelola konten situs.</p>
         </div>

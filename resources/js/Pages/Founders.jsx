@@ -3,6 +3,7 @@ import { Head } from '@inertiajs/react'
 import ClosingCta from '../components/organisms/ClosingCta'
 import Divider from '../components/atoms/Divider'
 import FounderCard from '../components/molecules/FounderCard'
+import Icon from '../components/atoms/Icon'
 import PageHero from '../components/organisms/PageHero'
 import PublicLayout from '../Layouts/PublicLayout'
 import useReveal from '../hooks/useReveal'
@@ -16,7 +17,7 @@ function PullQuote({ children }) {
   return (
     <section className="section">
       <blockquote ref={ref} className="reveal shell flex flex-col items-center gap-6 text-center">
-        <span className="block h-7 w-7 bg-gold" aria-hidden="true" />
+        <Icon name="quote" className="h-7 w-7 text-gold" />
         <p className="mx-auto max-w-3xl font-display text-3xl font-normal leading-[1.35] md:text-4xl">
           “{children}”
         </p>
@@ -32,7 +33,7 @@ export default function Founders() {
 
   return (
     <>
-      <Head title={`Founders — ${get('global', 'site_name', 'AKARRA')}`}>
+      <Head title={`Founders | ${get('global', 'site_name', 'AKARRA')}`}>
         <meta name="description" content={get('founders', 'hero_subtitle')} />
       </Head>
 

@@ -17,7 +17,7 @@ export const fallbackContent = {
     phone: '',
     whatsapp: '',
     email: '',
-    office_hours: 'Senin–Jumat, 09.00–17.00 WIB',
+    office_hours: 'Senin sampai Jumat, pukul 09.00 s.d. 17.00 WIB',
     social: [
       { platform: 'instagram', url: '', label: 'Instagram' },
       { platform: 'tiktok', url: '', label: 'TikTok' },
@@ -27,6 +27,7 @@ export const fallbackContent = {
       { label: 'Ecosystem', path: '/ecosystem' },
       { label: 'Products', path: '/products' },
       { label: 'Services', path: '/services' },
+      { label: 'Articles', path: '/articles' },
       { label: 'Founders', path: '/founders' },
     ],
     nav_cta_label: 'Start a Conversation',
@@ -46,7 +47,7 @@ export const fallbackContent = {
     narrative_title: 'Membangun Warisan, Bukan Sekadar Bisnis',
     narrative_body:
       'AKARRA bergerak di industri fashion, desain kreatif, event, dan periklanan digital. Melalui tiga pilar utama, kami tidak hanya menjual produk, tetapi membangun identitas dan dampak nyata bagi komunitas fashion dan kreatif Indonesia.',
-    narrative_image: '',
+    narrative_image: '/images/content/home-narrative.jpg',
     narrative_quote:
       'We believe that true prestige is found in the intersection of mathematical precision and artistic soul. Our journey is about creating impact that resonates across generations.',
     narrative_quote_attribution: 'The Founders of AKARRA',
@@ -71,33 +72,33 @@ export const fallbackContent = {
       {
         title: 'Bespoke Collection',
         body: 'Made-to-measure excellence for the modern executive.',
-        image: '',
+        image: '/images/content/home-solution-bespoke-collection.jpg',
         category: 'Fashion',
       },
       {
         title: 'Signature Textiles',
         body: 'Ethically sourced, world-class fabric curation.',
-        image: '',
+        image: '/images/content/home-solution-signature-textiles.jpg',
         category: 'Fashion',
       },
       {
         title: 'Visual Storytelling',
         body: 'Narasi visual yang membangun kedekatan emosional dengan audiens.',
-        image: '',
+        image: '/images/content/home-solution-visual-storytelling.jpg',
         category: 'Creative',
       },
       {
         title: 'Brand Positioning',
         body: 'Strategi penempatan brand yang tajam dan terukur di pasar digital.',
-        image: '',
+        image: '/images/content/home-solution-brand-positioning.jpg',
         category: 'Advertising',
       },
     ],
 
     story_title: 'Cerita di Balik AKARRA',
     story_body:
-      'Kami percaya setiap brand memiliki cerita yang layak diceritakan dengan elegan. Bersama kami, Anda tidak hanya membangun bisnis — Anda membangun warisan.',
-    story_image: '',
+      'Kami percaya setiap brand memiliki cerita yang layak diceritakan dengan elegan. Bersama kami, Anda tidak hanya membangun bisnis, tetapi juga membangun warisan.',
+    story_image: '/images/content/home-story.jpg',
 
     founders_title: 'Meet the Founders',
     founders_subtitle: 'Dua orang di balik arah dan standar AKARRA.',
@@ -120,7 +121,7 @@ export const fallbackContent = {
 
     philosophy_title: 'Filosofi Nama & Logo',
     philosophy_body:
-      'Logo AKARRA terinspirasi dari geometri berlian dan mandala tradisional — perpaduan antara kemewahan modern dan kearifan lokal.',
+      'Logo AKARRA terinspirasi dari geometri berlian dan mandala tradisional, perpaduan antara kemewahan modern dan kearifan lokal.',
     philosophy_items: [
       { title: 'Berlian & Kemewahan', body: 'Struktur geometris berlian mencerminkan kualitas premium dan eksklusivitas.' },
       { title: 'Energi & Dinamisme', body: 'Segitiga yang saling bertautan melambangkan inovasi dan kolaborasi.' },
@@ -131,7 +132,7 @@ export const fallbackContent = {
     standard_title: 'The AKARRA Standard',
     standard_body:
       'Standar tertinggi di setiap produk dan layanan, sesuai nilai Excellence dan Elegance yang kami pegang.',
-    standard_image: '',
+    standard_image: '/images/content/ecosystem-standard.jpg',
     values: [
       { name: 'Excellence', label: 'Keunggulan', body: 'Standar tertinggi dalam setiap produk dan layanan.' },
       { name: 'Integrity', label: 'Integritas', body: 'Transparansi dan kepercayaan di setiap kemitraan.' },
@@ -163,14 +164,14 @@ export const fallbackContent = {
     hero_title: 'The Artifacts of Excellence',
     hero_title_emphasis: 'Excellence',
     hero_subtitle:
-      "Explore AKARRA's product ecosystem — where high-performance logic meets artisanal craftsmanship. Our solutions are designed for those who demand uncompromising results.",
+      "Explore AKARRA's product ecosystem, where high-performance logic meets artisanal craftsmanship. Our solutions are designed for those who demand uncompromising results.",
 
     textile_title: 'Textile Engineering & Fashion',
     textile_body:
       'Precision-tailored garments that redefine high-net-worth identity through rare fibers and architectural silhouettes.',
     items: [
-      { name: 'The Meridian Suite', label: 'Limited Release 01', image: '', tag: 'Reserve' },
-      { name: 'Artisanal Accents', label: 'Fiber Innovation', image: '', tag: 'Explore' },
+      { name: 'The Meridian Suite', label: 'Limited Release 01', image: '/images/content/product-meridian-suite.jpg', tag: 'Reserve' },
+      { name: 'Artisanal Accents', label: 'Fiber Innovation', image: '/images/content/product-artisanal-accents.jpg', tag: 'Explore' },
     ],
 
     labs_title: 'AKARRA Labs',
@@ -190,7 +191,7 @@ export const fallbackContent = {
       label: 'Experimental Case 042',
       title: 'Spatial Intelligence',
       body: 'Revolutionizing human-interface interaction through biological feedback loops and predictive spatial modeling.',
-      image: '',
+      image: '/images/content/product-whitepaper-spatial-intelligence.jpg',
     },
 
     digital_title: 'Strategic Dominance in Digital Realms',
@@ -221,8 +222,8 @@ export const fallbackContent = {
   services: {
     hero_title: 'Architecting Excellence.',
     hero_title_emphasis: 'Excellence',
-    hero_subtitle: 'Apa yang kami kerjakan bersama Anda — dari ide pertama hingga brand yang dikenal.',
-    hero_image: '',
+    hero_subtitle: 'Apa yang kami kerjakan bersama Anda, dari ide pertama hingga brand yang dikenal.',
+    hero_image: '/images/content/services-hero.jpg',
 
     hero_eyebrow: 'Our Capabilities',
 
@@ -245,7 +246,7 @@ export const fallbackContent = {
             bullets: ['Ethical Sourcing', 'QC Management'],
           },
         ],
-        image: '',
+        image: '/images/content/services-pillar-fashionpreneur.jpg',
       },
       {
         name: 'Creative Labs',
@@ -265,7 +266,7 @@ export const fallbackContent = {
             bullets: ['Spatial Design', 'Guest Curation'],
           },
         ],
-        image: '',
+        image: '/images/content/services-pillar-creative-labs.jpg',
       },
       {
         name: 'Advertising',
@@ -325,17 +326,17 @@ export const fallbackContent = {
         name: 'Febri Khoirul Imam',
         role: 'Direktur Utama',
         body: 'With over two decades of experience in strategic investment and institutional management, Febri Khoirul Imam leads AKARRA with a focus on structural resilience and long-term capital preservation. His background in global financial markets provides the analytical backbone for AKARRA’s most ambitious ecosystems.',
-        portrait: '',
+        portrait: '/images/content/founder-febri-portrait.jpg',
         quote:
           'Legacy is not what we leave for people, it is what we leave within them. At AKARRA, we build the frameworks where that impact can endure.',
         legacy_body:
-          'Febri believes that building a legacy requires more than just financial success; it requires a commitment to excellence in every detail. His philosophy centers on ‘Integrated Stewardship’ — the belief that wealth and influence must be managed as a cohesive, purposeful whole.',
+          'Febri believes that building a legacy requires more than just financial success; it requires a commitment to excellence in every detail. His philosophy centers on ‘Integrated Stewardship,’ the belief that wealth and influence must be managed as a cohesive, purposeful whole.',
       },
       {
         name: 'Nanda Fifia Putri',
         role: 'Komisaris',
         body: 'Nanda Fifia Putri brings a refined perspective to AKARRA’s board, specializing in brand heritage and philanthropic governance. Her career has been defined by the intersection of high-culture and high-finance, ensuring that AKARRA’s products and services maintain their soul as they scale.',
-        portrait: '',
+        portrait: '/images/content/founder-nanda-portrait.jpg',
         quote:
           'Visionary leadership is about seeing the invisible threads that connect today’s decisions to tomorrow’s heritage.',
         legacy_body:

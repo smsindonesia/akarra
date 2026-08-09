@@ -113,10 +113,10 @@
 .reveal[data-delay='3'] { transition-delay: 240ms; }
 .reveal[data-delay='4'] { transition-delay: 320ms; }
 
-/* Motif mandala menggambar dirinya sendiri di layar pembuka. */
+/* Motif mandala (logo) muncul perlahan di layar pembuka/loading. */
 @keyframes draw-mark {
-  from { stroke-dashoffset: 1; }
-  to { stroke-dashoffset: 0; }
+  from { opacity: 0; transform: scale(0.85) rotate(-6deg); }
+  to { opacity: 1; transform: none; }
 }
 
 @keyframes fade-up {
@@ -135,8 +135,7 @@
 }
 
 .animate-draw-mark {
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
+  opacity: 0;
   animation: draw-mark 1.4s var(--ease-editorial) forwards;
 }
 
@@ -197,6 +196,6 @@
   .animate-sweep,
   .animate-drift {
     animation: none;
-    stroke-dashoffset: 0;
+    opacity: 1;
   }
 }

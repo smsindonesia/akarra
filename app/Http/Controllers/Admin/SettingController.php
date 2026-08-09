@@ -7,6 +7,7 @@ use App\Http\Requests\Setting\UpdateSettingRequest;
 use App\Models\Setting;
 use App\Services\HtmlSanitizerService;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -15,11 +16,19 @@ class SettingController extends Controller
 {
     public function __construct(private readonly HtmlSanitizerService $sanitizer) {}
 
-    public function index(): Response
+    public function index(Request $request): Response
     {
+        $groups = config('akarra.setting_groups');
+        $activeGroup = $request->query('group');
+
+        if (! in_array($activeGroup, $groups, true)) {
+            $activeGroup = $groups[0];
+        }
+
         return Inertia::render('Admin/Settings/Index', [
             'settings' => Setting::grouped(),
-            'groups' => config('akarra.setting_groups'),
+            'groups' => $groups,
+            'activeGroup' => $activeGroup,
         ]);
     }
 

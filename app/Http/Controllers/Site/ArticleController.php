@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Site;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Inertia\Inertia;
 use Inertia\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -27,6 +28,7 @@ class ArticleController extends Controller
         return Inertia::render('Articles/Index', [
             'articles' => $articles,
             'filters' => $request->only(['category', 'search']),
+            'canonicalUrl' => route('articles.index'),
         ]);
     }
 
@@ -52,6 +54,21 @@ class ArticleController extends Controller
         return Inertia::render('Articles/Show', [
             'article' => $article,
             'related' => $related,
+            'canonicalUrl' => route('articles.show', $article),
+            'coverImageUrl' => $this->absoluteUrl($article->cover_image),
         ]);
+    }
+
+    /**
+     * cover_image normalnya sudah URL penuh (dari UploadService), tapi
+     * dijaga di sini kalau-kalau tersimpan sebagai path relatif.
+     */
+    private function absoluteUrl(?string $path): ?string
+    {
+        if (blank($path)) {
+            return null;
+        }
+
+        return Str::startsWith($path, ['http://', 'https://']) ? $path : url($path);
     }
 }

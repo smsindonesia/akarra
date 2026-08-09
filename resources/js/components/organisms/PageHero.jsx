@@ -26,19 +26,21 @@ export default function PageHero({
   divider = false,
 }) {
   const isLanding = variant === 'landing'
+  // Tinggi penuh layar hanya masuk akal kalau ada foto di bawahnya yang perlu
+  // didorong keluar layar pertama (lihat blok `image` di bawah) — tanpa itu,
+  // halaman tanpa foto (Ecosystem/Products/Founders) jadi terasa kosong kalau
+  // dipaksa penuh satu layar juga.
+  const hasTrailingImage = Boolean(image) && !isLanding
 
   return (
     <section
       className={`relative overflow-hidden ${
-        isLanding ? 'flex min-h-[92vh] items-center pt-24' : 'pt-40 pb-20 md:pt-48 md:pb-28'
+        isLanding ? 'flex min-h-[clamp(560px,88vh,880px)] items-center pt-24' : 'pb-20 md:pb-28'
       }`}
     >
       {/* Motif mandala di latar, sangat samar. Salah satu dari empat tempat
           motif ini boleh muncul. */}
-      <MandalaMark
-        className="animate-drift pointer-events-none absolute -right-24 top-1/4 h-[34rem] w-[34rem] text-gold/[0.055] md:-right-16"
-        strokeWidth={0.5}
-      />
+      <MandalaMark className="animate-drift pointer-events-none absolute -right-24 top-1/4 h-[34rem] w-[34rem] opacity-[0.055] md:-right-16" />
 
       {isLanding && (
         <>
@@ -53,7 +55,15 @@ export default function PageHero({
         </>
       )}
 
-      <div className={`shell relative ${isLanding ? '' : 'text-center'}`}>
+      <div
+        className={`shell relative ${
+          isLanding
+            ? ''
+            : hasTrailingImage
+              ? 'flex min-h-screen items-center justify-center pt-24 text-center'
+              : 'flex min-h-[clamp(420px,58vh,620px)] items-center justify-center pt-24 text-center'
+        }`}
+      >
         <div className={isLanding ? 'max-w-3xl' : 'mx-auto max-w-3xl'}>
           {eyebrow && (
             <div className="animate-fade-up">
@@ -107,8 +117,8 @@ export default function PageHero({
       </div>
 
       {image && !isLanding && (
-        <div className="shell mt-16">
-          <Figure src={image} alt={title} ratio="aspect-[16/7]" />
+        <div className="mt-12 md:mt-16">
+          <Figure src={image} alt={title} ratio="aspect-[16/9]" className="min-h-[260px] max-h-[70vh]" />
         </div>
       )}
     </section>

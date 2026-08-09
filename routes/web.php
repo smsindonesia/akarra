@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Site\ArticleController;
 use App\Http\Controllers\Site\ContactController;
 use App\Http\Controllers\Site\PageController;
+use App\Http\Controllers\Site\SitemapController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -34,6 +35,19 @@ Route::get('/articles/{article:slug}', [ArticleController::class, 'show'])->name
 Route::post('/contacts', [ContactController::class, 'store'])
     ->middleware('throttle:5,1')
     ->name('contacts.store');
+
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
+
+Route::get('/robots.txt', function () {
+    $lines = [
+        'User-agent: *',
+        'Allow: /',
+        'Disallow: /admin',
+        'Sitemap: '.route('sitemap'),
+    ];
+
+    return response(implode("\n", $lines), 200)->header('Content-Type', 'text/plain');
+})->name('robots');
 
 require __DIR__.'/auth.php';
 

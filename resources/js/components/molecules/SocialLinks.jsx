@@ -11,7 +11,7 @@ export default function SocialLinks({ items = [] }) {
             href={item.url}
             target="_blank"
             rel="noreferrer noopener"
-            className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted transition-colors hover:text-gold"
+            className="text-[11px] font-medium uppercase tracking-[0.18em] text-ivory-soft transition-colors hover:text-accent-invert"
           >
             {item.label ?? item.platform}
           </a>

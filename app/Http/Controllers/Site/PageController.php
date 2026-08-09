@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Models\Article;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -17,7 +18,16 @@ class PageController extends Controller
 {
     public function home(): Response
     {
-        return Inertia::render('Home');
+        return Inertia::render('Home', [
+            // Artikel bukan bagian dari 'settings' yang dibagikan global,
+            // jadi pratinjau artikel di beranda butuh prop sendiri di sini.
+            'latestArticles' => Article::query()
+                ->published()
+                ->with('category')
+                ->latest('published_at')
+                ->take(3)
+                ->get(),
+        ]);
     }
 
     public function ecosystem(): Response

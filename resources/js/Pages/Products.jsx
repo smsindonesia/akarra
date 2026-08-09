@@ -4,6 +4,7 @@ import ClosingCta from '../components/organisms/ClosingCta'
 import Divider from '../components/atoms/Divider'
 import Figure from '../components/atoms/Figure'
 import Eyebrow from '../components/atoms/Eyebrow'
+import Icon, { pickIcon } from '../components/atoms/Icon'
 import Button from '../components/atoms/Button'
 import ProductCard from '../components/molecules/ProductCard'
 import SectionHead from '../components/molecules/SectionHead'
@@ -15,8 +16,8 @@ import { useContent } from '../hooks/useContent'
 
 function LabsCard({ title, body, large = false }) {
   return (
-    <div className={`border border-line/50 bg-sand p-8 md:p-10 ${large ? '' : ''}`}>
-      <span className="block h-7 w-7 bg-gold" aria-hidden="true" />
+    <div className={`flex flex-col items-center border border-line/50 bg-sand p-8 text-center md:p-10 ${large ? '' : ''}`}>
+      <Icon name={pickIcon(title)} className="h-10 w-10 text-gold md:h-12 md:w-12" />
       <h3 className="mt-6 font-display text-2xl font-normal text-ink">{title}</h3>
       <p className="mt-3 max-w-xs text-[14px] leading-[1.7] text-muted">{body}</p>
     </div>
@@ -33,7 +34,7 @@ export default function Products() {
 
   return (
     <>
-      <Head title={`Products — ${get('global', 'site_name', 'AKARRA')}`}>
+      <Head title={`Products | ${get('global', 'site_name', 'AKARRA')}`}>
         <meta name="description" content={get('products', 'hero_subtitle')} />
       </Head>
 

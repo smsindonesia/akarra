@@ -6,6 +6,7 @@ import Button from '../../../components/atoms/Button'
 import Field, { fieldClass } from '../../../components/atoms/Field'
 import AdminLayout from '../../../Layouts/AdminLayout'
 import api from '../../../lib/api'
+import { isValidUploadResponse, validateUploadFile } from '../../../lib/upload'
 
 /** yyyy-MM-ddThh:mm, format yang dipahami <input type="datetime-local">. */
 function toDatetimeLocal(iso) {
@@ -37,6 +38,13 @@ export default function ArticleForm({ article, categories }) {
     const file = event.target.files?.[0]
     if (!file) return
 
+    const sizeError = validateUploadFile(file)
+    if (sizeError) {
+      setUploadFailure(sizeError)
+      event.target.value = ''
+      return
+    }
+
     setCoverUploading(true)
     setUploadFailure(null)
 
@@ -46,6 +54,12 @@ export default function ArticleForm({ article, categories }) {
 
     try {
       const { data: uploaded } = await api.post('/admin/upload', formData)
+
+      if (!isValidUploadResponse(uploaded)) {
+        setUploadFailure('Gagal mengunggah gambar sampul. Coba lagi.')
+        return
+      }
+
       setData('cover_image', uploaded.url)
     } catch {
       setUploadFailure('Gagal mengunggah gambar sampul.')

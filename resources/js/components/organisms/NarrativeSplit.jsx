@@ -51,7 +51,7 @@ export default function NarrativeSplit({
               <p className="text-[15px] leading-[1.85] text-ink">&ldquo;{quote}&rdquo;</p>
               {quoteAttribution && (
                 <cite className="mt-4 block text-[11px] font-medium not-italic uppercase tracking-[0.18em] text-gold">
-                  — {quoteAttribution}
+                  {quoteAttribution}
                 </cite>
               )}
             </blockquote>

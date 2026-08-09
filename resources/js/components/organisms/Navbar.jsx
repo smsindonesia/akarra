@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react'
 
 import Button from '../atoms/Button'
+import LanguageToggle from '../atoms/LanguageToggle'
 import Logo from '../atoms/Logo'
 import MobileDrawer from '../molecules/MobileDrawer'
 import NavLinks from '../molecules/NavLinks'
+import { useLanguage } from '../../context/LanguageContext'
 import { useContent } from '../../hooks/useContent'
 
 export default function Navbar() {
   const { list, get } = useContent()
+  const { t } = useLanguage()
   const [scrolled, setScrolled] = useState(false)
   const [drawerOpen, setDrawerOpen] = useState(false)
 
@@ -32,12 +35,13 @@ export default function Navbar() {
         <div className="shell flex h-20 items-center justify-between">
           <Logo />
 
-          <nav className="hidden items-center gap-10 md:flex" aria-label="Navigasi utama">
+          <nav className="hidden items-center gap-6 lg:flex xl:gap-8" aria-label={t('mainNavigation')}>
             <NavLinks items={items} />
           </nav>
 
-          <div className="hidden md:block">
-            <Button to="/#kolaborasi" variant="outline" className="h-11">
+          <div className="hidden items-center gap-4 lg:flex xl:gap-5">
+            <LanguageToggle />
+            <Button to="/#kolaborasi" variant="outline" className="!min-h-0 !gap-1.5 !px-4 !py-2.5 !text-[10px]">
               {ctaLabel}
             </Button>
           </div>
@@ -45,8 +49,8 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => setDrawerOpen(true)}
-            aria-label="Buka menu"
-            className="-mr-3 grid h-11 w-11 place-items-center md:hidden"
+            aria-label={t('openMenu')}
+            className="-mr-3 grid h-11 w-11 place-items-center lg:hidden"
           >
             <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.2">
               <path d="M3 7h18M3 17h18" />

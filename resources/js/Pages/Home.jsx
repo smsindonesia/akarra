@@ -1,7 +1,8 @@
 import { Head } from '@inertiajs/react'
 
+import ArticlesPreview from '../components/organisms/ArticlesPreview'
 import CollaborationForm from '../components/organisms/CollaborationForm'
-import FoundersPreview from '../components/organisms/FoundersPreview'
+import GalleryPreview from '../components/organisms/GalleryPreview'
 import NarrativeSplit from '../components/organisms/NarrativeSplit'
 import PageHero from '../components/organisms/PageHero'
 import ServicesEcosystem from '../components/organisms/ServicesEcosystem'
@@ -19,12 +20,13 @@ import { useContent } from '../hooks/useContent'
  * tombol di navbar sudah cukup — pengulangan merusak ketenangan yang jadi
  * sumber kesan mewah di desain ini.
  */
-export default function Home() {
+export default function Home({ latestArticles = [] }) {
   const { get, list } = useContent()
 
   const solutions = list('home', 'solutions')
   const pillars = list('services', 'pillars')
   const values = list('home', 'values')
+  const galleryPreviewImages = pillars.slice(0, 2).flatMap((pillar) => pillar.gallery ?? [])
 
   return (
     <>
@@ -82,11 +84,9 @@ export default function Home() {
         image={get('home', 'story_image')}
       />
 
-      <FoundersPreview
-        title={get('home', 'founders_title')}
-        subtitle={get('home', 'founders_subtitle')}
-        people={list('founders', 'people')}
-      />
+      <GalleryPreview images={galleryPreviewImages} />
+
+      <ArticlesPreview articles={latestArticles} />
 
       <CollaborationForm />
     </>

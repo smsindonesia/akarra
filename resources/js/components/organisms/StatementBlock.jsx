@@ -65,10 +65,7 @@ export default function StatementBlock({
                   <li key={index} className="flex gap-5 border-t border-ivory/10 pt-5">
                     {/* Motif kecil sebagai penanda daftar — tempat keempat dan
                         terakhir motif mandala muncul di situs ini. */}
-                    <MandalaMark
-                      className="mt-1.5 h-3.5 w-3.5 shrink-0 text-accent-invert"
-                      strokeWidth={2.5}
-                    />
+                    <MandalaMark className="mt-1.5 h-3.5 w-3.5 shrink-0" />
                     <span className="text-[15px] leading-[1.85] text-ivory-soft">
                       {typeof item === 'string' ? item : item.body ?? item.title}
                     </span>
