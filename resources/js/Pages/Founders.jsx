@@ -91,7 +91,7 @@ export default function Founders() {
         subtitle={get('founders', 'cta_subtitle')}
         label={get('founders', 'cta_label')}
         secondaryLabel={get('founders', 'cta_secondary_label')}
-        secondaryTo="/ecosystem"
+        secondaryTo={route('ecosystem')}
       />
     </>
   )

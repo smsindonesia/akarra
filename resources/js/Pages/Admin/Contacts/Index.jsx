@@ -11,17 +11,17 @@ function ContactDetailModal({ contact, onClose }) {
   // Membuka detail otomatis menandainya sudah dibaca, seperti perilaku semula.
   useEffect(() => {
     if (!contact.is_read) {
-      router.patch(`/admin/contacts/${contact.id}/read`, {}, { preserveScroll: true, preserveState: true })
+      router.patch(route('admin.contacts.toggle-read', contact.id), {}, { preserveScroll: true, preserveState: true })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [contact.id])
 
   const toggleRead = () => {
-    router.patch(`/admin/contacts/${contact.id}/read`, {}, { preserveScroll: true })
+    router.patch(route('admin.contacts.toggle-read', contact.id), {}, { preserveScroll: true })
   }
 
   const destroy = () => {
-    router.delete(`/admin/contacts/${contact.id}`, { preserveScroll: true, onSuccess: onClose })
+    router.delete(route('admin.contacts.destroy', contact.id), { preserveScroll: true, onSuccess: onClose })
   }
 
   return (
@@ -85,14 +85,14 @@ export default function ContactsIndex({ contacts, filters, unreadTotal }) {
 
   const updateFilter = (key, value) => {
     router.get(
-      '/admin/contacts',
+      route('admin.contacts.index'),
       { ...filters, [key]: value === '' ? undefined : value, page: undefined },
       { preserveState: true, replace: true },
     )
   }
 
   const goToPage = (page) => {
-    router.get('/admin/contacts', { ...filters, page }, { preserveState: true })
+    router.get(route('admin.contacts.index'), { ...filters, page }, { preserveState: true })
   }
 
   return (

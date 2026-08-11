@@ -5,7 +5,6 @@ import Display from '../atoms/Display'
 import Figure from '../atoms/Figure'
 import Paragraph from '../atoms/Paragraph'
 import SectionHead from '../molecules/SectionHead'
-import useReveal from '../../hooks/useReveal'
 import { useLanguage } from '../../context/LanguageContext'
 
 /**
@@ -14,7 +13,6 @@ import { useLanguage } from '../../context/LanguageContext'
  * begitu pengunjung berpindah dari sini ke daftar artikel penuh.
  */
 export default function ArticlesPreview({ articles = [] }) {
-  const ref = useReveal()
   const { t } = useLanguage()
 
   if (articles.length === 0) return null
@@ -24,9 +22,9 @@ export default function ArticlesPreview({ articles = [] }) {
       <div className="shell">
         <SectionHead title={t('homeArticlesTitle')} align="center" eyebrow={t('homeArticlesEyebrow')} />
 
-        <div ref={ref} className="reveal mt-16 grid gap-14 md:grid-cols-3 md:gap-12">
+        <div className="mt-16 grid gap-14 md:grid-cols-3 md:gap-12">
           {articles.map((article) => (
-            <Link key={article.id} href={`/articles/${article.slug}`} className="group block">
+            <Link key={article.id} href={route('articles.show', article.slug)} className="group block">
               <Figure src={article.cover_image} alt={article.title} ratio="aspect-[4/3]" />
 
               {article.category && (
@@ -45,7 +43,7 @@ export default function ArticlesPreview({ articles = [] }) {
         </div>
 
         <div className="mt-16 flex justify-center">
-          <Button to="/articles" variant="quiet">
+          <Button to={route('articles.index')} variant="quiet">
             {t('homeArticlesCta')}
           </Button>
         </div>

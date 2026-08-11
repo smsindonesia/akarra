@@ -1,6 +1,5 @@
 import SectionHead from '../molecules/SectionHead'
 import ValueCard from '../molecules/ValueCard'
-import useReveal from '../../hooks/useReveal'
 
 /**
  * Baris kartu nilai. Dipakai di beranda (4 nilai inti) dan halaman Ecosystem
@@ -8,8 +7,6 @@ import useReveal from '../../hooks/useReveal'
  * panjang `items`.
  */
 export default function ValuesGrid({ eyebrow, title, subtitle, items = [], align = 'left', columns = 4 }) {
-  const ref = useReveal()
-
   if (items.length === 0) return null
 
   const cols = {
@@ -24,7 +21,7 @@ export default function ValuesGrid({ eyebrow, title, subtitle, items = [], align
         <SectionHead eyebrow={eyebrow} title={title} body={subtitle} align={align} />
       )}
 
-      <div ref={ref} className={`reveal mt-12 grid gap-6 ${cols[columns] ?? cols[4]}`}>
+      <div className={`mt-12 grid gap-6 ${cols[columns] ?? cols[4]}`}>
         {items.map((item) => (
           <ValueCard
             key={item.name ?? item.title}

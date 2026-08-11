@@ -2,7 +2,6 @@ import { useMemo, useState } from 'react'
 
 import SectionHead from '../molecules/SectionHead'
 import SolutionCard from '../molecules/SolutionCard'
-import useReveal from '../../hooks/useReveal'
 
 /**
  * "Curated Solutions" — grid dengan tab kategori (Fashion/Creative/
@@ -10,7 +9,6 @@ import useReveal from '../../hooks/useReveal'
  * punya lebih dari satu kategori; jika tidak, semua item tetap tampil.
  */
 export default function SolutionsGrid({ title, subtitle, items = [] }) {
-  const ref = useReveal()
   const categories = useMemo(
     () => [...new Set(items.map((item) => item.category).filter(Boolean))],
     [items],
@@ -43,7 +41,7 @@ export default function SolutionsGrid({ title, subtitle, items = [] }) {
           </div>
         )}
 
-        <div ref={ref} className="reveal mt-14 grid gap-10 md:grid-cols-2 md:gap-10">
+        <div className="mt-14 grid gap-10 md:grid-cols-2 md:gap-10">
           {visible.map((item) => (
             <SolutionCard key={item.title} title={item.title} body={item.body} image={item.image} />
           ))}

@@ -20,9 +20,9 @@ function CategoryFormModal({ category, onClose }) {
     const options = { preserveScroll: true, onSuccess: onClose }
 
     if (isEditing) {
-      put(`/admin/categories/${category.slug}`, options)
+      put(route('admin.categories.update', category.slug), options)
     } else {
-      post('/admin/categories', options)
+      post(route('admin.categories.store'), options)
     }
   }
 
@@ -64,7 +64,7 @@ function DeleteCategoryModal({ category, onClose }) {
   const { delete: destroy, processing, errors } = useForm()
 
   const submit = () => {
-    destroy(`/admin/categories/${category.slug}`, { preserveScroll: true, onSuccess: onClose })
+    destroy(route('admin.categories.destroy', category.slug), { preserveScroll: true, onSuccess: onClose })
   }
 
   return (
@@ -117,7 +117,8 @@ export default function CategoriesIndex({ categories }) {
         {categories.length === 0 && <p className="text-[14px] text-muted">Belum ada kategori.</p>}
 
         {categories.length > 0 && (
-          <table className="w-full border-collapse text-left">
+          <div className="overflow-x-auto">
+          <table className="w-full min-w-[480px] border-collapse text-left">
             <thead>
               <tr className="border-b border-ink/15 text-[11px] font-medium uppercase tracking-[0.14em] text-muted">
                 <th className="pb-3">Nama</th>
@@ -152,6 +153,7 @@ export default function CategoriesIndex({ categories }) {
               ))}
             </tbody>
           </table>
+          </div>
         )}
       </div>
 

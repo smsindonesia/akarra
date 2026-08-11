@@ -3,9 +3,19 @@ import ImageField from './ImageField'
 import { fieldClass } from '../atoms/Field'
 
 const IMAGE_KEY_PATTERN = /image|photo|portrait|logo|favicon|cover/i
+const VIDEO_KEY_PATTERN = /video/i
+const GALLERY_KEY_PATTERN = /gallery/i
 
 export function isImageKey(key) {
   return IMAGE_KEY_PATTERN.test(key)
+}
+
+export function isVideoKey(key) {
+  return VIDEO_KEY_PATTERN.test(key)
+}
+
+export function isGalleryKey(key) {
+  return GALLERY_KEY_PATTERN.test(key)
 }
 
 /**
@@ -126,9 +136,9 @@ function ItemFields({ item, onChange }) {
           return <PlainField key={subKey} label={subKey} value={subValue} onChange={set} />
         }
 
-        // Galeri foto pilar: field spesifik ini butuh UI multi-slot dengan
-        // unggah/ganti/hapus per foto, beda dari daftar string biasa.
-        if (subKey === 'gallery' && Array.isArray(subValue)) {
+        // Galeri foto: field ini butuh UI multi-slot dengan unggah/ganti/hapus
+        // per foto, beda dari daftar string biasa.
+        if (isGalleryKey(subKey) && Array.isArray(subValue)) {
           return <GalleryField key={subKey} value={subValue} onChange={set} />
         }
 

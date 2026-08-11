@@ -15,7 +15,7 @@ export default function ClosingCta({
   title,
   subtitle,
   label,
-  to = '/#kolaborasi',
+  to = `${route('home')}#kolaborasi`,
   secondaryLabel,
   secondaryTo,
   tone = 'dark',

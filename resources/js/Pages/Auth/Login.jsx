@@ -13,11 +13,11 @@ export default function Login({ status }) {
 
   const onSubmit = (event) => {
     event.preventDefault()
-    post('/admin/login')
+    post(route('login.store'))
   }
 
   return (
-    <div className="grid min-h-screen place-items-center bg-canvas px-6">
+    <div className="grid min-h-dvh place-items-center bg-canvas px-6">
       <Head title="Masuk Admin" />
 
       <div className="w-full max-w-sm">

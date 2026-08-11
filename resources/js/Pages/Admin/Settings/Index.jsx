@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 import { Head, router } from '@inertiajs/react'
 
+import GalleryField from '../../../components/admin/GalleryField'
 import ImageField from '../../../components/admin/ImageField'
-import MediaListField, { isImageKey, isStructurable } from '../../../components/admin/MediaListField'
+import VideoField from '../../../components/admin/VideoField'
+import MediaListField, { isImageKey, isVideoKey, isGalleryKey, isStructurable } from '../../../components/admin/MediaListField'
 import Button from '../../../components/atoms/Button'
 import { fieldClass } from '../../../components/atoms/Field'
 import AdminLayout from '../../../Layouts/AdminLayout'
@@ -37,6 +39,27 @@ function FieldEditor({ fieldKey, field, onUpdate }) {
 
   if (field.type === 'string' && isImageKey(fieldKey)) {
     return <ImageField value={field.value} onChange={(url) => onUpdate({ value: url })} label={fieldKey} />
+  }
+
+  if (field.type === 'string' && isVideoKey(fieldKey)) {
+    return <VideoField value={field.value} onChange={(url) => onUpdate({ value: url })} label={fieldKey} />
+  }
+
+  if (field.type === 'json' && isGalleryKey(fieldKey)) {
+    let photos = []
+    try {
+      const parsed = JSON.parse(field.value)
+      if (Array.isArray(parsed)) photos = parsed
+    } catch {
+      photos = []
+    }
+
+    return (
+      <GalleryField
+        value={photos}
+        onChange={(next) => onUpdate({ value: JSON.stringify(next, null, 2), error: null })}
+      />
+    )
   }
 
   if (field.type === 'boolean') {
@@ -165,7 +188,12 @@ function NewFieldForm({ onAdd }) {
   )
 }
 
-export default function SettingsIndex({ settings, activeGroup }) {
+const LOCALES = [
+  { value: 'id', label: 'Indonesia' },
+  { value: 'en', label: 'English' },
+]
+
+export default function SettingsIndex({ settings, activeGroup, activeLocale }) {
   const [draft, setDraft] = useState(() => buildDraft(settings[activeGroup]))
   const [saving, setSaving] = useState(false)
   const [savedMessage, setSavedMessage] = useState(null)
@@ -187,9 +215,11 @@ export default function SettingsIndex({ settings, activeGroup }) {
   // beberapa grup) atau menyelipkan field asing yang tidak pernah tersimpan.
   const activeGroupRef = useRef(activeGroup)
   activeGroupRef.current = activeGroup
+  const activeLocaleRef = useRef(activeLocale)
+  activeLocaleRef.current = activeLocale
 
-  const updateField = (group, key, patch) => {
-    if (group !== activeGroupRef.current) return
+  const updateField = (group, locale, key, patch) => {
+    if (group !== activeGroupRef.current || locale !== activeLocaleRef.current) return
     setDraft((prev) => ({ ...prev, [key]: { ...prev[key], ...patch } }))
   }
 
@@ -203,16 +233,16 @@ export default function SettingsIndex({ settings, activeGroup }) {
 
     Object.entries(draft).forEach(([key, field]) => {
       if (field.type !== 'json') {
-        items.push({ group: activeGroup, key, value: field.value, type: field.type })
+        items.push({ group: activeGroup, locale: activeLocale, key, value: field.value, type: field.type })
         return
       }
 
       try {
         const parsed = JSON.parse(field.value)
-        items.push({ group: activeGroup, key, value: parsed, type: 'json' })
-        updateField(activeGroup, key, { error: null })
+        items.push({ group: activeGroup, locale: activeLocale, key, value: parsed, type: 'json' })
+        updateField(activeGroup, activeLocale, key, { error: null })
       } catch {
-        updateField(activeGroup, key, { error: 'JSON tidak valid.' })
+        updateField(activeGroup, activeLocale, key, { error: 'JSON tidak valid.' })
         hasError = true
       }
     })
@@ -224,11 +254,14 @@ export default function SettingsIndex({ settings, activeGroup }) {
     setSaveError(false)
 
     router.put(
-      '/admin/settings',
+      route('admin.settings.update'),
       { settings: items },
       {
         preserveScroll: true,
-        onSuccess: () => setSavedMessage(`Perubahan grup ${groupLabels[activeGroup] ?? activeGroup} tersimpan.`),
+        onSuccess: () =>
+          setSavedMessage(
+            `Perubahan grup ${groupLabels[activeGroup] ?? activeGroup} (${activeLocale === 'en' ? 'English' : 'Indonesia'}) tersimpan.`,
+          ),
         onError: () => setSaveError(true),
         onFinish: () => setSaving(false),
       },
@@ -240,11 +273,26 @@ export default function SettingsIndex({ settings, activeGroup }) {
       <Head title="Pengaturan" />
 
       <h1 className="font-display text-3xl font-light text-ink">
-        Pengaturan <span className="text-gold">— {groupLabels[activeGroup] ?? activeGroup}</span>
+        Pengaturan <span className="text-gold">/ {groupLabels[activeGroup] ?? activeGroup}</span>
       </h1>
       <p className="mt-2 text-[14px] text-muted">
         Konten setiap halaman publik. Perubahan langsung tayang setelah disimpan.
       </p>
+
+      <div className="mt-6 flex gap-6 border-b border-ink/10">
+        {LOCALES.map((locale) => (
+          <button
+            key={locale.value}
+            type="button"
+            onClick={() => router.get(route('admin.settings.index', { group: activeGroup, locale: locale.value }))}
+            className={`border-b-2 pb-3 text-[11px] font-medium uppercase tracking-[0.18em] transition-colors ${
+              activeLocale === locale.value ? 'border-gold text-gold' : 'border-transparent text-body hover:text-gold'
+            }`}
+          >
+            {locale.label}
+          </button>
+        ))}
+      </div>
 
       <div className="mt-8 grid gap-6">
         {Object.keys(draft).length === 0 && <p className="text-[14px] text-muted">Belum ada field pada grup ini.</p>}
@@ -255,7 +303,7 @@ export default function SettingsIndex({ settings, activeGroup }) {
               {key}
             </span>
 
-            <FieldEditor fieldKey={key} field={field} onUpdate={(patch) => updateField(activeGroup, key, patch)} />
+            <FieldEditor fieldKey={key} field={field} onUpdate={(patch) => updateField(activeGroup, activeLocale, key, patch)} />
 
             {field.error && <span className="mt-2 block text-[13px] text-gold">{field.error}</span>}
           </div>

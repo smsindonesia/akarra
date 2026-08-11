@@ -11,7 +11,7 @@ function DeleteArticleModal({ article, onClose }) {
 
   const destroy = () => {
     setDeleting(true)
-    router.delete(`/admin/articles/${article.slug}`, {
+    router.delete(route('admin.articles.destroy', article.slug), {
       preserveScroll: true,
       onFinish: () => {
         setDeleting(false)
@@ -49,14 +49,14 @@ export default function ArticlesIndex({ articles, categories, filters }) {
 
   const updateFilter = (key, value) => {
     router.get(
-      '/admin/articles',
+      route('admin.articles.index'),
       { ...filters, [key]: value || undefined, page: undefined },
       { preserveState: true, replace: true },
     )
   }
 
   const goToPage = (page) => {
-    router.get('/admin/articles', { ...filters, page }, { preserveState: true })
+    router.get(route('admin.articles.index'), { ...filters, page }, { preserveState: true })
   }
 
   return (
@@ -65,7 +65,7 @@ export default function ArticlesIndex({ articles, categories, filters }) {
 
       <div className="flex flex-wrap items-center justify-between gap-4">
         <h1 className="font-display text-3xl font-light text-ink">Artikel</h1>
-        <Button to="/admin/articles/create" variant="solid">
+        <Button to={route('admin.articles.create')} variant="solid">
           Artikel Baru
         </Button>
       </div>
@@ -108,7 +108,8 @@ export default function ArticlesIndex({ articles, categories, filters }) {
         {articles.data.length === 0 && <p className="text-[14px] text-muted">Tidak ada artikel.</p>}
 
         {articles.data.length > 0 && (
-          <table className="w-full border-collapse text-left">
+          <div className="overflow-x-auto">
+          <table className="w-full min-w-[640px] border-collapse text-left">
             <thead>
               <tr className="border-b border-ink/15 text-[11px] font-medium uppercase tracking-[0.14em] text-muted">
                 <th className="pb-3">Judul</th>
@@ -131,7 +132,7 @@ export default function ArticlesIndex({ articles, categories, filters }) {
                   <td className="py-3 pr-4 text-muted">{article.author?.name ?? 'Tidak ada'}</td>
                   <td className="py-3 text-right">
                     <Link
-                      href={`/admin/articles/${article.slug}/edit`}
+                      href={route('admin.articles.edit', article.slug)}
                       className="mr-4 text-[11px] uppercase tracking-[0.1em] text-gold hover:underline"
                     >
                       Ubah
@@ -148,6 +149,7 @@ export default function ArticlesIndex({ articles, categories, filters }) {
               ))}
             </tbody>
           </table>
+          </div>
         )}
 
         {articles.last_page > 1 && (

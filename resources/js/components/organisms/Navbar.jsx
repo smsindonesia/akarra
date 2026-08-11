@@ -41,7 +41,7 @@ export default function Navbar() {
 
           <div className="hidden items-center gap-4 lg:flex xl:gap-5">
             <LanguageToggle />
-            <Button to="/#kolaborasi" variant="outline" className="!min-h-0 !gap-1.5 !px-4 !py-2.5 !text-[10px]">
+            <Button to={`${route('home')}#kolaborasi`} variant="outline" className="!min-h-0 !gap-1.5 !px-4 !py-2.5 !text-[10px]">
               {ctaLabel}
             </Button>
           </div>

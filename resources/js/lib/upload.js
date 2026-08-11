@@ -19,6 +19,18 @@ export function validateUploadFile(file) {
   return null
 }
 
+/** Batas ukuran unggahan video, harus sama dengan config('akarra.upload_max_video_size') (dalam KB). */
+export const MAX_UPLOAD_VIDEO_SIZE_KB = 51200
+const MAX_UPLOAD_VIDEO_SIZE_BYTES = MAX_UPLOAD_VIDEO_SIZE_KB * 1024
+
+export function validateUploadVideoFile(file) {
+  if (file.size > MAX_UPLOAD_VIDEO_SIZE_BYTES) {
+    return `Ukuran video melebihi batas ${Math.round(MAX_UPLOAD_VIDEO_SIZE_KB / 1024)} MB.`
+  }
+
+  return null
+}
+
 /**
  * Server yang bermasalah (redirect, proxy salah konfigurasi, dsb.) bisa
  * membuat axios "berhasil" dengan isi respons yang bukan JSON unggahan yang

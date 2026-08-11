@@ -20,7 +20,7 @@ function TavilyCard() {
 
   useEffect(() => {
     api
-      .get('/admin/tavily/status')
+      .get(route('admin.tavily.status'))
       .then(({ data }) => setStatus(data.data))
       .finally(() => setLoadingStatus(false))
   }, [])
@@ -34,7 +34,7 @@ function TavilyCard() {
     setFailure(null)
 
     try {
-      const { data } = await api.post('/admin/tavily/search', {
+      const { data } = await api.post(route('admin.tavily.search'), {
         query,
         max_results: Number(maxResults) || 5,
       })

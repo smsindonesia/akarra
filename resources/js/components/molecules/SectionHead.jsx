@@ -1,7 +1,6 @@
 import Display from '../atoms/Display'
 import Eyebrow from '../atoms/Eyebrow'
 import Paragraph from '../atoms/Paragraph'
-import useReveal from '../../hooks/useReveal'
 
 export default function SectionHead({
   eyebrow,
@@ -12,11 +11,10 @@ export default function SectionHead({
   tone = 'default',
   className = '',
 }) {
-  const ref = useReveal()
   const alignment = align === 'center' ? 'text-center mx-auto items-center' : 'text-left'
 
   return (
-    <div ref={ref} className={`reveal flex flex-col ${alignment} ${className}`}>
+    <div className={`flex flex-col ${alignment} ${className}`}>
       {eyebrow && <Eyebrow tone={tone === 'invert' ? 'invert' : 'gold'}>{eyebrow}</Eyebrow>}
 
       <Display

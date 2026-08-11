@@ -12,9 +12,9 @@ export default function Footer() {
   const email = get('global', 'email')
   const year = new Date().getFullYear()
   const pillars = [
-    { label: 'Fashionpreneur', path: '/services' },
-    { label: 'Creative Labs', path: '/services' },
-    { label: 'Advertising', path: '/services' },
+    { label: 'Fashionpreneur', path: route('services') },
+    { label: 'Creative Labs', path: route('services') },
+    { label: 'Advertising', path: route('services') },
   ]
 
   return (

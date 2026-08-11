@@ -13,7 +13,7 @@ export default function ArticlesIndex({ articles, filters, canonicalUrl }) {
   const { t } = useLanguage()
 
   const goToPage = (page) => {
-    router.get('/articles', { ...filters, page }, { preserveScroll: true })
+    router.get(route('articles.index'), { ...filters, page }, { preserveScroll: true })
   }
 
   return (
@@ -32,7 +32,7 @@ export default function ArticlesIndex({ articles, filters, canonicalUrl }) {
           ) : (
             <div className="grid gap-14 md:grid-cols-2 md:gap-12 lg:grid-cols-3">
               {articles.data.map((article) => (
-                <Link key={article.id} href={`/articles/${article.slug}`} className="group block">
+                <Link key={article.id} href={route('articles.show', article.slug)} className="group block">
                   <Figure src={article.cover_image} alt={article.title} ratio="aspect-[4/3]" />
 
                   {article.category && (

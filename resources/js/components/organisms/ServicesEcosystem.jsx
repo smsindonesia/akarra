@@ -1,6 +1,5 @@
 import Button from '../atoms/Button'
 import SectionHead from '../molecules/SectionHead'
-import useReveal from '../../hooks/useReveal'
 
 /**
  * "The Services Ecosystem" — tiga pilar dalam satu kotak bergaris, dipisah
@@ -29,14 +28,12 @@ function Pillar({ index, name, bullets = [], last }) {
 }
 
 export default function ServicesEcosystem({ eyebrow, title, subtitle, pillars = [], ctaLabel }) {
-  const ref = useReveal()
-
   return (
     <section id="layanan" className="section">
       <div className="shell">
         <SectionHead title={title} body={subtitle} align="center" eyebrow={eyebrow} />
 
-        <div ref={ref} className="reveal mt-16 grid border border-line md:grid-cols-3">
+        <div className="mt-16 grid border border-line md:grid-cols-3">
           {pillars.map((pillar, index) => (
             <Pillar
               key={pillar.name}
@@ -50,7 +47,7 @@ export default function ServicesEcosystem({ eyebrow, title, subtitle, pillars = 
 
         {ctaLabel && (
           <div className="mt-16 flex justify-center">
-            <Button to="/services" variant="quiet">
+            <Button to={route('services')} variant="quiet">
               {ctaLabel}
             </Button>
           </div>

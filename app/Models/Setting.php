@@ -12,6 +12,7 @@ class Setting extends Model
     protected $fillable = [
         'group',
         'key',
+        'locale',
         'value',
         'type',
     ];
@@ -25,22 +26,34 @@ class Setting extends Model
     }
 
     /**
-     * Seluruh pengaturan dikelompokkan per grup halaman:
-     * ['global' => [...], 'home' => [...], 'services' => [...], ...]
+     * Seluruh pengaturan dikelompokkan per bahasa lalu per grup halaman:
+     * ['id' => ['global' => [...], 'home' => [...]], 'en' => [...]]
+     *
+     * Dibagikan utuh (kedua bahasa) lewat Inertia supaya toggle ID/EN di
+     * frontend instan tanpa kunjungan baru ke server.
      */
-    public static function grouped(): array
+    public static function groupedAll(): array
     {
         return Cache::rememberForever(self::CACHE_KEY, function () {
             return static::query()
+                ->orderBy('locale')
                 ->orderBy('group')
                 ->orderBy('key')
                 ->get()
-                ->groupBy('group')
-                ->map(fn ($items) => $items->mapWithKeys(
-                    fn (Setting $s) => [$s->key => $s->castValue()]
-                ))
+                ->groupBy('locale')
+                ->map(fn ($localeItems) => $localeItems
+                    ->groupBy('group')
+                    ->map(fn ($items) => $items->mapWithKeys(
+                        fn (Setting $s) => [$s->key => $s->castValue()]
+                    )))
                 ->toArray();
         });
+    }
+
+    /** Sama seperti groupedAll(), tapi cuma satu bahasa — dipakai panel admin. */
+    public static function grouped(string $locale = 'id'): array
+    {
+        return static::groupedAll()[$locale] ?? [];
     }
 
     public function castValue(): mixed

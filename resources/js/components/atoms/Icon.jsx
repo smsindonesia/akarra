@@ -5,10 +5,8 @@
  * di ValueCard, ServiceCard, dan kartu-kartu sejenis.
  */
 const paths = {
-  star: (
-    <path d="M12 2.5l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L12 16.9l-5.6 2.7 1.4-6.3L3 9l6.4-.6L12 2.5z" />
-  ),
-  shield: <path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6l7-3z" />,
+  ascend: <path d="M6 17V13M12 17V9M18 17V5" />,
+  pillar: <path d="M6 6h12M8 6v12M16 6v12M5 18h14" />,
   spark: <path d="M12 3c0 3.5-1 5.5-3 6.5 2 1 3 3 3 6.5 0-3.5 1-5.5 3-6.5-2-1-3-3-3-6.5z" />,
   gem: (
     <>
@@ -35,13 +33,7 @@ const paths = {
       <path d="M13 6l5 5" />
     </>
   ),
-  target: (
-    <>
-      <circle cx="12" cy="12" r="8" />
-      <circle cx="12" cy="12" r="4.5" />
-      <circle cx="12" cy="12" r="1" />
-    </>
-  ),
+  banner: <path d="M6 21V4M6 4h11l-3 4 3 4H6" />,
   flask: (
     <>
       <path d="M9 3h6M10 3v6l-5.3 9.2A2 2 0 006.4 21h11.2a2 2 0 001.7-3l-5.3-9V3" />
@@ -56,12 +48,7 @@ const paths = {
       <path d="M7.5 7L12 16M16.5 7L12 16M7.8 6h8.4" />
     </>
   ),
-  globe: (
-    <>
-      <circle cx="12" cy="12" r="8" />
-      <path d="M4 12h16M12 4c2.5 3 2.5 13 0 16M12 4c-2.5 3-2.5 13 0 16" />
-    </>
-  ),
+  expand: <path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" />,
   trending: (
     <>
       <path d="M4 17l5.5-6 4 3L20 6" />
@@ -92,8 +79,8 @@ export default function Icon({ name = 'mark', className = 'h-6 w-6' }) {
 }
 
 const KEYWORD_ICONS = [
-  [['excellence', 'keunggulan'], 'star'],
-  [['integrity', 'integritas', 'trust', 'kepercayaan'], 'shield'],
+  [['excellence', 'keunggulan'], 'ascend'],
+  [['integrity', 'integritas', 'trust', 'kepercayaan'], 'pillar'],
   [['innovation', 'inovasi', 'energi', 'energy', 'dinamisme'], 'spark'],
   [['elegance', 'elegansi', 'berlian', 'diamond', 'kemewahan'], 'gem'],
   [['mandala', 'harmoni', 'collaboration', 'kolaborasi'], 'orbit'],
@@ -101,10 +88,10 @@ const KEYWORD_ICONS = [
   [['creative', 'kreatif', 'art direction', 'desain', 'design'], 'brush'],
   [['material', 'bio', 'lab'], 'flask'],
   [['cognitive', 'data'], 'network'],
-  [['omnichannel', 'global'], 'globe'],
+  [['omnichannel', 'global'], 'expand'],
   [['growth', 'conversion', 'trending'], 'trending'],
   [['content production', 'visual', 'camera'], 'camera'],
-  [['strategic', 'advoca', 'advertising', 'periklanan'], 'target'],
+  [['strategic', 'advoca', 'advertising', 'periklanan'], 'banner'],
 ]
 
 export function pickIcon(text) {

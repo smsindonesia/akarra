@@ -58,7 +58,7 @@ export default function Products() {
               </p>
             </div>
 
-            <Button to="/services" variant="quiet">
+            <Button to={route('services')} variant="quiet">
               View Collection
             </Button>
           </div>
@@ -105,7 +105,7 @@ export default function Products() {
                     </span>
                     <h3 className="font-display text-3xl font-normal text-ink">{whitepaper.title}</h3>
                     <p className="pt-2 text-[15px] leading-[1.6] text-muted">{whitepaper.body}</p>
-                    <Button to="/services" variant="quiet" className="mt-4 self-start">
+                    <Button to={route('services')} variant="quiet" className="mt-4 self-start">
                       View Whitepaper
                     </Button>
                   </div>
@@ -124,7 +124,7 @@ export default function Products() {
         numbered
       >
         <div className="mt-10">
-          <Button to="/services" variant="solid">
+          <Button to={route('services')} variant="solid">
             Scale Your Impact
           </Button>
         </div>

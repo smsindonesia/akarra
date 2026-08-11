@@ -24,11 +24,11 @@ export const fallbackContent = {
       { platform: 'linkedin', url: '', label: 'LinkedIn' },
     ],
     nav: [
-      { label: 'Ecosystem', path: '/ecosystem' },
-      { label: 'Products', path: '/products' },
-      { label: 'Services', path: '/services' },
-      { label: 'Articles', path: '/articles' },
-      { label: 'Founders', path: '/founders' },
+      { label: 'Ecosystem', path: route('ecosystem') },
+      { label: 'Products', path: route('products') },
+      { label: 'Services', path: route('services') },
+      { label: 'Articles', path: route('articles.index') },
+      { label: 'Founders', path: route('founders') },
     ],
     nav_cta_label: 'Start a Conversation',
     footer_note: 'Seluruh hak cipta dilindungi.',
@@ -99,6 +99,7 @@ export const fallbackContent = {
     story_body:
       'Kami percaya setiap brand memiliki cerita yang layak diceritakan dengan elegan. Bersama kami, Anda tidak hanya membangun bisnis, tetapi juga membangun warisan.',
     story_image: '/images/content/home-story.jpg',
+    story_video: '',
 
     founders_title: 'Meet the Founders',
     founders_subtitle: 'Dua orang di balik arah dan standar AKARRA.',
@@ -277,6 +278,9 @@ export const fallbackContent = {
         image: '',
       },
     ],
+
+    // Galeri gabungan (bukan per-pillar), auto-slide di halaman Services + preview beranda.
+    gallery: [],
 
     growth_title: 'Digital Strategy & Growth',
     growth_body:

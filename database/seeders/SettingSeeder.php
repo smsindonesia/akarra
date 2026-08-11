@@ -19,21 +19,30 @@ use Illuminate\Database\Seeder;
  */
 class SettingSeeder extends Seeder
 {
+    /**
+     * Konten yang sama disemai untuk kedua bahasa (id & en) — nilainya identik
+     * di awal, admin menerjemahkan belakangan lewat tab bahasa di panel
+     * Pengaturan. Ini cuma nilai awal instalasi baru; database yang sudah
+     * berjalan tidak disentuh oleh migrasi/seeder ini (lihat catatan di
+     * migration penambahan kolom locale).
+     */
     public function run(): void
     {
-        foreach ($this->settings() as $group => $items) {
-            foreach ($items as $key => $item) {
-                [$value, $type] = is_array($item) && isset($item[1])
-                    ? [$item[0], $item[1]]
-                    : [$item, 'string'];
+        foreach (['id', 'en'] as $locale) {
+            foreach ($this->settings() as $group => $items) {
+                foreach ($items as $key => $item) {
+                    [$value, $type] = is_array($item) && isset($item[1])
+                        ? [$item[0], $item[1]]
+                        : [$item, 'string'];
 
-                Setting::updateOrCreate(
-                    ['group' => $group, 'key' => $key],
-                    [
-                        'value' => $type === 'json' ? json_encode($value, JSON_UNESCAPED_UNICODE) : $value,
-                        'type' => $type,
-                    ]
-                );
+                    Setting::updateOrCreate(
+                        ['group' => $group, 'key' => $key, 'locale' => $locale],
+                        [
+                            'value' => $type === 'json' ? json_encode($value, JSON_UNESCAPED_UNICODE) : $value,
+                            'type' => $type,
+                        ]
+                    );
+                }
             }
         }
     }
@@ -130,6 +139,7 @@ class SettingSeeder extends Seeder
                 'story_title' => 'Cerita di Balik AKARRA',
                 'story_body' => 'Kami percaya setiap brand memiliki cerita yang layak diceritakan dengan elegan. Bersama kami, Anda tidak hanya membangun bisnis, tetapi juga membangun warisan.',
                 'story_image' => '/images/content/home-story.jpg',
+                'story_video' => '',
 
                 'founders_title' => 'Meet the Founders',
                 'founders_subtitle' => 'Dua orang di balik arah dan standar AKARRA.',
@@ -286,6 +296,11 @@ class SettingSeeder extends Seeder
                         'image' => '',
                     ],
                 ], 'json'],
+
+                // Galeri gabungan (bukan per-pillar) yang tampil auto-slide di halaman
+                // Services dan sebagai preview di beranda — hingga 10 foto (lihat
+                // GalleryField di admin, MAX_PHOTOS).
+                'gallery' => [],
 
                 'growth_title' => 'Digital Strategy & Growth',
                 'growth_body' => 'Data-driven precision meets creative intuition. We don\'t just find your audience; we cultivate a community of advocates.',

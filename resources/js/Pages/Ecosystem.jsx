@@ -87,7 +87,7 @@ export default function Ecosystem() {
         <div className="shell">
           <div className="grid gap-6 md:grid-cols-3">
             {pillarCards.map((card) => (
-              <ServiceCard key={card.name} name={card.name} body={card.body} linkLabel={card.linkLabel} to="/services" />
+              <ServiceCard key={card.name} name={card.name} body={card.body} linkLabel={card.linkLabel} to={route('services')} />
             ))}
           </div>
         </div>

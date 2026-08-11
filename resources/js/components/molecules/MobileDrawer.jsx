@@ -50,7 +50,7 @@ export default function MobileDrawer({ open, onClose, items, ctaLabel }) {
 
         <div className="mt-4 flex flex-col items-start gap-6">
           <LanguageToggle tone="invert" />
-          <Button to="/#kolaborasi" variant="outlineInvert" onClick={onClose} className="self-start">
+          <Button to={`${route('home')}#kolaborasi`} variant="outlineInvert" onClick={onClose} className="self-start">
             {ctaLabel}
           </Button>
         </div>

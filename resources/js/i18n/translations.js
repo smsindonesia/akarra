@@ -61,7 +61,7 @@ export const translations = {
 
   homeGalleryEyebrow: { id: 'Di Balik Layar', en: 'Behind the Scenes' },
   homeGalleryTitle: { id: 'Momen dari Setiap Kolaborasi', en: 'Moments from Every Collaboration' },
-  homeGalleryCta: { id: 'Lihat seluruh galeri', en: 'View the full gallery' },
+  homeGalleryCta: { id: 'Lihat galeri', en: 'View the Gallery' },
 
   homeArticlesEyebrow: { id: 'Wawasan', en: 'Insights' },
   homeArticlesTitle: { id: 'Kabar Terbaru dari AKARRA', en: 'Latest from AKARRA' },

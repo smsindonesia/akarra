@@ -2,7 +2,6 @@ import Eyebrow from '../atoms/Eyebrow'
 import Figure from '../atoms/Figure'
 import Paragraph from '../atoms/Paragraph'
 import { useLanguage } from '../../context/LanguageContext'
-import useReveal from '../../hooks/useReveal'
 
 export default function FounderCard({
   name,
@@ -14,13 +13,11 @@ export default function FounderCard({
   legacyTitle,
   legacyBody,
 }) {
-  const ref = useReveal()
   const { t } = useLanguage()
 
   return (
     <div
-      ref={ref}
-      className={`reveal grid gap-10 md:grid-cols-2 md:items-center md:gap-16 ${
+      className={`grid gap-10 md:grid-cols-2 md:items-center md:gap-16 ${
         reverse ? 'md:[&>*:first-child]:order-2' : ''
       }`}
     >

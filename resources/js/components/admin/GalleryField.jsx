@@ -29,7 +29,7 @@ function GallerySlot({ src, onReplace, onRemove }) {
     formData.append('folder', 'settings')
 
     try {
-      const { data } = await api.post('/admin/upload', formData)
+      const { data } = await api.post(route('admin.upload'), formData)
 
       if (!isValidUploadResponse(data)) {
         setError('Gagal mengunggah gambar. Coba lagi.')

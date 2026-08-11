@@ -130,8 +130,8 @@
 }
 
 @keyframes drift {
-  from { transform: translateY(0) rotate(0deg); }
-  to { transform: translateY(-18px) rotate(6deg); }
+  from { transform: translate(0, 0) rotate(0deg); }
+  to { transform: translate(16px, -34px) rotate(12deg); }
 }
 
 .animate-draw-mark {
@@ -141,7 +141,7 @@
 
 .animate-fade-up { animation: fade-up 0.8s var(--ease-editorial) both; }
 .animate-sweep { animation: sweep 0.9s var(--ease-editorial) 0.5s both; transform-origin: left; }
-.animate-drift { animation: drift 14s ease-in-out infinite alternate; }
+.animate-drift { animation: drift 20s var(--ease-editorial) infinite alternate; }
 
 /* ---------------------------------------------------------------------------
    Admin — Trix

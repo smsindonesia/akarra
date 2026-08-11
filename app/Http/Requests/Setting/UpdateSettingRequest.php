@@ -18,6 +18,7 @@ class UpdateSettingRequest extends FormRequest
             'settings' => ['required', 'array', 'min:1'],
             'settings.*.group' => ['required', Rule::in(config('akarra.setting_groups'))],
             'settings.*.key' => ['required', 'string', 'max:120'],
+            'settings.*.locale' => ['required', Rule::in(['id', 'en'])],
             'settings.*.value' => ['present'],
             'settings.*.type' => ['nullable', Rule::in(['string', 'html', 'json', 'boolean', 'integer'])],
         ];

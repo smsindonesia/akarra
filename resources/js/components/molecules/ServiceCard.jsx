@@ -9,7 +9,7 @@ import { useLanguage } from '../../context/LanguageContext'
  * paragraf, tautan terpaku di bawah dengan garis pemisah. Dipakai untuk
  * grid 3-kartu di halaman Ecosystem ("Fashion & Atelier" dst).
  */
-export default function ServiceCard({ name, body, linkLabel, to = '/services' }) {
+export default function ServiceCard({ name, body, linkLabel, to = route('services') }) {
   const { t } = useLanguage()
 
   return (

@@ -47,7 +47,7 @@ export default function RichTextEditor({ id, value, onChange }) {
       formData.append('folder', 'articles')
 
       try {
-        const { data } = await api.post('/admin/upload', formData, {
+        const { data } = await api.post(route('admin.upload'), formData, {
           onUploadProgress: (progress) => {
             if (progress.total) {
               attachment.setUploadProgress(Math.round((progress.loaded / progress.total) * 100))

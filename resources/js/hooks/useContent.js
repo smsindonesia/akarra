@@ -2,6 +2,7 @@ import { useMemo } from 'react'
 import { usePage } from '@inertiajs/react'
 
 import { fallbackContent } from '../content/fallback'
+import { useLanguage } from '../context/LanguageContext'
 
 /**
  * Menimpa nilai cadangan dengan nilai dari `settings` (dibagikan lewat
@@ -40,12 +41,17 @@ function merge(base, incoming) {
  * di payload halaman pertama (dibagikan oleh HandleInertiaRequests), tidak
  * ada lagi status loading terpisah — kontennya selalu tersedia begitu
  * halaman dirender.
+ *
+ * `settings` dibagikan lengkap untuk kedua bahasa (`{ id: {...}, en: {...} }`)
+ * supaya toggle ID/EN instan tanpa kunjungan baru ke server — hook ini
+ * tinggal memilih bagian yang sesuai `language` dari LanguageContext.
  */
 export function useContent() {
   const { settings } = usePage().props
+  const { language } = useLanguage()
 
   return useMemo(() => {
-    const content = merge(fallbackContent, settings)
+    const content = merge(fallbackContent, settings?.[language])
 
     return {
       content,
@@ -59,5 +65,5 @@ export function useContent() {
         return Array.isArray(value) ? value : []
       },
     }
-  }, [settings])
+  }, [settings, language])
 }

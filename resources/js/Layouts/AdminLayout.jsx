@@ -5,11 +5,11 @@ import MandalaMark from '../components/atoms/MandalaMark'
 import { SETTING_GROUPS, SETTING_GROUP_LABELS } from '../lib/settingGroups'
 
 const links = [
-  { href: '/admin', label: 'Dashboard', end: true },
-  { href: '/admin/articles', label: 'Artikel' },
-  { href: '/admin/categories', label: 'Kategori' },
-  { href: '/admin/contacts', label: 'Pesan Masuk' },
-  { href: '/admin/integrations', label: 'Integrasi' },
+  { href: route('admin.dashboard'), label: 'Dashboard', end: true },
+  { href: route('admin.articles.index'), label: 'Artikel' },
+  { href: route('admin.categories.index'), label: 'Kategori' },
+  { href: route('admin.contacts.index'), label: 'Pesan Masuk' },
+  { href: route('admin.integrations.index'), label: 'Integrasi' },
 ]
 
 const linkClass = (isActive) =>
@@ -24,7 +24,9 @@ function SettingsNavItem({ url, onNavigate }) {
   const [open, setOpen] = useState(false)
 
   const onSettingsPage = url.startsWith('/admin/settings')
-  const currentGroup = new URLSearchParams(url.split('?')[1] ?? '').get('group')
+  const query = new URLSearchParams(url.split('?')[1] ?? '')
+  const currentGroup = query.get('group')
+  const currentLocale = query.get('locale') === 'en' ? 'en' : 'id'
 
   return (
     <div>
@@ -59,7 +61,7 @@ function SettingsNavItem({ url, onNavigate }) {
             return (
               <Link
                 key={group}
-                href={`/admin/settings?group=${group}`}
+                href={route('admin.settings.index', { group, locale: currentLocale })}
                 onClick={onNavigate}
                 className={`block border-l-2 py-2.5 pl-9 pr-5 text-[12px] font-medium uppercase tracking-[0.08em] transition-colors ${
                   isActive
@@ -100,7 +102,7 @@ function SidebarContent({ url, onNavigate }) {
       </div>
 
       <div className="px-5 py-6">
-        <Link href="/" className="text-[11px] uppercase tracking-[0.18em] text-ivory/40 hover:text-gold">
+        <Link href={route('home')} className="text-[11px] uppercase tracking-[0.18em] text-ivory/40 hover:text-gold">
           &larr; Lihat situs publik
         </Link>
       </div>
@@ -114,11 +116,11 @@ export default function AdminLayout({ children }) {
   const [menuOpen, setMenuOpen] = useState(false)
 
   const handleLogout = () => {
-    router.post('/admin/logout')
+    router.post(route('logout'))
   }
 
   return (
-    <div className="min-h-screen bg-canvas">
+    <div className="min-h-dvh bg-canvas">
       <aside className="fixed inset-y-0 left-0 z-40 hidden w-64 bg-ink lg:block">
         <SidebarContent url={url} />
       </aside>

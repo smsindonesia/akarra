@@ -87,7 +87,7 @@ export default function ArticleShow({ article, related, canonicalUrl, coverImage
             <ul className="mt-8 grid gap-6">
               {related.map((item) => (
                 <li key={item.id}>
-                  <Link href={`/articles/${item.slug}`} className="text-[15px] text-ink hover:text-gold">
+                  <Link href={route('articles.show', item.slug)} className="text-[15px] text-ink hover:text-gold">
                     {item.title}
                   </Link>
                 </li>
@@ -98,7 +98,7 @@ export default function ArticleShow({ article, related, canonicalUrl, coverImage
 
         <div className="shell mt-14 max-w-3xl">
           <Paragraph>
-            <Link href="/articles" className="border-b border-gold/40 pb-1 text-[11px] font-medium uppercase tracking-[0.18em] hover:border-gold hover:text-gold">
+            <Link href={route('articles.index')} className="border-b border-gold/40 pb-1 text-[11px] font-medium uppercase tracking-[0.18em] hover:border-gold hover:text-gold">
               &larr; {t('articleBackToList')}
             </Link>
           </Paragraph>

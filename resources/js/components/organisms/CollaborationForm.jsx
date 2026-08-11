@@ -37,7 +37,7 @@ export default function CollaborationForm() {
 
   const onSubmit = (event) => {
     event.preventDefault()
-    post('/contacts', { preserveScroll: true })
+    post(route('contacts.store'), { preserveScroll: true })
   }
 
   if (wasSuccessful) {

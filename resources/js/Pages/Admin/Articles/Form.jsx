@@ -53,7 +53,7 @@ export default function ArticleForm({ article, categories }) {
     formData.append('folder', 'covers')
 
     try {
-      const { data: uploaded } = await api.post('/admin/upload', formData)
+      const { data: uploaded } = await api.post(route('admin.upload'), formData)
 
       if (!isValidUploadResponse(uploaded)) {
         setUploadFailure('Gagal mengunggah gambar sampul. Coba lagi.')
@@ -82,9 +82,9 @@ export default function ArticleForm({ article, categories }) {
     }
 
     if (isEditing) {
-      put(`/admin/articles/${article.slug}`, options)
+      put(route('admin.articles.update', article.slug), options)
     } else {
-      post('/admin/articles', options)
+      post(route('admin.articles.store'), options)
     }
   }
 
@@ -189,7 +189,7 @@ export default function ArticleForm({ article, categories }) {
         </fieldset>
 
         <div className="flex justify-end gap-3">
-          <Button type="button" variant="quiet" onClick={() => router.get('/admin/articles')}>
+          <Button type="button" variant="quiet" onClick={() => router.get(route('admin.articles.index'))}>
             Batal
           </Button>
           <Button type="submit" variant="solid" disabled={processing} className="disabled:opacity-50">

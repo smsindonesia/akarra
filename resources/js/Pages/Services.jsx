@@ -2,6 +2,7 @@ import { Head } from '@inertiajs/react'
 
 import AutoSlideGallery from '../components/organisms/AutoSlideGallery'
 import Button from '../components/atoms/Button'
+import CoverflowGallery from '../components/organisms/CoverflowGallery'
 import ClosingCta from '../components/organisms/ClosingCta'
 import Display from '../components/atoms/Display'
 import Divider from '../components/atoms/Divider'
@@ -10,9 +11,11 @@ import Figure from '../components/atoms/Figure'
 import Icon, { pickIcon } from '../components/atoms/Icon'
 import PageHero from '../components/organisms/PageHero'
 import Paragraph from '../components/atoms/Paragraph'
+import SectionHead from '../components/molecules/SectionHead'
 import PublicLayout from '../Layouts/PublicLayout'
 import useReveal from '../hooks/useReveal'
 import { useContent } from '../hooks/useContent'
+import { useLanguage } from '../context/LanguageContext'
 
 /**
  * Pilar 01/02 tampil sebagai section penuh dengan gambar dan dua sub-kartu
@@ -67,7 +70,7 @@ function Pillar({ pillar, index }) {
           )}
 
           <div className="mt-10">
-            <Button to="/#kolaborasi" variant="solid">
+            <Button to={`${route('home')}#kolaborasi`} variant="solid">
               Inquire for Bespoke Solutions
             </Button>
           </div>
@@ -133,9 +136,11 @@ function AmplificationCard({ title, body, bullets = [], featured = false }) {
 
 export default function Services() {
   const { get, list } = useContent()
+  const { t } = useLanguage()
 
   const pillars = list('services', 'pillars').slice(0, 2)
   const amplificationCards = list('services', 'amplification_cards')
+  const gallery = list('services', 'gallery')
 
   return (
     <>
@@ -154,6 +159,18 @@ export default function Services() {
       {pillars.map((pillar, index) => (
         <Pillar key={pillar.name} pillar={pillar} index={index} />
       ))}
+
+      {gallery.length > 0 && (
+        <section className="section">
+          <div className="shell">
+            <SectionHead title={t('homeGalleryTitle')} align="center" eyebrow={t('homeGalleryEyebrow')} />
+
+            <div className="mx-auto mt-16 max-w-5xl">
+              <CoverflowGallery images={gallery} alt={t('homeGalleryEyebrow')} />
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="section bg-dark">
         <div className="shell text-center">
@@ -181,7 +198,7 @@ export default function Services() {
         )}
 
         <div className="shell mt-14 flex justify-center">
-          <Button to="/#kolaborasi" variant="outlineAccentInvert">
+          <Button to={`${route('home')}#kolaborasi`} variant="outlineAccentInvert">
             Inquire for Bespoke Solutions
           </Button>
         </div>
@@ -196,7 +213,7 @@ export default function Services() {
         subtitle={get('services', 'cta_subtitle')}
         label={get('services', 'cta_label')}
         secondaryLabel={get('services', 'cta_secondary_label')}
-        secondaryTo="/#kolaborasi"
+        secondaryTo={`${route('home')}#kolaborasi`}
       />
     </>
   )

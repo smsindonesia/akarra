@@ -9,7 +9,7 @@ export default function Logo({ tone = 'ink', className = '' }) {
 
   return (
     <Link
-      href="/"
+      href={route('home')}
       className={`flex items-center gap-3 font-display text-xl font-normal uppercase tracking-[0.42em] ${tones[tone]} ${className}`}
       aria-label={t('logoHomeAria')}
     >

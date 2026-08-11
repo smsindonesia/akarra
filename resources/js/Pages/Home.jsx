@@ -26,7 +26,7 @@ export default function Home({ latestArticles = [] }) {
   const solutions = list('home', 'solutions')
   const pillars = list('services', 'pillars')
   const values = list('home', 'values')
-  const galleryPreviewImages = pillars.slice(0, 2).flatMap((pillar) => pillar.gallery ?? [])
+  const serviceGallery = list('services', 'gallery')
 
   return (
     <>
@@ -41,9 +41,9 @@ export default function Home({ latestArticles = [] }) {
         emphasis={get('home', 'hero_title_emphasis')}
         subtitle={get('home', 'hero_subtitle')}
         ctaLabel={get('home', 'hero_cta_label')}
-        ctaTo="/#kolaborasi"
+        ctaTo={`${route('home')}#kolaborasi`}
         secondaryCtaLabel={get('home', 'hero_secondary_cta_label')}
-        secondaryCtaTo="/ecosystem"
+        secondaryCtaTo={route('ecosystem')}
       />
 
       <NarrativeSplit
@@ -82,9 +82,10 @@ export default function Home({ latestArticles = [] }) {
         title={get('home', 'story_title')}
         body={get('home', 'story_body')}
         image={get('home', 'story_image')}
+        video={get('home', 'story_video')}
       />
 
-      <GalleryPreview images={galleryPreviewImages} />
+      <GalleryPreview images={serviceGallery} />
 
       <ArticlesPreview articles={latestArticles} />
 

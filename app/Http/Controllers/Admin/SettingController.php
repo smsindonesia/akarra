@@ -25,10 +25,17 @@ class SettingController extends Controller
             $activeGroup = $groups[0];
         }
 
+        $activeLocale = $request->query('locale');
+
+        if (! in_array($activeLocale, ['id', 'en'], true)) {
+            $activeLocale = 'id';
+        }
+
         return Inertia::render('Admin/Settings/Index', [
-            'settings' => Setting::grouped(),
+            'settings' => Setting::grouped($activeLocale),
             'groups' => $groups,
             'activeGroup' => $activeGroup,
+            'activeLocale' => $activeLocale,
         ]);
     }
 
@@ -51,7 +58,7 @@ class SettingController extends Controller
                 };
 
                 Setting::updateOrCreate(
-                    ['group' => $item['group'], 'key' => $item['key']],
+                    ['group' => $item['group'], 'key' => $item['key'], 'locale' => $item['locale']],
                     ['value' => $value, 'type' => $type],
                 );
             }

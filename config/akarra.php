@@ -14,6 +14,12 @@ return [
     // Tipe gambar yang diterima.
     'upload_mimes' => ['jpg', 'jpeg', 'png', 'webp'],
 
+    // Ukuran maksimum unggahan video dalam kilobyte (default 50 MB).
+    'upload_max_video_size' => (int) env('UPLOAD_MAX_VIDEO_SIZE', 51200),
+
+    // Tipe video yang diterima.
+    'upload_video_mimes' => ['mp4', 'webm', 'mov'],
+
     // Jumlah artikel per halaman pada endpoint publik.
     'articles_per_page' => 9,
 
