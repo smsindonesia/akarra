@@ -34,8 +34,11 @@ export default function PageHero({
       }`}
     >
       {/* Motif mandala di latar, sangat samar. Salah satu dari empat tempat
-          motif ini boleh muncul. */}
-      <MandalaMark className="animate-drift pointer-events-none absolute -right-8 -top-16 h-[58rem] w-[58rem] opacity-[0.1] md:right-0" />
+          motif ini boleh muncul. Hanya di beranda — halaman dalam tidak
+          memakai latar sebesar ini. */}
+      {isLanding && (
+        <MandalaMark className="animate-drift pointer-events-none absolute -right-8 -top-16 h-[58rem] w-[58rem] opacity-[0.1] md:right-0" />
+      )}
 
       {isLanding && (
         <>

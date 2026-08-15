@@ -1,5 +1,3 @@
-import { Head } from '@inertiajs/react'
-
 import Divider from '../components/atoms/Divider'
 import Eyebrow from '../components/atoms/Eyebrow'
 import Figure from '../components/atoms/Figure'
@@ -12,8 +10,10 @@ import PageHero from '../components/organisms/PageHero'
 import SectionHead from '../components/molecules/SectionHead'
 import StatementBlock from '../components/organisms/StatementBlock'
 import ValuesGrid from '../components/organisms/ValuesGrid'
+import Seo from '../components/atoms/Seo'
 import PublicLayout from '../Layouts/PublicLayout'
 import { useContent } from '../hooks/useContent'
+import { breadcrumbJsonLd } from '../lib/seo'
 
 const pillarCards = [
   {
@@ -33,14 +33,20 @@ const pillarCards = [
   },
 ]
 
-export default function Ecosystem() {
+export default function Ecosystem({ canonicalUrl }) {
   const { get, list } = useContent()
 
   return (
     <>
-      <Head title={`Ecosystem | ${get('global', 'site_name', 'AKARRA')}`}>
-        <meta name="description" content={get('ecosystem', 'hero_subtitle')} />
-      </Head>
+      <Seo
+        title="Ecosystem"
+        description={get('ecosystem', 'hero_subtitle')}
+        canonicalUrl={canonicalUrl}
+        jsonLd={breadcrumbJsonLd([
+          { name: get('global', 'site_name', 'AKARRA'), url: route('home') },
+          { name: 'Ecosystem', url: canonicalUrl },
+        ])}
+      />
 
       <PageHero
         eyebrow={get('ecosystem', 'hero_eyebrow', 'The Architecture of Aspiration')}

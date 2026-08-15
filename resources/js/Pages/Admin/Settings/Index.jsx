@@ -303,6 +303,14 @@ export default function SettingsIndex({ settings, activeGroup, activeLocale }) {
               {key}
             </span>
 
+            {key === 'whatsapp' && (
+              <p className="mb-2 text-[13px] text-muted">
+                Dipakai untuk tombol WhatsApp di formulir kontak. Isi dengan kode negara, tanpa tanda{' '}
+                <code>+</code> dan tanpa angka 0 di depan — contoh: <code>6281234567890</code>. Kalau
+                dikosongkan, tombolnya tidak akan muncul di situs.
+              </p>
+            )}
+
             <FieldEditor fieldKey={key} field={field} onUpdate={(patch) => updateField(activeGroup, activeLocale, key, patch)} />
 
             {field.error && <span className="mt-2 block text-[13px] text-gold">{field.error}</span>}

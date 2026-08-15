@@ -76,6 +76,11 @@ class SettingSeeder extends Seeder
                 ], 'json'],
                 'nav_cta_label' => 'Start a Conversation',
                 'footer_note' => 'Seluruh hak cipta dilindungi.',
+
+                // Dipakai Seo.jsx sebagai gambar bagikan (Open Graph/Twitter)
+                // default untuk halaman yang tidak punya gambar sendiri.
+                'og_image' => '',
+                'twitter_handle' => '',
             ],
 
             // ---------------------------------------------------------------
@@ -300,7 +305,7 @@ class SettingSeeder extends Seeder
                 // Galeri gabungan (bukan per-pillar) yang tampil auto-slide di halaman
                 // Services dan sebagai preview di beranda — hingga 10 foto (lihat
                 // GalleryField di admin, MAX_PHOTOS).
-                'gallery' => [],
+                'gallery' => [[], 'json'],
 
                 'growth_title' => 'Digital Strategy & Growth',
                 'growth_body' => 'Data-driven precision meets creative intuition. We don\'t just find your audience; we cultivate a community of advocates.',

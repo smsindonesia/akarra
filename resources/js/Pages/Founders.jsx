@@ -1,13 +1,13 @@
-import { Head } from '@inertiajs/react'
-
 import ClosingCta from '../components/organisms/ClosingCta'
 import Divider from '../components/atoms/Divider'
 import FounderCard from '../components/molecules/FounderCard'
 import Icon from '../components/atoms/Icon'
 import PageHero from '../components/organisms/PageHero'
+import Seo from '../components/atoms/Seo'
 import PublicLayout from '../Layouts/PublicLayout'
 import useReveal from '../hooks/useReveal'
 import { useContent } from '../hooks/useContent'
+import { breadcrumbJsonLd } from '../lib/seo'
 
 function PullQuote({ children }) {
   const ref = useReveal()
@@ -26,16 +26,22 @@ function PullQuote({ children }) {
   )
 }
 
-export default function Founders() {
+export default function Founders({ canonicalUrl }) {
   const { get, list } = useContent()
 
   const people = list('founders', 'people')
 
   return (
     <>
-      <Head title={`Founders | ${get('global', 'site_name', 'AKARRA')}`}>
-        <meta name="description" content={get('founders', 'hero_subtitle')} />
-      </Head>
+      <Seo
+        title="Founders"
+        description={get('founders', 'hero_subtitle')}
+        canonicalUrl={canonicalUrl}
+        jsonLd={breadcrumbJsonLd([
+          { name: get('global', 'site_name', 'AKARRA'), url: route('home') },
+          { name: 'Founders', url: canonicalUrl },
+        ])}
+      />
 
       <PageHero
         eyebrow={get('founders', 'hero_eyebrow', 'Architects of Value')}

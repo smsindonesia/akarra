@@ -1,5 +1,3 @@
-import { Head } from '@inertiajs/react'
-
 import ClosingCta from '../components/organisms/ClosingCta'
 import Divider from '../components/atoms/Divider'
 import Figure from '../components/atoms/Figure'
@@ -10,9 +8,11 @@ import ProductCard from '../components/molecules/ProductCard'
 import SectionHead from '../components/molecules/SectionHead'
 import PageHero from '../components/organisms/PageHero'
 import StatementBlock from '../components/organisms/StatementBlock'
+import Seo from '../components/atoms/Seo'
 import PublicLayout from '../Layouts/PublicLayout'
 import useReveal from '../hooks/useReveal'
 import { useContent } from '../hooks/useContent'
+import { breadcrumbJsonLd } from '../lib/seo'
 
 function LabsCard({ title, body, large = false }) {
   return (
@@ -24,7 +24,7 @@ function LabsCard({ title, body, large = false }) {
   )
 }
 
-export default function Products() {
+export default function Products({ canonicalUrl }) {
   const { get, list } = useContent()
   const ref = useReveal()
   const products = list('products', 'items')
@@ -34,9 +34,15 @@ export default function Products() {
 
   return (
     <>
-      <Head title={`Products | ${get('global', 'site_name', 'AKARRA')}`}>
-        <meta name="description" content={get('products', 'hero_subtitle')} />
-      </Head>
+      <Seo
+        title="Products"
+        description={get('products', 'hero_subtitle')}
+        canonicalUrl={canonicalUrl}
+        jsonLd={breadcrumbJsonLd([
+          { name: get('global', 'site_name', 'AKARRA'), url: route('home') },
+          { name: 'Products', url: canonicalUrl },
+        ])}
+      />
 
       <PageHero
         eyebrow={get('products', 'hero_eyebrow', 'Curated Collections')}

@@ -193,9 +193,16 @@
 
   .animate-draw-mark,
   .animate-fade-up,
-  .animate-sweep,
-  .animate-drift {
+  .animate-sweep {
     animation: none;
     opacity: 1;
+  }
+
+  /* Beda dari animasi masuk di atas: drift dipakai pada elemen yang sudah
+     punya opacity rendah sendiri (mis. mandala latar). Saat animasi
+     dimatikan, opacity aslinya harus tetap dipertahankan, bukan dipaksa
+     jadi solid. */
+  .animate-drift {
+    animation: none;
   }
 }

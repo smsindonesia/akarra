@@ -27,26 +27,27 @@ class PageController extends Controller
                 ->latest('published_at')
                 ->take(3)
                 ->get(),
+            'canonicalUrl' => route('home'),
         ]);
     }
 
     public function ecosystem(): Response
     {
-        return Inertia::render('Ecosystem');
+        return Inertia::render('Ecosystem', ['canonicalUrl' => route('ecosystem')]);
     }
 
     public function products(): Response
     {
-        return Inertia::render('Products');
+        return Inertia::render('Products', ['canonicalUrl' => route('products')]);
     }
 
     public function services(): Response
     {
-        return Inertia::render('Services');
+        return Inertia::render('Services', ['canonicalUrl' => route('services')]);
     }
 
     public function founders(): Response
     {
-        return Inertia::render('Founders');
+        return Inertia::render('Founders', ['canonicalUrl' => route('founders')]);
     }
 }

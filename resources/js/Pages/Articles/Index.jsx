@@ -1,12 +1,14 @@
-import { Head, Link, router } from '@inertiajs/react'
+import { Link, router } from '@inertiajs/react'
 
 import Display from '../../components/atoms/Display'
 import Figure from '../../components/atoms/Figure'
 import Paragraph from '../../components/atoms/Paragraph'
 import PageHero from '../../components/organisms/PageHero'
+import Seo from '../../components/atoms/Seo'
 import PublicLayout from '../../Layouts/PublicLayout'
 import { useLanguage } from '../../context/LanguageContext'
 import { useContent } from '../../hooks/useContent'
+import { breadcrumbJsonLd } from '../../lib/seo'
 
 export default function ArticlesIndex({ articles, filters, canonicalUrl }) {
   const { get } = useContent()
@@ -16,12 +18,31 @@ export default function ArticlesIndex({ articles, filters, canonicalUrl }) {
     router.get(route('articles.index'), { ...filters, page }, { preserveScroll: true })
   }
 
+  const title = t('articlesPageTitle')
+  const description = get('global', 'description', '')
+
+  const collectionJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: title,
+    description,
+    url: canonicalUrl,
+  }
+
   return (
     <>
-      <Head title={`${t('articlesPageTitle')} | ${get('global', 'site_name', 'AKARRA')}`}>
-        <meta name="description" content={get('global', 'description', '')} />
-        <link rel="canonical" href={canonicalUrl} />
-      </Head>
+      <Seo
+        title={title}
+        description={description}
+        canonicalUrl={canonicalUrl}
+        jsonLd={[
+          collectionJsonLd,
+          breadcrumbJsonLd([
+            { name: get('global', 'site_name', 'AKARRA'), url: route('home') },
+            { name: title, url: canonicalUrl },
+          ]),
+        ]}
+      />
 
       <PageHero title={t('articlesPageTitle')} subtitle={t('articlesPageSubtitle')} />
 

@@ -1,5 +1,3 @@
-import { Head } from '@inertiajs/react'
-
 import AutoSlideGallery from '../components/organisms/AutoSlideGallery'
 import Button from '../components/atoms/Button'
 import CoverflowGallery from '../components/organisms/CoverflowGallery'
@@ -12,10 +10,12 @@ import Icon, { pickIcon } from '../components/atoms/Icon'
 import PageHero from '../components/organisms/PageHero'
 import Paragraph from '../components/atoms/Paragraph'
 import SectionHead from '../components/molecules/SectionHead'
+import Seo from '../components/atoms/Seo'
 import PublicLayout from '../Layouts/PublicLayout'
 import useReveal from '../hooks/useReveal'
 import { useContent } from '../hooks/useContent'
 import { useLanguage } from '../context/LanguageContext'
+import { breadcrumbJsonLd } from '../lib/seo'
 
 /**
  * Pilar 01/02 tampil sebagai section penuh dengan gambar dan dua sub-kartu
@@ -134,7 +134,7 @@ function AmplificationCard({ title, body, bullets = [], featured = false }) {
   )
 }
 
-export default function Services() {
+export default function Services({ canonicalUrl }) {
   const { get, list } = useContent()
   const { t } = useLanguage()
 
@@ -144,9 +144,15 @@ export default function Services() {
 
   return (
     <>
-      <Head title={`Services | ${get('global', 'site_name', 'AKARRA')}`}>
-        <meta name="description" content={get('services', 'hero_subtitle')} />
-      </Head>
+      <Seo
+        title="Services"
+        description={get('services', 'hero_subtitle')}
+        canonicalUrl={canonicalUrl}
+        jsonLd={breadcrumbJsonLd([
+          { name: get('global', 'site_name', 'AKARRA'), url: route('home') },
+          { name: 'Services', url: canonicalUrl },
+        ])}
+      />
 
       <PageHero
         eyebrow={get('services', 'hero_eyebrow', 'Our Capabilities')}

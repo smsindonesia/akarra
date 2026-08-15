@@ -37,6 +37,7 @@ Route::post('/contacts', [ContactController::class, 'store'])
     ->name('contacts.store');
 
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
+Route::get('/llms.txt', [SitemapController::class, 'llms'])->name('llms');
 
 Route::get('/robots.txt', function () {
     $lines = [

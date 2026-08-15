@@ -1,5 +1,3 @@
-import { Head } from '@inertiajs/react'
-
 import ArticlesPreview from '../components/organisms/ArticlesPreview'
 import CollaborationForm from '../components/organisms/CollaborationForm'
 import GalleryPreview from '../components/organisms/GalleryPreview'
@@ -9,6 +7,7 @@ import ServicesEcosystem from '../components/organisms/ServicesEcosystem'
 import SolutionsGrid from '../components/organisms/SolutionsGrid'
 import StoryFeature from '../components/organisms/StoryFeature'
 import ValuesGrid from '../components/organisms/ValuesGrid'
+import Seo from '../components/atoms/Seo'
 import PublicLayout from '../Layouts/PublicLayout'
 import { useContent } from '../hooks/useContent'
 
@@ -20,7 +19,7 @@ import { useContent } from '../hooks/useContent'
  * tombol di navbar sudah cukup — pengulangan merusak ketenangan yang jadi
  * sumber kesan mewah di desain ini.
  */
-export default function Home({ latestArticles = [] }) {
+export default function Home({ latestArticles = [], canonicalUrl }) {
   const { get, list } = useContent()
 
   const solutions = list('home', 'solutions')
@@ -30,9 +29,11 @@ export default function Home({ latestArticles = [] }) {
 
   return (
     <>
-      <Head title={get('global', 'tagline')}>
-        <meta name="description" content={get('global', 'description')} />
-      </Head>
+      <Seo
+        title={get('global', 'tagline')}
+        description={get('global', 'description')}
+        canonicalUrl={canonicalUrl}
+      />
 
       <PageHero
         variant="landing"

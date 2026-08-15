@@ -32,6 +32,8 @@ export const fallbackContent = {
     ],
     nav_cta_label: 'Start a Conversation',
     footer_note: 'Seluruh hak cipta dilindungi.',
+    og_image: '',
+    twitter_handle: '',
   },
 
   home: {

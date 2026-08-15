@@ -4,8 +4,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title inertia>{{ config('app.name', 'AKARRA') }}</title>
-        <meta name="description" content="Ekosistem bisnis terintegrasi di bidang fashion, desain kreatif, event, dan periklanan digital.">
+        {{-- Title, deskripsi, dan tag SEO lain sengaja tidak ditulis statis di
+             sini. Semuanya diatur per halaman lewat komponen Seo.jsx (Inertia
+             Head) dan dirender lewat @inertiaHead di bawah — baik lewat SSR
+             maupun (saat SSR mati) diisi ulang oleh JS begitu halaman
+             ter-hidrasi. Menulis default statis di sini akan dobel dengan
+             tag yang sama begitu SSR aktif. --}}
         <link rel="icon" type="image/png" href="/favicon.png">
         <link rel="apple-touch-icon" href="/favicon.png">
 

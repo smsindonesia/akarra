@@ -1,12 +1,14 @@
-import { Head, Link } from '@inertiajs/react'
+import { Link } from '@inertiajs/react'
 
 import Display from '../../components/atoms/Display'
 import Eyebrow from '../../components/atoms/Eyebrow'
 import Figure from '../../components/atoms/Figure'
 import Paragraph from '../../components/atoms/Paragraph'
+import Seo from '../../components/atoms/Seo'
 import PublicLayout from '../../Layouts/PublicLayout'
 import { useLanguage } from '../../context/LanguageContext'
 import { useContent } from '../../hooks/useContent'
+import { breadcrumbJsonLd } from '../../lib/seo'
 
 export default function ArticleShow({ article, related, canonicalUrl, coverImageUrl }) {
   const { t } = useLanguage()
@@ -16,7 +18,7 @@ export default function ArticleShow({ article, related, canonicalUrl, coverImage
   const description = article.meta_description || article.excerpt || ''
   const siteName = get('global', 'site_name', 'AKARRA')
 
-  const jsonLd = {
+  const articleJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: article.title,
@@ -31,27 +33,25 @@ export default function ArticleShow({ article, related, canonicalUrl, coverImage
 
   return (
     <>
-      <Head title={title}>
-        <meta name="description" content={description} />
-        <link rel="canonical" href={canonicalUrl} />
-
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:site_name" content={siteName} />
-        {coverImageUrl && <meta property="og:image" content={coverImageUrl} />}
+      <Seo
+        title={title}
+        description={description}
+        canonicalUrl={canonicalUrl}
+        image={coverImageUrl}
+        type="article"
+        jsonLd={[
+          articleJsonLd,
+          breadcrumbJsonLd([
+            { name: siteName, url: route('home') },
+            { name: t('articlesPageTitle'), url: route('articles.index') },
+            { name: article.title, url: canonicalUrl },
+          ]),
+        ]}
+      >
         {article.published_at && <meta property="article:published_time" content={article.published_at} />}
         {article.category && <meta property="article:section" content={article.category.name} />}
         {article.author && <meta property="article:author" content={article.author.name} />}
-
-        <meta name="twitter:card" content={coverImageUrl ? 'summary_large_image' : 'summary'} />
-        <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={description} />
-        {coverImageUrl && <meta name="twitter:image" content={coverImageUrl} />}
-
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      </Head>
+      </Seo>
 
       <article className="pt-40 pb-20 md:pt-48">
         <div className="shell mx-auto max-w-3xl">
