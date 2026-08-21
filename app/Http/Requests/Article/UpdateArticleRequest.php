@@ -17,7 +17,7 @@ class UpdateArticleRequest extends FormRequest
     {
         return [
             'title' => ['sometimes', 'required', 'string', 'max:180'],
-            'category_id' => ['sometimes', 'required', 'integer', 'exists:categories,id'],
+            'category_id' => ['sometimes', 'required', 'uuid', 'exists:categories,id'],
             'excerpt' => ['nullable', 'string', 'max:300'],
             'body' => ['sometimes', 'required', 'string'],
             'cover_image' => ['nullable', 'string', 'max:255'],

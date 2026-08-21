@@ -9,14 +9,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('articles', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
 
             // Kategori dibatasi restrict: menghapus kategori yang masih dipakai
             // harus gagal, bukan diam-diam menghapus artikelnya.
-            $table->foreignId('category_id')->constrained()->restrictOnDelete();
+            $table->foreignUuid('category_id')->constrained()->restrictOnDelete();
 
             // Penulis dihapus -> artikel tetap ada, penulisnya dikosongkan.
-            $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignUuid('user_id')->nullable()->constrained()->nullOnDelete();
 
             $table->string('title', 180);
             $table->string('slug', 200)->unique();

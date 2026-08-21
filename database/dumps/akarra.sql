@@ -1,336 +1,900 @@
--- MySQL dump 10.13  Distrib 8.4.9, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: akarra
--- ------------------------------------------------------
--- Server version	8.4.9
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8mb4 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
---
--- Table structure for table `articles`
+-- PostgreSQL database dump
 --
 
-DROP TABLE IF EXISTS `articles`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `articles` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `category_id` bigint unsigned NOT NULL,
-  `user_id` bigint unsigned DEFAULT NULL,
-  `title` varchar(180) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `excerpt` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `body` longtext COLLATE utf8mb4_unicode_ci,
-  `cover_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status` enum('draft','published') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'draft',
-  `meta_title` varchar(70) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `meta_description` varchar(160) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `published_at` timestamp NULL DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `articles_slug_unique` (`slug`),
-  KEY `articles_category_id_foreign` (`category_id`),
-  KEY `articles_user_id_foreign` (`user_id`),
-  KEY `articles_status_published_at_index` (`status`,`published_at`),
-  CONSTRAINT `articles_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE RESTRICT,
-  CONSTRAINT `articles_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+\restrict D4cFzjfO3SghMWbIhM6l7huJFYQdO9ctxljcD4LzfSZJghEuYeZSeG37Z64PTiL
+
+-- Dumped from database version 16.14 (Ubuntu 16.14-1.pgdg22.04+1)
+-- Dumped by pg_dump version 16.14 (Ubuntu 16.14-1.pgdg22.04+1)
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+ALTER TABLE IF EXISTS ONLY public.articles DROP CONSTRAINT IF EXISTS articles_user_id_foreign;
+ALTER TABLE IF EXISTS ONLY public.articles DROP CONSTRAINT IF EXISTS articles_category_id_foreign;
+DROP INDEX IF EXISTS public.users_role_index;
+DROP INDEX IF EXISTS public.settings_group_index;
+DROP INDEX IF EXISTS public.sessions_user_id_index;
+DROP INDEX IF EXISTS public.sessions_last_activity_index;
+DROP INDEX IF EXISTS public.jobs_queue_index;
+DROP INDEX IF EXISTS public.failed_jobs_connection_queue_failed_at_index;
+DROP INDEX IF EXISTS public.contacts_is_read_index;
+DROP INDEX IF EXISTS public.contacts_interest_index;
+DROP INDEX IF EXISTS public.cache_locks_expiration_index;
+DROP INDEX IF EXISTS public.cache_expiration_index;
+DROP INDEX IF EXISTS public.articles_status_published_at_index;
+ALTER TABLE IF EXISTS ONLY public.users DROP CONSTRAINT IF EXISTS users_pkey;
+ALTER TABLE IF EXISTS ONLY public.users DROP CONSTRAINT IF EXISTS users_email_unique;
+ALTER TABLE IF EXISTS ONLY public.settings DROP CONSTRAINT IF EXISTS settings_pkey;
+ALTER TABLE IF EXISTS ONLY public.settings DROP CONSTRAINT IF EXISTS settings_group_key_locale_unique;
+ALTER TABLE IF EXISTS ONLY public.sessions DROP CONSTRAINT IF EXISTS sessions_pkey;
+ALTER TABLE IF EXISTS ONLY public.password_reset_tokens DROP CONSTRAINT IF EXISTS password_reset_tokens_pkey;
+ALTER TABLE IF EXISTS ONLY public.migrations DROP CONSTRAINT IF EXISTS migrations_pkey;
+ALTER TABLE IF EXISTS ONLY public.jobs DROP CONSTRAINT IF EXISTS jobs_pkey;
+ALTER TABLE IF EXISTS ONLY public.job_batches DROP CONSTRAINT IF EXISTS job_batches_pkey;
+ALTER TABLE IF EXISTS ONLY public.failed_jobs DROP CONSTRAINT IF EXISTS failed_jobs_uuid_unique;
+ALTER TABLE IF EXISTS ONLY public.failed_jobs DROP CONSTRAINT IF EXISTS failed_jobs_pkey;
+ALTER TABLE IF EXISTS ONLY public.contacts DROP CONSTRAINT IF EXISTS contacts_pkey;
+ALTER TABLE IF EXISTS ONLY public.categories DROP CONSTRAINT IF EXISTS categories_slug_unique;
+ALTER TABLE IF EXISTS ONLY public.categories DROP CONSTRAINT IF EXISTS categories_pkey;
+ALTER TABLE IF EXISTS ONLY public.categories DROP CONSTRAINT IF EXISTS categories_name_unique;
+ALTER TABLE IF EXISTS ONLY public.cache DROP CONSTRAINT IF EXISTS cache_pkey;
+ALTER TABLE IF EXISTS ONLY public.cache_locks DROP CONSTRAINT IF EXISTS cache_locks_pkey;
+ALTER TABLE IF EXISTS ONLY public.articles DROP CONSTRAINT IF EXISTS articles_slug_unique;
+ALTER TABLE IF EXISTS ONLY public.articles DROP CONSTRAINT IF EXISTS articles_pkey;
+ALTER TABLE IF EXISTS public.migrations ALTER COLUMN id DROP DEFAULT;
+ALTER TABLE IF EXISTS public.jobs ALTER COLUMN id DROP DEFAULT;
+ALTER TABLE IF EXISTS public.failed_jobs ALTER COLUMN id DROP DEFAULT;
+DROP TABLE IF EXISTS public.users;
+DROP TABLE IF EXISTS public.settings;
+DROP TABLE IF EXISTS public.sessions;
+DROP TABLE IF EXISTS public.password_reset_tokens;
+DROP SEQUENCE IF EXISTS public.migrations_id_seq;
+DROP TABLE IF EXISTS public.migrations;
+DROP SEQUENCE IF EXISTS public.jobs_id_seq;
+DROP TABLE IF EXISTS public.jobs;
+DROP TABLE IF EXISTS public.job_batches;
+DROP SEQUENCE IF EXISTS public.failed_jobs_id_seq;
+DROP TABLE IF EXISTS public.failed_jobs;
+DROP TABLE IF EXISTS public.contacts;
+DROP TABLE IF EXISTS public.categories;
+DROP TABLE IF EXISTS public.cache_locks;
+DROP TABLE IF EXISTS public.cache;
+DROP TABLE IF EXISTS public.articles;
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
 
 --
--- Dumping data for table `articles`
+-- Name: articles; Type: TABLE; Schema: public; Owner: -
 --
 
-LOCK TABLES `articles` WRITE;
-/*!40000 ALTER TABLE `articles` DISABLE KEYS */;
-INSERT INTO `articles` VALUES (1,6,1,'Kisah Berdirinya AKARRA: Dari Visi Menjadi Ekosistem Bisnis','kisah-berdirinya-akarra-dari-visi-menjadi-ekosistem-bisnis','Bermula dari keresahan tentang industri kreatif Indonesia yang berjalan sendiri-sendiri, Febri Khoirul Imam dan Nanda Fifia Putri merancang AKARRA sebagai satu ekosistem yang menyatukan fashion, kreativitas, dan strategi digital.','<p>Setiap merek besar biasanya lahir dari satu keresahan sederhana. Bagi AKARRA, keresahan itu adalah melihat betapa terpecahnya industri kreatif Indonesia — seorang desainer fashion harus mencari sendiri rumah produksinya, brand yang baru tumbuh harus berpindah dari satu vendor ke vendor lain hanya untuk membangun identitas visual, dan strategi digital sering menjadi renungan terakhir setelah produk jadi, bukan bagian dari perencanaan sejak awal.</p>\r\n\r\n<p>Febri Khoirul Imam dan Nanda Fifia Putri mendirikan AKARRA dengan gagasan yang berbeda: bagaimana jika seluruh perjalanan itu — dari produksi, desain, penyelenggaraan acara, hingga periklanan digital — bisa ditempuh dalam satu ekosistem yang saling terhubung, tanpa brand harus kehilangan jiwa aslinya di tengah jalan?</p>\r\n\r\n<h2>Dari Nama, Sudah Ada Filosofi</h2>\r\n<p>Nama \"AKARRA\" sendiri bukan sekadar label. Terinspirasi dari geometri berlian dan mandala tradisional Nusantara, identitas visualnya memadukan kemewahan modern dengan kearifan lokal — sebuah pengingat bahwa tumbuh besar tidak harus berarti melepaskan akar budaya.</p>\r\n\r\n<ul>\r\n    <li><strong>Berlian &amp; Kemewahan</strong> — struktur geometris yang mencerminkan kualitas premium dan eksklusivitas.</li>\r\n    <li><strong>Energi &amp; Dinamisme</strong> — segitiga yang saling bertautan, melambangkan inovasi dan kolaborasi.</li>\r\n    <li><strong>Mandala &amp; Harmoni</strong> — pola melingkar yang mengacu pada tradisi mandala Nusantara.</li>\r\n    <li><strong>Emas &amp; Kepercayaan</strong> — warna yang melambangkan prestise sekaligus kepercayaan jangka panjang.</li>\r\n</ul>\r\n\r\n<h2>Bukan Sekadar Menjual, Tapi Membangun Warisan</h2>\r\n<p>Sejak hari pertama, AKARRA tidak dirancang untuk sekadar menjual produk atau jasa. Tujuannya lebih jauh: membangun identitas dan dampak nyata bagi komunitas fashion dan kreatif Indonesia, sekaligus membuka jalan bagi brand lokal untuk tumbuh setara dengan nama-nama besar dunia — tanpa kehilangan akar budayanya.</p>\r\n\r\n<p>Perjalanan itu terus berlanjut hari ini, melalui tiga pilar yang saling menopang: Fashionpreneur, Creative Labs, dan Advertising. Ketiganya lahir dari satu keyakinan yang sama — bahwa keunggulan sejati ditemukan di persimpangan antara presisi dan jiwa.</p>',NULL,'published','Kisah Berdirinya AKARRA','Bagaimana AKARRA lahir dari visi untuk menyatukan fashion, desain kreatif, event, dan periklanan digital dalam satu ekosistem bisnis.','2026-08-03 03:56:53','2026-08-15 03:56:54','2026-08-15 03:56:54'),(2,6,1,'Mengenal Tiga Pilar AKARRA: Fashionpreneur, Creative Labs, dan Advertising','mengenal-tiga-pilar-akarra-fashionpreneur-creative-labs-dan-advertising','Tiga pilar yang saling menopang, dirancang untuk menemani brand di setiap tahap pertumbuhannya — dari produksi hingga strategi digital.','<p>Salah satu hal yang membedakan AKARRA dari agensi atau rumah produksi pada umumnya adalah struktur layanannya yang tidak berdiri sendiri-sendiri. Ketiga pilar — Fashionpreneur, Creative Labs, dan Advertising — dirancang untuk saling menopang, sehingga sebuah brand bisa ditemani sejak ide pertama hingga dikenal luas, tanpa harus berpindah mitra di setiap tahap.</p>\r\n\r\n<h2>01 / Fashionpreneur</h2>\r\n<p>Fashionpreneur adalah ekosistem komprehensif bagi desainer mapan maupun label yang baru tumbuh, untuk berkembang tanpa mengorbankan integritas kualitas. AKARRA menangani kerumitan rantai pasok — dari sampling di atelier hingga produksi skala besar yang etis — supaya brand bisa fokus sepenuhnya pada jiwa produknya sendiri.</p>\r\n<p>Dua layanan inti di pilar ini adalah <strong>The Atelier</strong> (sampling bespoke dan pengembangan pola teknis untuk siluet high-fashion) dan <strong>Global Production</strong> (manufaktur skala kecil yang etis serta sourcing tekstil berskala besar dengan fokus keberlanjutan).</p>\r\n\r\n<h2>02 / Creative Labs</h2>\r\n<p>Jika Fashionpreneur adalah tangan yang memproduksi, Creative Labs adalah mesin intelektual yang menerjemahkan nilai brand menjadi narasi visual dan pengalaman yang membekas di benak audiens yang semakin kritis.</p>\r\n<p>Di dalamnya ada <strong>Art Direction</strong> — kurasi identitas visual, citra kampanye, dan panduan brand berkualitas tinggi — serta <strong>Immersive Events</strong>, mulai dari peluncuran produk bespoke hingga peragaan busana yang dirancang untuk membangkitkan kedekatan emosional, bukan sekadar hiburan sesaat.</p>\r\n\r\n<h2>03 / Advertising</h2>\r\n<p>Pilar ketiga menjembatani semua kerja kreatif itu ke pasar yang tepat. Fokusnya ada pada strategi digital dan periklanan yang terukur — penempatan media, pengelolaan media sosial, hingga positioning brand — supaya karya yang telah dibangun dengan susah payah benar-benar sampai ke audiens yang dituju.</p>\r\n\r\n<h2>Mengapa Harus Tiga Pilar dalam Satu Atap?</h2>\r\n<p>Karena keputusan yang baik di satu pilar selalu memengaruhi pilar lainnya. Pilihan tekstil di Fashionpreneur akan menentukan bagaimana produk difoto dan diceritakan di Creative Labs, dan narasi itu pada akhirnya membentuk cara sebuah kampanye ditempatkan di Advertising. Dengan ketiganya berjalan dalam satu ekosistem, brand tidak perlu menerjemahkan ulang visinya setiap kali berpindah tangan.</p>',NULL,'published','Tiga Pilar Ekosistem AKARRA','Fashionpreneur, Creative Labs, dan Advertising — tiga pilar yang membentuk ekosistem layanan AKARRA bagi brand fashion dan kreatif Indonesia.','2026-08-09 03:56:53','2026-08-15 03:56:54','2026-08-15 03:56:54'),(3,6,1,'Komitmen AKARRA terhadap Keberlanjutan dan Budaya Lokal Indonesia','komitmen-akarra-terhadap-keberlanjutan-dan-budaya-lokal-indonesia','Menjadi brand berkelas dunia bukan berarti melepaskan akar. Begini cara AKARRA menyeimbangkan pertumbuhan bisnis dengan tanggung jawab terhadap lingkungan dan warisan budaya.','<p>Ada satu pertanyaan yang terus dipegang AKARRA sejak awal berdiri: apakah mungkin sebuah brand tumbuh menjadi kelas dunia tanpa mengorbankan tempat ia berasal? Bagi AKARRA, jawabannya bukan hanya \"mungkin\" — tetapi menjadi salah satu prinsip yang mendasari setiap keputusan bisnis yang diambil.</p>\r\n\r\n<h2>Keberlanjutan Bukan Jargon, Tapi Standar Kerja</h2>\r\n<p>Di pilar Fashionpreneur, komitmen ini terlihat nyata pada layanan Global Production — manufaktur skala kecil yang etis dan sourcing tekstil dengan fokus keberlanjutan. Ini bukan lapisan pemasaran yang ditambahkan belakangan, melainkan bagian dari cara AKARRA memilih mitra produksi dan bahan baku sejak tahap paling awal.</p>\r\n<p>Pendekatan ini memang menuntut lebih banyak kesabaran dibanding produksi massal konvensional. Namun bagi AKARRA, kualitas yang bertahan lama — baik dari sisi material maupun dampaknya terhadap lingkungan — selalu lebih bernilai daripada kecepatan semata.</p>\r\n\r\n<h2>Akar Budaya sebagai Fondasi, Bukan Sekadar Ornamen</h2>\r\n<p>Penghormatan terhadap budaya lokal juga tertanam sejak dari identitas visual AKARRA sendiri. Motif mandala yang menjadi ciri khas logo bukan dipilih karena sedang tren, melainkan karena mengacu langsung pada tradisi mandala Nusantara — pola melingkar yang telah lama menjadi simbol harmoni dalam budaya Indonesia.</p>\r\n<p>Filosofi yang sama juga membentuk cara AKARRA bekerja dengan para perajin dan pelaku industri kreatif lokal: bukan sebagai vendor yang sekadar dibayar untuk mengeksekusi, melainkan sebagai mitra yang turut membentuk arah kreatif setiap karya.</p>\r\n\r\n<h2>Visi ke Depan</h2>\r\n<p>AKARRA ingin menjadi ekosistem bisnis fashion dan kreatif terdepan di Indonesia yang melahirkan brand-brand berkelas dunia — namun tetap berakar pada budaya lokal. Bagi AKARRA, keunggulan sejati justru ditemukan pada titik temu antara presisi matematis sebuah strategi bisnis dan jiwa artistik yang diwariskan turun-temurun.</p>\r\n<p>Itulah sebabnya setiap ekspansi yang dilakukan AKARRA — baik ke kategori produk baru, kemitraan strategis, maupun pasar yang lebih luas — selalu diuji dengan satu pertanyaan yang sama: apakah langkah ini memperkuat akar, atau justru menjauhkannya?</p>',NULL,'published','Keberlanjutan & Budaya Lokal di AKARRA','Bagaimana AKARRA menjaga keseimbangan antara pertumbuhan bisnis, praktik produksi yang etis, dan penghormatan terhadap budaya lokal Indonesia.','2026-08-14 03:56:53','2026-08-15 03:56:54','2026-08-15 03:56:54');
-/*!40000 ALTER TABLE `articles` ENABLE KEYS */;
-UNLOCK TABLES;
+CREATE TABLE public.articles (
+    id uuid NOT NULL,
+    category_id uuid NOT NULL,
+    user_id uuid,
+    title character varying(180) NOT NULL,
+    slug character varying(200) NOT NULL,
+    excerpt character varying(300),
+    body text,
+    cover_image character varying(255),
+    status character varying(255) DEFAULT 'draft'::character varying NOT NULL,
+    meta_title character varying(70),
+    meta_description character varying(160),
+    published_at timestamp(0) without time zone,
+    created_at timestamp(0) without time zone,
+    updated_at timestamp(0) without time zone,
+    CONSTRAINT articles_status_check CHECK (((status)::text = ANY ((ARRAY['draft'::character varying, 'published'::character varying])::text[])))
+);
+
 
 --
--- Table structure for table `categories`
+-- Name: cache; Type: TABLE; Schema: public; Owner: -
 --
 
-DROP TABLE IF EXISTS `categories`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `categories` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(120) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `categories_name_unique` (`name`),
-  UNIQUE KEY `categories_slug_unique` (`slug`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+CREATE TABLE public.cache (
+    key character varying(255) NOT NULL,
+    value text NOT NULL,
+    expiration bigint NOT NULL
+);
+
 
 --
--- Dumping data for table `categories`
+-- Name: cache_locks; Type: TABLE; Schema: public; Owner: -
 --
 
-LOCK TABLES `categories` WRITE;
-/*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` VALUES (1,'Fashion & Tren','fashion-tren','Perkembangan industri fashion dan arah tren.','2026-08-15 03:56:19','2026-08-15 03:56:19'),(2,'Creative Labs','creative-labs','Proses kreatif, desain, dan produksi.','2026-08-15 03:56:19','2026-08-15 03:56:19'),(3,'Event & Pertunjukan','event-pertunjukan','Penyelenggaraan acara dan pengalaman brand.','2026-08-15 03:56:19','2026-08-15 03:56:19'),(4,'Digital & Periklanan','digital-periklanan','Strategi digital, media, dan periklanan.','2026-08-15 03:56:19','2026-08-15 03:56:19'),(5,'Tips Bisnis Fashion','tips-bisnis-fashion','Panduan praktis membangun bisnis fashion.','2026-08-15 03:56:19','2026-08-15 03:56:19'),(6,'Berita Perusahaan','berita-perusahaan','Kabar terbaru dari ekosistem AKARRA.','2026-08-15 03:56:19','2026-08-15 03:56:19'),(7,'Studi Kasus Klien','studi-kasus-klien','Cerita kerja sama dan hasilnya.','2026-08-15 03:56:19','2026-08-15 03:56:19');
-/*!40000 ALTER TABLE `categories` ENABLE KEYS */;
-UNLOCK TABLES;
+CREATE TABLE public.cache_locks (
+    key character varying(255) NOT NULL,
+    owner character varying(255) NOT NULL,
+    expiration bigint NOT NULL
+);
+
 
 --
--- Table structure for table `contacts`
+-- Name: categories; Type: TABLE; Schema: public; Owner: -
 --
 
-DROP TABLE IF EXISTS `contacts`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `contacts` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(120) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(180) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `interest` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `subject` varchar(180) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `message` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `is_read` tinyint(1) NOT NULL DEFAULT '0',
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `contacts_interest_index` (`interest`),
-  KEY `contacts_is_read_index` (`is_read`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+CREATE TABLE public.categories (
+    id uuid NOT NULL,
+    name character varying(80) NOT NULL,
+    slug character varying(120) NOT NULL,
+    description character varying(255),
+    created_at timestamp(0) without time zone,
+    updated_at timestamp(0) without time zone
+);
+
 
 --
--- Dumping data for table `contacts`
+-- Name: contacts; Type: TABLE; Schema: public; Owner: -
 --
 
-LOCK TABLES `contacts` WRITE;
-/*!40000 ALTER TABLE `contacts` DISABLE KEYS */;
-/*!40000 ALTER TABLE `contacts` ENABLE KEYS */;
-UNLOCK TABLES;
+CREATE TABLE public.contacts (
+    id uuid NOT NULL,
+    name character varying(120) NOT NULL,
+    email character varying(180) NOT NULL,
+    phone character varying(30),
+    interest character varying(40),
+    subject character varying(180),
+    message text NOT NULL,
+    is_read boolean DEFAULT false NOT NULL,
+    created_at timestamp(0) without time zone,
+    updated_at timestamp(0) without time zone
+);
+
 
 --
--- Table structure for table `failed_jobs`
+-- Name: failed_jobs; Type: TABLE; Schema: public; Owner: -
 --
 
-DROP TABLE IF EXISTS `failed_jobs`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `failed_jobs` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`),
-  KEY `failed_jobs_connection_queue_failed_at_index` (`connection`,`queue`,`failed_at`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+CREATE TABLE public.failed_jobs (
+    id bigint NOT NULL,
+    uuid character varying(255) NOT NULL,
+    connection character varying(255) NOT NULL,
+    queue character varying(255) NOT NULL,
+    payload text NOT NULL,
+    exception text NOT NULL,
+    failed_at timestamp(0) without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
 
 --
--- Dumping data for table `failed_jobs`
+-- Name: failed_jobs_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-LOCK TABLES `failed_jobs` WRITE;
-/*!40000 ALTER TABLE `failed_jobs` DISABLE KEYS */;
-/*!40000 ALTER TABLE `failed_jobs` ENABLE KEYS */;
-UNLOCK TABLES;
+CREATE SEQUENCE public.failed_jobs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
 
 --
--- Table structure for table `job_batches`
+-- Name: failed_jobs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-DROP TABLE IF EXISTS `job_batches`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `job_batches` (
-  `id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `total_jobs` int NOT NULL,
-  `pending_jobs` int NOT NULL,
-  `failed_jobs` int NOT NULL,
-  `failed_job_ids` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `options` mediumtext COLLATE utf8mb4_unicode_ci,
-  `cancelled_at` int DEFAULT NULL,
-  `created_at` int NOT NULL,
-  `finished_at` int DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+ALTER SEQUENCE public.failed_jobs_id_seq OWNED BY public.failed_jobs.id;
+
 
 --
--- Dumping data for table `job_batches`
+-- Name: job_batches; Type: TABLE; Schema: public; Owner: -
 --
 
-LOCK TABLES `job_batches` WRITE;
-/*!40000 ALTER TABLE `job_batches` DISABLE KEYS */;
-/*!40000 ALTER TABLE `job_batches` ENABLE KEYS */;
-UNLOCK TABLES;
+CREATE TABLE public.job_batches (
+    id character varying(255) NOT NULL,
+    name character varying(255) NOT NULL,
+    total_jobs integer NOT NULL,
+    pending_jobs integer NOT NULL,
+    failed_jobs integer NOT NULL,
+    failed_job_ids text NOT NULL,
+    options text,
+    cancelled_at integer,
+    created_at integer NOT NULL,
+    finished_at integer
+);
+
 
 --
--- Table structure for table `jobs`
+-- Name: jobs; Type: TABLE; Schema: public; Owner: -
 --
 
-DROP TABLE IF EXISTS `jobs`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `jobs` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `queue` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `attempts` smallint unsigned NOT NULL,
-  `reserved_at` int unsigned DEFAULT NULL,
-  `available_at` int unsigned NOT NULL,
-  `created_at` int unsigned NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `jobs_queue_index` (`queue`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+CREATE TABLE public.jobs (
+    id bigint NOT NULL,
+    queue character varying(255) NOT NULL,
+    payload text NOT NULL,
+    attempts smallint NOT NULL,
+    reserved_at integer,
+    available_at integer NOT NULL,
+    created_at integer NOT NULL
+);
+
 
 --
--- Dumping data for table `jobs`
+-- Name: jobs_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-LOCK TABLES `jobs` WRITE;
-/*!40000 ALTER TABLE `jobs` DISABLE KEYS */;
-/*!40000 ALTER TABLE `jobs` ENABLE KEYS */;
-UNLOCK TABLES;
+CREATE SEQUENCE public.jobs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
 
 --
--- Table structure for table `migrations`
+-- Name: jobs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-DROP TABLE IF EXISTS `migrations`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `migrations` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+ALTER SEQUENCE public.jobs_id_seq OWNED BY public.jobs.id;
+
 
 --
--- Dumping data for table `migrations`
+-- Name: migrations; Type: TABLE; Schema: public; Owner: -
 --
 
-LOCK TABLES `migrations` WRITE;
-/*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (1,'0001_01_01_000000_create_users_table',1),(2,'0001_01_01_000001_create_cache_table',1),(3,'0001_01_01_000002_create_jobs_table',1),(4,'2026_01_01_000100_create_categories_table',1),(5,'2026_01_01_000200_create_articles_table',1),(6,'2026_01_01_000300_create_contacts_table',1),(7,'2026_01_01_000400_create_settings_table',1),(8,'2026_07_24_044734_add_role_to_users_table',2),(9,'2026_08_11_140113_add_locale_to_settings_table',2);
-/*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
-UNLOCK TABLES;
+CREATE TABLE public.migrations (
+    id integer NOT NULL,
+    migration character varying(255) NOT NULL,
+    batch integer NOT NULL
+);
+
 
 --
--- Table structure for table `password_reset_tokens`
+-- Name: migrations_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-DROP TABLE IF EXISTS `password_reset_tokens`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `password_reset_tokens` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+CREATE SEQUENCE public.migrations_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
 
 --
--- Dumping data for table `password_reset_tokens`
+-- Name: migrations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-LOCK TABLES `password_reset_tokens` WRITE;
-/*!40000 ALTER TABLE `password_reset_tokens` DISABLE KEYS */;
-/*!40000 ALTER TABLE `password_reset_tokens` ENABLE KEYS */;
-UNLOCK TABLES;
+ALTER SEQUENCE public.migrations_id_seq OWNED BY public.migrations.id;
+
 
 --
--- Table structure for table `settings`
+-- Name: password_reset_tokens; Type: TABLE; Schema: public; Owner: -
 --
 
-DROP TABLE IF EXISTS `settings`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `settings` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `group` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `key` varchar(120) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `locale` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'id',
-  `value` longtext COLLATE utf8mb4_unicode_ci,
-  `type` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'string',
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `settings_group_key_locale_unique` (`group`,`key`,`locale`),
-  KEY `settings_group_index` (`group`)
-) ENGINE=InnoDB AUTO_INCREMENT=213 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+CREATE TABLE public.password_reset_tokens (
+    email character varying(255) NOT NULL,
+    token character varying(255) NOT NULL,
+    created_at timestamp(0) without time zone
+);
+
 
 --
--- Dumping data for table `settings`
+-- Name: sessions; Type: TABLE; Schema: public; Owner: -
 --
 
-LOCK TABLES `settings` WRITE;
-/*!40000 ALTER TABLE `settings` DISABLE KEYS */;
-INSERT INTO `settings` VALUES (1,'global','site_name','id','AKARRA','string','2026-08-15 03:56:19','2026-08-15 03:56:19'),(2,'global','tagline','id','Ecosystem of Excellence','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(3,'global','description','id','Ekosistem bisnis terintegrasi di bidang fashion, desain kreatif, event, dan periklanan digital.','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(4,'global','founded_year','id','null','string','2026-08-15 03:56:20','2026-08-15 08:25:06'),(5,'global','address','id','null','string','2026-08-15 03:56:20','2026-08-15 08:25:06'),(6,'global','phone','id','null','string','2026-08-15 03:56:20','2026-08-15 08:25:06'),(7,'global','whatsapp','id','6285179973943','string','2026-08-15 03:56:20','2026-08-15 08:25:06'),(8,'global','email','id','null','string','2026-08-15 03:56:20','2026-08-15 08:25:06'),(9,'global','office_hours','id','Senin sampai Jumat, pukul 09.00 s.d. 17.00 WIB','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(10,'global','social','id','[{\"platform\":\"instagram\",\"url\":null,\"label\":\"Instagram\"},{\"platform\":\"tiktok\",\"url\":null,\"label\":\"TikTok\"},{\"platform\":\"linkedin\",\"url\":null,\"label\":\"LinkedIn\"}]','json','2026-08-15 03:56:20','2026-08-15 08:25:06'),(11,'global','nav','id','[{\"label\":\"Ecosystem\",\"path\":\"\\/ecosystem\"},{\"label\":\"Products\",\"path\":\"\\/products\"},{\"label\":\"Services\",\"path\":\"\\/services\"},{\"label\":\"Articles\",\"path\":\"\\/articles\"},{\"label\":\"Founders\",\"path\":\"\\/founders\"}]','json','2026-08-15 03:56:20','2026-08-15 03:56:20'),(12,'global','nav_cta_label','id','Start a Conversation','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(13,'global','footer_note','id','Seluruh hak cipta dilindungi.','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(14,'home','hero_eyebrow','id','A Legacy in the Making','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(15,'home','hero_title','id','Ecosystem of Excellence','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(16,'home','hero_title_emphasis','id','Excellence','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(17,'home','hero_subtitle','id','Perpaduan yang canggih antara semangat kewirausahaan di bidang mode, inovasi Creative Labs, dan keunggulan periklanan strategis. AKARRA diciptakan untuk para visioner masa depan.','string','2026-08-15 03:56:20','2026-08-15 10:39:21'),(18,'home','hero_cta_label','id','Explore the Ecosystem','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(19,'home','hero_secondary_cta_label','id','Our Philosophy','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(20,'home','hero_image','id','http://localhost:8000/storage/settings/2026/08/DvxVsFEa8Gn5rg7FXVDVNvFI.png','string','2026-08-15 03:56:20','2026-08-15 07:47:59'),(21,'home','narrative_title','id','Membangun Warisan, Bukan Sekadar Bisnis','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(22,'home','narrative_body','id','AKARRA bergerak di industri fashion, desain kreatif, event, dan periklanan digital. Melalui tiga pilar utama, kami tidak hanya menjual produk, tetapi membangun identitas dan dampak nyata bagi komunitas fashion dan kreatif Indonesia.','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(23,'home','narrative_image','id','http://localhost:8000/storage/settings/2026/08/pA584uZTyNehJUiPFq37ILrV.png','string','2026-08-15 03:56:20','2026-08-15 07:47:59'),(24,'home','narrative_quote','id','Kami percaya bahwa prestise sejati terletak pada perpaduan antara ketepatan matematis dan jiwa artistik. Perjalanan kami berfokus pada upaya menciptakan dampak yang beresonansi lintas generasi.','string','2026-08-15 03:56:20','2026-08-15 10:39:21'),(25,'home','narrative_quote_attribution','id','The Founders of AKARRA','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(26,'home','narrative_badge','id','Est. 2024','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(27,'home','values','id','[{\"name\":\"Excellence\",\"body\":\"Kualitas dalam setiap jahitan, kerangka, dan strategi yang kami terapkan.\"},{\"name\":\"Integrity\",\"body\":\"Membangun kepercayaan melalui transparansi dan kepemimpinan yang beretika di semua bidang.\"},{\"name\":\"Innovation\",\"body\":\"Menerobos batasan melalui eksperimen kreatif dan teknologi modern.\"},{\"name\":\"Elegance\",\"body\":\"Komitmen terhadap estetika, yang mampu menyampaikan pesan dengan efektif.\"}]','json','2026-08-15 03:56:20','2026-08-15 10:39:21'),(28,'home','services_eyebrow','id','Our Three Pillars','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(29,'home','services_title','id','The Services Ecosystem','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(30,'home','services_subtitle','id','Tiga pilar yang saling menopang, dirancang untuk menemani brand di setiap tahap pertumbuhannya.','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(31,'home','services_cta_label','id','Lihat seluruh layanan','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(32,'home','solutions_title','id','Curated Solutions','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(33,'home','solutions_subtitle','id','Rangkaian produk dan karya yang lahir dari ekosistem kami.','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(34,'home','solutions','id','[{\"title\":\"Koleksi Khusus\",\"body\":\"Keunggulan yang dirancang khusus untuk produk modern.\",\"image\":\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/DxoRjCL6mPyKL7tASADtA9CL.png\",\"category\":\"Fashion\"},{\"title\":\"Signature Textiles\",\"body\":\"Pilihan kain kelas dunia yang diperoleh secara etis.\",\"image\":\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/zwIBeNY1fWECeiDTXog7QrQs.png\",\"category\":\"Fashion\"},{\"title\":\"Visual Storytelling\",\"body\":\"Narasi visual yang membangun kedekatan emosional dengan audiens.\",\"image\":\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/WF5QsM1wZTP256XBrFGoQanq.png\",\"category\":\"Creative\"},{\"title\":\"Brand Positioning\",\"body\":\"Strategi penempatan brand yang tajam dan terukur di pasar digital.\",\"image\":\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/ASCGnEFQgi95uIZI6ozvxury.png\",\"category\":\"Advertising\"}]','json','2026-08-15 03:56:20','2026-08-15 10:39:21'),(35,'home','story_title','id','Cerita di Balik AKARRA','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(36,'home','story_body','id','Kami percaya setiap brand memiliki cerita yang layak diceritakan dengan elegan. Bersama kami, Anda tidak hanya membangun bisnis, tetapi juga membangun warisan.','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(37,'home','story_image','id','/images/content/home-story.jpg','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(38,'home','story_video','id','http://localhost:8000/storage/settings/2026/08/26gbmoBqnuLlOSes7B64qnSM.mp4','string','2026-08-15 03:56:20','2026-08-15 08:10:48'),(39,'home','founders_title','id','Meet the Founders','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(40,'home','founders_subtitle','id','Dua orang di balik arah dan standar AKARRA.','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(41,'home','form_title','id','Mari Berkolaborasi','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(42,'home','form_subtitle','id','Konsultasi awal gratis, tanpa komitmen. Ceritakan apa yang sedang Anda bangun.','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(43,'home','form_cta_label','id','Kirim pesan','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(44,'ecosystem','hero_eyebrow','id','The Architecture of Aspiration','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(45,'ecosystem','hero_title','id','Ecosystem of Excellence','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(46,'ecosystem','hero_title_emphasis','id','Excellence','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(47,'ecosystem','hero_subtitle','id','Sebuah tempat perlindungan multidisiplin di mana ketepatan berpadu dengan keindahan. AKARRA bukan sekadar sebuah merek; melainkan sebuah lanskap indrawi yang utuh, di mana mode, seni, dan strategi menyatu menjadi satu standar yang istimewa dan bergengsi.','string','2026-08-15 03:56:20','2026-08-15 10:40:13'),(48,'ecosystem','story_title','id','Cerita Kami','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(49,'ecosystem','story_body','id','AKARRA didirikan oleh Febri Khoirul Imam dan Nanda Fifia Putri, lahir dari visi untuk menciptakan platform bisnis yang tidak hanya menjual produk, tetapi juga membangun identitas dan dampak nyata bagi komunitas fashion dan kreatif Indonesia.','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(50,'ecosystem','philosophy_title','id','Filosofi Nama & Logo','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(51,'ecosystem','philosophy_body','id','Logo AKARRA terinspirasi dari geometri berlian dan mandala tradisional, perpaduan antara kemewahan modern dan kearifan lokal.','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(52,'ecosystem','philosophy_items','id','[{\"title\":\"Berlian & Kemewahan\",\"body\":\"Struktur geometris berlian mencerminkan kualitas premium dan eksklusivitas.\"},{\"title\":\"Energi & Dinamisme\",\"body\":\"Segitiga yang saling bertautan melambangkan inovasi dan kolaborasi.\"},{\"title\":\"Mandala & Harmoni\",\"body\":\"Pola melingkar mengacu pada tradisi mandala Nusantara.\"},{\"title\":\"Emas & Kepercayaan\",\"body\":\"Warna emas melambangkan prestise dan kepercayaan.\"}]','json','2026-08-15 03:56:20','2026-08-15 03:56:20'),(53,'ecosystem','standard_title','id','The AKARRA Standard','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(54,'ecosystem','standard_body','id','Standar tertinggi di setiap produk dan layanan, sesuai nilai Excellence dan Elegance yang kami pegang.','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(55,'ecosystem','standard_image','id','http://localhost:8000/storage/settings/2026/08/iLYmPN3VMgQd8CaiMKBNfDEF.png','string','2026-08-15 03:56:20','2026-08-15 08:11:17'),(56,'ecosystem','values','id','[{\"name\":\"Excellence\",\"label\":\"Keunggulan\",\"body\":\"Standar tertinggi dalam setiap produk dan layanan.\"},{\"name\":\"Integrity\",\"label\":\"Integritas\",\"body\":\"Transparansi dan kepercayaan di setiap kemitraan.\"},{\"name\":\"Innovation\",\"label\":\"Inovasi\",\"body\":\"Terus berevolusi dan berpikir di luar konvensi.\"},{\"name\":\"Collaboration\",\"label\":\"Kolaborasi\",\"body\":\"Tumbuh bersama klien, mitra, dan komunitas kreatif.\"},{\"name\":\"Elegance\",\"label\":\"Elegansi\",\"body\":\"Estetika dan keindahan dalam setiap karya.\"}]','json','2026-08-15 03:56:20','2026-08-15 03:56:20'),(57,'ecosystem','vision_title','id','A Global Vision of Shared Success','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(58,'ecosystem','vision_body','id','Menjadi ekosistem bisnis fashion dan kreatif terdepan di Indonesia yang melahirkan brand-brand berkelas dunia dengan akar budaya lokal.','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(59,'ecosystem','mission','id','[\"Membangun platform fashion terintegrasi dari produksi hingga distribusi.\",\"Menghadirkan layanan desain dan event kreatif berkelas premium.\",\"Memperkuat brand lokal melalui strategi digital dan periklanan inovatif.\",\"Menciptakan ekosistem kolaboratif untuk pelaku industri kreatif Indonesia.\",\"Mendorong pertumbuhan bisnis klien melalui solusi holistik dan terukur.\"]','json','2026-08-15 03:56:20','2026-08-15 03:56:20'),(60,'ecosystem','stats','id','[{\"value\":\"12\",\"label\":\"Global Ateliers\"},{\"value\":\"450+\",\"label\":\"Artisans\"},{\"value\":\"24\",\"label\":\"Strategic Partners\"},{\"value\":\"100%\",\"label\":\"Ethical Sourcing\"}]','json','2026-08-15 03:56:20','2026-08-15 03:56:20'),(61,'products','hero_eyebrow','id','Curated Collections','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(62,'products','hero_title','id','The Artifacts of Excellence','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(63,'products','hero_title_emphasis','id','Excellence','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(64,'products','hero_subtitle','id','Jelajahi ekosistem produk AKARRA, tempat logika berkinerja tinggi berpadu dengan keahlian kerajinan tangan. Solusi kami dirancang bagi mereka yang menginginkan hasil tanpa kompromi.','string','2026-08-15 03:56:20','2026-08-15 10:46:59'),(65,'products','textile_title','id','Textile Engineering & Fashion','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(66,'products','textile_body','id','Pakaian yang dirancang dengan presisi tinggi yang mendefinisikan ulang identitas kalangan berkekayaan tinggi melalui serat langka dan siluet yang arsitektural.','string','2026-08-15 03:56:20','2026-08-15 10:46:59'),(67,'products','items','id','[{\"name\":\"The Meridian Suite\",\"label\":\"Limited Release 01\",\"image\":\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/qyiyg8AWULNDqCcDXQGJ6bM7.png\",\"tag\":\"Reserve\"},{\"name\":\"Artisanal Accents\",\"label\":\"Fiber Innovation\",\"image\":\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/WWpQbgXCuq5il9qmN5ZhEohn.png\",\"tag\":\"Explore\"}]','json','2026-08-15 03:56:20','2026-08-15 08:11:46'),(68,'products','labs_title','id','AKARRA Labs','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(69,'products','labs_body','id','Ruang eksperimen desain dan pengembangan produk, tempat ide diuji sebelum menjadi karya.','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(70,'products','labs','id','[{\"title\":\"Material Bio-Synthesis\",\"body\":\"Mengembangkan alternatif yang berkelanjutan dan diproduksi di laboratorium sebagai pengganti bahan tanah jarang untuk interior mewah.\"},{\"title\":\"Cognitive Branding\",\"body\":\"Sebuah metodologi untuk menciptakan resonansi merek melalui prinsip-prinsip neuroestetik dan pemetaan sensorik.\"}]','json','2026-08-15 03:56:20','2026-08-15 10:46:59'),(71,'products','whitepaper','id','{\"label\":\"Experimental Case 042\",\"title\":\"Spatial Intelligence\",\"body\":\"Merevolusi interaksi antarmuka manusia melalui siklus umpan balik biologis dan pemodelan spasial prediktif.\",\"image\":\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/1GOHRlJaQ8bMMAg23w6oQCTd.png\"}','json','2026-08-15 03:56:20','2026-08-15 10:46:59'),(72,'products','digital_title','id','Strategic Dominance in Digital Realms','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(73,'products','digital_body','id','Perencanaan dan eksekusi kampanye digital yang terukur, dari penempatan media hingga pengelolaan performa.','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(74,'products','digital_items','id','[{\"title\":\"Omnichannel Mastery\",\"body\":\"Mengintegrasikan narasi merek secara mulus di lebih dari 12 titik interaksi untuk menghadirkan pengalaman pengguna yang terpadu dan berkelas.\"},{\"title\":\"Data-Driven Narratives\",\"body\":\"Memanfaatkan algoritma eksklusif untuk memprediksi pergeseran budaya dan menempatkan merek agar selalu selangkah lebih maju.\"},{\"title\":\"High-Conversion Visuals\",\"body\":\"Standar produksi sinematik diterapkan pada periklanan programatik untuk memaksimalkan prestise dan ROI.\"}]','json','2026-08-15 03:56:20','2026-08-15 10:46:59'),(75,'products','cta_title','id','Siap untuk mengubah standar dasar Anda?','string','2026-08-15 03:56:20','2026-08-15 10:46:59'),(76,'products','cta_subtitle','id','Model kerja sama dengan jumlah klien terbatas yang kami terapkan memastikan setiap kemitraan mendapatkan dukungan penuh dari AKARRA.','string','2026-08-15 03:56:20','2026-08-15 10:46:59'),(77,'products','cta_label','id','Request Audit','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(78,'products','cta_secondary_label','id','Join the Waitlist','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(79,'services','hero_title','id','Architecting Excellence.','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(80,'services','hero_title_emphasis','id','Excellence','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(81,'services','hero_subtitle','id','Apa yang kami kerjakan bersama Anda, dari ide pertama hingga brand yang dikenal.','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(82,'services','hero_image','id','http://localhost:8000/storage/settings/2026/08/x6to7NvQ8l7S2KhxARNWLz3G.png','string','2026-08-15 03:56:20','2026-08-15 08:13:55'),(83,'services','hero_eyebrow','id','Our Capabilities','string','2026-08-15 03:56:20','2026-08-15 03:56:20'),(84,'services','pillars','id','[{\"name\":\"Fashionpreneur\",\"label\":\"Infrastructure\",\"body\":\"Sebuah ekosistem yang komprehensif bagi para desainer ternama dan label-label baru untuk berkembang dengan menjaga integritas. Kami menangani kerumitan rantai pasokan sehingga Anda dapat fokus pada esensi merek.\",\"items\":[\"Industri Pakaian Jadi\",\"Perdagangan Besar Pakaian\",\"Distribusi & Retail\"],\"bullets\":[\"Brand Development\",\"Textile Sourcing\",\"Atelier Manufacturing\",\"Distribution Strategy\"],\"subcards\":[{\"title\":\"The Atelier\",\"body\":\"Pembuatan sampel khusus dan penyusunan pola teknis untuk siluet busana kelas atas.\",\"bullets\":[\"Haute Couture Sampling\",\"Tech Pack Development\"]},{\"title\":\"Global Production\",\"body\":\"Produksi etis dalam skala kecil dan pengadaan tekstil dalam skala besar dengan fokus pada keberlanjutan.\",\"bullets\":[\"Ethical Sourcing\",\"QC Management\"]}],\"image\":\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/tke2ePZWw1YqVGcIG5KYTKVY.png\"},{\"name\":\"Creative Labs\",\"label\":\"Identity\",\"body\":\"Kami menerjemahkan nilai-nilai inti merek menjadi narasi visual dan pengalaman yang mampu menyentuh hati audiens global yang cerdas dan kritis.\",\"items\":[\"Desain Grafis & Branding\",\"Produksi Konten\",\"Event & Pertunjukan\"],\"bullets\":[\"Visual Storytelling\",\"UI\\/UX Innovation\",\"Photography & Cinema\",\"Experimental Design\"],\"subcards\":[{\"title\":\"Art Direction\",\"body\":\"Penyusunan identitas visual, materi visual kampanye, dan pedoman merek yang terperinci.\",\"bullets\":[\"Visual Strategy\",\"Identity Design\"]},{\"title\":\"Immersive Events\",\"body\":\"Peluncuran produk yang dirancang khusus dan peragaan busana yang dirancang untuk membangkitkan kecerdasan emosional.\",\"bullets\":[\"Spatial Design\",\"Guest Curation\"]}],\"image\":\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/xSks1X3fXgrCaKlpZXsbPIay.png\"},{\"name\":\"Advertising\",\"label\":\"Periklanan & Strategi Digital\",\"body\":\"Strategi digital dan periklanan inovatif untuk memperkuat posisi brand di pasar.\",\"items\":[\"Strategi Digital\",\"Media Placement\",\"Social Media Management\"],\"bullets\":[\"Brand Positioning\",\"Market Penetration\",\"Digital Growth\",\"Strategic Media\"],\"image\":null}]','json','2026-08-15 03:56:20','2026-08-15 10:52:19'),(85,'services','gallery','id','[\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/RW0MdObJkiSdveFj31pclskm.png\",\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/59SmrvhTzJZkmK8nrKE65Pn5.png\",\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/9S2qNpKtZvx7Q7GXaNP19ptM.png\",\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/z7rAUuK9Cfwju71mmPPY5xy7.png\",\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/QPPS7oRqHGwI5t5O2oMRfl4k.png\",\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/UtkFlFv5WZ68JzoXR6PqNgK7.png\",\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/jGOLdc4keNleS1Ov6lU0yeLE.png\",\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/SRiWH07hLW6Ue1vjF73qwr6z.png\",\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/WCZjDd51BWhFAx4ISzksHLtE.png\",\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/ogxOLHr7L3wBppiOItKlFHvk.png\"]','json','2026-08-15 03:56:52','2026-08-15 11:00:58'),(86,'services','growth_title','id','Digital Strategy & Growth','string','2026-08-15 03:56:52','2026-08-15 03:56:52'),(87,'services','growth_body','id','Ketepatan berbasis data berpadu dengan intuisi kreatif. Kami tidak sekadar menemukan audiens Anda tapi kami juga membangun komunitas.','string','2026-08-15 03:56:52','2026-08-15 10:52:19'),(88,'services','amplification_cards','id','[{\"title\":\"Digital Strategy\",\"body\":\"Comprehensive market analysis and growth mapping for the luxury sector.\",\"bullets\":[\"Market Intelligence\",\"Funnel Optimization\"]},{\"title\":\"Content Production\",\"body\":\"High-end video, editorial photography, and interactive storytelling.\",\"bullets\":[\"4K Editorial Video\",\"Social Narratives\"]},{\"title\":\"Brand Growth\",\"body\":\"Strategic partnerships, influencer seeding, and global expansion.\",\"bullets\":[\"Strategic PR\",\"Cross-Border Scaling\"]}]','json','2026-08-15 03:56:52','2026-08-15 03:56:52'),(89,'services','why_title','id','Mengapa AKARRA','string','2026-08-15 03:56:52','2026-08-15 03:56:52'),(90,'services','why_items','id','[{\"title\":\"Ekosistem lengkap dalam satu atap\",\"body\":\"Produksi fashion, desain kreatif, event, hingga periklanan digital ditangani satu mitra.\"},{\"title\":\"Kualitas premium & elegan\",\"body\":\"Standar tertinggi di setiap produk dan layanan.\"},{\"title\":\"Berakar pada budaya lokal\",\"body\":\"Brand berkelas dunia tanpa melepaskan akar budaya Indonesia.\"},{\"title\":\"Kolaboratif & transparan\",\"body\":\"Kami tumbuh bersama klien, mitra, dan komunitas kreatif.\"},{\"title\":\"Solusi holistik & terukur\",\"body\":\"Pendampingan dari ide pertama hingga eksekusi.\"}]','json','2026-08-15 03:56:52','2026-08-15 03:56:52'),(91,'services','cta_title','id','Ready to redefine your legacy?','string','2026-08-15 03:56:52','2026-08-15 03:56:52'),(92,'services','cta_subtitle','id','Konsultasi awal gratis, tanpa komitmen.','string','2026-08-15 03:56:52','2026-08-15 03:56:52'),(93,'services','cta_label','id','Mulai kolaborasi','string','2026-08-15 03:56:52','2026-08-15 03:56:52'),(94,'services','cta_secondary_label','id','Concierge@akarra.com','string','2026-08-15 03:56:52','2026-08-15 03:56:52'),(95,'founders','hero_eyebrow','id','Architects of Value','string','2026-08-15 03:56:52','2026-08-15 03:56:52'),(96,'founders','hero_title','id','The Stewardship of Legacy.','string','2026-08-15 03:56:52','2026-08-15 03:56:52'),(97,'founders','hero_title_emphasis','id','Legacy','string','2026-08-15 03:56:52','2026-08-15 03:56:52'),(98,'founders','hero_subtitle','id','AKARRA didirikan berdasarkan prinsip bahwa keunggulan bukanlah suatu tindakan, melainkan suatu kebiasaan. Pimpinan kami berkomitmen untuk secara cermat mengembangkan kekayaan, kebijaksanaan, dan warisan abadi bagi para visioner masa kini.','string','2026-08-15 03:56:52','2026-08-15 10:54:21'),(99,'founders','people','id','[{\"name\":\"Febri Khoirul Imam\",\"role\":\"Direktur Utama\",\"body\":\"Dengan pengalaman lebih dari dua dekade di bidang investasi strategis dan manajemen institusional, Febri Khoirul Imam memimpin AKARRA dengan fokus pada ketahanan struktural dan pelestarian modal jangka panjang. Latar belakangnya di pasar keuangan global menjadi landasan analitis bagi ekosistem-ekosistem AKARRA yang paling ambisius.\",\"portrait\":\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/wA6RhXszdnGYwNSndbCJhKcF.png\",\"quote\":\"Warisan bukanlah apa yang kita tinggalkan bagi orang lain, melainkan apa yang kita tanamkan dalam diri mereka. Di AKARRA, kami membangun kerangka kerja agar dampak tersebut dapat bertahan lama.\",\"legacy_body\":\"Febri meyakini bahwa membangun warisan tidak hanya bergantung pada kesuksesan finansial; hal itu juga membutuhkan komitmen terhadap keunggulan dalam setiap detail. Filsafatnya berpusat pada ‘Pengelolaan Terpadu,’ yaitu keyakinan bahwa kekayaan dan pengaruh harus dikelola sebagai satu kesatuan yang utuh dan bermakna.\"},{\"name\":\"Nanda Fifia Putri\",\"role\":\"Komisaris\",\"body\":\"Nanda Fifia Putri membawa sudut pandang yang mendalam ke dalam dewan direksi AKARRA, dengan keahlian di bidang warisan merek dan tata kelola kegiatan filantropi. Kariernya ditandai oleh perpaduan antara budaya kelas atas dan dunia keuangan kelas atas, yang memastikan bahwa produk dan layanan AKARRA tetap mempertahankan jati dirinya seiring dengan pertumbuhan perusahaan.\",\"portrait\":\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/Z5a01pn6ZgxnfSq3flCxfNXc.png\",\"quote\":\"Kepemimpinan visioner adalah kemampuan untuk melihat benang-benang tak terlihat yang menghubungkan keputusan hari ini dengan warisan masa depan.\",\"legacy_body\":\"Filosofi Nanda berakar pada ‘Modal Budaya.’ Ia menganjurkan pelestarian nilai-nilai sejalan dengan nilai komersial, memastikan bahwa merek AKARRA menjadi simbol prestise dan kedalaman intelektual bagi generasi-generasi mendatang.\"}]','json','2026-08-15 03:56:52','2026-08-15 10:54:21'),(100,'founders','quote','id','Sebuah fondasi yang dibangun di atas integritas, masa depan yang dibentuk oleh visi.','string','2026-08-15 03:56:52','2026-08-15 10:54:21'),(101,'founders','cta_title','id','Join the Inner Circle.','string','2026-08-15 03:56:52','2026-08-15 03:56:52'),(102,'founders','cta_subtitle','id','Nikmati layanan konsultasi yang disesuaikan dengan kebutuhan Anda dan layanan ekosistem yang menjadi ciri khas gaya hidup AKARRA.','string','2026-08-15 03:56:52','2026-08-15 10:54:21'),(103,'founders','cta_label','id','Request Consultation','string','2026-08-15 03:56:52','2026-08-15 03:56:52'),(104,'founders','cta_secondary_label','id','View Ecosystem','string','2026-08-15 03:56:52','2026-08-15 03:56:52'),(105,'global','site_name','en','AKARRA','string','2026-08-15 03:56:52','2026-08-15 03:56:52'),(106,'global','tagline','en','Ecosystem of Excellence','string','2026-08-15 03:56:52','2026-08-15 03:56:52'),(107,'global','description','en','An integrated business ecosystem in the fields of fashion, creative design, events, and digital advertising.','string','2026-08-15 03:56:52','2026-08-15 10:34:02'),(108,'global','founded_year','en','null','string','2026-08-15 03:56:52','2026-08-15 08:25:57'),(109,'global','address','en','null','string','2026-08-15 03:56:52','2026-08-15 08:25:57'),(110,'global','phone','en','null','string','2026-08-15 03:56:52','2026-08-15 08:25:57'),(111,'global','whatsapp','en','6285179973943','string','2026-08-15 03:56:52','2026-08-15 08:25:57'),(112,'global','email','en','null','string','2026-08-15 03:56:52','2026-08-15 08:25:57'),(113,'global','office_hours','en','Monday through Friday, 9:00 a.m. to 5:00 p.m.','string','2026-08-15 03:56:52','2026-08-15 10:34:03'),(114,'global','social','en','[{\"platform\":\"instagram\",\"url\":null,\"label\":\"Instagram\"},{\"platform\":\"tiktok\",\"url\":null,\"label\":\"TikTok\"},{\"platform\":\"linkedin\",\"url\":null,\"label\":\"LinkedIn\"}]','json','2026-08-15 03:56:52','2026-08-15 08:25:57'),(115,'global','nav','en','[{\"label\":\"Ecosystem\",\"path\":\"\\/ecosystem\"},{\"label\":\"Products\",\"path\":\"\\/products\"},{\"label\":\"Services\",\"path\":\"\\/services\"},{\"label\":\"Articles\",\"path\":\"\\/articles\"},{\"label\":\"Founders\",\"path\":\"\\/founders\"}]','json','2026-08-15 03:56:52','2026-08-15 03:56:52'),(116,'global','nav_cta_label','en','Start a Conversation','string','2026-08-15 03:56:52','2026-08-15 03:56:52'),(117,'global','footer_note','en','All rights reserved.','string','2026-08-15 03:56:52','2026-08-15 10:34:02'),(118,'home','hero_eyebrow','en','A Legacy in the Making','string','2026-08-15 03:56:52','2026-08-15 03:56:52'),(119,'home','hero_title','en','Ecosystem of Excellence','string','2026-08-15 03:56:52','2026-08-15 03:56:52'),(120,'home','hero_title_emphasis','en','Excellence','string','2026-08-15 03:56:52','2026-08-15 03:56:52'),(121,'home','hero_subtitle','en','A sophisticated convergence of Fashionpreneurial spirit, Creative Labs innovation, and Strategic Advertising excellence. AKARRA is built for the visionaries of tomorrow.','string','2026-08-15 03:56:52','2026-08-15 03:56:52'),(122,'home','hero_cta_label','en','Explore the Ecosystem','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(123,'home','hero_secondary_cta_label','en','Our Philosophy','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(124,'home','hero_image','en','http://localhost:8000/storage/settings/2026/08/DvxVsFEa8Gn5rg7FXVDVNvFI.png','string','2026-08-15 03:56:53','2026-08-15 07:47:59'),(125,'home','narrative_title','en','Building a Legacy, Not Just a Business','string','2026-08-15 03:56:53','2026-08-15 10:36:18'),(126,'home','narrative_body','en','AKARRA operates in the fashion, creative design, events, and digital advertising industries. Through our three core pillars, we don’t just sell products we build identity and create a real impact for Indonesia’s fashion and creative communities.','string','2026-08-15 03:56:53','2026-08-15 10:36:18'),(127,'home','narrative_image','en','http://localhost:8000/storage/settings/2026/08/pA584uZTyNehJUiPFq37ILrV.png','string','2026-08-15 03:56:53','2026-08-15 07:47:59'),(128,'home','narrative_quote','en','We believe that true prestige is found in the intersection of mathematical precision and artistic soul. Our journey is about creating impact that resonates across generations.','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(129,'home','narrative_quote_attribution','en','The Founders of AKARRA','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(130,'home','narrative_badge','en','Est. 2024','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(131,'home','values','en','[{\"name\":\"Excellence\",\"body\":\"Uncompromising quality in every stitch, frame, and strategy we execute.\"},{\"name\":\"Integrity\",\"body\":\"Building trust through transparency and ethical leadership in all domains.\"},{\"name\":\"Innovation\",\"body\":\"Pushing boundaries through creative experimentation and modern technology.\"},{\"name\":\"Elegance\",\"body\":\"A commitment to refined aesthetics that speak without needing to shout.\"}]','json','2026-08-15 03:56:53','2026-08-15 03:56:53'),(132,'home','services_eyebrow','en','Our Three Pillars','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(133,'home','services_title','en','The Services Ecosystem','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(134,'home','services_subtitle','en','Three mutually supportive pillars, designed to accompany a brand through every stage of its growth.','string','2026-08-15 03:56:53','2026-08-15 10:36:18'),(135,'home','services_cta_label','en','View all services','string','2026-08-15 03:56:53','2026-08-15 10:36:18'),(136,'home','solutions_title','en','Curated Solutions','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(137,'home','solutions_subtitle','en','A collection of products and works born from our ecosystem.','string','2026-08-15 03:56:53','2026-08-15 10:36:18'),(138,'home','solutions','en','[{\"title\":\"Bespoke Collection\",\"body\":\"Made-to-measure excellence for the modern executive.\",\"image\":\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/DxoRjCL6mPyKL7tASADtA9CL.png\",\"category\":\"Fashion\"},{\"title\":\"Signature Textiles\",\"body\":\"Ethically sourced, world-class fabric curation.\",\"image\":\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/zwIBeNY1fWECeiDTXog7QrQs.png\",\"category\":\"Fashion\"},{\"title\":\"Visual Storytelling\",\"body\":\"A visual narrative that builds an emotional connection with the audience.\",\"image\":\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/WF5QsM1wZTP256XBrFGoQanq.png\",\"category\":\"Creative\"},{\"title\":\"Brand Positioning\",\"body\":\"A sharp and measured brand positioning strategy in the digital market.\",\"image\":\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/ASCGnEFQgi95uIZI6ozvxury.png\",\"category\":\"Advertising\"}]','json','2026-08-15 03:56:53','2026-08-15 10:36:18'),(139,'home','story_title','en','The Story Behind AKARRA','string','2026-08-15 03:56:53','2026-08-15 10:36:18'),(140,'home','story_body','en','We believe every brand has a story worth telling with elegance. With us, you’re not just building a business—you’re building a legacy.','string','2026-08-15 03:56:53','2026-08-15 10:36:18'),(141,'home','story_image','en','/images/content/home-story.jpg','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(142,'home','story_video','en','http://localhost:8000/storage/settings/2026/08/26gbmoBqnuLlOSes7B64qnSM.mp4','string','2026-08-15 03:56:53','2026-08-15 08:10:48'),(143,'home','founders_title','en','Meet the Founders','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(144,'home','founders_subtitle','en','The two people behind AKARRA\'s direction and standards.','string','2026-08-15 03:56:53','2026-08-15 10:36:18'),(145,'home','form_title','en','Let’s Collaborate','string','2026-08-15 03:56:53','2026-08-15 10:36:18'),(146,'home','form_subtitle','en','Free initial consultation, no obligation. Tell us what you\'re building.','string','2026-08-15 03:56:53','2026-08-15 10:36:18'),(147,'home','form_cta_label','en','Kirim pesan','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(148,'ecosystem','hero_eyebrow','en','The Architecture of Aspiration','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(149,'ecosystem','hero_title','en','Ecosystem of Excellence','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(150,'ecosystem','hero_title_emphasis','en','Excellence','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(151,'ecosystem','hero_subtitle','en','A multi-disciplinary sanctuary where precision meets poetry. AKARRA is not merely a brand; it is a unified sensory landscape where fashion, art, and strategy coalesce into a singular, prestigious standard.','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(152,'ecosystem','story_title','en','Our Story','string','2026-08-15 03:56:53','2026-08-15 10:43:18'),(153,'ecosystem','story_body','en','AKARRA was founded by Febri Khoirul Imam and Nanda Fifia Putri, born from a vision to create a business platform that not only sells products but also builds an identity and makes a real impact on Indonesia’s fashion and creative communities.','string','2026-08-15 03:56:53','2026-08-15 10:43:18'),(154,'ecosystem','philosophy_title','en','The Philosophy Behind the Name and Logo','string','2026-08-15 03:56:53','2026-08-15 10:43:18'),(155,'ecosystem','philosophy_body','en','The AKARRA logo is inspired by diamond geometry and traditional mandalas, blending modern luxury with local wisdom.','string','2026-08-15 03:56:53','2026-08-15 10:43:18'),(156,'ecosystem','philosophy_items','en','[{\"title\":\"Berlian & Kemewahan\",\"body\":\"The geometric structure of a diamond reflects its premium quality and exclusivity.\"},{\"title\":\"Energi & Dinamisme\",\"body\":\"The interlocking triangles symbolize innovation and collaboration.\"},{\"title\":\"Mandala & Harmony\",\"body\":\"The circular pattern draws on the mandala tradition of the Nusantara.\"},{\"title\":\"Gold & Trust\",\"body\":\"The color gold symbolizes prestige and trust.\"}]','json','2026-08-15 03:56:53','2026-08-15 10:43:18'),(157,'ecosystem','standard_title','en','The AKARRA Standard','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(158,'ecosystem','standard_body','en','The highest standards in every product and service, in line with our values of Excellence and Elegance.','string','2026-08-15 03:56:53','2026-08-15 10:43:18'),(159,'ecosystem','standard_image','en','http://localhost:8000/storage/settings/2026/08/iLYmPN3VMgQd8CaiMKBNfDEF.png','string','2026-08-15 03:56:53','2026-08-15 08:11:17'),(160,'ecosystem','values','en','[{\"name\":\"Excellence\",\"label\":\"Advantages\",\"body\":\"The highest standards in every product and service.\"},{\"name\":\"Integrity\",\"label\":\"Integrity\",\"body\":\"Transparency and trust in every partnership.\"},{\"name\":\"Innovation\",\"label\":\"Innovation\",\"body\":\"Keep evolving and thinking outside the box.\"},{\"name\":\"Collaboration\",\"label\":\"Collaboration\",\"body\":\"Growing alongside our clients, partners, and the creative community.\"},{\"name\":\"Elegance\",\"label\":\"Elegance\",\"body\":\"Aesthetics and beauty in every work.\"}]','json','2026-08-15 03:56:53','2026-08-15 10:43:18'),(161,'ecosystem','vision_title','en','A Global Vision of Shared Success','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(162,'ecosystem','vision_body','en','To become Indonesia’s leading fashion and creative business ecosystem that fosters world-class brands rooted in local culture.','string','2026-08-15 03:56:53','2026-08-15 10:43:18'),(163,'ecosystem','mission','en','[\"Building an integrated fashion platform spanning production to distribution.\",\"Providing premium-quality design and creative event services.\",\"Strengthening local brands through innovative digital and advertising strategies.\",\"Creating a collaborative ecosystem for Indonesia’s creative industry professionals.\",\"Driving client business growth through holistic and measurable solutions.\"]','json','2026-08-15 03:56:53','2026-08-15 10:43:18'),(164,'ecosystem','stats','en','[{\"value\":\"12\",\"label\":\"Global Ateliers\"},{\"value\":\"450+\",\"label\":\"Artisans\"},{\"value\":\"24\",\"label\":\"Strategic Partners\"},{\"value\":\"100%\",\"label\":\"Ethical Sourcing\"}]','json','2026-08-15 03:56:53','2026-08-15 03:56:53'),(165,'products','hero_eyebrow','en','Curated Collections','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(166,'products','hero_title','en','The Artifacts of Excellence','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(167,'products','hero_title_emphasis','en','Excellence','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(168,'products','hero_subtitle','en','Explore AKARRA\'s product ecosystem, where high-performance logic meets artisanal craftsmanship. Our solutions are designed for those who demand uncompromising results.','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(169,'products','textile_title','en','Textile Engineering & Fashion','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(170,'products','textile_body','en','Precision-tailored garments that redefine high-net-worth identity through rare fibers and architectural silhouettes.','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(171,'products','items','en','[{\"name\":\"The Meridian Suite\",\"label\":\"Limited Release 01\",\"image\":\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/qyiyg8AWULNDqCcDXQGJ6bM7.png\",\"tag\":\"Reserve\"},{\"name\":\"Artisanal Accents\",\"label\":\"Fiber Innovation\",\"image\":\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/WWpQbgXCuq5il9qmN5ZhEohn.png\",\"tag\":\"Explore\"}]','json','2026-08-15 03:56:53','2026-08-15 08:11:46'),(172,'products','labs_title','en','AKARRA Labs','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(173,'products','labs_body','en','A space for product design and development experimentation, where ideas are tested before becoming finished products.','string','2026-08-15 03:56:53','2026-08-15 10:44:03'),(174,'products','labs','en','[{\"title\":\"Material Bio-Synthesis\",\"body\":\"Developing sustainable, lab-grown alternatives to rare earth materials for luxury interiors.\"},{\"title\":\"Cognitive Branding\",\"body\":\"A methodology for creating brand resonance through neuro-aesthetic principles and sensory mapping.\"}]','json','2026-08-15 03:56:53','2026-08-15 03:56:53'),(175,'products','whitepaper','en','{\"label\":\"Experimental Case 042\",\"title\":\"Spatial Intelligence\",\"body\":\"Revolutionizing human-interface interaction through biological feedback loops and predictive spatial modeling.\",\"image\":\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/1GOHRlJaQ8bMMAg23w6oQCTd.png\"}','json','2026-08-15 03:56:53','2026-08-15 08:11:46'),(176,'products','digital_title','en','Strategic Dominance in Digital Realms','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(177,'products','digital_body','en','Planning and execution of measurable digital campaigns, from media placement to performance management.','string','2026-08-15 03:56:53','2026-08-15 10:44:02'),(178,'products','digital_items','en','[{\"title\":\"Omnichannel Mastery\",\"body\":\"Seamlessly integrating brand narrative across 12+ touchpoints for a unified, elite user experience.\"},{\"title\":\"Data-Driven Narratives\",\"body\":\"Leveraging proprietary algorithms to forecast cultural shifts and position brands ahead of the curve.\"},{\"title\":\"High-Conversion Visuals\",\"body\":\"Cinematic production standards applied to programmatic advertising for maximum prestige and ROI.\"}]','json','2026-08-15 03:56:53','2026-08-15 03:56:53'),(179,'products','cta_title','en','Ready to redefine your baseline?','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(180,'products','cta_subtitle','en','Our limited-client engagement model ensures each partnership receives the full weight of AKARRA\'s strategic and creative machinery.','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(181,'products','cta_label','en','Request Audit','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(182,'products','cta_secondary_label','en','Join the Waitlist','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(183,'services','hero_title','en','Architecting Excellence.','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(184,'services','hero_title_emphasis','en','Excellence','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(185,'services','hero_subtitle','en','What we do with you, from the initial idea to a well-known brand.','string','2026-08-15 03:56:53','2026-08-15 10:49:56'),(186,'services','hero_image','en','http://localhost:8000/storage/settings/2026/08/x6to7NvQ8l7S2KhxARNWLz3G.png','string','2026-08-15 03:56:53','2026-08-15 08:13:55'),(187,'services','hero_eyebrow','en','Our Capabilities','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(188,'services','pillars','en','[{\"name\":\"Fashionpreneur\",\"label\":\"Infrastructure\",\"body\":\"A comprehensive ecosystem for established designers and emerging labels to scale with integrity. We handle the complexities of the supply chain so you can focus on the soul of the brand.\",\"items\":[\"Ready-to-Wear Apparel Industry\",\"Wholesale Apparel Trade\",\"Distribution & Retail\"],\"bullets\":[\"Brand Development\",\"Textile Sourcing\",\"Atelier Manufacturing\",\"Distribution Strategy\"],\"subcards\":[{\"title\":\"The Atelier\",\"body\":\"Bespoke sample making and technical pattern drafting for high-fashion silhouettes.\",\"bullets\":[\"Haute Couture Sampling\",\"Tech Pack Development\"]},{\"title\":\"Global Production\",\"body\":\"Ethical, small-batch manufacturing and large-scale textile sourcing with a focus on sustainability.\",\"bullets\":[\"Ethical Sourcing\",\"QC Management\"]}],\"image\":\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/tke2ePZWw1YqVGcIG5KYTKVY.png\"},{\"name\":\"Creative Labs\",\"label\":\"Identity\",\"body\":\"The intellectual engine of AKARRA. We translate brand ethos into visual and experiential narratives that resonate with a discerning global audience.\",\"items\":[\"Graphic Design & Branding\",\"Content Production\",\"Events & Performances\"],\"bullets\":[\"Visual Storytelling\",\"UI\\/UX Innovation\",\"Photography & Cinema\",\"Experimental Design\"],\"subcards\":[{\"title\":\"Art Direction\",\"body\":\"Curation of visual identity, campaign imagery, and high-fidelity brand guidelines.\",\"bullets\":[\"Visual Strategy\",\"Identity Design\"]},{\"title\":\"Immersive Events\",\"body\":\"Bespoke product launches and runway shows designed to evoke emotional intelligence.\",\"bullets\":[\"Spatial Design\",\"Guest Curation\"]}],\"image\":\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/xSks1X3fXgrCaKlpZXsbPIay.png\"},{\"name\":\"Advertising\",\"label\":\"Advertising & Digital Strategy\",\"body\":\"Innovative digital and advertising strategies to strengthen the brand’s position in the market.\",\"items\":[\"Digital Strategy\",\"Media Placement\",\"Social Media Management\"],\"bullets\":[\"Brand Positioning\",\"Market Penetration\",\"Digital Growth\",\"Strategic Media\"],\"image\":null}]','json','2026-08-15 03:56:53','2026-08-15 10:49:56'),(189,'services','gallery','en','[\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/RW0MdObJkiSdveFj31pclskm.png\",\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/59SmrvhTzJZkmK8nrKE65Pn5.png\",\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/9S2qNpKtZvx7Q7GXaNP19ptM.png\",\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/z7rAUuK9Cfwju71mmPPY5xy7.png\",\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/QPPS7oRqHGwI5t5O2oMRfl4k.png\",\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/UtkFlFv5WZ68JzoXR6PqNgK7.png\",\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/jGOLdc4keNleS1Ov6lU0yeLE.png\",\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/SRiWH07hLW6Ue1vjF73qwr6z.png\",\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/WCZjDd51BWhFAx4ISzksHLtE.png\",\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/ogxOLHr7L3wBppiOItKlFHvk.png\"]','json','2026-08-15 03:56:53','2026-08-15 11:00:58'),(190,'services','growth_title','en','Digital Strategy & Growth','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(191,'services','growth_body','en','Data-driven precision meets creative intuition. We don\'t just find your audience; we cultivate a community of advocates.','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(192,'services','amplification_cards','en','[{\"title\":\"Digital Strategy\",\"body\":\"Comprehensive market analysis and growth mapping for the luxury sector.\",\"bullets\":[\"Market Intelligence\",\"Funnel Optimization\"]},{\"title\":\"Content Production\",\"body\":\"High-end video, editorial photography, and interactive storytelling.\",\"bullets\":[\"4K Editorial Video\",\"Social Narratives\"]},{\"title\":\"Brand Growth\",\"body\":\"Strategic partnerships, influencer seeding, and global expansion.\",\"bullets\":[\"Strategic PR\",\"Cross-Border Scaling\"]}]','json','2026-08-15 03:56:53','2026-08-15 03:56:53'),(193,'services','why_title','en','Why AKARRA?','string','2026-08-15 03:56:53','2026-08-15 10:49:56'),(194,'services','why_items','en','[{\"title\":\"A complete ecosystem under one roof\",\"body\":\"Fashion production, creative design, events, and digital advertising are all handled by a single partner.\"},{\"title\":\"Premium quality & elegance\",\"body\":\"The highest standards in every product and service.\"},{\"title\":\"Rooted in local culture\",\"body\":\"A world-class brand that remains true to its Indonesian cultural roots.\"},{\"title\":\"Collaborative & transparent\",\"body\":\"We grow alongside our clients, partners, and the creative community.\"},{\"title\":\"Holistic & measurable solutions\",\"body\":\"Support from the initial idea through to execution.\"}]','json','2026-08-15 03:56:53','2026-08-15 10:49:56'),(195,'services','cta_title','en','Ready to redefine your legacy?','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(196,'services','cta_subtitle','en','Konsultasi awal gratis, tanpa komitmen.','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(197,'services','cta_label','en','Mulai kolaborasi','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(198,'services','cta_secondary_label','en','Concierge@akarra.com','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(199,'founders','hero_eyebrow','en','Architects of Value','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(200,'founders','hero_title','en','The Stewardship of Legacy.','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(201,'founders','hero_title_emphasis','en','Legacy','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(202,'founders','hero_subtitle','en','AKARRA was founded on the principle that excellence is not an act, but a habit. Our leadership is dedicated to the meticulous cultivation of wealth, wisdom, and lasting heritage for the modern visionary.','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(203,'founders','people','en','[{\"name\":\"Febri Khoirul Imam\",\"role\":\"Direktur Utama\",\"body\":\"With over two decades of experience in strategic investment and institutional management, Febri Khoirul Imam leads AKARRA with a focus on structural resilience and long-term capital preservation. His background in global financial markets provides the analytical backbone for AKARRA’s most ambitious ecosystems.\",\"portrait\":\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/wA6RhXszdnGYwNSndbCJhKcF.png\",\"quote\":\"Legacy is not what we leave for people, it is what we leave within them. At AKARRA, we build the frameworks where that impact can endure.\",\"legacy_body\":\"Febri believes that building a legacy requires more than just financial success; it requires a commitment to excellence in every detail. His philosophy centers on ‘Integrated Stewardship,’ the belief that wealth and influence must be managed as a cohesive, purposeful whole.\"},{\"name\":\"Nanda Fifia Putri\",\"role\":\"Komisaris\",\"body\":\"Nanda Fifia Putri brings a refined perspective to AKARRA’s board, specializing in brand heritage and philanthropic governance. Her career has been defined by the intersection of high-culture and high-finance, ensuring that AKARRA’s products and services maintain their soul as they scale.\",\"portrait\":\"http:\\/\\/localhost:8000\\/storage\\/settings\\/2026\\/08\\/Z5a01pn6ZgxnfSq3flCxfNXc.png\",\"quote\":\"Visionary leadership is about seeing the invisible threads that connect today’s decisions to tomorrow’s heritage.\",\"legacy_body\":\"Nanda’s philosophy is rooted in ‘Cultural Capital.’ She advocates for the preservation of values alongside value, ensuring that the AKARRA brand serves as a hallmark of prestige and intellectual depth for generations to come.\"}]','json','2026-08-15 03:56:53','2026-08-15 08:14:25'),(204,'founders','quote','en','A foundation built on integrity, a future shaped by vision.','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(205,'founders','cta_title','en','Join the Inner Circle.','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(206,'founders','cta_subtitle','en','Experience the bespoke advisory and ecosystem services that define the AKARRA lifestyle.','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(207,'founders','cta_label','en','Request Consultation','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(208,'founders','cta_secondary_label','en','View Ecosystem','string','2026-08-15 03:56:53','2026-08-15 03:56:53'),(209,'global','og_image','id','null','string','2026-08-15 05:17:32','2026-08-15 10:34:03'),(210,'global','twitter_handle','id','null','string','2026-08-15 05:17:32','2026-08-15 08:25:06'),(211,'global','og_image','en','null','string','2026-08-15 05:17:32','2026-08-15 08:25:57'),(212,'global','twitter_handle','en','null','string','2026-08-15 05:17:32','2026-08-15 08:25:57');
-/*!40000 ALTER TABLE `settings` ENABLE KEYS */;
-UNLOCK TABLES;
+CREATE TABLE public.sessions (
+    id character varying(255) NOT NULL,
+    user_id uuid,
+    ip_address character varying(45),
+    user_agent text,
+    payload text NOT NULL,
+    last_activity integer NOT NULL
+);
+
 
 --
--- Table structure for table `users`
+-- Name: settings; Type: TABLE; Schema: public; Owner: -
 --
 
-DROP TABLE IF EXISTS `users`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `users` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `role` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'admin',
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `users_email_unique` (`email`),
-  KEY `users_role_index` (`role`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+CREATE TABLE public.settings (
+    id uuid NOT NULL,
+    "group" character varying(40) NOT NULL,
+    key character varying(120) NOT NULL,
+    value text,
+    type character varying(20) DEFAULT 'string'::character varying NOT NULL,
+    created_at timestamp(0) without time zone,
+    updated_at timestamp(0) without time zone,
+    locale character varying(5) DEFAULT 'id'::character varying NOT NULL
+);
+
 
 --
--- Dumping data for table `users`
+-- Name: users; Type: TABLE; Schema: public; Owner: -
 --
 
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Admin AKARRA','adminmaster@akarra.com',NULL,'$2y$12$4Hh85mDuSgujyN2prgjEOO1Fi0nGmThdq/0pFR8cVwWixT63LORvK','admin',NULL,'2026-08-15 03:56:19','2026-08-15 04:08:13');
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+CREATE TABLE public.users (
+    id uuid NOT NULL,
+    name character varying(255) NOT NULL,
+    email character varying(255) NOT NULL,
+    email_verified_at timestamp(0) without time zone,
+    password character varying(255) NOT NULL,
+    role character varying(255) DEFAULT 'admin'::character varying NOT NULL,
+    remember_token character varying(100),
+    created_at timestamp(0) without time zone,
+    updated_at timestamp(0) without time zone
+);
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-08-16  1:40:53
+--
+-- Name: failed_jobs id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.failed_jobs ALTER COLUMN id SET DEFAULT nextval('public.failed_jobs_id_seq'::regclass);
+
+
+--
+-- Name: jobs id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.jobs ALTER COLUMN id SET DEFAULT nextval('public.jobs_id_seq'::regclass);
+
+
+--
+-- Name: migrations id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.migrations ALTER COLUMN id SET DEFAULT nextval('public.migrations_id_seq'::regclass);
+
+
+--
+-- Data for Name: articles; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.articles (id, category_id, user_id, title, slug, excerpt, body, cover_image, status, meta_title, meta_description, published_at, created_at, updated_at) FROM stdin;
+01a01ab9-861b-72a8-81b3-34264ce3f848	01a01ab9-83fd-71cc-a6e7-1142ba4eb611	01a01ab9-83e3-71dd-b6e0-f1bf9a2b68b5	Kisah Berdirinya AKARRA: Dari Visi Menjadi Ekosistem Bisnis	kisah-berdirinya-akarra-dari-visi-menjadi-ekosistem-bisnis	Bermula dari keresahan tentang industri kreatif Indonesia yang berjalan sendiri-sendiri, Febri Khoirul Imam dan Nanda Fifia Putri merancang AKARRA sebagai satu ekosistem yang menyatukan fashion, kreativitas, dan strategi digital.	<p>Setiap merek besar biasanya lahir dari satu keresahan sederhana. Bagi AKARRA, keresahan itu adalah melihat betapa terpecahnya industri kreatif Indonesia — seorang desainer fashion harus mencari sendiri rumah produksinya, brand yang baru tumbuh harus berpindah dari satu vendor ke vendor lain hanya untuk membangun identitas visual, dan strategi digital sering menjadi renungan terakhir setelah produk jadi, bukan bagian dari perencanaan sejak awal.</p>\n\n<p>Febri Khoirul Imam dan Nanda Fifia Putri mendirikan AKARRA dengan gagasan yang berbeda: bagaimana jika seluruh perjalanan itu — dari produksi, desain, penyelenggaraan acara, hingga periklanan digital — bisa ditempuh dalam satu ekosistem yang saling terhubung, tanpa brand harus kehilangan jiwa aslinya di tengah jalan?</p>\n\n<h2>Dari Nama, Sudah Ada Filosofi</h2>\n<p>Nama "AKARRA" sendiri bukan sekadar label. Terinspirasi dari geometri berlian dan mandala tradisional Nusantara, identitas visualnya memadukan kemewahan modern dengan kearifan lokal — sebuah pengingat bahwa tumbuh besar tidak harus berarti melepaskan akar budaya.</p>\n\n<ul>\n    <li><strong>Berlian &amp; Kemewahan</strong> — struktur geometris yang mencerminkan kualitas premium dan eksklusivitas.</li>\n    <li><strong>Energi &amp; Dinamisme</strong> — segitiga yang saling bertautan, melambangkan inovasi dan kolaborasi.</li>\n    <li><strong>Mandala &amp; Harmoni</strong> — pola melingkar yang mengacu pada tradisi mandala Nusantara.</li>\n    <li><strong>Emas &amp; Kepercayaan</strong> — warna yang melambangkan prestise sekaligus kepercayaan jangka panjang.</li>\n</ul>\n\n<h2>Bukan Sekadar Menjual, Tapi Membangun Warisan</h2>\n<p>Sejak hari pertama, AKARRA tidak dirancang untuk sekadar menjual produk atau jasa. Tujuannya lebih jauh: membangun identitas dan dampak nyata bagi komunitas fashion dan kreatif Indonesia, sekaligus membuka jalan bagi brand lokal untuk tumbuh setara dengan nama-nama besar dunia — tanpa kehilangan akar budayanya.</p>\n\n<p>Perjalanan itu terus berlanjut hari ini, melalui tiga pilar yang saling menopang: Fashionpreneur, Creative Labs, dan Advertising. Ketiganya lahir dari satu keyakinan yang sama — bahwa keunggulan sejati ditemukan di persimpangan antara presisi dan jiwa.</p>	\N	published	Kisah Berdirinya AKARRA	Bagaimana AKARRA lahir dari visi untuk menyatukan fashion, desain kreatif, event, dan periklanan digital dalam satu ekosistem bisnis.	2026-08-07 15:52:41	2026-08-19 15:52:41	2026-08-19 15:52:41
+01a01ab9-8620-7199-b633-74b9cb20eaa4	01a01ab9-83fd-71cc-a6e7-1142ba4eb611	01a01ab9-83e3-71dd-b6e0-f1bf9a2b68b5	Mengenal Tiga Pilar AKARRA: Fashionpreneur, Creative Labs, dan Advertising	mengenal-tiga-pilar-akarra-fashionpreneur-creative-labs-dan-advertising	Tiga pilar yang saling menopang, dirancang untuk menemani brand di setiap tahap pertumbuhannya — dari produksi hingga strategi digital.	<p>Salah satu hal yang membedakan AKARRA dari agensi atau rumah produksi pada umumnya adalah struktur layanannya yang tidak berdiri sendiri-sendiri. Ketiga pilar — Fashionpreneur, Creative Labs, dan Advertising — dirancang untuk saling menopang, sehingga sebuah brand bisa ditemani sejak ide pertama hingga dikenal luas, tanpa harus berpindah mitra di setiap tahap.</p>\n\n<h2>01 / Fashionpreneur</h2>\n<p>Fashionpreneur adalah ekosistem komprehensif bagi desainer mapan maupun label yang baru tumbuh, untuk berkembang tanpa mengorbankan integritas kualitas. AKARRA menangani kerumitan rantai pasok — dari sampling di atelier hingga produksi skala besar yang etis — supaya brand bisa fokus sepenuhnya pada jiwa produknya sendiri.</p>\n<p>Dua layanan inti di pilar ini adalah <strong>The Atelier</strong> (sampling bespoke dan pengembangan pola teknis untuk siluet high-fashion) dan <strong>Global Production</strong> (manufaktur skala kecil yang etis serta sourcing tekstil berskala besar dengan fokus keberlanjutan).</p>\n\n<h2>02 / Creative Labs</h2>\n<p>Jika Fashionpreneur adalah tangan yang memproduksi, Creative Labs adalah mesin intelektual yang menerjemahkan nilai brand menjadi narasi visual dan pengalaman yang membekas di benak audiens yang semakin kritis.</p>\n<p>Di dalamnya ada <strong>Art Direction</strong> — kurasi identitas visual, citra kampanye, dan panduan brand berkualitas tinggi — serta <strong>Immersive Events</strong>, mulai dari peluncuran produk bespoke hingga peragaan busana yang dirancang untuk membangkitkan kedekatan emosional, bukan sekadar hiburan sesaat.</p>\n\n<h2>03 / Advertising</h2>\n<p>Pilar ketiga menjembatani semua kerja kreatif itu ke pasar yang tepat. Fokusnya ada pada strategi digital dan periklanan yang terukur — penempatan media, pengelolaan media sosial, hingga positioning brand — supaya karya yang telah dibangun dengan susah payah benar-benar sampai ke audiens yang dituju.</p>\n\n<h2>Mengapa Harus Tiga Pilar dalam Satu Atap?</h2>\n<p>Karena keputusan yang baik di satu pilar selalu memengaruhi pilar lainnya. Pilihan tekstil di Fashionpreneur akan menentukan bagaimana produk difoto dan diceritakan di Creative Labs, dan narasi itu pada akhirnya membentuk cara sebuah kampanye ditempatkan di Advertising. Dengan ketiganya berjalan dalam satu ekosistem, brand tidak perlu menerjemahkan ulang visinya setiap kali berpindah tangan.</p>	\N	published	Tiga Pilar Ekosistem AKARRA	Fashionpreneur, Creative Labs, dan Advertising — tiga pilar yang membentuk ekosistem layanan AKARRA bagi brand fashion dan kreatif Indonesia.	2026-08-13 15:52:41	2026-08-19 15:52:41	2026-08-19 15:52:41
+01a01ab9-8623-70b8-afa2-459321ddd31c	01a01ab9-83fd-71cc-a6e7-1142ba4eb611	01a01ab9-83e3-71dd-b6e0-f1bf9a2b68b5	Komitmen AKARRA terhadap Keberlanjutan dan Budaya Lokal Indonesia	komitmen-akarra-terhadap-keberlanjutan-dan-budaya-lokal-indonesia	Menjadi brand berkelas dunia bukan berarti melepaskan akar. Begini cara AKARRA menyeimbangkan pertumbuhan bisnis dengan tanggung jawab terhadap lingkungan dan warisan budaya.	<p>Ada satu pertanyaan yang terus dipegang AKARRA sejak awal berdiri: apakah mungkin sebuah brand tumbuh menjadi kelas dunia tanpa mengorbankan tempat ia berasal? Bagi AKARRA, jawabannya bukan hanya "mungkin" — tetapi menjadi salah satu prinsip yang mendasari setiap keputusan bisnis yang diambil.</p>\n\n<h2>Keberlanjutan Bukan Jargon, Tapi Standar Kerja</h2>\n<p>Di pilar Fashionpreneur, komitmen ini terlihat nyata pada layanan Global Production — manufaktur skala kecil yang etis dan sourcing tekstil dengan fokus keberlanjutan. Ini bukan lapisan pemasaran yang ditambahkan belakangan, melainkan bagian dari cara AKARRA memilih mitra produksi dan bahan baku sejak tahap paling awal.</p>\n<p>Pendekatan ini memang menuntut lebih banyak kesabaran dibanding produksi massal konvensional. Namun bagi AKARRA, kualitas yang bertahan lama — baik dari sisi material maupun dampaknya terhadap lingkungan — selalu lebih bernilai daripada kecepatan semata.</p>\n\n<h2>Akar Budaya sebagai Fondasi, Bukan Sekadar Ornamen</h2>\n<p>Penghormatan terhadap budaya lokal juga tertanam sejak dari identitas visual AKARRA sendiri. Motif mandala yang menjadi ciri khas logo bukan dipilih karena sedang tren, melainkan karena mengacu langsung pada tradisi mandala Nusantara — pola melingkar yang telah lama menjadi simbol harmoni dalam budaya Indonesia.</p>\n<p>Filosofi yang sama juga membentuk cara AKARRA bekerja dengan para perajin dan pelaku industri kreatif lokal: bukan sebagai vendor yang sekadar dibayar untuk mengeksekusi, melainkan sebagai mitra yang turut membentuk arah kreatif setiap karya.</p>\n\n<h2>Visi ke Depan</h2>\n<p>AKARRA ingin menjadi ekosistem bisnis fashion dan kreatif terdepan di Indonesia yang melahirkan brand-brand berkelas dunia — namun tetap berakar pada budaya lokal. Bagi AKARRA, keunggulan sejati justru ditemukan pada titik temu antara presisi matematis sebuah strategi bisnis dan jiwa artistik yang diwariskan turun-temurun.</p>\n<p>Itulah sebabnya setiap ekspansi yang dilakukan AKARRA — baik ke kategori produk baru, kemitraan strategis, maupun pasar yang lebih luas — selalu diuji dengan satu pertanyaan yang sama: apakah langkah ini memperkuat akar, atau justru menjauhkannya?</p>	\N	published	Keberlanjutan & Budaya Lokal di AKARRA	Bagaimana AKARRA menjaga keseimbangan antara pertumbuhan bisnis, praktik produksi yang etis, dan penghormatan terhadap budaya lokal Indonesia.	2026-08-18 15:52:41	2026-08-19 15:52:41	2026-08-19 15:52:41
+\.
+
+
+--
+-- Data for Name: categories; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.categories (id, name, slug, description, created_at, updated_at) FROM stdin;
+01a01ab9-83ee-705e-b563-ab6e8171cb02	Fashion & Tren	fashion-tren	Perkembangan industri fashion dan arah tren.	2026-08-19 15:52:40	2026-08-19 15:52:40
+01a01ab9-83f1-7339-a3f7-9909ec2f2ead	Creative Labs	creative-labs	Proses kreatif, desain, dan produksi.	2026-08-19 15:52:40	2026-08-19 15:52:40
+01a01ab9-83f4-7058-b2ec-970f7767699d	Event & Pertunjukan	event-pertunjukan	Penyelenggaraan acara dan pengalaman brand.	2026-08-19 15:52:40	2026-08-19 15:52:40
+01a01ab9-83f7-70a8-8197-eff3b575364a	Digital & Periklanan	digital-periklanan	Strategi digital, media, dan periklanan.	2026-08-19 15:52:40	2026-08-19 15:52:40
+01a01ab9-83fa-733f-bc1e-90f8a15028f6	Tips Bisnis Fashion	tips-bisnis-fashion	Panduan praktis membangun bisnis fashion.	2026-08-19 15:52:40	2026-08-19 15:52:40
+01a01ab9-83fd-71cc-a6e7-1142ba4eb611	Berita Perusahaan	berita-perusahaan	Kabar terbaru dari ekosistem AKARRA.	2026-08-19 15:52:40	2026-08-19 15:52:40
+01a01ab9-8400-7307-b18b-c957b48cde1d	Studi Kasus Klien	studi-kasus-klien	Cerita kerja sama dan hasilnya.	2026-08-19 15:52:40	2026-08-19 15:52:40
+\.
+
+
+--
+-- Data for Name: contacts; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.contacts (id, name, email, phone, interest, subject, message, is_read, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: migrations; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.migrations (id, migration, batch) FROM stdin;
+1	0001_01_01_000000_create_users_table	1
+2	0001_01_01_000001_create_cache_table	1
+3	0001_01_01_000002_create_jobs_table	1
+4	2026_01_01_000100_create_categories_table	1
+5	2026_01_01_000200_create_articles_table	1
+6	2026_01_01_000300_create_contacts_table	1
+7	2026_01_01_000400_create_settings_table	1
+8	2026_07_24_044734_add_role_to_users_table	1
+9	2026_08_11_140113_add_locale_to_settings_table	1
+\.
+
+
+--
+-- Data for Name: settings; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.settings (id, "group", key, value, type, created_at, updated_at, locale) FROM stdin;
+01a01ab9-8407-7001-a457-f4a8bb9a1c2f	global	site_name	AKARRA	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-840e-71fc-8833-039752a5aa1b	global	tagline	Ecosystem of Excellence	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8412-7373-bdab-9f60b33227b5	global	description	Ekosistem bisnis terintegrasi di bidang fashion, desain kreatif, event, dan periklanan digital.	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8415-71d9-b9d4-58d9f1ea7333	global	founded_year		string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8417-73d5-bd4e-d88ac990c4aa	global	address		string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-841a-71ba-a65f-df4829814804	global	phone		string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-841e-717f-8a6c-9d6da9fe9396	global	whatsapp		string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8421-715a-a52e-72969e38b936	global	email		string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8424-7022-bbab-8346e230853e	global	office_hours	Senin sampai Jumat, pukul 09.00 s.d. 17.00 WIB	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8427-73ab-9132-092d6db0303c	global	social	[{"platform":"instagram","url":"","label":"Instagram"},{"platform":"tiktok","url":"","label":"TikTok"},{"platform":"linkedin","url":"","label":"LinkedIn"}]	json	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8429-7122-b93d-0323932dff65	global	nav	[{"label":"Ecosystem","path":"\\/ecosystem"},{"label":"Products","path":"\\/products"},{"label":"Services","path":"\\/services"},{"label":"Articles","path":"\\/articles"},{"label":"Founders","path":"\\/founders"}]	json	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-842c-7147-94a4-ca4012ad99da	global	nav_cta_label	Start a Conversation	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-842f-735a-bade-e099edea106b	global	footer_note	Seluruh hak cipta dilindungi.	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8431-72c3-b46c-aa4bb50df12e	global	og_image		string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8434-7265-8394-685f8f3139a2	global	twitter_handle		string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8437-70ad-87b2-b3af6500128c	home	hero_eyebrow	A Legacy in the Making	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-843a-7017-9179-8132dd3eb0c1	home	hero_title	Ecosystem of Excellence	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-843d-7284-87ab-d573318f7dd0	home	hero_title_emphasis	Excellence	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8441-7284-b8c5-7a403fb8826c	home	hero_subtitle	A sophisticated convergence of Fashionpreneurial spirit, Creative Labs innovation, and Strategic Advertising excellence. AKARRA is built for the visionaries of tomorrow.	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8444-71d0-be19-b73893f13d3b	home	hero_cta_label	Explore the Ecosystem	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8447-73c6-91b4-a4c89736fbab	home	hero_secondary_cta_label	Our Philosophy	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-844a-7361-81e5-895b77e62480	home	hero_image		string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-844c-71e4-889f-4f742f500194	home	narrative_title	Membangun Warisan, Bukan Sekadar Bisnis	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8450-73d9-bbc3-9eb4ad079ca1	home	narrative_body	AKARRA bergerak di industri fashion, desain kreatif, event, dan periklanan digital. Melalui tiga pilar utama, kami tidak hanya menjual produk, tetapi membangun identitas dan dampak nyata bagi komunitas fashion dan kreatif Indonesia.	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8452-71bf-a297-a50e8c4b61d3	home	narrative_image	/images/content/home-narrative.jpg	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8455-72fa-b9c7-084da9019060	home	narrative_quote	We believe that true prestige is found in the intersection of mathematical precision and artistic soul. Our journey is about creating impact that resonates across generations.	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8459-70a5-8998-917402cffced	home	narrative_quote_attribution	The Founders of AKARRA	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-845c-7378-a88c-b1fa9867917b	home	narrative_badge	Est. 2024	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8460-7032-8c03-145ab837f959	home	values	[{"name":"Excellence","body":"Uncompromising quality in every stitch, frame, and strategy we execute."},{"name":"Integrity","body":"Building trust through transparency and ethical leadership in all domains."},{"name":"Innovation","body":"Pushing boundaries through creative experimentation and modern technology."},{"name":"Elegance","body":"A commitment to refined aesthetics that speak without needing to shout."}]	json	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8462-7320-8979-8482fca9c672	home	services_eyebrow	Our Three Pillars	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8465-7057-bdf0-6b2accf76e4b	home	services_title	The Services Ecosystem	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8467-7295-8427-2b061cfeba78	home	services_subtitle	Tiga pilar yang saling menopang, dirancang untuk menemani brand di setiap tahap pertumbuhannya.	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8469-71d2-b12c-1b831eb0fd50	home	services_cta_label	Lihat seluruh layanan	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-846c-7355-9ac1-b56ad4e4d17b	home	solutions_title	Curated Solutions	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-846e-72f6-a91d-f204801480ec	home	solutions_subtitle	Rangkaian produk dan karya yang lahir dari ekosistem kami.	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8470-7345-85ee-f8a4d44f11a8	home	solutions	[{"title":"Bespoke Collection","body":"Made-to-measure excellence for the modern executive.","image":"\\/images\\/content\\/home-solution-bespoke-collection.jpg","category":"Fashion"},{"title":"Signature Textiles","body":"Ethically sourced, world-class fabric curation.","image":"\\/images\\/content\\/home-solution-signature-textiles.jpg","category":"Fashion"},{"title":"Visual Storytelling","body":"Narasi visual yang membangun kedekatan emosional dengan audiens.","image":"\\/images\\/content\\/home-solution-visual-storytelling.jpg","category":"Creative"},{"title":"Brand Positioning","body":"Strategi penempatan brand yang tajam dan terukur di pasar digital.","image":"\\/images\\/content\\/home-solution-brand-positioning.jpg","category":"Advertising"}]	json	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8472-7106-b059-f5c5e5831c10	home	story_title	Cerita di Balik AKARRA	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8474-70c7-8fce-e96c718ee0b4	home	story_body	Kami percaya setiap brand memiliki cerita yang layak diceritakan dengan elegan. Bersama kami, Anda tidak hanya membangun bisnis, tetapi juga membangun warisan.	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8476-7296-94f7-2c6a0c53f8bf	home	story_image	/images/content/home-story.jpg	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8479-72a9-8121-f7b08aba2c9c	home	story_video		string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-847b-71e6-b2dd-063e69c9c412	home	founders_title	Meet the Founders	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-847e-72c1-857e-27d8a9d4755b	home	founders_subtitle	Dua orang di balik arah dan standar AKARRA.	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8480-700b-8179-05aa20ea341c	home	form_title	Mari Berkolaborasi	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8482-73cc-9f00-01ef4aa35362	home	form_subtitle	Konsultasi awal gratis, tanpa komitmen. Ceritakan apa yang sedang Anda bangun.	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8484-7332-9860-11e77c779c0f	home	form_cta_label	Kirim pesan	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8486-71ee-be89-9b6cccdaa4e5	ecosystem	hero_eyebrow	The Architecture of Aspiration	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8488-7261-96bf-08da5df37a93	ecosystem	hero_title	Ecosystem of Excellence	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-848a-71ca-8638-2f5d97f5e461	ecosystem	hero_title_emphasis	Excellence	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84dd-701f-b874-edd158c3082e	services	hero_image	/images/content/services-hero.jpg	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-848c-72cd-9e3c-e89fcbe8271c	ecosystem	hero_subtitle	A multi-disciplinary sanctuary where precision meets poetry. AKARRA is not merely a brand; it is a unified sensory landscape where fashion, art, and strategy coalesce into a singular, prestigious standard.	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-848e-7332-b014-ffd899e982d9	ecosystem	story_title	Cerita Kami	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8490-7172-909d-6d5871949bb0	ecosystem	story_body	AKARRA didirikan oleh Febri Khoirul Imam dan Nanda Fifia Putri, lahir dari visi untuk menciptakan platform bisnis yang tidak hanya menjual produk, tetapi juga membangun identitas dan dampak nyata bagi komunitas fashion dan kreatif Indonesia.	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8491-713d-ad4e-87658772ca59	ecosystem	philosophy_title	Filosofi Nama & Logo	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8493-701f-baf6-3727ae3a36ee	ecosystem	philosophy_body	Logo AKARRA terinspirasi dari geometri berlian dan mandala tradisional, perpaduan antara kemewahan modern dan kearifan lokal.	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8495-73dc-a522-5b2eab5e6477	ecosystem	philosophy_items	[{"title":"Berlian & Kemewahan","body":"Struktur geometris berlian mencerminkan kualitas premium dan eksklusivitas."},{"title":"Energi & Dinamisme","body":"Segitiga yang saling bertautan melambangkan inovasi dan kolaborasi."},{"title":"Mandala & Harmoni","body":"Pola melingkar mengacu pada tradisi mandala Nusantara."},{"title":"Emas & Kepercayaan","body":"Warna emas melambangkan prestise dan kepercayaan."}]	json	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8498-7371-a494-9b761c37539d	ecosystem	standard_title	The AKARRA Standard	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-849b-70cf-b66c-3e62b640a79b	ecosystem	standard_body	Standar tertinggi di setiap produk dan layanan, sesuai nilai Excellence dan Elegance yang kami pegang.	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-849e-72ca-be3d-19358f3a7f33	ecosystem	standard_image	/images/content/ecosystem-standard.jpg	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84a1-7282-be87-89e8d64a7dde	ecosystem	values	[{"name":"Excellence","label":"Keunggulan","body":"Standar tertinggi dalam setiap produk dan layanan."},{"name":"Integrity","label":"Integritas","body":"Transparansi dan kepercayaan di setiap kemitraan."},{"name":"Innovation","label":"Inovasi","body":"Terus berevolusi dan berpikir di luar konvensi."},{"name":"Collaboration","label":"Kolaborasi","body":"Tumbuh bersama klien, mitra, dan komunitas kreatif."},{"name":"Elegance","label":"Elegansi","body":"Estetika dan keindahan dalam setiap karya."}]	json	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84a3-715c-bb1c-58457c7db1ff	ecosystem	vision_title	A Global Vision of Shared Success	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84a5-71eb-90c8-6361c0518f65	ecosystem	vision_body	Menjadi ekosistem bisnis fashion dan kreatif terdepan di Indonesia yang melahirkan brand-brand berkelas dunia dengan akar budaya lokal.	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84a8-70c9-91fa-26fd1be95df4	ecosystem	mission	["Membangun platform fashion terintegrasi dari produksi hingga distribusi.","Menghadirkan layanan desain dan event kreatif berkelas premium.","Memperkuat brand lokal melalui strategi digital dan periklanan inovatif.","Menciptakan ekosistem kolaboratif untuk pelaku industri kreatif Indonesia.","Mendorong pertumbuhan bisnis klien melalui solusi holistik dan terukur."]	json	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84ab-70f5-b219-b233e3c66392	ecosystem	stats	[{"value":"12","label":"Global Ateliers"},{"value":"450+","label":"Artisans"},{"value":"24","label":"Strategic Partners"},{"value":"100%","label":"Ethical Sourcing"}]	json	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84ad-73d8-aeda-dc3cad9484f9	products	hero_eyebrow	Curated Collections	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84b0-70bd-83c4-7567b485b506	products	hero_title	The Artifacts of Excellence	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84b2-7161-a701-b43225d725cd	products	hero_title_emphasis	Excellence	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84b5-71f7-bb6e-99995038a943	products	hero_subtitle	Explore AKARRA's product ecosystem, where high-performance logic meets artisanal craftsmanship. Our solutions are designed for those who demand uncompromising results.	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84b7-73f2-9619-4dfbf5c33173	products	textile_title	Textile Engineering & Fashion	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84b8-7112-b199-678349e246f4	products	textile_body	Precision-tailored garments that redefine high-net-worth identity through rare fibers and architectural silhouettes.	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84bb-7209-8ae8-deee6ffa7b35	products	items	[{"name":"The Meridian Suite","label":"Limited Release 01","image":"\\/images\\/content\\/product-meridian-suite.jpg","tag":"Reserve"},{"name":"Artisanal Accents","label":"Fiber Innovation","image":"\\/images\\/content\\/product-artisanal-accents.jpg","tag":"Explore"}]	json	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84bd-7208-9019-c10fade89db5	products	labs_title	AKARRA Labs	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84bf-7039-83b6-ec6a05b945a3	products	labs_body	Ruang eksperimen desain dan pengembangan produk, tempat ide diuji sebelum menjadi karya.	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84c1-708d-a29a-49aa6e2b2591	products	labs	[{"title":"Material Bio-Synthesis","body":"Developing sustainable, lab-grown alternatives to rare earth materials for luxury interiors."},{"title":"Cognitive Branding","body":"A methodology for creating brand resonance through neuro-aesthetic principles and sensory mapping."}]	json	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84c4-729e-af3c-e184d4856710	products	whitepaper	{"label":"Experimental Case 042","title":"Spatial Intelligence","body":"Revolutionizing human-interface interaction through biological feedback loops and predictive spatial modeling.","image":"\\/images\\/content\\/product-whitepaper-spatial-intelligence.jpg"}	json	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84c6-72f6-b96c-c330ce35c8d9	products	digital_title	Strategic Dominance in Digital Realms	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84c8-71d8-991b-3f9608cfa706	products	digital_body	Perencanaan dan eksekusi kampanye digital yang terukur, dari penempatan media hingga pengelolaan performa.	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84cb-7319-b183-b243fa2f74b3	products	digital_items	[{"title":"Omnichannel Mastery","body":"Seamlessly integrating brand narrative across 12+ touchpoints for a unified, elite user experience."},{"title":"Data-Driven Narratives","body":"Leveraging proprietary algorithms to forecast cultural shifts and position brands ahead of the curve."},{"title":"High-Conversion Visuals","body":"Cinematic production standards applied to programmatic advertising for maximum prestige and ROI."}]	json	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84cd-739d-9f82-263798024f60	products	cta_title	Ready to redefine your baseline?	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84d0-71dc-8bd3-149fd26f0401	products	cta_subtitle	Our limited-client engagement model ensures each partnership receives the full weight of AKARRA's strategic and creative machinery.	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84d3-73d2-b14e-81b9b139185e	products	cta_label	Request Audit	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84d5-7249-aeb9-41a1d60401db	products	cta_secondary_label	Join the Waitlist	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84d7-7356-9164-8df76924cc9c	services	hero_title	Architecting Excellence.	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84d9-7042-99b0-f307447b65ac	services	hero_title_emphasis	Excellence	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84db-71d8-b235-32c21cdcca59	services	hero_subtitle	Apa yang kami kerjakan bersama Anda, dari ide pertama hingga brand yang dikenal.	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84df-702a-a0d8-e363ff9dc231	services	hero_eyebrow	Our Capabilities	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84e1-7224-80b2-867033ac6d69	services	pillars	[{"name":"Fashionpreneur","label":"Infrastructure","body":"A comprehensive ecosystem for established designers and emerging labels to scale with integrity. We handle the complexities of the supply chain so you can focus on the soul of the brand.","items":["Industri Pakaian Jadi","Perdagangan Besar Pakaian","Distribusi & Retail"],"bullets":["Brand Development","Textile Sourcing","Atelier Manufacturing","Distribution Strategy"],"subcards":[{"title":"The Atelier","body":"Bespoke sample making and technical pattern drafting for high-fashion silhouettes.","bullets":["Haute Couture Sampling","Tech Pack Development"]},{"title":"Global Production","body":"Ethical, small-batch manufacturing and large-scale textile sourcing with a focus on sustainability.","bullets":["Ethical Sourcing","QC Management"]}],"image":"\\/images\\/content\\/services-pillar-fashionpreneur.jpg"},{"name":"Creative Labs","label":"Identity","body":"The intellectual engine of AKARRA. We translate brand ethos into visual and experiential narratives that resonate with a discerning global audience.","items":["Desain Grafis & Branding","Produksi Konten","Event & Pertunjukan"],"bullets":["Visual Storytelling","UI\\/UX Innovation","Photography & Cinema","Experimental Design"],"subcards":[{"title":"Art Direction","body":"Curation of visual identity, campaign imagery, and high-fidelity brand guidelines.","bullets":["Visual Strategy","Identity Design"]},{"title":"Immersive Events","body":"Bespoke product launches and runway shows designed to evoke emotional intelligence.","bullets":["Spatial Design","Guest Curation"]}],"image":"\\/images\\/content\\/services-pillar-creative-labs.jpg"},{"name":"Advertising","label":"Periklanan & Strategi Digital","body":"Strategi digital dan periklanan inovatif untuk memperkuat posisi brand di pasar.","items":["Strategi Digital","Media Placement","Social Media Management"],"bullets":["Brand Positioning","Market Penetration","Digital Growth","Strategic Media"],"image":""}]	json	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84e4-72b9-8655-1ba73ad68804	services	gallery	[]	json	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84e6-726f-a10c-695630f1b725	services	growth_title	Digital Strategy & Growth	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84e9-73d7-85a4-6921e5ecfec5	services	growth_body	Data-driven precision meets creative intuition. We don't just find your audience; we cultivate a community of advocates.	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84ec-7154-99e6-d831ce2d8294	services	amplification_cards	[{"title":"Digital Strategy","body":"Comprehensive market analysis and growth mapping for the luxury sector.","bullets":["Market Intelligence","Funnel Optimization"]},{"title":"Content Production","body":"High-end video, editorial photography, and interactive storytelling.","bullets":["4K Editorial Video","Social Narratives"]},{"title":"Brand Growth","body":"Strategic partnerships, influencer seeding, and global expansion.","bullets":["Strategic PR","Cross-Border Scaling"]}]	json	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84ef-7342-952a-68c61b1b1312	services	why_title	Mengapa AKARRA	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84f0-70a1-b074-3426ade0ad10	services	why_items	[{"title":"Ekosistem lengkap dalam satu atap","body":"Produksi fashion, desain kreatif, event, hingga periklanan digital ditangani satu mitra."},{"title":"Kualitas premium & elegan","body":"Standar tertinggi di setiap produk dan layanan."},{"title":"Berakar pada budaya lokal","body":"Brand berkelas dunia tanpa melepaskan akar budaya Indonesia."},{"title":"Kolaboratif & transparan","body":"Kami tumbuh bersama klien, mitra, dan komunitas kreatif."},{"title":"Solusi holistik & terukur","body":"Pendampingan dari ide pertama hingga eksekusi."}]	json	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84f2-72ee-9cc9-15a96ffb5e53	services	cta_title	Ready to redefine your legacy?	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84f4-71ff-aa1d-853cb4ec8c63	services	cta_subtitle	Konsultasi awal gratis, tanpa komitmen.	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84f6-7092-8199-190fe4ce4c0b	services	cta_label	Mulai kolaborasi	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84f8-7309-898b-4c9555087bb4	services	cta_secondary_label	Concierge@akarra.com	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84fa-733a-ab80-2cf81d552f35	founders	hero_eyebrow	Architects of Value	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84fc-7367-8983-aafe8d1cbc8a	founders	hero_title	The Stewardship of Legacy.	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84fd-7120-a700-bd8c38a9ab37	founders	hero_title_emphasis	Legacy	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-84ff-7373-bebc-a196a52f79b6	founders	hero_subtitle	AKARRA was founded on the principle that excellence is not an act, but a habit. Our leadership is dedicated to the meticulous cultivation of wealth, wisdom, and lasting heritage for the modern visionary.	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8501-735f-a68e-4561debcacd4	founders	people	[{"name":"Febri Khoirul Imam","role":"Direktur Utama","body":"With over two decades of experience in strategic investment and institutional management, Febri Khoirul Imam leads AKARRA with a focus on structural resilience and long-term capital preservation. His background in global financial markets provides the analytical backbone for AKARRA’s most ambitious ecosystems.","portrait":"\\/images\\/content\\/founder-febri-portrait.jpg","quote":"Legacy is not what we leave for people, it is what we leave within them. At AKARRA, we build the frameworks where that impact can endure.","legacy_body":"Febri believes that building a legacy requires more than just financial success; it requires a commitment to excellence in every detail. His philosophy centers on ‘Integrated Stewardship,’ the belief that wealth and influence must be managed as a cohesive, purposeful whole."},{"name":"Nanda Fifia Putri","role":"Komisaris","body":"Nanda Fifia Putri brings a refined perspective to AKARRA’s board, specializing in brand heritage and philanthropic governance. Her career has been defined by the intersection of high-culture and high-finance, ensuring that AKARRA’s products and services maintain their soul as they scale.","portrait":"\\/images\\/content\\/founder-nanda-portrait.jpg","quote":"Visionary leadership is about seeing the invisible threads that connect today’s decisions to tomorrow’s heritage.","legacy_body":"Nanda’s philosophy is rooted in ‘Cultural Capital.’ She advocates for the preservation of values alongside value, ensuring that the AKARRA brand serves as a hallmark of prestige and intellectual depth for generations to come."}]	json	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8504-7354-ab42-5bfdb3e8cbe4	founders	quote	A foundation built on integrity, a future shaped by vision.	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8506-720a-9505-75d05c6519f8	founders	cta_title	Join the Inner Circle.	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-8509-717a-a780-ff3b0f93a823	founders	cta_subtitle	Experience the bespoke advisory and ecosystem services that define the AKARRA lifestyle.	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-850b-71b7-8b09-41c8a64482c2	founders	cta_label	Request Consultation	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-850d-70e2-a9b4-d5dac261bd75	founders	cta_secondary_label	View Ecosystem	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
+01a01ab9-850f-7041-a70e-5d5a6b047089	global	site_name	AKARRA	string	2026-08-19 15:52:40	2026-08-19 15:52:40	en
+01a01ab9-8511-7230-ba6c-bdc102fe4216	global	tagline	Ecosystem of Excellence	string	2026-08-19 15:52:40	2026-08-19 15:52:40	en
+01a01ab9-8513-7182-ac66-174117846f5d	global	description	Ekosistem bisnis terintegrasi di bidang fashion, desain kreatif, event, dan periklanan digital.	string	2026-08-19 15:52:40	2026-08-19 15:52:40	en
+01a01ab9-8515-73ef-9314-add19b7df1af	global	founded_year		string	2026-08-19 15:52:40	2026-08-19 15:52:40	en
+01a01ab9-8518-70c2-8436-f804dc408b8e	global	address		string	2026-08-19 15:52:40	2026-08-19 15:52:40	en
+01a01ab9-851a-7013-b6e7-9494d1b72d80	global	phone		string	2026-08-19 15:52:40	2026-08-19 15:52:40	en
+01a01ab9-851c-7375-bcc5-fd118e21c849	global	whatsapp		string	2026-08-19 15:52:40	2026-08-19 15:52:40	en
+01a01ab9-851e-7398-8fc7-1a87f8057e95	global	email		string	2026-08-19 15:52:40	2026-08-19 15:52:40	en
+01a01ab9-8520-71b5-a8e6-af482e8c8d63	global	office_hours	Senin sampai Jumat, pukul 09.00 s.d. 17.00 WIB	string	2026-08-19 15:52:40	2026-08-19 15:52:40	en
+01a01ab9-8522-7010-a964-87b06004f0a3	global	social	[{"platform":"instagram","url":"","label":"Instagram"},{"platform":"tiktok","url":"","label":"TikTok"},{"platform":"linkedin","url":"","label":"LinkedIn"}]	json	2026-08-19 15:52:40	2026-08-19 15:52:40	en
+01a01ab9-8524-71a3-98f8-bf01ee776396	global	nav	[{"label":"Ecosystem","path":"\\/ecosystem"},{"label":"Products","path":"\\/products"},{"label":"Services","path":"\\/services"},{"label":"Articles","path":"\\/articles"},{"label":"Founders","path":"\\/founders"}]	json	2026-08-19 15:52:40	2026-08-19 15:52:40	en
+01a01ab9-8526-72cb-9222-411a7de38abb	global	nav_cta_label	Start a Conversation	string	2026-08-19 15:52:40	2026-08-19 15:52:40	en
+01a01ab9-8529-7034-9827-c664016f7899	global	footer_note	Seluruh hak cipta dilindungi.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-852b-7246-870a-a9592f806877	global	og_image		string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-852e-7358-b8ff-28c867bc5341	global	twitter_handle		string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-852f-707f-a69a-93f1c4064229	home	hero_eyebrow	A Legacy in the Making	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-8531-7175-9715-cba922f17c0c	home	hero_title	Ecosystem of Excellence	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-8533-7028-80ac-175b47164495	home	hero_title_emphasis	Excellence	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-8535-7373-898b-48cc493ccae4	home	hero_subtitle	A sophisticated convergence of Fashionpreneurial spirit, Creative Labs innovation, and Strategic Advertising excellence. AKARRA is built for the visionaries of tomorrow.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-8537-7105-aced-f72b94071dab	home	hero_cta_label	Explore the Ecosystem	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-8539-7241-8da7-4db31bf70913	home	hero_secondary_cta_label	Our Philosophy	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-853b-7255-8c26-47c1799c63b9	home	hero_image		string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-853d-7068-b925-23ab13e31037	home	narrative_title	Membangun Warisan, Bukan Sekadar Bisnis	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-853e-731e-a58d-370076dcb163	home	narrative_body	AKARRA bergerak di industri fashion, desain kreatif, event, dan periklanan digital. Melalui tiga pilar utama, kami tidak hanya menjual produk, tetapi membangun identitas dan dampak nyata bagi komunitas fashion dan kreatif Indonesia.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-8540-7095-95f1-152bf0ef6bf8	home	narrative_image	/images/content/home-narrative.jpg	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-8542-700b-be1e-0a1bcab742b1	home	narrative_quote	We believe that true prestige is found in the intersection of mathematical precision and artistic soul. Our journey is about creating impact that resonates across generations.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-8545-717b-9fba-1500811272bb	home	narrative_quote_attribution	The Founders of AKARRA	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-8547-72cb-8a4b-404a318e66ed	home	narrative_badge	Est. 2024	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-854a-706c-89a6-b4b6a61ad3ae	home	values	[{"name":"Excellence","body":"Uncompromising quality in every stitch, frame, and strategy we execute."},{"name":"Integrity","body":"Building trust through transparency and ethical leadership in all domains."},{"name":"Innovation","body":"Pushing boundaries through creative experimentation and modern technology."},{"name":"Elegance","body":"A commitment to refined aesthetics that speak without needing to shout."}]	json	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-854d-70cc-98b0-3f779278d4ec	home	services_eyebrow	Our Three Pillars	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-854f-7362-8567-d6f8ce63d552	home	services_title	The Services Ecosystem	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-8551-721e-a508-725a1a9b2db1	home	services_subtitle	Tiga pilar yang saling menopang, dirancang untuk menemani brand di setiap tahap pertumbuhannya.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-8554-7316-989c-8f397e164801	home	services_cta_label	Lihat seluruh layanan	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-8557-70d1-9e62-7b1d39a1cc6b	home	solutions_title	Curated Solutions	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-855a-72ef-97f8-cf76ea36db5f	home	solutions_subtitle	Rangkaian produk dan karya yang lahir dari ekosistem kami.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-855c-7167-9954-7594ae701b8c	home	solutions	[{"title":"Bespoke Collection","body":"Made-to-measure excellence for the modern executive.","image":"\\/images\\/content\\/home-solution-bespoke-collection.jpg","category":"Fashion"},{"title":"Signature Textiles","body":"Ethically sourced, world-class fabric curation.","image":"\\/images\\/content\\/home-solution-signature-textiles.jpg","category":"Fashion"},{"title":"Visual Storytelling","body":"Narasi visual yang membangun kedekatan emosional dengan audiens.","image":"\\/images\\/content\\/home-solution-visual-storytelling.jpg","category":"Creative"},{"title":"Brand Positioning","body":"Strategi penempatan brand yang tajam dan terukur di pasar digital.","image":"\\/images\\/content\\/home-solution-brand-positioning.jpg","category":"Advertising"}]	json	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-855f-705a-9c26-a43a75d42121	home	story_title	Cerita di Balik AKARRA	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-8561-7324-abd7-d348614af22a	home	story_body	Kami percaya setiap brand memiliki cerita yang layak diceritakan dengan elegan. Bersama kami, Anda tidak hanya membangun bisnis, tetapi juga membangun warisan.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-8564-7092-a5a8-1c9a1bb8e6c8	home	story_image	/images/content/home-story.jpg	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-8566-730d-a905-447acd425001	home	story_video		string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-8569-719d-8bf4-e822a05f1bde	home	founders_title	Meet the Founders	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-856c-70bc-94bc-8e45f16c5c8e	home	founders_subtitle	Dua orang di balik arah dan standar AKARRA.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-856e-736b-9330-86a2e169b15f	home	form_title	Mari Berkolaborasi	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-8571-7176-9db9-232ba2867355	home	form_subtitle	Konsultasi awal gratis, tanpa komitmen. Ceritakan apa yang sedang Anda bangun.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-8573-70be-813d-e7dec9e2c93e	home	form_cta_label	Kirim pesan	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-8575-7226-9c33-302d600fdd4e	ecosystem	hero_eyebrow	The Architecture of Aspiration	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-8577-70d9-90ad-9222fbacb627	ecosystem	hero_title	Ecosystem of Excellence	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-8579-71be-9db0-766d159745e4	ecosystem	hero_title_emphasis	Excellence	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-857b-72b6-b8f0-fd087d72c006	ecosystem	hero_subtitle	A multi-disciplinary sanctuary where precision meets poetry. AKARRA is not merely a brand; it is a unified sensory landscape where fashion, art, and strategy coalesce into a singular, prestigious standard.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-857d-7288-8e6c-b2306fed128c	ecosystem	story_title	Cerita Kami	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-857f-7095-bb3a-8f8f1d6e55cc	ecosystem	story_body	AKARRA didirikan oleh Febri Khoirul Imam dan Nanda Fifia Putri, lahir dari visi untuk menciptakan platform bisnis yang tidak hanya menjual produk, tetapi juga membangun identitas dan dampak nyata bagi komunitas fashion dan kreatif Indonesia.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-8581-7390-92e0-902cdf10c761	ecosystem	philosophy_title	Filosofi Nama & Logo	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-8583-7198-8bb4-9bbbf01031dc	ecosystem	philosophy_body	Logo AKARRA terinspirasi dari geometri berlian dan mandala tradisional, perpaduan antara kemewahan modern dan kearifan lokal.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-8584-730d-afd5-7902c261a6b8	ecosystem	philosophy_items	[{"title":"Berlian & Kemewahan","body":"Struktur geometris berlian mencerminkan kualitas premium dan eksklusivitas."},{"title":"Energi & Dinamisme","body":"Segitiga yang saling bertautan melambangkan inovasi dan kolaborasi."},{"title":"Mandala & Harmoni","body":"Pola melingkar mengacu pada tradisi mandala Nusantara."},{"title":"Emas & Kepercayaan","body":"Warna emas melambangkan prestise dan kepercayaan."}]	json	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-8587-7241-97b1-a3add81347b6	ecosystem	standard_title	The AKARRA Standard	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-858a-732d-a11b-fe551db9956b	ecosystem	standard_body	Standar tertinggi di setiap produk dan layanan, sesuai nilai Excellence dan Elegance yang kami pegang.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-858c-73d6-8ce0-55f2a8a47893	ecosystem	standard_image	/images/content/ecosystem-standard.jpg	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-858f-70f1-be12-d3f7f8b346f2	ecosystem	values	[{"name":"Excellence","label":"Keunggulan","body":"Standar tertinggi dalam setiap produk dan layanan."},{"name":"Integrity","label":"Integritas","body":"Transparansi dan kepercayaan di setiap kemitraan."},{"name":"Innovation","label":"Inovasi","body":"Terus berevolusi dan berpikir di luar konvensi."},{"name":"Collaboration","label":"Kolaborasi","body":"Tumbuh bersama klien, mitra, dan komunitas kreatif."},{"name":"Elegance","label":"Elegansi","body":"Estetika dan keindahan dalam setiap karya."}]	json	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-8592-71a1-9e3d-204c3791812f	ecosystem	vision_title	A Global Vision of Shared Success	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-8595-737d-be76-94b483a69ddc	ecosystem	vision_body	Menjadi ekosistem bisnis fashion dan kreatif terdepan di Indonesia yang melahirkan brand-brand berkelas dunia dengan akar budaya lokal.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-8599-710f-ae56-00cba18f34da	ecosystem	mission	["Membangun platform fashion terintegrasi dari produksi hingga distribusi.","Menghadirkan layanan desain dan event kreatif berkelas premium.","Memperkuat brand lokal melalui strategi digital dan periklanan inovatif.","Menciptakan ekosistem kolaboratif untuk pelaku industri kreatif Indonesia.","Mendorong pertumbuhan bisnis klien melalui solusi holistik dan terukur."]	json	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-859c-7147-9935-d6fb642587af	ecosystem	stats	[{"value":"12","label":"Global Ateliers"},{"value":"450+","label":"Artisans"},{"value":"24","label":"Strategic Partners"},{"value":"100%","label":"Ethical Sourcing"}]	json	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-859f-7249-b781-e057b4428143	products	hero_eyebrow	Curated Collections	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85a1-725f-a1b8-c9aa7fea1549	products	hero_title	The Artifacts of Excellence	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85a4-72ce-9cca-875e5ea16556	products	hero_title_emphasis	Excellence	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85a6-71af-bfae-3c7e4ecdd2e3	products	hero_subtitle	Explore AKARRA's product ecosystem, where high-performance logic meets artisanal craftsmanship. Our solutions are designed for those who demand uncompromising results.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85a9-70eb-b546-71174ce90bfd	products	textile_title	Textile Engineering & Fashion	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85ac-71b3-a5d8-fcf0d3116a1b	products	textile_body	Precision-tailored garments that redefine high-net-worth identity through rare fibers and architectural silhouettes.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85ae-70f8-92fb-f27afba260d9	products	items	[{"name":"The Meridian Suite","label":"Limited Release 01","image":"\\/images\\/content\\/product-meridian-suite.jpg","tag":"Reserve"},{"name":"Artisanal Accents","label":"Fiber Innovation","image":"\\/images\\/content\\/product-artisanal-accents.jpg","tag":"Explore"}]	json	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85b0-7340-8bce-110d44f8e981	products	labs_title	AKARRA Labs	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85b3-70f4-8490-439f057d2038	products	labs_body	Ruang eksperimen desain dan pengembangan produk, tempat ide diuji sebelum menjadi karya.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85b5-71e0-a07a-683cd6de2682	products	labs	[{"title":"Material Bio-Synthesis","body":"Developing sustainable, lab-grown alternatives to rare earth materials for luxury interiors."},{"title":"Cognitive Branding","body":"A methodology for creating brand resonance through neuro-aesthetic principles and sensory mapping."}]	json	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85b7-7389-a2e2-5f2f3d5935ab	products	whitepaper	{"label":"Experimental Case 042","title":"Spatial Intelligence","body":"Revolutionizing human-interface interaction through biological feedback loops and predictive spatial modeling.","image":"\\/images\\/content\\/product-whitepaper-spatial-intelligence.jpg"}	json	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85ba-70e3-a4af-e94f43c1e5b2	products	digital_title	Strategic Dominance in Digital Realms	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85bc-72c0-b03e-d8c78718695d	products	digital_body	Perencanaan dan eksekusi kampanye digital yang terukur, dari penempatan media hingga pengelolaan performa.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85bf-7278-a4a7-d3304e8d2336	products	digital_items	[{"title":"Omnichannel Mastery","body":"Seamlessly integrating brand narrative across 12+ touchpoints for a unified, elite user experience."},{"title":"Data-Driven Narratives","body":"Leveraging proprietary algorithms to forecast cultural shifts and position brands ahead of the curve."},{"title":"High-Conversion Visuals","body":"Cinematic production standards applied to programmatic advertising for maximum prestige and ROI."}]	json	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85c1-7176-b6cc-539906751725	products	cta_title	Ready to redefine your baseline?	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85c3-7122-92c6-206f24fcc5ae	products	cta_subtitle	Our limited-client engagement model ensures each partnership receives the full weight of AKARRA's strategic and creative machinery.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85c5-7182-94d1-eba6cf74c1ba	products	cta_label	Request Audit	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85c7-7325-a61f-e42f6c14528a	products	cta_secondary_label	Join the Waitlist	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85ca-7019-ac51-a11c76fa3626	services	hero_title	Architecting Excellence.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85cc-72a6-b804-5649e23e0930	services	hero_title_emphasis	Excellence	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85ce-711b-ac57-fb65debfb5e3	services	hero_subtitle	Apa yang kami kerjakan bersama Anda, dari ide pertama hingga brand yang dikenal.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85d0-7160-bc33-fb5cb85411eb	services	hero_image	/images/content/services-hero.jpg	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85d2-7172-8161-b07f025ccd58	services	hero_eyebrow	Our Capabilities	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85d6-71f7-b10f-9ebda865cc07	services	pillars	[{"name":"Fashionpreneur","label":"Infrastructure","body":"A comprehensive ecosystem for established designers and emerging labels to scale with integrity. We handle the complexities of the supply chain so you can focus on the soul of the brand.","items":["Industri Pakaian Jadi","Perdagangan Besar Pakaian","Distribusi & Retail"],"bullets":["Brand Development","Textile Sourcing","Atelier Manufacturing","Distribution Strategy"],"subcards":[{"title":"The Atelier","body":"Bespoke sample making and technical pattern drafting for high-fashion silhouettes.","bullets":["Haute Couture Sampling","Tech Pack Development"]},{"title":"Global Production","body":"Ethical, small-batch manufacturing and large-scale textile sourcing with a focus on sustainability.","bullets":["Ethical Sourcing","QC Management"]}],"image":"\\/images\\/content\\/services-pillar-fashionpreneur.jpg"},{"name":"Creative Labs","label":"Identity","body":"The intellectual engine of AKARRA. We translate brand ethos into visual and experiential narratives that resonate with a discerning global audience.","items":["Desain Grafis & Branding","Produksi Konten","Event & Pertunjukan"],"bullets":["Visual Storytelling","UI\\/UX Innovation","Photography & Cinema","Experimental Design"],"subcards":[{"title":"Art Direction","body":"Curation of visual identity, campaign imagery, and high-fidelity brand guidelines.","bullets":["Visual Strategy","Identity Design"]},{"title":"Immersive Events","body":"Bespoke product launches and runway shows designed to evoke emotional intelligence.","bullets":["Spatial Design","Guest Curation"]}],"image":"\\/images\\/content\\/services-pillar-creative-labs.jpg"},{"name":"Advertising","label":"Periklanan & Strategi Digital","body":"Strategi digital dan periklanan inovatif untuk memperkuat posisi brand di pasar.","items":["Strategi Digital","Media Placement","Social Media Management"],"bullets":["Brand Positioning","Market Penetration","Digital Growth","Strategic Media"],"image":""}]	json	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85d8-733b-8518-356b0203711a	services	gallery	[]	json	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85db-7301-bd5e-f9b4c93d674a	services	growth_title	Digital Strategy & Growth	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85dd-7340-9383-6dfdb6c82f43	services	growth_body	Data-driven precision meets creative intuition. We don't just find your audience; we cultivate a community of advocates.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85e0-73bd-99c3-2e1d39877b2f	services	amplification_cards	[{"title":"Digital Strategy","body":"Comprehensive market analysis and growth mapping for the luxury sector.","bullets":["Market Intelligence","Funnel Optimization"]},{"title":"Content Production","body":"High-end video, editorial photography, and interactive storytelling.","bullets":["4K Editorial Video","Social Narratives"]},{"title":"Brand Growth","body":"Strategic partnerships, influencer seeding, and global expansion.","bullets":["Strategic PR","Cross-Border Scaling"]}]	json	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85e2-710e-a328-6ba619caa9d4	services	why_title	Mengapa AKARRA	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85e5-7041-9ae2-ba0727ea84c7	services	why_items	[{"title":"Ekosistem lengkap dalam satu atap","body":"Produksi fashion, desain kreatif, event, hingga periklanan digital ditangani satu mitra."},{"title":"Kualitas premium & elegan","body":"Standar tertinggi di setiap produk dan layanan."},{"title":"Berakar pada budaya lokal","body":"Brand berkelas dunia tanpa melepaskan akar budaya Indonesia."},{"title":"Kolaboratif & transparan","body":"Kami tumbuh bersama klien, mitra, dan komunitas kreatif."},{"title":"Solusi holistik & terukur","body":"Pendampingan dari ide pertama hingga eksekusi."}]	json	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85e7-719f-a0b4-1a87b5398ffb	services	cta_title	Ready to redefine your legacy?	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85e9-7372-8a12-e227ef5effb6	services	cta_subtitle	Konsultasi awal gratis, tanpa komitmen.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85eb-73bb-98e4-dc74780d6b7f	services	cta_label	Mulai kolaborasi	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85ee-72f2-bbea-3a0caee36d36	services	cta_secondary_label	Concierge@akarra.com	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85f0-712c-ad4b-026b42df8b42	founders	hero_eyebrow	Architects of Value	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85f2-7247-bc36-cd7266671914	founders	hero_title	The Stewardship of Legacy.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85f5-7378-b4c2-e04e6effa237	founders	hero_title_emphasis	Legacy	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85f6-7314-9e6b-c8e6b74c3c3a	founders	hero_subtitle	AKARRA was founded on the principle that excellence is not an act, but a habit. Our leadership is dedicated to the meticulous cultivation of wealth, wisdom, and lasting heritage for the modern visionary.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85f8-7177-acb7-2cd5bfc2f731	founders	people	[{"name":"Febri Khoirul Imam","role":"Direktur Utama","body":"With over two decades of experience in strategic investment and institutional management, Febri Khoirul Imam leads AKARRA with a focus on structural resilience and long-term capital preservation. His background in global financial markets provides the analytical backbone for AKARRA’s most ambitious ecosystems.","portrait":"\\/images\\/content\\/founder-febri-portrait.jpg","quote":"Legacy is not what we leave for people, it is what we leave within them. At AKARRA, we build the frameworks where that impact can endure.","legacy_body":"Febri believes that building a legacy requires more than just financial success; it requires a commitment to excellence in every detail. His philosophy centers on ‘Integrated Stewardship,’ the belief that wealth and influence must be managed as a cohesive, purposeful whole."},{"name":"Nanda Fifia Putri","role":"Komisaris","body":"Nanda Fifia Putri brings a refined perspective to AKARRA’s board, specializing in brand heritage and philanthropic governance. Her career has been defined by the intersection of high-culture and high-finance, ensuring that AKARRA’s products and services maintain their soul as they scale.","portrait":"\\/images\\/content\\/founder-nanda-portrait.jpg","quote":"Visionary leadership is about seeing the invisible threads that connect today’s decisions to tomorrow’s heritage.","legacy_body":"Nanda’s philosophy is rooted in ‘Cultural Capital.’ She advocates for the preservation of values alongside value, ensuring that the AKARRA brand serves as a hallmark of prestige and intellectual depth for generations to come."}]	json	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85fa-703f-b258-b5359535a8e9	founders	quote	A foundation built on integrity, a future shaped by vision.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85fc-73e1-bf10-1ead250bb890	founders	cta_title	Join the Inner Circle.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-85fe-7239-9fcd-f8f0b0d09007	founders	cta_subtitle	Experience the bespoke advisory and ecosystem services that define the AKARRA lifestyle.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-8600-72b6-854d-02818ad1f98c	founders	cta_label	Request Consultation	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+01a01ab9-8602-7106-8fa4-c2fa1889c394	founders	cta_secondary_label	View Ecosystem	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
+\.
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.users (id, name, email, email_verified_at, password, role, remember_token, created_at, updated_at) FROM stdin;
+01a01ab9-83e3-71dd-b6e0-f1bf9a2b68b5	Admin AKARRA	admin@akarra.co.id	\N	$2y$12$exuYAwFW/TGa.nR.s/rqYeAshR4ZNRu1bPHzJUPD4qt/c7KqKY8Zy	admin	\N	2026-08-19 15:52:40	2026-08-21 14:58:53
+\.
+
+
+--
+-- Name: failed_jobs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('public.failed_jobs_id_seq', 1, false);
+
+
+--
+-- Name: jobs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('public.jobs_id_seq', 1, false);
+
+
+--
+-- Name: migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('public.migrations_id_seq', 9, true);
+
+
+--
+-- Name: articles articles_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.articles
+    ADD CONSTRAINT articles_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: articles articles_slug_unique; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.articles
+    ADD CONSTRAINT articles_slug_unique UNIQUE (slug);
+
+
+--
+-- Name: cache_locks cache_locks_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cache_locks
+    ADD CONSTRAINT cache_locks_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: cache cache_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cache
+    ADD CONSTRAINT cache_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: categories categories_name_unique; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.categories
+    ADD CONSTRAINT categories_name_unique UNIQUE (name);
+
+
+--
+-- Name: categories categories_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.categories
+    ADD CONSTRAINT categories_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: categories categories_slug_unique; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.categories
+    ADD CONSTRAINT categories_slug_unique UNIQUE (slug);
+
+
+--
+-- Name: contacts contacts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.contacts
+    ADD CONSTRAINT contacts_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: failed_jobs failed_jobs_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.failed_jobs
+    ADD CONSTRAINT failed_jobs_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: failed_jobs failed_jobs_uuid_unique; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.failed_jobs
+    ADD CONSTRAINT failed_jobs_uuid_unique UNIQUE (uuid);
+
+
+--
+-- Name: job_batches job_batches_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.job_batches
+    ADD CONSTRAINT job_batches_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: jobs jobs_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.jobs
+    ADD CONSTRAINT jobs_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: migrations migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.migrations
+    ADD CONSTRAINT migrations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: password_reset_tokens password_reset_tokens_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.password_reset_tokens
+    ADD CONSTRAINT password_reset_tokens_pkey PRIMARY KEY (email);
+
+
+--
+-- Name: sessions sessions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sessions
+    ADD CONSTRAINT sessions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: settings settings_group_key_locale_unique; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.settings
+    ADD CONSTRAINT settings_group_key_locale_unique UNIQUE ("group", key, locale);
+
+
+--
+-- Name: settings settings_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.settings
+    ADD CONSTRAINT settings_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users users_email_unique; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_email_unique UNIQUE (email);
+
+
+--
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: articles_status_published_at_index; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX articles_status_published_at_index ON public.articles USING btree (status, published_at);
+
+
+--
+-- Name: cache_expiration_index; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX cache_expiration_index ON public.cache USING btree (expiration);
+
+
+--
+-- Name: cache_locks_expiration_index; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX cache_locks_expiration_index ON public.cache_locks USING btree (expiration);
+
+
+--
+-- Name: contacts_interest_index; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX contacts_interest_index ON public.contacts USING btree (interest);
+
+
+--
+-- Name: contacts_is_read_index; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX contacts_is_read_index ON public.contacts USING btree (is_read);
+
+
+--
+-- Name: failed_jobs_connection_queue_failed_at_index; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX failed_jobs_connection_queue_failed_at_index ON public.failed_jobs USING btree (connection, queue, failed_at);
+
+
+--
+-- Name: jobs_queue_index; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX jobs_queue_index ON public.jobs USING btree (queue);
+
+
+--
+-- Name: sessions_last_activity_index; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX sessions_last_activity_index ON public.sessions USING btree (last_activity);
+
+
+--
+-- Name: sessions_user_id_index; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX sessions_user_id_index ON public.sessions USING btree (user_id);
+
+
+--
+-- Name: settings_group_index; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX settings_group_index ON public.settings USING btree ("group");
+
+
+--
+-- Name: users_role_index; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX users_role_index ON public.users USING btree (role);
+
+
+--
+-- Name: articles articles_category_id_foreign; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.articles
+    ADD CONSTRAINT articles_category_id_foreign FOREIGN KEY (category_id) REFERENCES public.categories(id) ON DELETE RESTRICT;
+
+
+--
+-- Name: articles articles_user_id_foreign; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.articles
+    ADD CONSTRAINT articles_user_id_foreign FOREIGN KEY (user_id) REFERENCES public.users(id) ON DELETE SET NULL;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+\unrestrict D4cFzjfO3SghMWbIhM6l7huJFYQdO9ctxljcD4LzfSZJghEuYeZSeG37Z64PTiL
+

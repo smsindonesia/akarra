@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -9,7 +10,7 @@ use Illuminate\Support\Str;
 
 class Category extends Model
 {
-    use HasFactory;
+    use HasFactory, HasUuids;
 
     protected $fillable = [
         'name',
@@ -26,7 +27,7 @@ class Category extends Model
         });
     }
 
-    public static function uniqueSlug(string $name, ?int $ignoreId = null): string
+    public static function uniqueSlug(string $name, ?string $ignoreId = null): string
     {
         $base = Str::slug($name);
         $slug = $base;

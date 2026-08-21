@@ -9,7 +9,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('settings', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
 
             // Grup mengikuti halaman di Figma: global, home, ecosystem,
             // products, services, founders.

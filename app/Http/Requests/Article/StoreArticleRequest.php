@@ -17,7 +17,7 @@ class StoreArticleRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string', 'max:180'],
-            'category_id' => ['required', 'integer', 'exists:categories,id'],
+            'category_id' => ['required', 'uuid', 'exists:categories,id'],
             'excerpt' => ['nullable', 'string', 'max:300'],
             'body' => ['required', 'string'],
             'cover_image' => ['nullable', 'string', 'max:255'],

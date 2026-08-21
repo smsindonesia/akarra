@@ -15,7 +15,7 @@ class ArticleService
     /**
      * @param  array<string, mixed>  $data
      */
-    public function create(array $data, int $userId): Article
+    public function create(array $data, string $userId): Article
     {
         $data['user_id'] = $userId;
         $data['slug'] = $this->uniqueSlug($data['title']);
@@ -58,7 +58,7 @@ class ArticleService
         $article->delete();
     }
 
-    public function uniqueSlug(string $title, ?int $ignoreId = null): string
+    public function uniqueSlug(string $title, ?string $ignoreId = null): string
     {
         $base = Str::slug($title);
         $slug = $base ?: 'artikel';

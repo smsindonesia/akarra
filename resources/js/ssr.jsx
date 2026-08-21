@@ -42,4 +42,4 @@ createServer((page) => {
             setup: ({ App, props }) => <App {...props} />,
         }),
     );
-});
+}, Number(process.env.INERTIA_SSR_PORT) || 13714);
