@@ -112,7 +112,12 @@ export default function PageHero({
 
       {image && !isLanding && (
         <div className="mt-12 md:mt-16">
-          <Figure src={image} alt={title} ratio="aspect-[16/9]" className="mx-auto min-h-[260px] max-h-[70vh]" />
+          <Figure
+            src={image}
+            alt={title}
+            ratio="aspect-[4/5] md:aspect-[16/9]"
+            className="min-h-[380px] md:mx-auto md:min-h-[260px] md:max-h-[70vh]"
+          />
         </div>
       )}
     </section>
