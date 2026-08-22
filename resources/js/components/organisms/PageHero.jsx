@@ -83,6 +83,7 @@ export default function PageHero({
             as="h1"
             size="hero"
             emphasis={emphasis}
+            emphasisClassName={hasImage ? 'text-white md:text-gold' : 'text-gold'}
             className={`animate-fade-up ${eyebrow ? 'mt-6' : ''} ${hasImage ? 'text-ivory md:text-ink' : ''}`}
           >
             {title}
