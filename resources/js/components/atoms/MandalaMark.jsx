@@ -14,7 +14,7 @@ export default function MandalaMark({ className = '', animated = false }) {
       src={logo}
       alt=""
       aria-hidden="true"
-      className={`${animated ? 'animate-draw-mark' : ''} ${className}`}
+      className={`object-contain ${animated ? 'animate-draw-mark' : ''} ${className}`}
     />
   )
 }

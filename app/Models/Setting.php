@@ -31,10 +31,18 @@ class Setting extends Model
      *
      * Dibagikan utuh (kedua bahasa) lewat Inertia supaya toggle ID/EN di
      * frontend instan tanpa kunjungan baru ke server.
+     *
+     * TTL dibatasi (bukan rememberForever) sebagai jaring pengaman: cache
+     * dibersihkan otomatis lewat event saved()/deleted() di atas untuk
+     * setiap simpanan lewat panel admin, tapi kalau suatu saat ada tulisan
+     * langsung ke tabel ini yang melewati Eloquent (query builder mentah,
+     * perintah tinker, dll — event model itu tidak akan terpanggil), cache
+     * lama tidak akan tersangkut selamanya. Situs akan menampilkan data
+     * benar lagi dalam hitungan menit tanpa perlu campur tangan manual.
      */
     public static function groupedAll(): array
     {
-        return Cache::rememberForever(self::CACHE_KEY, function () {
+        return Cache::remember(self::CACHE_KEY, now()->addMinutes(10), function () {
             return static::query()
                 ->orderBy('locale')
                 ->orderBy('group')
