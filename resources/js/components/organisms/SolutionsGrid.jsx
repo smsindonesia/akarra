@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 import SectionHead from '../molecules/SectionHead'
 import SolutionCard from '../molecules/SolutionCard'
@@ -14,6 +14,12 @@ export default function SolutionsGrid({ title, subtitle, items = [] }) {
     [items],
   )
   const [active, setActive] = useState(categories[0] ?? null)
+
+  useEffect(() => {
+    if (!categories.includes(active)) {
+      setActive(categories[0] ?? null)
+    }
+  }, [categories, active])
 
   if (items.length === 0) return null
 
