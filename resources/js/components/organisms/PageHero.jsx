@@ -26,6 +26,7 @@ export default function PageHero({
   divider = false,
 }) {
   const isLanding = variant === 'landing'
+  const hasImage = Boolean(image) && !isLanding
 
   return (
     <section
@@ -33,6 +34,17 @@ export default function PageHero({
         isLanding ? 'flex min-h-screen min-h-dvh items-center pt-24' : 'pb-20 md:pb-28'
       }`}
     >
+      {/* Di mobile, foto jadi latar penuh di belakang teks (dengan scrim gelap
+          untuk kontras) alih-alih strip terpisah di bawah — lebih berkesan
+          daripada foto kecil yang berdiri sendiri. Desktop tetap memakai
+          Figure terpisah di bawah teks (lihat akhir file). */}
+      {hasImage && (
+        <div className="absolute inset-0 md:hidden" aria-hidden="true">
+          <img src={image} alt="" className="h-full w-full object-cover" />
+          <div className="absolute inset-0 bg-ink/60" />
+        </div>
+      )}
+
       {/* Motif mandala di latar, sangat samar. Salah satu dari empat tempat
           motif ini boleh muncul. Hanya di beranda — halaman dalam tidak
           memakai latar sebesar ini. */}
@@ -54,14 +66,16 @@ export default function PageHero({
       )}
 
       <div
-        className={`shell relative ${
+        className={`shell relative z-10 ${
           isLanding ? '' : 'flex min-h-screen min-h-dvh items-center justify-center pt-24 text-center'
         }`}
       >
         <div className={isLanding ? 'max-w-3xl' : 'mx-auto max-w-3xl'}>
           {eyebrow && (
             <div className="animate-fade-up">
-              <Eyebrow>{eyebrow}</Eyebrow>
+              <Eyebrow tone={hasImage ? 'invert' : 'gold'} className={hasImage ? 'md:text-gold' : ''}>
+                {eyebrow}
+              </Eyebrow>
             </div>
           )}
 
@@ -69,7 +83,7 @@ export default function PageHero({
             as="h1"
             size="hero"
             emphasis={emphasis}
-            className={`animate-fade-up ${eyebrow ? 'mt-6' : ''}`}
+            className={`animate-fade-up ${eyebrow ? 'mt-6' : ''} ${hasImage ? 'text-ivory md:text-ink' : ''}`}
           >
             {title}
           </Display>
@@ -77,13 +91,16 @@ export default function PageHero({
           {/* Garis emas yang menyapu setelah judul muncul. Satu gerakan kecil
               yang menandai selesainya pembukaan halaman. */}
           <span
-            className={`animate-sweep mt-8 block h-px w-24 bg-gold ${isLanding ? '' : 'mx-auto'}`}
+            className={`animate-sweep mt-8 block h-px w-24 ${hasImage ? 'bg-accent-invert md:bg-gold' : 'bg-gold'} ${
+              isLanding ? '' : 'mx-auto'
+            }`}
             aria-hidden="true"
           />
 
           {subtitle && (
             <Paragraph
-              className={`animate-fade-up measure mt-8 ${isLanding ? '' : 'mx-auto'}`}
+              tone={hasImage ? 'invert' : 'default'}
+              className={`animate-fade-up measure mt-8 ${isLanding ? '' : 'mx-auto'} ${hasImage ? 'md:text-body' : ''}`}
               style={{ animationDelay: '150ms' }}
             >
               {subtitle}
@@ -110,14 +127,9 @@ export default function PageHero({
         </div>
       </div>
 
-      {image && !isLanding && (
-        <div className="mt-12 md:mt-16">
-          <Figure
-            src={image}
-            alt={title}
-            ratio="aspect-[4/5] md:aspect-[16/9]"
-            className="min-h-[380px] md:mx-auto md:min-h-[260px] md:max-h-[70vh]"
-          />
+      {hasImage && (
+        <div className="mt-12 hidden md:mt-16 md:block">
+          <Figure src={image} alt={title} ratio="aspect-[16/9]" className="mx-auto min-h-[260px] max-h-[70vh]" />
         </div>
       )}
     </section>
