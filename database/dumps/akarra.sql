@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict 2kvnSoZS5lEheGRfRRsbOb1JwTv87BCYHYRobCUov3Oqf1rVMM8PKQhpu889WoC
+\restrict 7OdjjxgsVyvKltBbjZmKxMWRJvkA7L1z8Wuc2wMiOKoYFhZt0YE4FindafaT2cs
 
 -- Dumped from database version 16.14 (Ubuntu 16.14-1.pgdg22.04+1)
 -- Dumped by pg_dump version 16.14 (Ubuntu 16.14-1.pgdg22.04+1)
@@ -408,8 +408,6 @@ COPY public.settings (id, "group", key, value, type, created_at, updated_at, loc
 01a01ab9-8415-71d9-b9d4-58d9f1ea7333	global	founded_year		string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
 01a01ab9-8417-73d5-bd4e-d88ac990c4aa	global	address		string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
 01a01ab9-841a-71ba-a65f-df4829814804	global	phone		string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
-01a01ab9-841e-717f-8a6c-9d6da9fe9396	global	whatsapp		string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
-01a01ab9-8421-715a-a52e-72969e38b936	global	email		string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
 01a01ab9-8424-7022-bbab-8346e230853e	global	office_hours	Senin sampai Jumat, pukul 09.00 s.d. 17.00 WIB	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
 01a01ab9-8427-73ab-9132-092d6db0303c	global	social	[{"platform":"instagram","url":"","label":"Instagram"},{"platform":"tiktok","url":"","label":"TikTok"},{"platform":"linkedin","url":"","label":"LinkedIn"}]	json	2026-08-19 15:52:40	2026-08-19 15:52:40	id
 01a01ab9-842f-735a-bade-e099edea106b	global	footer_note	Seluruh hak cipta dilindungi.	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
@@ -433,6 +431,8 @@ COPY public.settings (id, "group", key, value, type, created_at, updated_at, loc
 01a01ab9-8488-7261-96bf-08da5df37a93	ecosystem	hero_title	Ecosystem of Excellence	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
 01a01ab9-848a-71ca-8638-2f5d97f5e461	ecosystem	hero_title_emphasis	Excellence	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
 01a01ab9-8431-72c3-b46c-aa4bb50df12e	global	og_image	/storage/settings/2026/08/3WguMOu63aDaYTYLxhcGFkPx.jpg	string	2026-08-19 15:52:40	2026-08-24 10:01:45	id
+01a01ab9-841e-717f-8a6c-9d6da9fe9396	global	whatsapp	6285179973943	string	2026-08-19 15:52:40	2026-08-24 10:36:08	id
+01a01ab9-8421-715a-a52e-72969e38b936	global	email	hello@akarra.co.id	string	2026-08-19 15:52:40	2026-08-24 10:36:08	id
 01a01ab9-848e-7332-b014-ffd899e982d9	ecosystem	story_title	Cerita Kami	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
 01a01ab9-8490-7172-909d-6d5871949bb0	ecosystem	story_body	AKARRA didirikan oleh Febri Khoirul Imam dan Nanda Fifia Putri, lahir dari visi untuk menciptakan platform bisnis yang tidak hanya menjual produk, tetapi juga membangun identitas dan dampak nyata bagi komunitas fashion dan kreatif Indonesia.	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
 01a01ab9-8491-713d-ad4e-87658772ca59	ecosystem	philosophy_title	Filosofi Nama & Logo	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
@@ -464,8 +464,8 @@ COPY public.settings (id, "group", key, value, type, created_at, updated_at, loc
 01a01ab9-8515-73ef-9314-add19b7df1af	global	founded_year		string	2026-08-19 15:52:40	2026-08-19 15:52:40	en
 01a01ab9-8518-70c2-8436-f804dc408b8e	global	address		string	2026-08-19 15:52:40	2026-08-19 15:52:40	en
 01a01ab9-851a-7013-b6e7-9494d1b72d80	global	phone		string	2026-08-19 15:52:40	2026-08-19 15:52:40	en
-01a01ab9-851e-7398-8fc7-1a87f8057e95	global	email		string	2026-08-19 15:52:40	2026-08-19 15:52:40	en
 01a01ab9-8520-71b5-a8e6-af482e8c8d63	global	office_hours	Senin sampai Jumat, pukul 09.00 s.d. 17.00 WIB	string	2026-08-19 15:52:40	2026-08-19 15:52:40	en
+01a01ab9-851e-7398-8fc7-1a87f8057e95	global	email	hello@akarra.co.id	string	2026-08-19 15:52:40	2026-08-24 10:36:08	en
 01a01ab9-8524-71a3-98f8-bf01ee776396	global	nav	[{"label":"Ecosystem","path":"\\/ecosystem"},{"label":"Products","path":"\\/products"},{"label":"Services","path":"\\/services"},{"label":"Articles","path":"\\/articles"},{"label":"Founders","path":"\\/founders"}]	json	2026-08-19 15:52:40	2026-08-19 15:52:40	en
 01a01ab9-8526-72cb-9222-411a7de38abb	global	nav_cta_label	Start a Conversation	string	2026-08-19 15:52:40	2026-08-19 15:52:40	en
 01a01ab9-8529-7034-9827-c664016f7899	global	footer_note	Seluruh hak cipta dilindungi.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
@@ -570,7 +570,6 @@ COPY public.settings (id, "group", key, value, type, created_at, updated_at, loc
 01a01ab9-842c-7147-94a4-ca4012ad99da	global	nav_cta_label	Mulai Percakapan	string	2026-08-19 15:52:40	2026-08-24 09:43:39	id
 01a01ab9-8429-7122-b93d-0323932dff65	global	nav	[{"label":"Ekosistem","path":"\\/ecosystem"},{"label":"Produk","path":"\\/products"},{"label":"Layanan","path":"\\/services"},{"label":"Artikel","path":"\\/articles"},{"label":"Pendiri","path":"\\/founders"}]	json	2026-08-19 15:52:40	2026-08-24 09:43:39	id
 01a01ab9-8522-7010-a964-87b06004f0a3	global	social	[{"platform":"instagram","url":null,"label":"Instagram"},{"platform":"tiktok","url":null,"label":"TikTok"},{"platform":"linkedin","url":null,"label":"LinkedIn"}]	json	2026-08-19 15:52:40	2026-08-24 09:43:39	en
-01a01ab9-851c-7375-bcc5-fd118e21c849	global	whatsapp	6285179973943	string	2026-08-19 15:52:40	2026-08-24 09:43:39	en
 01a01ab9-847b-71e6-b2dd-063e69c9c412	home	founders_title	Kenali Para Pendiri	string	2026-08-19 15:52:40	2026-08-24 09:43:39	id
 01a01ab9-8444-71d0-be19-b73893f13d3b	home	hero_cta_label	Jelajahi Ekosistem	string	2026-08-19 15:52:40	2026-08-24 09:43:39	id
 01a01ab9-8437-70ad-87b2-b3af6500128c	home	hero_eyebrow	Warisan yang Sedang Dibangun	string	2026-08-19 15:52:40	2026-08-24 09:43:39	id
@@ -584,6 +583,7 @@ COPY public.settings (id, "group", key, value, type, created_at, updated_at, loc
 01a01ab9-8465-7057-bdf0-6b2accf76e4b	home	services_title	Ekosistem Layanan	string	2026-08-19 15:52:40	2026-08-24 09:43:39	id
 01a01ab9-846c-7355-9ac1-b56ad4e4d17b	home	solutions_title	Solusi Pilihan	string	2026-08-19 15:52:40	2026-08-24 09:43:39	id
 01a01ab9-855c-7167-9954-7594ae701b8c	home	solutions	[{"title":"Bespoke Collection","body":"Made-to-measure excellence for the modern executive.","image":"\\/storage\\/settings\\/2026\\/08\\/yeHZ8rf20mBBMcjVcUYJQnoT.png","category":"Fashion"},{"title":"Signature Textiles","body":"Ethically sourced, world-class fabric curation.","image":"\\/storage\\/settings\\/2026\\/08\\/lLRJ4k0eWg9xGuXF1TQXLdB7.png","category":"Fashion"},{"title":"Visual Storytelling","body":"Narasi visual yang membangun kedekatan emosional dengan audiens.","image":"\\/storage\\/settings\\/2026\\/08\\/iIocgYCA8koGjMc61MRDmhJq.jpg","category":"Creative"},{"title":"Brand Positioning","body":"Strategi penempatan brand yang tajam dan terukur di pasar digital.","image":"\\/storage\\/settings\\/2026\\/08\\/DpSmLgRL2OnKU2gEV2nx0B6G.jpg","category":"Advertising"}]	json	2026-08-19 15:52:41	2026-08-24 09:43:39	en
+01a01ab9-851c-7375-bcc5-fd118e21c849	global	whatsapp	6285179973943	string	2026-08-19 15:52:40	2026-08-24 10:36:08	en
 01a01ab9-8470-7345-85ee-f8a4d44f11a8	home	solutions	[{"title":"Bespoke Collection","body":"Keunggulan yang dijahit khusus untuk eksekutif masa kini.","image":"\\/storage\\/settings\\/2026\\/08\\/yeHZ8rf20mBBMcjVcUYJQnoT.png","category":"Fesyen"},{"title":"Signature Textiles","body":"Kurasi kain kelas dunia dengan sumber yang beretika.","image":"\\/storage\\/settings\\/2026\\/08\\/lLRJ4k0eWg9xGuXF1TQXLdB7.png","category":"Fesyen"},{"title":"Visual Storytelling","body":"Narasi visual yang membangun kedekatan emosional dengan audiens.","image":"\\/storage\\/settings\\/2026\\/08\\/iIocgYCA8koGjMc61MRDmhJq.jpg","category":"Kreatif"},{"title":"Brand Positioning","body":"Strategi penempatan brand yang tajam dan terukur di pasar digital.","image":"\\/storage\\/settings\\/2026\\/08\\/DpSmLgRL2OnKU2gEV2nx0B6G.jpg","category":"Periklanan"}]	json	2026-08-19 15:52:40	2026-08-24 09:43:39	id
 01a01ab9-8566-730d-a905-447acd425001	home	story_video	/storage/settings/2026/08/O09gkXdYgLQYheejYBLGGK1j.mp4	string	2026-08-19 15:52:41	2026-08-24 09:43:39	en
 01a01ab9-8479-72a9-8121-f7b08aba2c9c	home	story_video	/storage/settings/2026/08/O09gkXdYgLQYheejYBLGGK1j.mp4	string	2026-08-19 15:52:40	2026-08-24 09:43:39	id
@@ -896,5 +896,5 @@ ALTER TABLE ONLY public.articles
 -- PostgreSQL database dump complete
 --
 
-\unrestrict 2kvnSoZS5lEheGRfRRsbOb1JwTv87BCYHYRobCUov3Oqf1rVMM8PKQhpu889WoC
+\unrestrict 7OdjjxgsVyvKltBbjZmKxMWRJvkA7L1z8Wuc2wMiOKoYFhZt0YE4FindafaT2cs
 
