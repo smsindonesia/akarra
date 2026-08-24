@@ -5,6 +5,7 @@ import Footer from '../components/organisms/Footer'
 import Navbar from '../components/organisms/Navbar'
 import { LanguageProvider, useLanguage } from '../context/LanguageContext'
 import { useContent } from '../hooks/useContent'
+import { toAbsoluteUrl } from '../lib/seo'
 
 /**
  * Kerangka halaman publik: Top Navigation Bar -> Main -> Footer,
@@ -45,7 +46,8 @@ function PublicLayoutBody({ children }) {
   const socialLinks = list('global', 'social')
     .map((item) => item.url)
     .filter(Boolean)
-  const logo = get('global', 'og_image', '')
+  // Absolut: Google menolak logo relatif pada rich result Organization.
+  const logo = toAbsoluteUrl(get('global', 'og_image', ''), route('home'))
 
   const organizationJsonLd = {
     '@context': 'https://schema.org',

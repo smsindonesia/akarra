@@ -1,25 +1,7 @@
 import { Head } from '@inertiajs/react'
 
 import { useContent } from '../../hooks/useContent'
-
-/**
- * og:image dan twitter:image wajib URL absolut — scraper WhatsApp, Facebook,
- * dan X tidak me-resolve path relatif, hasilnya pratinjau tautan tampil tanpa
- * gambar. Media sengaja disimpan relatif (/storage/...) di database supaya
- * tidak terkunci ke satu domain, jadi konversinya dilakukan di sini memakai
- * origin dari canonicalUrl (yang sudah absolut dari route() Laravel).
- */
-function toAbsoluteUrl(value, base) {
-  if (!value) return ''
-  if (/^https?:\/\//i.test(value)) return value
-  if (!base) return value
-
-  try {
-    return new URL(value, base).toString()
-  } catch {
-    return value
-  }
-}
+import { toAbsoluteUrl } from '../../lib/seo'
 
 /**
  * Satu titik untuk semua tag SEO per halaman: judul, deskripsi, canonical,
