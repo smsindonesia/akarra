@@ -199,14 +199,55 @@ export default function SettingsIndex({ settings, activeGroup, activeLocale }) {
   const [savedMessage, setSavedMessage] = useState(null)
   const [saveError, setSaveError] = useState(false)
 
+  // Foto/video ter-upload ke server begitu dipilih (lihat ImageField/VideoField),
+  // tapi baru benar-benar melekat ke konten setelah "Simpan" ditekan — draft di
+  // React ini murni lokal sampai saat itu. Sudah pernah kejadian: admin
+  // mengunggah gambar, pratinjaunya tampil, lalu pindah tab/grup tanpa
+  // menyimpan — berkasnya ada di server tapi tidak pernah tersambung ke
+  // field manapun. lastSavedDraft menjadi acuan "tersimpan" supaya kita bisa
+  // mendeteksi dan memperingatkan sebelum itu terulang.
+  const lastSavedDraftRef = useRef(draft)
+  const isDirty = JSON.stringify(draft) !== JSON.stringify(lastSavedDraftRef.current)
+  const isDirtyRef = useRef(false)
+  isDirtyRef.current = isDirty
+  // Request PUT simpan itu sendiri adalah "navigasi" Inertia — penjaga di
+  // bawah harus membiarkannya lewat, bukan menganggapnya sebagai upaya
+  // meninggalkan halaman dengan perubahan yang belum disimpan.
+  const savingRef = useRef(false)
+
   // Inertia tidak me-remount komponen halaman saat navigasi ?group= dari
   // sidebar (komponen sama, props baru) — jadi draft harus dibangun ulang
   // tiap kali activeGroup (dan datanya) berganti, bukan hanya sekali di awal.
   useEffect(() => {
-    setDraft(buildDraft(settings[activeGroup]))
+    const fresh = buildDraft(settings[activeGroup])
+    setDraft(fresh)
+    lastSavedDraftRef.current = fresh
     setSavedMessage(null)
     setSaveError(false)
   }, [activeGroup, settings])
+
+  // Tutup/refresh tab, atau navigasi Inertia ke halaman lain (ganti grup,
+  // ganti bahasa, ke menu lain, atau logout) — semua dicegat kalau ada
+  // perubahan yang belum disimpan.
+  useEffect(() => {
+    const handleBeforeUnload = (event) => {
+      if (!isDirtyRef.current) return
+      event.preventDefault()
+      event.returnValue = ''
+    }
+
+    const removeInertiaGuard = router.on('before', () => {
+      if (!isDirtyRef.current || savingRef.current) return true
+      return window.confirm('Ada perubahan yang belum disimpan. Tinggalkan halaman ini dan buang perubahan?')
+    })
+
+    window.addEventListener('beforeunload', handleBeforeUnload)
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload)
+      removeInertiaGuard()
+    }
+  }, [])
 
   // Unggah gambar berjalan async (lihat ImageField) — kalau admin sempat
   // pindah grup dari sidebar sebelum unggahan selesai, callback-nya masih
@@ -250,6 +291,7 @@ export default function SettingsIndex({ settings, activeGroup, activeLocale }) {
     if (hasError) return
 
     setSaving(true)
+    savingRef.current = true
     setSavedMessage(null)
     setSaveError(false)
 
@@ -258,12 +300,17 @@ export default function SettingsIndex({ settings, activeGroup, activeLocale }) {
       { settings: items },
       {
         preserveScroll: true,
-        onSuccess: () =>
+        onSuccess: () => {
+          lastSavedDraftRef.current = draft
           setSavedMessage(
             `Perubahan grup ${groupLabels[activeGroup] ?? activeGroup} (${activeLocale === 'en' ? 'English' : 'Indonesia'}) tersimpan.`,
-          ),
+          )
+        },
         onError: () => setSaveError(true),
-        onFinish: () => setSaving(false),
+        onFinish: () => {
+          setSaving(false)
+          savingRef.current = false
+        },
       },
     )
   }
@@ -331,7 +378,11 @@ export default function SettingsIndex({ settings, activeGroup, activeLocale }) {
           </div>
         )}
 
-        <div className="flex justify-end">
+        <div className="flex items-center justify-end gap-4">
+          {isDirty && !saving && (
+            <span className="text-[13px] text-gold">Ada perubahan yang belum disimpan.</span>
+          )}
+
           <Button
             type="button"
             variant="solid"

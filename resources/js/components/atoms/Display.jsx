@@ -10,6 +10,7 @@ export default function Display({
   as: Tag = 'h2',
   children,
   emphasis,
+  emphasisClassName = 'text-gold',
   size = 'md',
   className = '',
 }) {
@@ -35,7 +36,7 @@ export default function Display({
   return (
     <Tag className={base}>
       {before}
-      <span className="text-gold">{emphasis}</span>
+      <span className={emphasisClassName}>{emphasis}</span>
       {after}
     </Tag>
   )
