@@ -35,7 +35,11 @@ class SettingSeeder extends Seeder
                         ? [$item[0], $item[1]]
                         : [$item, 'string'];
 
-                    Setting::updateOrCreate(
+                    // firstOrCreate, BUKAN updateOrCreate: baris yang sudah ada
+            // dibiarkan apa adanya. Dengan updateOrCreate, menjalankan
+            // db:seed di server akan menimpa terjemahan dan media hasil
+            // unggahan admin dengan nilai seed berbahasa Inggris.
+            Setting::firstOrCreate(
                         ['group' => $group, 'key' => $key, 'locale' => $locale],
                         [
                             'value' => $type === 'json' ? json_encode($value, JSON_UNESCAPED_UNICODE) : $value,

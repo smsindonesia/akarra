@@ -20,6 +20,17 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'admin' => \App\Http\Middleware\EnsureAdmin::class,
         ]);
+
+        // Situs dilayani di belakang proxy Cloudflare. Tanpa ini header
+        // X-Forwarded-Proto diabaikan (url() bisa menghasilkan http di
+        // balik https) dan $request->ip() mengembalikan IP Cloudflare —
+        // yang membuat throttle pada form kontak menghitung semua
+        // pengunjung sebagai satu IP.
+        //
+        // '*' aman di sini karena nginx sudah menyaring lebih dulu lewat
+        // set_real_ip_from: hanya rentang IP Cloudflare yang boleh
+        // menyuntikkan header tersebut.
+        $middleware->trustProxies(at: '*');
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(

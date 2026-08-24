@@ -41,7 +41,11 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => rtrim(env('APP_URL', 'http://localhost'), '/').'/storage',
+            // Path relatif, bukan URL absolut: nilai ini ikut tersimpan ke
+            // kolom settings/cover_image saat admin mengunggah, sehingga URL
+            // absolut akan mengunci media ke domain tempat unggahan dilakukan
+            // (dulu menghasilkan http://localhost:8000/... terbawa ke server).
+            'url' => '/storage',
             'visibility' => 'public',
             'throw' => false,
             'report' => false,

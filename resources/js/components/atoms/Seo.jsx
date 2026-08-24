@@ -3,6 +3,25 @@ import { Head } from '@inertiajs/react'
 import { useContent } from '../../hooks/useContent'
 
 /**
+ * og:image dan twitter:image wajib URL absolut — scraper WhatsApp, Facebook,
+ * dan X tidak me-resolve path relatif, hasilnya pratinjau tautan tampil tanpa
+ * gambar. Media sengaja disimpan relatif (/storage/...) di database supaya
+ * tidak terkunci ke satu domain, jadi konversinya dilakukan di sini memakai
+ * origin dari canonicalUrl (yang sudah absolut dari route() Laravel).
+ */
+function toAbsoluteUrl(value, base) {
+  if (!value) return ''
+  if (/^https?:\/\//i.test(value)) return value
+  if (!base) return value
+
+  try {
+    return new URL(value, base).toString()
+  } catch {
+    return value
+  }
+}
+
+/**
  * Satu titik untuk semua tag SEO per halaman: judul, deskripsi, canonical,
  * Open Graph, Twitter Card, dan JSON-LD terstruktur. Dipakai di setiap
  * halaman publik supaya mesin pencari maupun crawler AI (yang membaca
@@ -30,6 +49,7 @@ export default function Seo({
   const siteName = get('global', 'site_name', 'AKARRA')
   const resolvedImage = image || get('global', 'og_image', '')
   const twitterHandle = get('global', 'twitter_handle', '')
+  const absoluteImage = toAbsoluteUrl(resolvedImage, canonicalUrl)
   const schemas = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : []
   const fullTitle = title ? `${title} | ${siteName}` : siteName
 
@@ -44,13 +64,14 @@ export default function Seo({
       {description && <meta property="og:description" content={description} />}
       {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
       <meta property="og:site_name" content={siteName} />
-      {resolvedImage && <meta property="og:image" content={resolvedImage} />}
+      <meta property="og:locale" content="id_ID" />
+      {absoluteImage && <meta property="og:image" content={absoluteImage} />}
 
-      <meta name="twitter:card" content={resolvedImage ? 'summary_large_image' : 'summary'} />
+      <meta name="twitter:card" content={absoluteImage ? 'summary_large_image' : 'summary'} />
       {twitterHandle && <meta name="twitter:site" content={twitterHandle} />}
       <meta name="twitter:title" content={fullTitle} />
       {description && <meta name="twitter:description" content={description} />}
-      {resolvedImage && <meta name="twitter:image" content={resolvedImage} />}
+      {absoluteImage && <meta name="twitter:image" content={absoluteImage} />}
 
       {schemas.map((schema, index) => (
         <script
