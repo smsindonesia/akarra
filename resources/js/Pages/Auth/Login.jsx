@@ -18,7 +18,9 @@ export default function Login({ status }) {
 
   return (
     <div className="grid min-h-dvh place-items-center bg-canvas px-6">
-      <Head title="Masuk Admin" />
+      <Head title="Masuk Admin">
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
 
       <div className="w-full max-w-sm">
         <div className="mb-10 flex flex-col items-center text-center">

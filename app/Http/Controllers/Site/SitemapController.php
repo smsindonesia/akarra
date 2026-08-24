@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\Setting;
 use Illuminate\Http\Response;
+use Illuminate\Support\Carbon;
 
 class SitemapController extends Controller
 {
@@ -15,13 +16,27 @@ class SitemapController extends Controller
      */
     public function index(): Response
     {
+        // Isi halaman statis seluruhnya berasal dari tabel settings, jadi
+        // perubahan terakhir di sana adalah tanggal ubah yang paling jujur
+        // untuk halaman-halaman itu. Tanpa lastmod, mesin pencari tidak punya
+        // petunjuk kapan perlu merayapi ulang setelah konten diperbarui.
+        $settingsUpdatedAt = Setting::max('updated_at');
+        $staticLastmod = $settingsUpdatedAt
+            ? Carbon::parse($settingsUpdatedAt)->toAtomString()
+            : null;
+
+        $latestArticleAt = Article::published()->max('updated_at');
+        $articlesLastmod = $latestArticleAt
+            ? Carbon::parse($latestArticleAt)->toAtomString()
+            : $staticLastmod;
+
         $entries = collect([
-            ['loc' => route('home'), 'lastmod' => null, 'changefreq' => 'weekly', 'priority' => '1.0'],
-            ['loc' => route('ecosystem'), 'lastmod' => null, 'changefreq' => 'monthly', 'priority' => '0.8'],
-            ['loc' => route('products'), 'lastmod' => null, 'changefreq' => 'monthly', 'priority' => '0.8'],
-            ['loc' => route('services'), 'lastmod' => null, 'changefreq' => 'monthly', 'priority' => '0.8'],
-            ['loc' => route('founders'), 'lastmod' => null, 'changefreq' => 'monthly', 'priority' => '0.6'],
-            ['loc' => route('articles.index'), 'lastmod' => null, 'changefreq' => 'daily', 'priority' => '0.7'],
+            ['loc' => route('home'), 'lastmod' => $staticLastmod, 'changefreq' => 'weekly', 'priority' => '1.0'],
+            ['loc' => route('ecosystem'), 'lastmod' => $staticLastmod, 'changefreq' => 'monthly', 'priority' => '0.8'],
+            ['loc' => route('products'), 'lastmod' => $staticLastmod, 'changefreq' => 'monthly', 'priority' => '0.8'],
+            ['loc' => route('services'), 'lastmod' => $staticLastmod, 'changefreq' => 'monthly', 'priority' => '0.8'],
+            ['loc' => route('founders'), 'lastmod' => $staticLastmod, 'changefreq' => 'monthly', 'priority' => '0.6'],
+            ['loc' => route('articles.index'), 'lastmod' => $articlesLastmod, 'changefreq' => 'daily', 'priority' => '0.7'],
         ])->concat(
             Article::published()
                 ->get(['id', 'slug', 'published_at', 'updated_at'])

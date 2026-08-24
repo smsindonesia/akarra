@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, router, usePage } from '@inertiajs/react'
+import { Head, Link, router, usePage } from '@inertiajs/react'
 
 import MandalaMark from '../components/atoms/MandalaMark'
 import { SETTING_GROUPS, SETTING_GROUP_LABELS } from '../lib/settingGroups'
@@ -121,6 +121,13 @@ export default function AdminLayout({ children }) {
 
   return (
     <div className="min-h-dvh bg-canvas">
+      {/* robots.txt hanya mencegah perayapan, bukan pengindeksan: alamat
+          halaman admin tetap bisa muncul di hasil pencarian kalau ada yang
+          menautkannya. noindex yang benar-benar menutupnya. */}
+      <Head>
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
+
       <aside className="fixed inset-y-0 left-0 z-40 hidden w-64 bg-ink lg:block">
         <SidebarContent url={url} />
       </aside>

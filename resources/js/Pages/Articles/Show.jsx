@@ -8,7 +8,7 @@ import Seo from '../../components/atoms/Seo'
 import PublicLayout from '../../Layouts/PublicLayout'
 import { useLanguage } from '../../context/LanguageContext'
 import { useContent } from '../../hooks/useContent'
-import { breadcrumbJsonLd } from '../../lib/seo'
+import { breadcrumbJsonLd, toAbsoluteUrl } from '../../lib/seo'
 
 export default function ArticleShow({ article, related, canonicalUrl, coverImageUrl }) {
   const { t } = useLanguage()
@@ -17,6 +17,10 @@ export default function ArticleShow({ article, related, canonicalUrl, coverImage
   const title = article.meta_title || article.title
   const description = article.meta_description || article.excerpt || ''
   const siteName = get('global', 'site_name', 'AKARRA')
+  // Google mensyaratkan publisher.logo untuk rich result artikel. Tanpa
+  // field ini artikel tidak akan tampil dengan gambar dan info tambahan di
+  // hasil pencarian, jadi seluruh blok Article praktis terbuang.
+  const publisherLogo = toAbsoluteUrl(get('global', 'og_image', ''), canonicalUrl)
 
   const articleJsonLd = {
     '@context': 'https://schema.org',
@@ -28,7 +32,11 @@ export default function ArticleShow({ article, related, canonicalUrl, coverImage
     dateModified: article.updated_at || article.published_at,
     mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl },
     ...(article.author && { author: { '@type': 'Person', name: article.author.name } }),
-    publisher: { '@type': 'Organization', name: siteName },
+    publisher: {
+      '@type': 'Organization',
+      name: siteName,
+      ...(publisherLogo && { logo: { '@type': 'ImageObject', url: publisherLogo } }),
+    },
   }
 
   return (

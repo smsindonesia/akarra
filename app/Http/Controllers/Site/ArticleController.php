@@ -25,10 +25,21 @@ class ArticleController extends Controller
             ->paginate(config('akarra.articles_per_page'))
             ->withQueryString();
 
+        // Canonical ikut menyertakan halaman dan filter yang sedang aktif.
+        // Kalau selalu menunjuk /articles polos, Google membaca halaman 2 dan
+        // seterusnya sebagai duplikat halaman 1 lalu tidak mengindeksnya sama
+        // sekali. Nilai kosong dan page=1 sengaja dibuang supaya halaman
+        // pertama tetap punya satu alamat kanonik yang bersih.
+        $canonicalParams = array_filter([
+            'category' => $request->string('category')->toString() ?: null,
+            'search' => $request->string('search')->toString() ?: null,
+            'page' => $request->integer('page') > 1 ? $request->integer('page') : null,
+        ]);
+
         return Inertia::render('Articles/Index', [
             'articles' => $articles,
             'filters' => $request->only(['category', 'search']),
-            'canonicalUrl' => route('articles.index'),
+            'canonicalUrl' => route('articles.index', $canonicalParams),
         ]);
     }
 
