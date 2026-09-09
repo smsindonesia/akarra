@@ -28,7 +28,13 @@ export default function Seo({
 }) {
   const { get } = useContent()
   const siteName = get('global', 'site_name', 'AKARRA')
-  const resolvedImage = image || get('global', 'og_image', '')
+  const rawImage = image || get('global', 'og_image', '')
+  // Foto/video yang diunggah admin disimpan sebagai path relatif (lihat
+  // config/filesystems.php) supaya tetap benar di lokal maupun produksi,
+  // tapi og:image/twitter:image wajib URL absolut per spesifikasinya —
+  // jadi domainnya diambil dari canonicalUrl (yang memang selalu absolut).
+  const origin = canonicalUrl ? new URL(canonicalUrl).origin : ''
+  const resolvedImage = rawImage && rawImage.startsWith('/') ? `${origin}${rawImage}` : rawImage
   const twitterHandle = get('global', 'twitter_handle', '')
   const schemas = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : []
   const fullTitle = title ? `${title} | ${siteName}` : siteName
