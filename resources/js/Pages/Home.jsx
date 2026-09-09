@@ -1,4 +1,5 @@
 import ArticlesPreview from '../components/organisms/ArticlesPreview'
+import ClientsCarousel from '../components/organisms/ClientsCarousel'
 import CollaborationForm from '../components/organisms/CollaborationForm'
 import GalleryPreview from '../components/organisms/GalleryPreview'
 import NarrativeSplit from '../components/organisms/NarrativeSplit'
@@ -26,6 +27,7 @@ export default function Home({ latestArticles = [], canonicalUrl }) {
   const pillars = list('services', 'pillars')
   const values = list('home', 'values')
   const serviceGallery = list('services', 'gallery')
+  const clientLogos = list('home', 'clients_gallery')
 
   return (
     <>
@@ -89,6 +91,8 @@ export default function Home({ latestArticles = [], canonicalUrl }) {
       <GalleryPreview images={serviceGallery} />
 
       <ArticlesPreview articles={latestArticles} />
+
+      <ClientsCarousel logos={clientLogos} />
 
       <CollaborationForm />
     </>

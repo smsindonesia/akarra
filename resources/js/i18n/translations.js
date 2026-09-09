@@ -63,6 +63,9 @@ export const translations = {
   homeGalleryTitle: { id: 'Momen dari Setiap Kolaborasi', en: 'Moments from Every Collaboration' },
   homeGalleryCta: { id: 'Lihat galeri', en: 'View the Gallery' },
 
+  homeClientsEyebrow: { id: 'Kolaborasi', en: 'Collaboration' },
+  homeClientsTitle: { id: 'Dipercaya oleh Brand Terkemuka', en: 'Trusted by Leading Brands' },
+
   homeArticlesEyebrow: { id: 'Wawasan', en: 'Insights' },
   homeArticlesTitle: { id: 'Kabar Terbaru dari AKARRA', en: 'Latest from AKARRA' },
   homeArticlesCta: { id: 'Lihat semua artikel', en: 'View all articles' },
