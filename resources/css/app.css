@@ -134,6 +134,14 @@
   to { transform: translate(16px, -34px) rotate(12deg); }
 }
 
+/* Strip logo klien (ClientsCarousel) yang bergeser tanpa henti. Track berisi
+   daftar logo yang digandakan (200% lebar), jadi translateX(-50%) pas
+   kembali ke salinan pertama tanpa lompatan. */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
 .animate-draw-mark {
   opacity: 0;
   animation: draw-mark 1.4s var(--ease-editorial) forwards;
@@ -142,6 +150,7 @@
 .animate-fade-up { animation: fade-up 0.8s var(--ease-editorial) both; }
 .animate-sweep { animation: sweep 0.9s var(--ease-editorial) 0.5s both; transform-origin: left; }
 .animate-drift { animation: drift 20s var(--ease-editorial) infinite alternate; }
+.animate-marquee { animation: marquee 32s linear infinite; }
 
 /* ---------------------------------------------------------------------------
    Admin — Trix
@@ -193,7 +202,8 @@
 
   .animate-draw-mark,
   .animate-fade-up,
-  .animate-sweep {
+  .animate-sweep,
+  .animate-marquee {
     animation: none;
     opacity: 1;
   }

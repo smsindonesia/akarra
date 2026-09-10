@@ -29,9 +29,15 @@ export default function Seo({
 }) {
   const { get } = useContent()
   const siteName = get('global', 'site_name', 'AKARRA')
-  const resolvedImage = image || get('global', 'og_image', '')
+  const rawImage = image || get('global', 'og_image', '')
   const twitterHandle = get('global', 'twitter_handle', '')
-  const absoluteImage = toAbsoluteUrl(resolvedImage, canonicalUrl)
+  // Foto/video yang diunggah admin disimpan sebagai path relatif (lihat
+  // config/filesystems.php) supaya tetap benar di lokal maupun produksi,
+  // tapi og:image/twitter:image wajib URL absolut per spesifikasinya —
+  // jadi domainnya diambil dari canonicalUrl (yang memang selalu absolut).
+  // toAbsoluteUrl dipakai bersama PublicLayout/Articles/Show supaya aturan
+  // "relatif -> absolut" cuma punya satu implementasi.
+  const absoluteImage = toAbsoluteUrl(rawImage, canonicalUrl)
   const schemas = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : []
   const fullTitle = title ? `${title} | ${siteName}` : siteName
 

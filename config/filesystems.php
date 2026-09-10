@@ -41,10 +41,14 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            // Path relatif, bukan URL absolut: nilai ini ikut tersimpan ke
-            // kolom settings/cover_image saat admin mengunggah, sehingga URL
-            // absolut akan mengunci media ke domain tempat unggahan dilakukan
-            // (dulu menghasilkan http://localhost:8000/... terbawa ke server).
+            // Sengaja relatif (bukan APP_URL.'/storage') — foto/video yang
+            // diunggah admin disimpan sebagai URL absolut ke domain tempat
+            // upload dilakukan, jadi kalau APP_URL beda antar environment
+            // (localhost saat dev, domain asli di server), gambar yang
+            // diunggah di satu environment akan patah di environment lain.
+            // URL relatif diselesaikan browser terhadap domain saat ini,
+            // jadi konten yang sama tetap tampil benar di lokal maupun
+            // produksi tanpa perlu diunggah ulang.
             'url' => '/storage',
             'visibility' => 'public',
             'throw' => false,

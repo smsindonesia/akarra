@@ -36,10 +36,10 @@ class SettingSeeder extends Seeder
                         : [$item, 'string'];
 
                     // firstOrCreate, BUKAN updateOrCreate: baris yang sudah ada
-            // dibiarkan apa adanya. Dengan updateOrCreate, menjalankan
-            // db:seed di server akan menimpa terjemahan dan media hasil
-            // unggahan admin dengan nilai seed berbahasa Inggris.
-            Setting::firstOrCreate(
+                    // dibiarkan apa adanya. Dengan updateOrCreate, menjalankan
+                    // db:seed di server akan menimpa terjemahan dan media hasil
+                    // unggahan admin dengan nilai seed berbahasa Inggris.
+                    Setting::firstOrCreate(
                         ['group' => $group, 'key' => $key, 'locale' => $locale],
                         [
                             'value' => $type === 'json' ? json_encode($value, JSON_UNESCAPED_UNICODE) : $value,
@@ -102,7 +102,7 @@ class SettingSeeder extends Seeder
                 'narrative_image' => '/images/content/home-narrative.jpg',
                 'narrative_quote' => 'We believe that true prestige is found in the intersection of mathematical precision and artistic soul. Our journey is about creating impact that resonates across generations.',
                 'narrative_quote_attribution' => 'The Founders of AKARRA',
-                'narrative_badge' => 'Est. 2024',
+                'narrative_badge' => 'Est. 2026',
 
                 'values' => [[
                     ['name' => 'Excellence', 'body' => 'Uncompromising quality in every stitch, frame, and strategy we execute.'],
@@ -152,6 +152,11 @@ class SettingSeeder extends Seeder
 
                 'founders_title' => 'Meet the Founders',
                 'founders_subtitle' => 'Dua orang di balik arah dan standar AKARRA.',
+
+                // Logo klien di ClientsCarousel — kosong secara default, isi
+                // lewat panel Pengaturan (mendukung unggah/hapus per logo,
+                // bentuknya sama seperti services.gallery).
+                'clients_gallery' => [[], 'json'],
 
                 'form_title' => 'Mari Berkolaborasi',
                 'form_subtitle' => 'Konsultasi awal gratis, tanpa komitmen. Ceritakan apa yang sedang Anda bangun.',

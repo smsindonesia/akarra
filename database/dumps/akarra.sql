@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict 7OdjjxgsVyvKltBbjZmKxMWRJvkA7L1z8Wuc2wMiOKoYFhZt0YE4FindafaT2cs
+\restrict inlYaecbvkGrOHcNhPUfwcdaiMSlex0IsKqfGmichotx9xDmMbPNcwazSBJk54m
 
 -- Dumped from database version 16.14 (Ubuntu 16.14-1.pgdg22.04+1)
 -- Dumped by pg_dump version 16.14 (Ubuntu 16.14-1.pgdg22.04+1)
@@ -405,19 +405,13 @@ COPY public.settings (id, "group", key, value, type, created_at, updated_at, loc
 01a01ab9-8407-7001-a457-f4a8bb9a1c2f	global	site_name	AKARRA	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
 01a01ab9-840e-71fc-8833-039752a5aa1b	global	tagline	Ecosystem of Excellence	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
 01a01ab9-8412-7373-bdab-9f60b33227b5	global	description	Ekosistem bisnis terintegrasi di bidang fashion, desain kreatif, event, dan periklanan digital.	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
-01a01ab9-8415-71d9-b9d4-58d9f1ea7333	global	founded_year		string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
-01a01ab9-8417-73d5-bd4e-d88ac990c4aa	global	address		string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
-01a01ab9-841a-71ba-a65f-df4829814804	global	phone		string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
 01a01ab9-8424-7022-bbab-8346e230853e	global	office_hours	Senin sampai Jumat, pukul 09.00 s.d. 17.00 WIB	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
-01a01ab9-8427-73ab-9132-092d6db0303c	global	social	[{"platform":"instagram","url":"","label":"Instagram"},{"platform":"tiktok","url":"","label":"TikTok"},{"platform":"linkedin","url":"","label":"LinkedIn"}]	json	2026-08-19 15:52:40	2026-08-19 15:52:40	id
 01a01ab9-842f-735a-bade-e099edea106b	global	footer_note	Seluruh hak cipta dilindungi.	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
-01a01ab9-8434-7265-8394-685f8f3139a2	global	twitter_handle		string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
 01a01ab9-843a-7017-9179-8132dd3eb0c1	home	hero_title	Ecosystem of Excellence	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
 01a01ab9-843d-7284-87ab-d573318f7dd0	home	hero_title_emphasis	Excellence	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
 01a01ab9-844a-7361-81e5-895b77e62480	home	hero_image		string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
 01a01ab9-844c-71e4-889f-4f742f500194	home	narrative_title	Membangun Warisan, Bukan Sekadar Bisnis	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
 01a01ab9-8450-73d9-bbc3-9eb4ad079ca1	home	narrative_body	AKARRA bergerak di industri fashion, desain kreatif, event, dan periklanan digital. Melalui tiga pilar utama, kami tidak hanya menjual produk, tetapi membangun identitas dan dampak nyata bagi komunitas fashion dan kreatif Indonesia.	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
-01a01ab9-845c-7378-a88c-b1fa9867917b	home	narrative_badge	Est. 2024	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
 01a01ab9-8467-7295-8427-2b061cfeba78	home	services_subtitle	Tiga pilar yang saling menopang, dirancang untuk menemani brand di setiap tahap pertumbuhannya.	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
 01a01ab9-8469-71d2-b12c-1b831eb0fd50	home	services_cta_label	Lihat seluruh layanan	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
 01a01ab9-846e-72f6-a91d-f204801480ec	home	solutions_subtitle	Rangkaian produk dan karya yang lahir dari ekosistem kami.	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
@@ -431,8 +425,14 @@ COPY public.settings (id, "group", key, value, type, created_at, updated_at, loc
 01a01ab9-8488-7261-96bf-08da5df37a93	ecosystem	hero_title	Ecosystem of Excellence	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
 01a01ab9-848a-71ca-8638-2f5d97f5e461	ecosystem	hero_title_emphasis	Excellence	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
 01a01ab9-8431-72c3-b46c-aa4bb50df12e	global	og_image	/storage/settings/2026/08/3WguMOu63aDaYTYLxhcGFkPx.jpg	string	2026-08-19 15:52:40	2026-08-24 10:01:45	id
-01a01ab9-841e-717f-8a6c-9d6da9fe9396	global	whatsapp	6285179973943	string	2026-08-19 15:52:40	2026-08-24 10:36:08	id
-01a01ab9-8421-715a-a52e-72969e38b936	global	email	hello@akarra.co.id	string	2026-08-19 15:52:40	2026-08-24 10:36:08	id
+01a01ab9-8417-73d5-bd4e-d88ac990c4aa	global	address	Cluster Ujung Berung Indah, Jl. Segar Dalam No.E-3, RT.07/RW.11, Cigending, Kec. Ujung Berung, Kota Bandung, Jawa Barat 40611	string	2026-08-19 15:52:40	2026-08-28 15:36:22	id
+01a01ab9-8415-71d9-b9d4-58d9f1ea7333	global	founded_year	null	string	2026-08-19 15:52:40	2026-08-28 15:36:22	id
+01a01ab9-841a-71ba-a65f-df4829814804	global	phone	null	string	2026-08-19 15:52:40	2026-08-28 15:36:22	id
+01a01ab9-8427-73ab-9132-092d6db0303c	global	social	[{"platform":"instagram","url":null,"label":"Instagram"},{"platform":"tiktok","url":null,"label":"TikTok"},{"platform":"linkedin","url":null,"label":"LinkedIn"}]	json	2026-08-19 15:52:40	2026-08-28 15:36:22	id
+01a01ab9-8434-7265-8394-685f8f3139a2	global	twitter_handle	null	string	2026-08-19 15:52:40	2026-08-28 15:36:22	id
+01a01ab9-841e-717f-8a6c-9d6da9fe9396	global	whatsapp	6289510519276	string	2026-08-19 15:52:40	2026-08-28 15:36:22	id
+01a01ab9-8421-715a-a52e-72969e38b936	global	email	anandakaryanusantara@gmail.com	string	2026-08-19 15:52:40	2026-08-28 15:38:36	id
+01a01ab9-845c-7378-a88c-b1fa9867917b	home	narrative_badge	Est. 2026	string	2026-08-19 15:52:40	2026-09-10 22:09:12	id
 01a01ab9-848e-7332-b014-ffd899e982d9	ecosystem	story_title	Cerita Kami	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
 01a01ab9-8490-7172-909d-6d5871949bb0	ecosystem	story_body	AKARRA didirikan oleh Febri Khoirul Imam dan Nanda Fifia Putri, lahir dari visi untuk menciptakan platform bisnis yang tidak hanya menjual produk, tetapi juga membangun identitas dan dampak nyata bagi komunitas fashion dan kreatif Indonesia.	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
 01a01ab9-8491-713d-ad4e-87658772ca59	ecosystem	philosophy_title	Filosofi Nama & Logo	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
@@ -461,15 +461,14 @@ COPY public.settings (id, "group", key, value, type, created_at, updated_at, loc
 01a01ab9-850f-7041-a70e-5d5a6b047089	global	site_name	AKARRA	string	2026-08-19 15:52:40	2026-08-19 15:52:40	en
 01a01ab9-8511-7230-ba6c-bdc102fe4216	global	tagline	Ecosystem of Excellence	string	2026-08-19 15:52:40	2026-08-19 15:52:40	en
 01a01ab9-8513-7182-ac66-174117846f5d	global	description	Ekosistem bisnis terintegrasi di bidang fashion, desain kreatif, event, dan periklanan digital.	string	2026-08-19 15:52:40	2026-08-19 15:52:40	en
-01a01ab9-8515-73ef-9314-add19b7df1af	global	founded_year		string	2026-08-19 15:52:40	2026-08-19 15:52:40	en
-01a01ab9-8518-70c2-8436-f804dc408b8e	global	address		string	2026-08-19 15:52:40	2026-08-19 15:52:40	en
-01a01ab9-851a-7013-b6e7-9494d1b72d80	global	phone		string	2026-08-19 15:52:40	2026-08-19 15:52:40	en
 01a01ab9-8520-71b5-a8e6-af482e8c8d63	global	office_hours	Senin sampai Jumat, pukul 09.00 s.d. 17.00 WIB	string	2026-08-19 15:52:40	2026-08-19 15:52:40	en
-01a01ab9-851e-7398-8fc7-1a87f8057e95	global	email	hello@akarra.co.id	string	2026-08-19 15:52:40	2026-08-24 10:36:08	en
+01a01ab9-8518-70c2-8436-f804dc408b8e	global	address	Cluster Ujung Berung Indah, Jl. Segar Dalam No.E-3, RT.07/RW.11, Cigending, Kec. Ujung Berung, Kota Bandung, Jawa Barat 40611	string	2026-08-19 15:52:40	2026-08-28 15:37:07	en
+01a01ab9-8515-73ef-9314-add19b7df1af	global	founded_year	null	string	2026-08-19 15:52:40	2026-08-28 15:37:07	en
+01a01ab9-851a-7013-b6e7-9494d1b72d80	global	phone	null	string	2026-08-19 15:52:40	2026-08-28 15:37:07	en
+01a01ab9-851e-7398-8fc7-1a87f8057e95	global	email	anandakaryanusantara@gmail.com	string	2026-08-19 15:52:40	2026-08-28 15:38:23	en
 01a01ab9-8524-71a3-98f8-bf01ee776396	global	nav	[{"label":"Ecosystem","path":"\\/ecosystem"},{"label":"Products","path":"\\/products"},{"label":"Services","path":"\\/services"},{"label":"Articles","path":"\\/articles"},{"label":"Founders","path":"\\/founders"}]	json	2026-08-19 15:52:40	2026-08-19 15:52:40	en
 01a01ab9-8526-72cb-9222-411a7de38abb	global	nav_cta_label	Start a Conversation	string	2026-08-19 15:52:40	2026-08-19 15:52:40	en
 01a01ab9-8529-7034-9827-c664016f7899	global	footer_note	Seluruh hak cipta dilindungi.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
-01a01ab9-852e-7358-b8ff-28c867bc5341	global	twitter_handle		string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-852f-707f-a69a-93f1c4064229	home	hero_eyebrow	A Legacy in the Making	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-8531-7175-9715-cba922f17c0c	home	hero_title	Ecosystem of Excellence	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-8533-7028-80ac-175b47164495	home	hero_title_emphasis	Excellence	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
@@ -481,7 +480,6 @@ COPY public.settings (id, "group", key, value, type, created_at, updated_at, loc
 01a01ab9-853e-731e-a58d-370076dcb163	home	narrative_body	AKARRA bergerak di industri fashion, desain kreatif, event, dan periklanan digital. Melalui tiga pilar utama, kami tidak hanya menjual produk, tetapi membangun identitas dan dampak nyata bagi komunitas fashion dan kreatif Indonesia.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-8542-700b-be1e-0a1bcab742b1	home	narrative_quote	We believe that true prestige is found in the intersection of mathematical precision and artistic soul. Our journey is about creating impact that resonates across generations.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-8545-717b-9fba-1500811272bb	home	narrative_quote_attribution	The Founders of AKARRA	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
-01a01ab9-8547-72cb-8a4b-404a318e66ed	home	narrative_badge	Est. 2024	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-854a-706c-89a6-b4b6a61ad3ae	home	values	[{"name":"Excellence","body":"Uncompromising quality in every stitch, frame, and strategy we execute."},{"name":"Integrity","body":"Building trust through transparency and ethical leadership in all domains."},{"name":"Innovation","body":"Pushing boundaries through creative experimentation and modern technology."},{"name":"Elegance","body":"A commitment to refined aesthetics that speak without needing to shout."}]	json	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-854d-70cc-98b0-3f779278d4ec	home	services_eyebrow	Our Three Pillars	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-854f-7362-8567-d6f8ce63d552	home	services_title	The Services Ecosystem	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
@@ -507,6 +505,8 @@ COPY public.settings (id, "group", key, value, type, created_at, updated_at, loc
 01a01ab9-8583-7198-8bb4-9bbbf01031dc	ecosystem	philosophy_body	Logo AKARRA terinspirasi dari geometri berlian dan mandala tradisional, perpaduan antara kemewahan modern dan kearifan lokal.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-850d-70e2-a9b4-d5dac261bd75	founders	cta_secondary_label	Lihat Ekosistem	string	2026-08-19 15:52:40	2026-08-24 09:43:39	id
 01a01ab9-852b-7246-870a-a9592f806877	global	og_image	/storage/settings/2026/08/3WguMOu63aDaYTYLxhcGFkPx.jpg	string	2026-08-19 15:52:41	2026-08-24 10:01:45	en
+01a01ab9-852e-7358-b8ff-28c867bc5341	global	twitter_handle	null	string	2026-08-19 15:52:41	2026-08-28 15:37:07	en
+01a01ab9-8547-72cb-8a4b-404a318e66ed	home	narrative_badge	Est. 2026	string	2026-08-19 15:52:41	2026-09-10 22:09:12	en
 01a01ab9-8584-730d-afd5-7902c261a6b8	ecosystem	philosophy_items	[{"title":"Berlian & Kemewahan","body":"Struktur geometris berlian mencerminkan kualitas premium dan eksklusivitas."},{"title":"Energi & Dinamisme","body":"Segitiga yang saling bertautan melambangkan inovasi dan kolaborasi."},{"title":"Mandala & Harmoni","body":"Pola melingkar mengacu pada tradisi mandala Nusantara."},{"title":"Emas & Kepercayaan","body":"Warna emas melambangkan prestise dan kepercayaan."}]	json	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-8587-7241-97b1-a3add81347b6	ecosystem	standard_title	The AKARRA Standard	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-858a-732d-a11b-fe551db9956b	ecosystem	standard_body	Standar tertinggi di setiap produk dan layanan, sesuai nilai Excellence dan Elegance yang kami pegang.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
@@ -583,7 +583,7 @@ COPY public.settings (id, "group", key, value, type, created_at, updated_at, loc
 01a01ab9-8465-7057-bdf0-6b2accf76e4b	home	services_title	Ekosistem Layanan	string	2026-08-19 15:52:40	2026-08-24 09:43:39	id
 01a01ab9-846c-7355-9ac1-b56ad4e4d17b	home	solutions_title	Solusi Pilihan	string	2026-08-19 15:52:40	2026-08-24 09:43:39	id
 01a01ab9-855c-7167-9954-7594ae701b8c	home	solutions	[{"title":"Bespoke Collection","body":"Made-to-measure excellence for the modern executive.","image":"\\/storage\\/settings\\/2026\\/08\\/yeHZ8rf20mBBMcjVcUYJQnoT.png","category":"Fashion"},{"title":"Signature Textiles","body":"Ethically sourced, world-class fabric curation.","image":"\\/storage\\/settings\\/2026\\/08\\/lLRJ4k0eWg9xGuXF1TQXLdB7.png","category":"Fashion"},{"title":"Visual Storytelling","body":"Narasi visual yang membangun kedekatan emosional dengan audiens.","image":"\\/storage\\/settings\\/2026\\/08\\/iIocgYCA8koGjMc61MRDmhJq.jpg","category":"Creative"},{"title":"Brand Positioning","body":"Strategi penempatan brand yang tajam dan terukur di pasar digital.","image":"\\/storage\\/settings\\/2026\\/08\\/DpSmLgRL2OnKU2gEV2nx0B6G.jpg","category":"Advertising"}]	json	2026-08-19 15:52:41	2026-08-24 09:43:39	en
-01a01ab9-851c-7375-bcc5-fd118e21c849	global	whatsapp	6285179973943	string	2026-08-19 15:52:40	2026-08-24 10:36:08	en
+01a01ab9-851c-7375-bcc5-fd118e21c849	global	whatsapp	6289510519276	string	2026-08-19 15:52:40	2026-08-28 15:37:07	en
 01a01ab9-8470-7345-85ee-f8a4d44f11a8	home	solutions	[{"title":"Bespoke Collection","body":"Keunggulan yang dijahit khusus untuk eksekutif masa kini.","image":"\\/storage\\/settings\\/2026\\/08\\/yeHZ8rf20mBBMcjVcUYJQnoT.png","category":"Fesyen"},{"title":"Signature Textiles","body":"Kurasi kain kelas dunia dengan sumber yang beretika.","image":"\\/storage\\/settings\\/2026\\/08\\/lLRJ4k0eWg9xGuXF1TQXLdB7.png","category":"Fesyen"},{"title":"Visual Storytelling","body":"Narasi visual yang membangun kedekatan emosional dengan audiens.","image":"\\/storage\\/settings\\/2026\\/08\\/iIocgYCA8koGjMc61MRDmhJq.jpg","category":"Kreatif"},{"title":"Brand Positioning","body":"Strategi penempatan brand yang tajam dan terukur di pasar digital.","image":"\\/storage\\/settings\\/2026\\/08\\/DpSmLgRL2OnKU2gEV2nx0B6G.jpg","category":"Periklanan"}]	json	2026-08-19 15:52:40	2026-08-24 09:43:39	id
 01a01ab9-8566-730d-a905-447acd425001	home	story_video	/storage/settings/2026/08/O09gkXdYgLQYheejYBLGGK1j.mp4	string	2026-08-19 15:52:41	2026-08-24 09:43:39	en
 01a01ab9-8479-72a9-8121-f7b08aba2c9c	home	story_video	/storage/settings/2026/08/O09gkXdYgLQYheejYBLGGK1j.mp4	string	2026-08-19 15:52:40	2026-08-24 09:43:39	id
@@ -614,6 +614,8 @@ COPY public.settings (id, "group", key, value, type, created_at, updated_at, loc
 01a01ab9-84dd-701f-b874-edd158c3082e	services	hero_image	/storage/settings/2026/08/3WguMOu63aDaYTYLxhcGFkPx.jpg	string	2026-08-19 15:52:40	2026-08-24 09:43:39	id
 01a01ab9-85d6-71f7-b10f-9ebda865cc07	services	pillars	[{"name":"Fashionpreneur","label":"Infrastructure","body":"A comprehensive ecosystem for established designers and emerging labels to scale with integrity. We handle the complexities of the supply chain so you can focus on the soul of the brand.","items":["Industri Pakaian Jadi","Perdagangan Besar Pakaian","Distribusi & Retail"],"bullets":["Brand Development","Textile Sourcing","Atelier Manufacturing","Distribution Strategy"],"subcards":[{"title":"The Atelier","body":"Bespoke sample making and technical pattern drafting for high-fashion silhouettes.","bullets":["Haute Couture Sampling","Tech Pack Development"]},{"title":"Global Production","body":"Ethical, small-batch manufacturing and large-scale textile sourcing with a focus on sustainability.","bullets":["Ethical Sourcing","QC Management"]}],"image":"\\/storage\\/settings\\/2026\\/08\\/kfzsveKx21tROaS71YF8LIcS.jpg"},{"name":"Creative Labs","label":"Identity","body":"The intellectual engine of AKARRA. We translate brand ethos into visual and experiential narratives that resonate with a discerning global audience.","items":["Desain Grafis & Branding","Produksi Konten","Event & Pertunjukan"],"bullets":["Visual Storytelling","UI\\/UX Innovation","Photography & Cinema","Experimental Design"],"subcards":[{"title":"Art Direction","body":"Curation of visual identity, campaign imagery, and high-fidelity brand guidelines.","bullets":["Visual Strategy","Identity Design"]},{"title":"Immersive Events","body":"Bespoke product launches and runway shows designed to evoke emotional intelligence.","bullets":["Spatial Design","Guest Curation"]}],"image":"\\/storage\\/settings\\/2026\\/08\\/HcA1NG2lhTyuIJuMyYpAEQzA.jpg"},{"name":"Advertising","label":"Periklanan & Strategi Digital","body":"Strategi digital dan periklanan inovatif untuk memperkuat posisi brand di pasar.","items":["Strategi Digital","Media Placement","Social Media Management"],"bullets":["Brand Positioning","Market Penetration","Digital Growth","Strategic Media"],"image":null}]	json	2026-08-19 15:52:41	2026-08-24 09:43:39	en
 01a01ab9-84e1-7224-80b2-867033ac6d69	services	pillars	[{"name":"Fashionpreneur","label":"Infrastruktur","body":"Ekosistem menyeluruh bagi desainer mapan maupun label baru untuk tumbuh dengan tetap menjaga integritas. Kami menangani kerumitan rantai pasok agar Anda bisa fokus pada jiwa brand Anda.","items":["Industri Pakaian Jadi","Perdagangan Besar Pakaian","Distribusi & Retail"],"bullets":["Pengembangan Brand","Sumber Tekstil","Produksi Atelier","Strategi Distribusi"],"subcards":[{"title":"The Atelier","body":"Pembuatan sampel khusus dan penggambaran pola teknis untuk siluet mode tingkat tinggi.","bullets":["Sampling Haute Couture","Pengembangan Tech Pack"]},{"title":"Global Production","body":"Produksi skala kecil yang beretika dan pengadaan tekstil skala besar dengan fokus pada keberlanjutan.","bullets":["Sumber yang Etis","Manajemen Kendali Mutu"]}],"image":"\\/storage\\/settings\\/2026\\/08\\/kfzsveKx21tROaS71YF8LIcS.jpg"},{"name":"Creative Labs","label":"Identitas","body":"Mesin intelektual AKARRA. Kami menerjemahkan jiwa brand menjadi narasi visual dan pengalaman yang bergema di hadapan audiens global yang jeli.","items":["Desain Grafis & Branding","Produksi Konten","Event & Pertunjukan"],"bullets":["Narasi Visual","Inovasi UI\\/UX","Fotografi & Sinema","Desain Eksperimental"],"subcards":[{"title":"Art Direction","body":"Kurasi identitas visual, citra kampanye, dan pedoman brand dengan standar tinggi.","bullets":["Strategi Visual","Desain Identitas"]},{"title":"Immersive Events","body":"Peluncuran produk dan gelaran runway yang dirancang khusus untuk membangkitkan kecerdasan emosional.","bullets":["Desain Ruang","Kurasi Tamu"]}],"image":"\\/storage\\/settings\\/2026\\/08\\/HcA1NG2lhTyuIJuMyYpAEQzA.jpg"},{"name":"Advertising","label":"Periklanan & Strategi Digital","body":"Strategi digital dan periklanan inovatif untuk memperkuat posisi brand di pasar.","items":["Strategi Digital","Media Placement","Social Media Management"],"bullets":["Positioning Brand","Penetrasi Pasar","Pertumbuhan Digital","Media Strategis"],"image":null}]	json	2026-08-19 15:52:40	2026-08-24 09:43:39	id
+27a2077f-31b6-46c0-86a3-1cdb93c55408	home	clients_gallery	[]	json	2026-09-10 22:09:12	2026-09-10 22:09:12	id
+8186b238-5f08-4cc5-ac0f-486d549c1019	home	clients_gallery	[]	json	2026-09-10 22:09:12	2026-09-10 22:09:12	en
 \.
 
 
@@ -896,5 +898,5 @@ ALTER TABLE ONLY public.articles
 -- PostgreSQL database dump complete
 --
 
-\unrestrict 7OdjjxgsVyvKltBbjZmKxMWRJvkA7L1z8Wuc2wMiOKoYFhZt0YE4FindafaT2cs
+\unrestrict inlYaecbvkGrOHcNhPUfwcdaiMSlex0IsKqfGmichotx9xDmMbPNcwazSBJk54m
 

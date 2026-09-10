@@ -53,7 +53,7 @@ export const fallbackContent = {
     narrative_quote:
       'We believe that true prestige is found in the intersection of mathematical precision and artistic soul. Our journey is about creating impact that resonates across generations.',
     narrative_quote_attribution: 'The Founders of AKARRA',
-    narrative_badge: 'Est. 2024',
+    narrative_badge: 'Est. 2026',
 
     values: [
       { name: 'Excellence', body: 'Uncompromising quality in every stitch, frame, and strategy we execute.' },
@@ -105,6 +105,11 @@ export const fallbackContent = {
 
     founders_title: 'Meet the Founders',
     founders_subtitle: 'Dua orang di balik arah dan standar AKARRA.',
+
+    // Logo klien di ClientsCarousel — kosong secara default (bukan tampilan
+    // rusak); section itu sendiri tidak dirender kalau daftarnya kosong,
+    // sampai admin mengunggah logo lewat panel Pengaturan.
+    clients_gallery: [],
 
     form_title: 'Mari Berkolaborasi',
     form_subtitle: 'Konsultasi awal gratis, tanpa komitmen. Ceritakan apa yang sedang Anda bangun.',
