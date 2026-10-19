@@ -1,14 +1,18 @@
 import { useEffect, useRef, useState } from 'react'
-import { Head, router } from '@inertiajs/react'
+import { Head, Link, router } from '@inertiajs/react'
 
-import GalleryField from '../../../components/admin/GalleryField'
-import ImageField from '../../../components/admin/ImageField'
-import VideoField from '../../../components/admin/VideoField'
-import MediaListField, { isImageKey, isVideoKey, isGalleryKey, isStructurable } from '../../../components/admin/MediaListField'
-import Button from '../../../components/atoms/Button'
-import { fieldClass } from '../../../components/atoms/Field'
+import ContentField, { FieldShell, adminInputClass } from '../../../components/admin/ContentField'
+import MediaListField, { isStructurable } from '../../../components/admin/MediaListField'
 import AdminLayout from '../../../Layouts/AdminLayout'
-import { SETTING_GROUP_LABELS as groupLabels } from '../../../lib/settingGroups'
+import { SETTING_GROUPS, SETTING_GROUP_LABELS as groupLabels } from '../../../lib/settingGroups'
+import { SETTING_SCHEMA, emptyValueFor, schemaKeys } from '../../../lib/settingSchema'
+
+const LOCALES = [
+  { value: 'id', label: 'Indonesia' },
+  { value: 'en', label: 'English' },
+]
+
+const JSON_FIELD_TYPES = ['list', 'lines', 'gallery', 'object']
 
 function classify(value) {
   if (typeof value === 'boolean') return 'boolean'
@@ -17,184 +21,93 @@ function classify(value) {
   return 'string'
 }
 
-/** Membangun draft field-field yang bisa disunting untuk satu grup. */
-function buildDraft(groupData) {
-  const draft = {}
+/** Baris kosong di daftar teks (sisa tombol Enter) dibuang sebelum disimpan. */
+function clean(value) {
+  if (Array.isArray(value)) {
+    if (value.every((v) => typeof v === 'string')) return value.filter((v) => v.trim() !== '')
+    return value.map(clean)
+  }
 
-  Object.entries(groupData ?? {}).forEach(([key, value]) => {
-    const type = classify(value)
-    draft[key] = {
-      type,
-      value: type === 'json' ? JSON.stringify(value, null, 2) : value,
-      error: null,
-    }
-  })
+  if (value && typeof value === 'object') {
+    return Object.fromEntries(Object.entries(value).map(([k, v]) => [k, clean(v)]))
+  }
 
-  return draft
+  return value
 }
 
-/** Merender satu field sesuai bentuk datanya: gambar, JSON terstruktur, atau input biasa. */
-function FieldEditor({ fieldKey, field, onUpdate }) {
-  const [rawMode, setRawMode] = useState(false)
+const same = (a, b) => JSON.stringify(a) === JSON.stringify(b)
 
-  if (field.type === 'string' && isImageKey(fieldKey)) {
-    return <ImageField value={field.value} onChange={(url) => onUpdate({ value: url })} label={fieldKey} />
-  }
+/** Field yang tidak dipetakan schema: teks biasa, atau JSON mentah sebagai jalan terakhir. */
+function AdvancedField({ fieldKey, value, onChange }) {
+  const [raw, setRaw] = useState(() => JSON.stringify(value, null, 2))
+  const [error, setError] = useState(null)
 
-  if (field.type === 'string' && isVideoKey(fieldKey)) {
-    return <VideoField value={field.value} onChange={(url) => onUpdate({ value: url })} label={fieldKey} />
-  }
-
-  if (field.type === 'json' && isGalleryKey(fieldKey)) {
-    let photos = []
-    try {
-      const parsed = JSON.parse(field.value)
-      if (Array.isArray(parsed)) photos = parsed
-    } catch {
-      photos = []
-    }
-
+  if (typeof value === 'string' || value === null || value === undefined) {
     return (
-      <GalleryField
-        value={photos}
-        onChange={(next) => onUpdate({ value: JSON.stringify(next, null, 2), error: null })}
-      />
+      <FieldShell label={fieldKey}>
+        <input type="text" value={value ?? ''} onChange={(e) => onChange(e.target.value)} className={adminInputClass} />
+      </FieldShell>
     )
   }
 
-  if (field.type === 'boolean') {
+  if (isStructurable(value)) {
     return (
-      <label className="flex items-center gap-2 text-[14px] text-ink">
-        <input
-          type="checkbox"
-          checked={Boolean(field.value)}
-          onChange={(e) => onUpdate({ value: e.target.checked })}
-          className="accent-gold"
-        />
-        Aktif
-      </label>
-    )
-  }
-
-  if (field.type === 'integer') {
-    return (
-      <input
-        type="number"
-        value={field.value}
-        onChange={(e) => onUpdate({ value: Number(e.target.value) })}
-        className={fieldClass}
-      />
-    )
-  }
-
-  if (field.type === 'string') {
-    return String(field.value).length > 80 ? (
-      <textarea
-        rows={3}
-        value={field.value}
-        onChange={(e) => onUpdate({ value: e.target.value })}
-        className={`${fieldClass} resize-none`}
-      />
-    ) : (
-      <input type="text" value={field.value} onChange={(e) => onUpdate({ value: e.target.value })} className={fieldClass} />
-    )
-  }
-
-  // field.type === 'json' dari sini
-  let parsed = null
-  try {
-    parsed = JSON.parse(field.value)
-  } catch {
-    parsed = null
-  }
-
-  const structured = parsed !== null && isStructurable(parsed)
-
-  if (structured && !rawMode) {
-    return (
-      <div>
-        <MediaListField value={parsed} onChange={(next) => onUpdate({ value: JSON.stringify(next, null, 2), error: null })} />
-        <button
-          type="button"
-          onClick={() => setRawMode(true)}
-          className="mt-3 text-[11px] uppercase tracking-[0.1em] text-ink/40 hover:text-gold hover:underline"
-        >
-          Edit sebagai JSON mentah
-        </button>
-      </div>
+      <FieldShell label={fieldKey}>
+        <MediaListField value={value} onChange={onChange} />
+      </FieldShell>
     )
   }
 
   return (
-    <div>
+    <FieldShell label={fieldKey} help={error ?? 'Format JSON. Perubahan diterapkan saat kotak ditinggalkan.'}>
       <textarea
-        rows={8}
-        value={field.value}
-        onChange={(e) => onUpdate({ value: e.target.value })}
+        rows={6}
+        value={raw}
         spellCheck={false}
-        className={`${fieldClass} font-mono text-[13px] resize-y`}
+        onChange={(e) => setRaw(e.target.value)}
+        onBlur={() => {
+          try {
+            onChange(JSON.parse(raw))
+            setError(null)
+          } catch {
+            setError('JSON tidak valid — perubahan belum diterapkan.')
+          }
+        }}
+        className={`${adminInputClass} font-mono text-[13px]`}
       />
-      {structured && (
-        <button
-          type="button"
-          onClick={() => setRawMode(false)}
-          className="mt-3 text-[11px] uppercase tracking-[0.1em] text-ink/40 hover:text-gold hover:underline"
-        >
-          Kembali ke tampilan terstruktur
-        </button>
-      )}
-    </div>
+    </FieldShell>
   )
 }
 
-function NewFieldForm({ onAdd }) {
-  const [key, setKey] = useState('')
-  const [type, setType] = useState('string')
-
-  const submit = (event) => {
-    event.preventDefault()
-    if (!key.trim()) return
-
-    const defaults = { string: '', integer: 0, boolean: false, json: '[]' }
-    onAdd(key.trim(), type, defaults[type])
-    setKey('')
-    setType('string')
-  }
-
+function SectionCard({ index, id, title, description, dirty, children }) {
   return (
-    <form onSubmit={submit} className="flex flex-wrap items-end gap-3 border-t border-ink/10 pt-6">
-      <div>
-        <span className="mb-1 block text-[11px] uppercase tracking-[0.14em] text-muted">Field Baru</span>
-        <input
-          type="text"
-          value={key}
-          onChange={(e) => setKey(e.target.value)}
-          placeholder="nama_field"
-          className={`${fieldClass} w-56`}
-        />
-      </div>
-
-      <select value={type} onChange={(e) => setType(e.target.value)} className={`${fieldClass} w-32`}>
-        <option value="string">Teks</option>
-        <option value="integer">Angka</option>
-        <option value="boolean">Ya/Tidak</option>
-        <option value="json">JSON</option>
-      </select>
-
-      <Button type="submit" variant="quiet">
-        Tambah Field
-      </Button>
-    </form>
+    <section id={`bagian-${id}`} className="scroll-mt-36 rounded-2xl border border-ink/10 bg-white shadow-[0_1px_2px_rgba(28,25,23,0.04)]">
+      <header className="flex items-start gap-4 border-b border-ink/10 px-5 py-4 md:px-7 md:py-5">
+        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gold/10 text-[14px] font-semibold text-gold">
+          {index}
+        </span>
+        <div className="min-w-0 flex-1">
+          <div className="flex flex-wrap items-center gap-2">
+            <h2 className="text-[17px] font-semibold text-ink">{title}</h2>
+            {dirty && (
+              <span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-[11px] font-medium text-amber-800">
+                Belum disimpan
+              </span>
+            )}
+          </div>
+          {description && <p className="mt-1 text-[13px] leading-relaxed text-muted">{description}</p>}
+        </div>
+      </header>
+      <div className="px-5 py-5 md:px-7 md:py-6">{children}</div>
+    </section>
   )
 }
-
-const LOCALES = [
-  { value: 'id', label: 'Indonesia' },
-  { value: 'en', label: 'English' },
-]
 
 export default function SettingsIndex({ settings, activeGroup, activeLocale }) {
-  const [draft, setDraft] = useState(() => buildDraft(settings[activeGroup]))
+  const schema = SETTING_SCHEMA[activeGroup] ?? { title: groupLabels[activeGroup] ?? activeGroup, sections: [] }
+  const groupData = settings[activeGroup] ?? {}
+
+  const [draft, setDraft] = useState(() => structuredClone(groupData))
   const [saving, setSaving] = useState(false)
   const [savedMessage, setSavedMessage] = useState(null)
   const [saveError, setSaveError] = useState(false)
@@ -204,10 +117,10 @@ export default function SettingsIndex({ settings, activeGroup, activeLocale }) {
   // React ini murni lokal sampai saat itu. Sudah pernah kejadian: admin
   // mengunggah gambar, pratinjaunya tampil, lalu pindah tab/grup tanpa
   // menyimpan — berkasnya ada di server tapi tidak pernah tersambung ke
-  // field manapun. lastSavedDraft menjadi acuan "tersimpan" supaya kita bisa
+  // field manapun. savedRef menjadi acuan "tersimpan" supaya kita bisa
   // mendeteksi dan memperingatkan sebelum itu terulang.
-  const lastSavedDraftRef = useRef(draft)
-  const isDirty = JSON.stringify(draft) !== JSON.stringify(lastSavedDraftRef.current)
+  const savedRef = useRef(groupData)
+  const isDirty = !same(draft, savedRef.current)
   const isDirtyRef = useRef(false)
   isDirtyRef.current = isDirty
   // Request PUT simpan itu sendiri adalah "navigasi" Inertia — penjaga di
@@ -219,12 +132,15 @@ export default function SettingsIndex({ settings, activeGroup, activeLocale }) {
   // sidebar (komponen sama, props baru) — jadi draft harus dibangun ulang
   // tiap kali activeGroup (dan datanya) berganti, bukan hanya sekali di awal.
   useEffect(() => {
-    const fresh = buildDraft(settings[activeGroup])
-    setDraft(fresh)
-    lastSavedDraftRef.current = fresh
-    setSavedMessage(null)
+    const fresh = settings[activeGroup] ?? {}
+    setDraft(structuredClone(fresh))
+    savedRef.current = fresh
     setSaveError(false)
-  }, [activeGroup, settings])
+  }, [activeGroup, activeLocale, settings])
+
+  useEffect(() => {
+    setSavedMessage(null)
+  }, [activeGroup, activeLocale])
 
   // Tutup/refresh tab, atau navigasi Inertia ke halaman lain (ganti grup,
   // ganti bahasa, ke menu lain, atau logout) — semua dicegat kalau ada
@@ -259,36 +175,23 @@ export default function SettingsIndex({ settings, activeGroup, activeLocale }) {
   const activeLocaleRef = useRef(activeLocale)
   activeLocaleRef.current = activeLocale
 
-  const updateField = (group, locale, key, patch) => {
+  const setField = (group, locale, key) => (value) => {
     if (group !== activeGroupRef.current || locale !== activeLocaleRef.current) return
-    setDraft((prev) => ({ ...prev, [key]: { ...prev[key], ...patch } }))
+    setDraft((prev) => ({ ...prev, [key]: value }))
   }
 
-  const addField = (key, type, value) => {
-    setDraft((prev) => ({ ...prev, [key]: { type, value, error: null } }))
-  }
+  const fieldTypes = {}
+  schema.sections.forEach((section) => section.fields.forEach((field) => (fieldTypes[field.key] = field)))
 
   const handleSave = () => {
-    const items = []
-    let hasError = false
+    if (saving || !isDirty) return
 
-    Object.entries(draft).forEach(([key, field]) => {
-      if (field.type !== 'json') {
-        items.push({ group: activeGroup, locale: activeLocale, key, value: field.value, type: field.type })
-        return
-      }
+    const items = Object.entries(draft).map(([key, value]) => {
+      const schemaField = fieldTypes[key]
+      const type = schemaField ? (JSON_FIELD_TYPES.includes(schemaField.type) ? 'json' : 'string') : classify(value)
 
-      try {
-        const parsed = JSON.parse(field.value)
-        items.push({ group: activeGroup, locale: activeLocale, key, value: parsed, type: 'json' })
-        updateField(activeGroup, activeLocale, key, { error: null })
-      } catch {
-        updateField(activeGroup, activeLocale, key, { error: 'JSON tidak valid.' })
-        hasError = true
-      }
+      return { group: activeGroup, locale: activeLocale, key, value: clean(value), type }
     })
-
-    if (hasError) return
 
     setSaving(true)
     savingRef.current = true
@@ -301,10 +204,8 @@ export default function SettingsIndex({ settings, activeGroup, activeLocale }) {
       {
         preserveScroll: true,
         onSuccess: () => {
-          lastSavedDraftRef.current = draft
-          setSavedMessage(
-            `Perubahan grup ${groupLabels[activeGroup] ?? activeGroup} (${activeLocale === 'en' ? 'English' : 'Indonesia'}) tersimpan.`,
-          )
+          savedRef.current = draft
+          setSavedMessage(`Tersimpan. Halaman ${schema.title} (${activeLocale === 'en' ? 'English' : 'Indonesia'}) sudah diperbarui di situs.`)
         },
         onError: () => setSaveError(true),
         onFinish: () => {
@@ -315,83 +216,207 @@ export default function SettingsIndex({ settings, activeGroup, activeLocale }) {
     )
   }
 
+  const handleReset = () => {
+    if (!window.confirm('Batalkan semua perubahan yang belum disimpan?')) return
+    setDraft(structuredClone(savedRef.current))
+  }
+
+  // Ctrl/Cmd + S untuk menyimpan, kebiasaan yang sudah umum di aplikasi lain.
+  const saveRef = useRef(handleSave)
+  saveRef.current = handleSave
+  useEffect(() => {
+    const onKey = (event) => {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 's') {
+        event.preventDefault()
+        saveRef.current()
+      }
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [])
+
+  const mappedKeys = schemaKeys(activeGroup)
+  const extraKeys = Object.keys(draft).filter((key) => !mappedKeys.has(key))
+  const valueOf = (field) => (field.key in draft ? draft[field.key] : emptyValueFor(field))
+
   return (
-    <div>
-      <Head title="Pengaturan" />
+    <div className="mx-auto max-w-5xl">
+      <Head title={`Kelola Halaman — ${schema.title}`} />
 
-      <h1 className="font-display text-3xl font-light text-ink">
-        Pengaturan <span className="text-gold">/ {groupLabels[activeGroup] ?? activeGroup}</span>
-      </h1>
-      <p className="mt-2 text-[14px] text-muted">
-        Konten setiap halaman publik. Perubahan langsung tayang setelah disimpan.
-      </p>
-
-      <div className="mt-6 flex gap-6 border-b border-ink/10">
-        {LOCALES.map((locale) => (
-          <button
-            key={locale.value}
-            type="button"
-            onClick={() => router.get(route('admin.settings.index', { group: activeGroup, locale: locale.value }))}
-            className={`border-b-2 pb-3 text-[11px] font-medium uppercase tracking-[0.18em] transition-colors ${
-              activeLocale === locale.value ? 'border-gold text-gold' : 'border-transparent text-body hover:text-gold'
-            }`}
-          >
-            {locale.label}
-          </button>
-        ))}
+      {/* Pilihan halaman */}
+      <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-muted">Kelola Halaman</p>
+      <div className="-mx-1 mt-3 flex gap-2 overflow-x-auto px-1 pb-1">
+        {SETTING_GROUPS.map((group) => {
+          const active = group === activeGroup
+          return (
+            <Link
+              key={group}
+              href={route('admin.settings.index', { group, locale: activeLocale })}
+              className={`shrink-0 rounded-full border px-4 py-2 text-[13px] font-medium transition ${
+                active ? 'border-ink bg-ink text-ivory' : 'border-ink/15 bg-white text-ink/70 hover:border-gold/50 hover:text-gold'
+              }`}
+            >
+              {SETTING_SCHEMA[group]?.title ?? groupLabels[group] ?? group}
+            </Link>
+          )
+        })}
       </div>
 
-      <div className="mt-8 grid gap-6">
-        {Object.keys(draft).length === 0 && <p className="text-[14px] text-muted">Belum ada field pada grup ini.</p>}
+      {/* Judul halaman yang sedang disunting */}
+      <div className="mt-6 flex flex-wrap items-end justify-between gap-4">
+        <div className="min-w-0">
+          <h1 className="font-display text-3xl font-normal text-ink md:text-4xl">{schema.title}</h1>
+          {schema.description && <p className="mt-1 text-[14px] text-muted">{schema.description}</p>}
+        </div>
 
-        {Object.entries(draft).map(([key, field]) => (
-          <div key={key}>
-            <span className="mb-2 block text-[11px] font-medium uppercase tracking-[0.18em] text-muted">
-              {key}
-            </span>
-
-            {key === 'whatsapp' && (
-              <p className="mb-2 text-[13px] text-muted">
-                Dipakai untuk tombol WhatsApp di formulir kontak. Isi dengan kode negara, tanpa tanda{' '}
-                <code>+</code> dan tanpa angka 0 di depan — contoh: <code>6281234567890</code>. Kalau
-                dikosongkan, tombolnya tidak akan muncul di situs.
-              </p>
-            )}
-
-            <FieldEditor fieldKey={key} field={field} onUpdate={(patch) => updateField(activeGroup, activeLocale, key, patch)} />
-
-            {field.error && <span className="mt-2 block text-[13px] text-gold">{field.error}</span>}
-          </div>
-        ))}
-
-        <NewFieldForm onAdd={addField} />
-
-        {savedMessage && (
-          <div role="status" className="border-l-2 border-gold bg-sand px-4 py-3 text-[13px] text-ink/80">
-            {savedMessage}
-          </div>
-        )}
-
-        {saveError && (
-          <div role="alert" className="border-l-2 border-gold bg-sand px-4 py-3 text-[13px] text-ink/80">
-            Gagal menyimpan perubahan.
-          </div>
-        )}
-
-        <div className="flex items-center justify-end gap-4">
-          {isDirty && !saving && (
-            <span className="text-[13px] text-gold">Ada perubahan yang belum disimpan.</span>
+        <div className="flex flex-wrap items-center gap-3">
+          {schema.path && (
+            <a
+              href={schema.path}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-ink/15 bg-white px-3.5 py-2 text-[13px] font-medium text-ink transition hover:border-gold/50 hover:text-gold"
+            >
+              Lihat halaman
+              <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1h5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </a>
           )}
+        </div>
+      </div>
 
-          <Button
-            type="button"
-            variant="solid"
-            onClick={handleSave}
-            disabled={saving}
-            className="disabled:opacity-50"
-          >
-            {saving ? 'Menyimpan…' : `Simpan ${groupLabels[activeGroup] ?? activeGroup}`}
-          </Button>
+      {/* Bahasa konten */}
+      <div className="mt-5 flex flex-wrap items-center gap-3 rounded-xl border border-ink/10 bg-white px-4 py-3">
+        <span className="text-[13px] font-medium text-ink">Bahasa yang sedang diubah:</span>
+        <div className="inline-flex rounded-lg bg-canvas p-1">
+          {LOCALES.map((locale) => (
+            <button
+              key={locale.value}
+              type="button"
+              onClick={() => router.get(route('admin.settings.index', { group: activeGroup, locale: locale.value }))}
+              className={`rounded-md px-4 py-1.5 text-[13px] font-medium transition ${
+                activeLocale === locale.value ? 'bg-white text-gold shadow-sm' : 'text-ink/60 hover:text-ink'
+              }`}
+            >
+              {locale.label}
+            </button>
+          ))}
+        </div>
+        <span className="text-[12px] text-muted">Teks diisi terpisah per bahasa. Foto & video otomatis dipakai di kedua bahasa.</span>
+      </div>
+
+      {/* Lompat ke bagian */}
+      {schema.sections.length > 1 && (
+        <nav
+          aria-label="Bagian halaman"
+          className="sticky top-0 z-20 -mx-6 mt-6 flex gap-2 overflow-x-auto border-b border-ink/10 bg-canvas/95 px-6 py-3 backdrop-blur lg:-mx-10 lg:px-10"
+        >
+          {schema.sections.map((section, i) => (
+            <a
+              key={section.id}
+              href={`#bagian-${section.id}`}
+              className="shrink-0 rounded-md px-3 py-1.5 text-[12px] font-medium text-ink/60 transition hover:bg-white hover:text-gold"
+            >
+              <span className="mr-1 text-gold">{i + 1}.</span>
+              {section.title}
+            </a>
+          ))}
+        </nav>
+      )}
+
+      <div className="mt-6 grid gap-6">
+        {schema.sections.map((section, i) => {
+          const dirty = section.fields.some((field) => !same(draft[field.key], savedRef.current[field.key]))
+
+          return (
+            <SectionCard key={section.id} index={i + 1} {...section} dirty={dirty}>
+              <div className="grid gap-x-6 gap-y-5 md:grid-cols-2">
+                {section.fields.map((field) => (
+                  <div
+                    key={field.key}
+                    className={field.wide || ['list', 'object', 'gallery', 'lines'].includes(field.type) ? 'md:col-span-2' : ''}
+                  >
+                    <ContentField
+                      key={`${activeGroup}-${activeLocale}-${field.key}`}
+                      field={field}
+                      value={valueOf(field)}
+                      onChange={setField(activeGroup, activeLocale, field.key)}
+                    />
+                  </div>
+                ))}
+              </div>
+            </SectionCard>
+          )
+        })}
+
+        {extraKeys.length > 0 && (
+          <details className="group rounded-2xl border border-dashed border-ink/15 bg-white/60">
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 md:px-7">
+              <div>
+                <p className="text-[15px] font-semibold text-ink">Pengaturan lanjutan</p>
+                <p className="mt-0.5 text-[13px] text-muted">
+                  {extraKeys.length} isian lain yang saat ini tidak tampil di situs. Biasanya tidak perlu diubah.
+                </p>
+              </div>
+              <svg viewBox="0 0 24 24" className="h-4 w-4 shrink-0 text-ink/40 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </summary>
+            <div className="grid gap-5 border-t border-ink/10 px-5 py-5 md:px-7">
+              {extraKeys.map((key) => (
+                <AdvancedField
+                  key={`${activeGroup}-${activeLocale}-${key}`}
+                  fieldKey={key}
+                  value={draft[key]}
+                  onChange={setField(activeGroup, activeLocale, key)}
+                />
+              ))}
+            </div>
+          </details>
+        )}
+
+        {schema.sections.length === 0 && extraKeys.length === 0 && (
+          <p className="text-[14px] text-muted">Belum ada isian pada halaman ini.</p>
+        )}
+      </div>
+
+      {/* Bilah simpan: selalu terlihat di bawah layar */}
+      <div className="sticky bottom-4 z-30 mt-8">
+        <div
+          className={`flex flex-wrap items-center justify-between gap-3 rounded-xl border px-4 py-3 shadow-lg transition md:px-5 ${
+            isDirty ? 'border-amber-200 bg-amber-50' : 'border-ink/10 bg-white'
+          }`}
+        >
+          <p role="status" className="text-[13px] text-ink/80">
+            {saving
+              ? 'Menyimpan…'
+              : saveError
+                ? <span className="text-red-700">Gagal menyimpan. Periksa koneksi lalu coba lagi.</span>
+                : isDirty
+                  ? 'Ada perubahan yang belum disimpan.'
+                  : (savedMessage ?? 'Semua perubahan sudah tersimpan.')}
+          </p>
+
+          <div className="flex items-center gap-2">
+            {isDirty && !saving && (
+              <button
+                type="button"
+                onClick={handleReset}
+                className="rounded-lg px-4 py-2 text-[13px] font-medium text-ink/60 transition hover:bg-white hover:text-ink"
+              >
+                Batalkan
+              </button>
+            )}
+            <button
+              type="button"
+              onClick={handleSave}
+              disabled={saving || !isDirty}
+              className="rounded-lg bg-gold px-5 py-2 text-[13px] font-semibold text-ivory transition hover:bg-gold/90 disabled:cursor-not-allowed disabled:opacity-40"
+            >
+              {saving ? 'Menyimpan…' : 'Simpan perubahan'}
+            </button>
+          </div>
         </div>
       </div>
     </div>

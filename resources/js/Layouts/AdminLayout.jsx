@@ -3,6 +3,7 @@ import { Head, Link, router, usePage } from '@inertiajs/react'
 
 import MandalaMark from '../components/atoms/MandalaMark'
 import { SETTING_GROUPS, SETTING_GROUP_LABELS } from '../lib/settingGroups'
+import { SETTING_SCHEMA } from '../lib/settingSchema'
 
 const links = [
   { href: route('admin.dashboard'), label: 'Dashboard', end: true },
@@ -19,11 +20,10 @@ const linkClass = (isActive) =>
       : 'border-transparent text-ivory/60 hover:border-gold/50 hover:text-ivory'
   }`
 
-/** Submenu "Pengaturan": tertutup secara default, hanya terbuka lewat klik. */
+/** Submenu "Kelola Halaman": terbuka otomatis saat sedang menyunting salah satu halaman. */
 function SettingsNavItem({ url, onNavigate }) {
-  const [open, setOpen] = useState(false)
-
   const onSettingsPage = url.startsWith('/admin/settings')
+  const [open, setOpen] = useState(onSettingsPage)
   const query = new URLSearchParams(url.split('?')[1] ?? '')
   const currentGroup = query.get('group')
   const currentLocale = query.get('locale') === 'en' ? 'en' : 'id'
@@ -36,7 +36,7 @@ function SettingsNavItem({ url, onNavigate }) {
         aria-expanded={open}
         className={`flex w-full items-center justify-between ${linkClass(onSettingsPage)}`}
       >
-        <span>Pengaturan</span>
+        <span>Kelola Halaman</span>
         <svg
           width="14"
           height="14"
@@ -69,7 +69,7 @@ function SettingsNavItem({ url, onNavigate }) {
                     : 'border-transparent text-ivory/50 hover:border-gold/50 hover:text-ivory'
                 }`}
               >
-                {SETTING_GROUP_LABELS[group] ?? group}
+                {SETTING_SCHEMA[group]?.title ?? SETTING_GROUP_LABELS[group] ?? group}
               </Link>
             )
           })}
