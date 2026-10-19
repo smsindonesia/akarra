@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict zRAq9QiDrzJg8elmQmJCz5CBpqpKbqaSDvt3WzNqpQQZ3xe555pQjdvip35d0kU
+\restrict qCCrYvd76MHTvcdmzkRvIoX2XlRhaDQcSoMtusQaxVthQbvdbtpX973b8F12fyp
 
 -- Dumped from database version 16.14 (Ubuntu 16.14-1.pgdg22.04+1)
 -- Dumped by pg_dump version 16.14 (Ubuntu 16.14-1.pgdg22.04+1)
@@ -460,12 +460,12 @@ COPY public.settings (id, "group", key, value, type, created_at, updated_at, loc
 01a01ab9-84fd-7120-a700-bd8c38a9ab37	founders	hero_title_emphasis	Legacy	string	2026-08-19 15:52:40	2026-08-19 15:52:40	id
 01a01ab9-850f-7041-a70e-5d5a6b047089	global	site_name	AKARRA	string	2026-08-19 15:52:40	2026-08-19 15:52:40	en
 01a01ab9-8511-7230-ba6c-bdc102fe4216	global	tagline	Ecosystem of Excellence	string	2026-08-19 15:52:40	2026-08-19 15:52:40	en
-01a01ab9-8513-7182-ac66-174117846f5d	global	description	Ekosistem bisnis terintegrasi di bidang fashion, desain kreatif, event, dan periklanan digital.	string	2026-08-19 15:52:40	2026-08-19 15:52:40	en
 01a01ab9-8520-71b5-a8e6-af482e8c8d63	global	office_hours	Senin sampai Jumat, pukul 09.00 s.d. 17.00 WIB	string	2026-08-19 15:52:40	2026-08-19 15:52:40	en
 01a01ab9-8518-70c2-8436-f804dc408b8e	global	address	Cluster Ujung Berung Indah, Jl. Segar Dalam No.E-3, RT.07/RW.11, Cigending, Kec. Ujung Berung, Kota Bandung, Jawa Barat 40611	string	2026-08-19 15:52:40	2026-08-28 15:37:07	en
 01a01ab9-8515-73ef-9314-add19b7df1af	global	founded_year	null	string	2026-08-19 15:52:40	2026-08-28 15:37:07	en
 01a01ab9-851a-7013-b6e7-9494d1b72d80	global	phone	null	string	2026-08-19 15:52:40	2026-08-28 15:37:07	en
 01a01ab9-851e-7398-8fc7-1a87f8057e95	global	email	anandakaryanusantara@gmail.com	string	2026-08-19 15:52:40	2026-08-28 15:38:23	en
+01a01ab9-8513-7182-ac66-174117846f5d	global	description	An integrated business ecosystem across fashion, creative design, events, and digital advertising.	string	2026-08-19 15:52:40	2026-10-19 18:31:13	en
 01a01ab9-8524-71a3-98f8-bf01ee776396	global	nav	[{"label":"Ecosystem","path":"\\/ecosystem"},{"label":"Products","path":"\\/products"},{"label":"Services","path":"\\/services"},{"label":"Articles","path":"\\/articles"},{"label":"Founders","path":"\\/founders"}]	json	2026-08-19 15:52:40	2026-08-19 15:52:40	en
 01a01ab9-8526-72cb-9222-411a7de38abb	global	nav_cta_label	Start a Conversation	string	2026-08-19 15:52:40	2026-08-19 15:52:40	en
 01a01ab9-8529-7034-9827-c664016f7899	global	footer_note	Seluruh hak cipta dilindungi.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
@@ -477,42 +477,37 @@ COPY public.settings (id, "group", key, value, type, created_at, updated_at, loc
 01a01ab9-8539-7241-8da7-4db31bf70913	home	hero_secondary_cta_label	Our Philosophy	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-853b-7255-8c26-47c1799c63b9	home	hero_image		string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-853d-7068-b925-23ab13e31037	home	narrative_title	Membangun Warisan, Bukan Sekadar Bisnis	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
-01a01ab9-853e-731e-a58d-370076dcb163	home	narrative_body	AKARRA bergerak di industri fashion, desain kreatif, event, dan periklanan digital. Melalui tiga pilar utama, kami tidak hanya menjual produk, tetapi membangun identitas dan dampak nyata bagi komunitas fashion dan kreatif Indonesia.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-8542-700b-be1e-0a1bcab742b1	home	narrative_quote	We believe that true prestige is found in the intersection of mathematical precision and artistic soul. Our journey is about creating impact that resonates across generations.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-8545-717b-9fba-1500811272bb	home	narrative_quote_attribution	The Founders of AKARRA	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-854a-706c-89a6-b4b6a61ad3ae	home	values	[{"name":"Excellence","body":"Uncompromising quality in every stitch, frame, and strategy we execute."},{"name":"Integrity","body":"Building trust through transparency and ethical leadership in all domains."},{"name":"Innovation","body":"Pushing boundaries through creative experimentation and modern technology."},{"name":"Elegance","body":"A commitment to refined aesthetics that speak without needing to shout."}]	json	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-854d-70cc-98b0-3f779278d4ec	home	services_eyebrow	Our Three Pillars	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-854f-7362-8567-d6f8ce63d552	home	services_title	The Services Ecosystem	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
-01a01ab9-8551-721e-a508-725a1a9b2db1	home	services_subtitle	Tiga pilar yang saling menopang, dirancang untuk menemani brand di setiap tahap pertumbuhannya.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-8554-7316-989c-8f397e164801	home	services_cta_label	Lihat seluruh layanan	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-8557-70d1-9e62-7b1d39a1cc6b	home	solutions_title	Curated Solutions	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
-01a01ab9-855a-72ef-97f8-cf76ea36db5f	home	solutions_subtitle	Rangkaian produk dan karya yang lahir dari ekosistem kami.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-855f-705a-9c26-a43a75d42121	home	story_title	Cerita di Balik AKARRA	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
-01a01ab9-8561-7324-abd7-d348614af22a	home	story_body	Kami percaya setiap brand memiliki cerita yang layak diceritakan dengan elegan. Bersama kami, Anda tidak hanya membangun bisnis, tetapi juga membangun warisan.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-8564-7092-a5a8-1c9a1bb8e6c8	home	story_image	/images/content/home-story.jpg	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-8569-719d-8bf4-e822a05f1bde	home	founders_title	Meet the Founders	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
-01a01ab9-856c-70bc-94bc-8e45f16c5c8e	home	founders_subtitle	Dua orang di balik arah dan standar AKARRA.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-856e-736b-9330-86a2e169b15f	home	form_title	Mari Berkolaborasi	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
-01a01ab9-8571-7176-9db9-232ba2867355	home	form_subtitle	Konsultasi awal gratis, tanpa komitmen. Ceritakan apa yang sedang Anda bangun.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-8573-70be-813d-e7dec9e2c93e	home	form_cta_label	Kirim pesan	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-8575-7226-9c33-302d600fdd4e	ecosystem	hero_eyebrow	The Architecture of Aspiration	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-8577-70d9-90ad-9222fbacb627	ecosystem	hero_title	Ecosystem of Excellence	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-8579-71be-9db0-766d159745e4	ecosystem	hero_title_emphasis	Excellence	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-857b-72b6-b8f0-fd087d72c006	ecosystem	hero_subtitle	A multi-disciplinary sanctuary where precision meets poetry. AKARRA is not merely a brand; it is a unified sensory landscape where fashion, art, and strategy coalesce into a singular, prestigious standard.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
-01a01ab9-857d-7288-8e6c-b2306fed128c	ecosystem	story_title	Cerita Kami	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
-01a01ab9-857f-7095-bb3a-8f8f1d6e55cc	ecosystem	story_body	AKARRA didirikan oleh Febri Khoirul Imam dan Nanda Fifia Putri, lahir dari visi untuk menciptakan platform bisnis yang tidak hanya menjual produk, tetapi juga membangun identitas dan dampak nyata bagi komunitas fashion dan kreatif Indonesia.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-8581-7390-92e0-902cdf10c761	ecosystem	philosophy_title	Filosofi Nama & Logo	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
-01a01ab9-8583-7198-8bb4-9bbbf01031dc	ecosystem	philosophy_body	Logo AKARRA terinspirasi dari geometri berlian dan mandala tradisional, perpaduan antara kemewahan modern dan kearifan lokal.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-850d-70e2-a9b4-d5dac261bd75	founders	cta_secondary_label	Lihat Ekosistem	string	2026-08-19 15:52:40	2026-08-24 09:43:39	id
 01a01ab9-852b-7246-870a-a9592f806877	global	og_image	/storage/settings/2026/08/3WguMOu63aDaYTYLxhcGFkPx.jpg	string	2026-08-19 15:52:41	2026-08-24 10:01:45	en
 01a01ab9-852e-7358-b8ff-28c867bc5341	global	twitter_handle	null	string	2026-08-19 15:52:41	2026-08-28 15:37:07	en
 01a01ab9-8547-72cb-8a4b-404a318e66ed	home	narrative_badge	Est. 2026	string	2026-08-19 15:52:41	2026-09-10 22:09:12	en
+01a01ab9-8583-7198-8bb4-9bbbf01031dc	ecosystem	philosophy_body	The AKARRA mark draws on the geometry of a diamond and the traditional mandala — modern luxury meeting local wisdom.	string	2026-08-19 15:52:41	2026-10-19 18:31:13	en
+01a01ab9-857f-7095-bb3a-8f8f1d6e55cc	ecosystem	story_body	AKARRA was founded by Febri Khoirul Imam and Nanda Fifia Putri, born of a vision for a business platform that does not merely sell products, but builds identity and real impact for Indonesia's fashion and creative community.	string	2026-08-19 15:52:41	2026-10-19 18:31:13	en
+01a01ab9-857d-7288-8e6c-b2306fed128c	ecosystem	story_title	Our Story	string	2026-08-19 15:52:41	2026-10-19 18:31:13	en
+01a01ab9-8571-7176-9db9-232ba2867355	home	form_subtitle	A free initial consultation, with no commitment. Tell us what you are building.	string	2026-08-19 15:52:41	2026-10-19 18:31:13	en
+01a01ab9-856c-70bc-94bc-8e45f16c5c8e	home	founders_subtitle	The two people behind AKARRA's direction and standards.	string	2026-08-19 15:52:41	2026-10-19 18:31:13	en
+01a01ab9-8551-721e-a508-725a1a9b2db1	home	services_subtitle	Three pillars that support one another, designed to accompany a brand at every stage of its growth.	string	2026-08-19 15:52:41	2026-10-19 18:31:13	en
 01a01ab9-8584-730d-afd5-7902c261a6b8	ecosystem	philosophy_items	[{"title":"Berlian & Kemewahan","body":"Struktur geometris berlian mencerminkan kualitas premium dan eksklusivitas."},{"title":"Energi & Dinamisme","body":"Segitiga yang saling bertautan melambangkan inovasi dan kolaborasi."},{"title":"Mandala & Harmoni","body":"Pola melingkar mengacu pada tradisi mandala Nusantara."},{"title":"Emas & Kepercayaan","body":"Warna emas melambangkan prestise dan kepercayaan."}]	json	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-8587-7241-97b1-a3add81347b6	ecosystem	standard_title	The AKARRA Standard	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
-01a01ab9-858a-732d-a11b-fe551db9956b	ecosystem	standard_body	Standar tertinggi di setiap produk dan layanan, sesuai nilai Excellence dan Elegance yang kami pegang.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-858f-70f1-be12-d3f7f8b346f2	ecosystem	values	[{"name":"Excellence","label":"Keunggulan","body":"Standar tertinggi dalam setiap produk dan layanan."},{"name":"Integrity","label":"Integritas","body":"Transparansi dan kepercayaan di setiap kemitraan."},{"name":"Innovation","label":"Inovasi","body":"Terus berevolusi dan berpikir di luar konvensi."},{"name":"Collaboration","label":"Kolaborasi","body":"Tumbuh bersama klien, mitra, dan komunitas kreatif."},{"name":"Elegance","label":"Elegansi","body":"Estetika dan keindahan dalam setiap karya."}]	json	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-8592-71a1-9e3d-204c3791812f	ecosystem	vision_title	A Global Vision of Shared Success	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
-01a01ab9-8595-737d-be76-94b483a69ddc	ecosystem	vision_body	Menjadi ekosistem bisnis fashion dan kreatif terdepan di Indonesia yang melahirkan brand-brand berkelas dunia dengan akar budaya lokal.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-8599-710f-ae56-00cba18f34da	ecosystem	mission	["Membangun platform fashion terintegrasi dari produksi hingga distribusi.","Menghadirkan layanan desain dan event kreatif berkelas premium.","Memperkuat brand lokal melalui strategi digital dan periklanan inovatif.","Menciptakan ekosistem kolaboratif untuk pelaku industri kreatif Indonesia.","Mendorong pertumbuhan bisnis klien melalui solusi holistik dan terukur."]	json	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-859c-7147-9935-d6fb642587af	ecosystem	stats	[{"value":"12","label":"Global Ateliers"},{"value":"450+","label":"Artisans"},{"value":"24","label":"Strategic Partners"},{"value":"100%","label":"Ethical Sourcing"}]	json	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-859f-7249-b781-e057b4428143	products	hero_eyebrow	Curated Collections	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
@@ -521,10 +516,8 @@ COPY public.settings (id, "group", key, value, type, created_at, updated_at, loc
 01a01ab9-85a6-71af-bfae-3c7e4ecdd2e3	products	hero_subtitle	Explore AKARRA's product ecosystem, where high-performance logic meets artisanal craftsmanship. Our solutions are designed for those who demand uncompromising results.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-85a9-70eb-b546-71174ce90bfd	products	textile_title	Textile Engineering & Fashion	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-85ac-71b3-a5d8-fcf0d3116a1b	products	textile_body	Precision-tailored garments that redefine high-net-worth identity through rare fibers and architectural silhouettes.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
-01a01ab9-85b3-70f4-8490-439f057d2038	products	labs_body	Ruang eksperimen desain dan pengembangan produk, tempat ide diuji sebelum menjadi karya.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-85b5-71e0-a07a-683cd6de2682	products	labs	[{"title":"Material Bio-Synthesis","body":"Developing sustainable, lab-grown alternatives to rare earth materials for luxury interiors."},{"title":"Cognitive Branding","body":"A methodology for creating brand resonance through neuro-aesthetic principles and sensory mapping."}]	json	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-85ba-70e3-a4af-e94f43c1e5b2	products	digital_title	Strategic Dominance in Digital Realms	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
-01a01ab9-85bc-72c0-b03e-d8c78718695d	products	digital_body	Perencanaan dan eksekusi kampanye digital yang terukur, dari penempatan media hingga pengelolaan performa.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-85bf-7278-a4a7-d3304e8d2336	products	digital_items	[{"title":"Omnichannel Mastery","body":"Seamlessly integrating brand narrative across 12+ touchpoints for a unified, elite user experience."},{"title":"Data-Driven Narratives","body":"Leveraging proprietary algorithms to forecast cultural shifts and position brands ahead of the curve."},{"title":"High-Conversion Visuals","body":"Cinematic production standards applied to programmatic advertising for maximum prestige and ROI."}]	json	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-85c1-7176-b6cc-539906751725	products	cta_title	Ready to redefine your baseline?	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-85c3-7122-92c6-206f24fcc5ae	products	cta_subtitle	Our limited-client engagement model ensures each partnership receives the full weight of AKARRA's strategic and creative machinery.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
@@ -532,7 +525,6 @@ COPY public.settings (id, "group", key, value, type, created_at, updated_at, loc
 01a01ab9-85c7-7325-a61f-e42f6c14528a	products	cta_secondary_label	Join the Waitlist	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-85ca-7019-ac51-a11c76fa3626	services	hero_title	Architecting Excellence.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-85cc-72a6-b804-5649e23e0930	services	hero_title_emphasis	Excellence	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
-01a01ab9-85ce-711b-ac57-fb65debfb5e3	services	hero_subtitle	Apa yang kami kerjakan bersama Anda, dari ide pertama hingga brand yang dikenal.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-85d2-7172-8161-b07f025ccd58	services	hero_eyebrow	Our Capabilities	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-858c-73d6-8ce0-55f2a8a47893	ecosystem	standard_image	/storage/settings/2026/08/Riuja9nv1G8wCTrrNtB0rEZz.jpg	string	2026-08-19 15:52:41	2026-08-24 09:43:39	en
 01a01ab9-8509-717a-a780-ff3b0f93a823	founders	cta_subtitle	Rasakan layanan penasihat khusus dan ekosistem yang mendefinisikan gaya hidup AKARRA.	string	2026-08-19 15:52:40	2026-08-24 09:43:39	id
@@ -540,6 +532,10 @@ COPY public.settings (id, "group", key, value, type, created_at, updated_at, loc
 01a01ab9-84fa-733a-ab80-2cf81d552f35	founders	hero_eyebrow	Arsitek Nilai	string	2026-08-19 15:52:40	2026-08-24 09:43:39	id
 01a01ab9-84ff-7373-bebc-a196a52f79b6	founders	hero_subtitle	AKARRA didirikan atas prinsip bahwa keunggulan bukanlah sebuah tindakan, melainkan kebiasaan. Kepemimpinan kami berdedikasi penuh pada pembinaan kekayaan, kebijaksanaan, dan warisan abadi yang cermat bagi para visioner masa kini.	string	2026-08-19 15:52:40	2026-08-24 09:43:39	id
 01a01ab9-85b0-7340-8bce-110d44f8e981	products	labs_title	AKARRA Creative Labs	string	2026-08-19 15:52:41	2026-10-19 18:26:49	en
+01a01ab9-858a-732d-a11b-fe551db9956b	ecosystem	standard_body	The highest standard in every product and service, true to the values of Excellence and Elegance we hold to.	string	2026-08-19 15:52:41	2026-10-19 18:31:13	en
+01a01ab9-8595-737d-be76-94b483a69ddc	ecosystem	vision_body	To become Indonesia's foremost fashion and creative business ecosystem, giving rise to world-class brands rooted in local culture.	string	2026-08-19 15:52:41	2026-10-19 18:31:13	en
+01a01ab9-85bc-72c0-b03e-d8c78718695d	products	digital_body	Planning and execution of measurable digital campaigns, from media placement to performance management.	string	2026-08-19 15:52:41	2026-10-19 18:31:13	en
+01a01ab9-85b3-70f4-8490-439f057d2038	products	labs_body	A space for design experimentation and product development, where ideas are tested before they become finished work.	string	2026-08-19 15:52:41	2026-10-19 18:31:13	en
 01a01ab9-85db-7301-bd5e-f9b4c93d674a	services	growth_title	Digital Strategy & Growth	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-85dd-7340-9383-6dfdb6c82f43	services	growth_body	Data-driven precision meets creative intuition. We don't just find your audience; we cultivate a community of advocates.	string	2026-08-19 15:52:41	2026-08-19 15:52:41	en
 01a01ab9-85e0-73bd-99c3-2e1d39877b2f	services	amplification_cards	[{"title":"Digital Strategy","body":"Comprehensive market analysis and growth mapping for the luxury sector.","bullets":["Market Intelligence","Funnel Optimization"]},{"title":"Content Production","body":"High-end video, editorial photography, and interactive storytelling.","bullets":["4K Editorial Video","Social Narratives"]},{"title":"Brand Growth","body":"Strategic partnerships, influencer seeding, and global expansion.","bullets":["Strategic PR","Cross-Border Scaling"]}]	json	2026-08-19 15:52:41	2026-08-19 15:52:41	en
@@ -616,6 +612,10 @@ COPY public.settings (id, "group", key, value, type, created_at, updated_at, loc
 8186b238-5f08-4cc5-ac0f-486d549c1019	home	clients_gallery	[]	json	2026-09-10 22:09:12	2026-09-10 22:09:12	en
 01a01ab9-85f8-7177-acb7-2cd5bfc2f731	founders	people	[{"name":"Febri Khoirul Imam","role":"Direktur Utama","body":"With over two decades of experience in strategic investment and institutional management, Febri Khoirul Imam leads AKARRA with a focus on structural resilience and long-term capital preservation. His background in global financial markets provides the analytical backbone for AKARRA’s most ambitious ecosystems.","portrait":null,"quote":"Legacy is not what we leave for people, it is what we leave within them. At AKARRA, we build the frameworks where that impact can endure.","legacy_body":"Febri believes that building a legacy requires more than just financial success; it requires a commitment to excellence in every detail. His philosophy centers on ‘Integrated Stewardship,’ the belief that wealth and influence must be managed as a cohesive, purposeful whole."},{"name":"Nanda Fifia Putri","role":"Komisaris","body":"Nanda Fifia Putri brings a refined perspective to AKARRA’s board, specializing in brand heritage and philanthropic governance. Her career has been defined by the intersection of high-culture and high-finance, ensuring that AKARRA’s products and services maintain their soul as they scale.","portrait":null,"quote":"Visionary leadership is about seeing the invisible threads that connect today’s decisions to tomorrow’s heritage.","legacy_body":"Nanda’s philosophy is rooted in ‘Cultural Capital.’ She advocates for the preservation of values alongside value, ensuring that the AKARRA brand serves as a hallmark of prestige and intellectual depth for generations to come."}]	json	2026-08-19 15:52:41	2026-10-19 09:33:57	en
 01a01ab9-8501-735f-a68e-4561debcacd4	founders	people	[{"name":"Febri Khoirul Imam","role":"Direktur Utama","body":"Dengan pengalaman lebih dari dua dekade dalam investasi strategis dan manajemen institusional, Febri Khoirul Imam memimpin AKARRA dengan fokus pada ketahanan struktural dan pelestarian modal jangka panjang. Latar belakangnya di pasar keuangan global menjadi tulang punggung analitis bagi ekosistem-ekosistem paling ambisius AKARRA.","portrait":null,"quote":"Warisan bukanlah apa yang kita tinggalkan untuk orang lain, melainkan apa yang kita tanamkan dalam diri mereka. Di AKARRA, kami membangun kerangka kerja tempat dampak itu bisa bertahan lama.","legacy_body":"Febri percaya bahwa membangun sebuah warisan membutuhkan lebih dari sekadar kesuksesan finansial; dibutuhkan komitmen pada keunggulan di setiap detail. Filosofinya berpusat pada 'Integrated Stewardship' — keyakinan bahwa kekayaan dan pengaruh harus dikelola sebagai satu kesatuan yang utuh dan penuh tujuan."},{"name":"Nanda Fifia Putri","role":"Komisaris","body":"Nanda Fifia Putri membawa perspektif yang halus ke dalam jajaran AKARRA, dengan keahlian dalam warisan brand dan tata kelola filantropi. Kariernya dibentuk oleh titik temu antara dunia budaya tinggi dan keuangan tingkat atas, memastikan produk dan layanan AKARRA tetap menjaga jiwanya seiring pertumbuhan skala bisnis.","portrait":null,"quote":"Kepemimpinan visioner adalah tentang melihat benang-benang tak kasat mata yang menghubungkan keputusan hari ini dengan warisan hari esok.","legacy_body":"Filosofi Nanda berakar pada 'Cultural Capital.' Ia menjunjung pelestarian nilai (values) yang berjalan seiring dengan nilai ekonomi (value), memastikan brand AKARRA menjadi penanda prestise dan kedalaman intelektual bagi generasi mendatang."}]	json	2026-08-19 15:52:40	2026-10-19 09:33:57	id
+01a01ab9-853e-731e-a58d-370076dcb163	home	narrative_body	AKARRA works across fashion, creative design, events, and digital advertising. Through three core pillars, we do not merely sell products — we build identity and real impact for Indonesia's fashion and creative community.	string	2026-08-19 15:52:41	2026-10-19 18:31:13	en
+01a01ab9-855a-72ef-97f8-cf76ea36db5f	home	solutions_subtitle	A range of products and work born out of our ecosystem.	string	2026-08-19 15:52:41	2026-10-19 18:31:13	en
+01a01ab9-8561-7324-abd7-d348614af22a	home	story_body	We believe every brand has a story worth telling with elegance. With us, you are not only building a business — you are building a legacy.	string	2026-08-19 15:52:41	2026-10-19 18:31:13	en
+01a01ab9-85ce-711b-ac57-fb65debfb5e3	services	hero_subtitle	What we build with you, from the first idea to a brand people know.	string	2026-08-19 15:52:41	2026-10-19 18:31:13	en
 \.
 
 
@@ -898,5 +898,5 @@ ALTER TABLE ONLY public.articles
 -- PostgreSQL database dump complete
 --
 
-\unrestrict zRAq9QiDrzJg8elmQmJCz5CBpqpKbqaSDvt3WzNqpQQZ3xe555pQjdvip35d0kU
+\unrestrict qCCrYvd76MHTvcdmzkRvIoX2XlRhaDQcSoMtusQaxVthQbvdbtpX973b8F12fyp
 
