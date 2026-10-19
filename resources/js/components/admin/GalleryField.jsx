@@ -46,18 +46,25 @@ function GallerySlot({ src, onReplace, onRemove }) {
   }
 
   return (
-    <div className="border border-ink/10 p-3">
-      <div className="grid aspect-square w-full place-items-center overflow-hidden bg-sand">
+    <div className="overflow-hidden rounded-lg border border-ink/10 bg-white">
+      <div className="relative grid aspect-square w-full place-items-center overflow-hidden bg-sand/60">
         {src ? (
           <img src={src} alt="" className="h-full w-full object-cover" />
         ) : (
-          <span className="px-2 text-center text-[11px] text-muted">Belum ada gambar</span>
+          <span className="flex flex-col items-center gap-1 px-2 text-center text-[12px] text-muted">
+            <span className="text-2xl leading-none text-ink/30">+</span>
+            Tambah foto
+          </span>
+        )}
+
+        {uploading && (
+          <div className="absolute inset-0 grid place-items-center bg-white/70 text-[12px] font-medium text-ink">Mengunggah…</div>
         )}
       </div>
 
-      <div className="mt-3 flex items-center justify-between gap-2">
-        <label className="inline-flex w-fit cursor-pointer items-center border-b border-gold/40 pb-1 text-[11px] font-medium uppercase tracking-[0.14em] text-ink transition-colors hover:border-gold hover:text-gold">
-          {uploading ? 'Mengunggah…' : src ? 'Ganti' : 'Unggah'}
+      <div className="flex items-center justify-between gap-2 px-2.5 py-2">
+        <label className="cursor-pointer text-[12px] font-medium text-gold hover:underline">
+          {uploading ? 'Mengunggah…' : src ? 'Ganti' : 'Pilih foto'}
           <input
             type="file"
             accept="image/jpeg,image/png,image/webp"
@@ -68,17 +75,13 @@ function GallerySlot({ src, onReplace, onRemove }) {
         </label>
 
         {src && (
-          <button
-            type="button"
-            onClick={onRemove}
-            className="text-[11px] uppercase tracking-[0.1em] text-ink/50 hover:text-gold hover:underline"
-          >
+          <button type="button" onClick={onRemove} className="text-[12px] font-medium text-ink/50 hover:text-red-700">
             Hapus
           </button>
         )}
       </div>
 
-      {error && <span className="mt-2 block text-[12px] text-gold">{error}</span>}
+      {error && <span className="block px-2.5 pb-2 text-[12px] text-red-700">{error}</span>}
     </div>
   )
 }
@@ -109,11 +112,11 @@ export default function GalleryField({ value = [], onChange }) {
 
   return (
     <div>
-      <span className="mb-2 block text-[11px] font-medium uppercase tracking-[0.14em] text-muted">
-        Galeri Foto ({photos.length}/{MAX_PHOTOS} foto)
-      </span>
+      <p className="mb-2 text-[12px] text-muted">
+        {photos.length} dari maks. {MAX_PHOTOS} foto. Menghapus foto akan menggeser foto sesudahnya maju.
+      </p>
 
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
         {photos.map((src, i) => (
           <GallerySlot
             key={i}
