@@ -220,7 +220,7 @@ class SettingSeeder extends Seeder
                     ['name' => 'Artisanal Accents', 'label' => 'Fiber Innovation', 'image' => '/images/content/product-artisanal-accents.jpg', 'tag' => 'Explore'],
                 ], 'json'],
 
-                'labs_title' => 'AKARRA Labs',
+                'labs_title' => 'AKARRA Creative Labs',
                 'labs_body' => 'Ruang eksperimen desain dan pengembangan produk, tempat ide diuji sebelum menjadi karya.',
                 'labs' => [[
                     ['title' => 'Material Bio-Synthesis', 'body' => 'Developing sustainable, lab-grown alternatives to rare earth materials for luxury interiors.'],

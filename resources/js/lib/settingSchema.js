@@ -332,7 +332,7 @@ export const SETTING_SCHEMA = {
   products: {
     title: 'Products',
     path: '/products',
-    description: 'Koleksi produk, AKARRA Labs, dan layanan digital.',
+    description: 'Koleksi produk, AKARRA Creative Labs, dan layanan digital.',
     sections: [
       heroSection(),
       {
@@ -361,7 +361,7 @@ export const SETTING_SCHEMA = {
       },
       {
         id: 'labs',
-        title: 'AKARRA Labs',
+        title: 'AKARRA Creative Labs',
         description: 'Kartu-kartu eksperimen dan satu kartu studi kasus bergambar.',
         fields: [
           { key: 'labs_title', label: 'Judul bagian', type: 'text', wide: true },
