@@ -36,6 +36,19 @@
     scroll-behavior: smooth;
   }
 
+  /* Laptop berlayar pendek (mis. 1366×768, atau 1920×1080 dengan scaling
+     Windows 125–150%) hanya menyisakan ±600–650px tinggi di browser. Desain
+     Figma dibuat untuk layar besar, jadi tanpa ini hero dan section terasa
+     "kebesaran" dan baru pas di zoom 80%. Hampir seluruh ukuran di situs
+     memakai rem, jadi cukup mengecilkan ukuran dasar html mengikuti lebar
+     DAN tinggi layar — hasilnya setara zoom otomatis, dan layar ≥1536×830
+     tetap 16px seperti desain aslinya. Tablet/HP (<1024px) tidak tersentuh. */
+  @media (min-width: 1024px) {
+    html {
+      font-size: clamp(12.5px, min(1.0417vw, 1.93vh), 16px);
+    }
+  }
+
   body {
     background-color: var(--color-canvas);
     color: var(--color-ink);

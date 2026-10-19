@@ -182,7 +182,7 @@ export const fallbackContent = {
       { name: 'Artisanal Accents', label: 'Fiber Innovation', image: '/images/content/product-artisanal-accents.jpg', tag: 'Explore' },
     ],
 
-    labs_title: 'AKARRA Labs',
+    labs_title: 'AKARRA Creative Labs',
     labs_body:
       'Ruang eksperimen desain dan pengembangan produk, tempat ide diuji sebelum menjadi karya.',
     labs: [

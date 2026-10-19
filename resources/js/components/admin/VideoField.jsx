@@ -52,18 +52,22 @@ export default function VideoField({ value, onChange, label }) {
   }
 
   return (
-    <div className="flex items-start gap-4">
-      <div className="grid aspect-[4/3] w-48 shrink-0 place-items-center overflow-hidden border border-ink/10 bg-sand">
+    <div className="max-w-sm">
+      <div className="relative grid aspect-video w-full place-items-center overflow-hidden rounded-lg border border-ink/10 bg-sand/60">
         {hasValue ? (
           <video src={value} controls className="h-full w-full object-cover" />
         ) : (
-          <span className="px-2 text-center text-[11px] text-muted">Belum ada video</span>
+          <span className="px-2 text-center text-[12px] text-muted">Belum ada video</span>
+        )}
+
+        {uploading && (
+          <div className="absolute inset-0 grid place-items-center bg-white/70 text-[12px] font-medium text-ink">Mengunggah…</div>
         )}
       </div>
 
-      <div className="flex flex-col items-start gap-2 pt-1">
-        <label className="inline-flex w-fit cursor-pointer items-center border-b border-gold/40 pb-1 text-[11px] font-medium uppercase tracking-[0.14em] text-ink transition-colors hover:border-gold hover:text-gold">
-          {uploading ? 'Mengunggah…' : hasValue ? 'Ganti Video' : 'Unggah Video'}
+      <div className="mt-2.5 flex flex-wrap items-center gap-2">
+        <label className="inline-flex cursor-pointer items-center rounded-md border border-gold/50 bg-white px-3 py-1.5 text-[12px] font-medium text-gold transition hover:bg-gold hover:text-ivory">
+          {uploading ? 'Mengunggah…' : hasValue ? 'Ganti video' : 'Unggah video'}
           <input
             type="file"
             accept="video/mp4,video/webm,video/quicktime"
@@ -77,16 +81,16 @@ export default function VideoField({ value, onChange, label }) {
           <button
             type="button"
             onClick={() => onChange('')}
-            className="text-[11px] uppercase tracking-[0.1em] text-ink/50 hover:text-gold hover:underline"
+            className="rounded-md px-3 py-1.5 text-[12px] font-medium text-ink/60 transition hover:bg-red-50 hover:text-red-700"
           >
             Hapus
           </button>
         )}
 
-        <span className="text-[11px] text-muted">MP4, WEBM, atau MOV. Maks. 50 MB.</span>
-
-        {error && <span className="text-[12px] text-gold">{error}</span>}
+        <span className="text-[11px] text-muted">MP4/WEBM/MOV, maks. 50 MB</span>
       </div>
+
+      {error && <p className="mt-1.5 text-[12px] text-red-700">{error}</p>}
     </div>
   )
 }
